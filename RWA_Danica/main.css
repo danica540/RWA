@@ -4,7 +4,7 @@ body{
 }
 
 #sign-in-form{
-    padding: 5%;
+    padding: 2%;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -51,7 +51,7 @@ body{
     background-color: #e7e7e7;
 }
 
-.sing-up-label{
+#sign-up-div{
     padding-top: 2%;
 }
 

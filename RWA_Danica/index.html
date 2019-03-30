@@ -11,11 +11,14 @@
             Please sing in
         </label>
         <label class="log-in-labels">Username</label>
-        <input class="sign-in-inputs" id="username" type="text">
+        <input class="sign-in-inputs" placeholder="Enter username" id="username" type="text">
         <label class="log-in-labels">Password</label>
-        <input class="sign-in-inputs" id="password" type="password">
-        <input type="button" class="sign-in-button" value="Sign in">
-        <label class="sing-up-label">Don't have an account? <a href="#">Sing up</a></label>
+        <input class="sign-in-inputs" placeholder="Enter password" id="password" type="password">
+        <input type="button" id="sign-in-button" class="sign-in-button" value="Sign in">
+        <div id="sign-up-div">
+          <label id="sign-up-label" >Don't have an account? <a href="#" id="sign-up-link">Sing up</a></label>
+        </div>
+        
     </div>
     <script src="dist/bundle.js"></script>
   </body>
