@@ -1,0 +1,57 @@
+body{
+    align-content: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#sign-in-form{
+    padding: 5%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#sign-in-label{
+    padding-bottom: 1%;
+    font-size: 42px;
+}
+
+#log-in-pic{
+    padding-bottom: 2%;
+    width: 128px;
+    height: 128px;
+}
+
+.log-in-labels{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 25px;
+    
+}
+
+.sign-in-inputs{
+    font-size: 18px;
+    width: 242px;
+    border: none;
+    border-bottom: 2px solid gray;
+    
+}
+
+.sign-in-inputs:focus{
+    border-bottom: 2px solid red;
+}
+
+.sign-in-button {
+    margin-top: 3%;
+    border: none;
+    padding: 10px 32px;
+    font-size: 18px;
+}
+
+.sign-in-button:hover {
+    background-color: #e7e7e7;
+}
+
+.sing-up-label{
+    padding-top: 2%;
+}
+

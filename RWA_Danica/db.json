@@ -1,0 +1,10 @@
+{
+    "users":[
+        {"id":"1","username":"danica540", "password":"12345"},
+        {"id":"2","username":"mika", "password":"mika123"},
+        {"id":"3","username":"pera", "password":"pera123"}
+    ],
+    "news":[
+        
+    ]
+}
