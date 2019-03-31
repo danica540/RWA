@@ -1,5 +1,5 @@
 
-export function default_view(sign_in_form,news_view,error_div){
+export function sign_in_view(sign_in_form,news_view,error_div){
     news_view.style.display="none";
     sign_in_form.style.display="flex";
     error_div.style.display="none";
