@@ -16,7 +16,7 @@ function clear_log_in_inputs(username_input,password_input){
     password_input.value="";
 }
 
-export function is_valid_user(username_input,password_input,sign_in_form,news_view,error_div){
+export function validate_user(username_input,password_input,sign_in_form,news_view,error_div){
     fetch("http://localhost:3000/users?username="+username_input.value+"&password="+password_input.value)
     .then(res=>{
         if(!res.ok){
@@ -27,7 +27,7 @@ export function is_valid_user(username_input,password_input,sign_in_form,news_vi
         }
     })
     .then(user=>{
-        if(user.length===0){
+        if(user.length === 0){
             clear_log_in_inputs(username_input,password_input);
             let error_label=document.getElementById("error-message");
             display_error_message(error_div,error_label);

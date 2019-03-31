@@ -1,4 +1,4 @@
-import {is_valid_user,change_to_sign_up_mode,is_sign_in_mode,change_to_news_browsing_mode,default_view,display_error_message} from "./log-in-functions";
+import {validate_user,change_to_sign_up_mode,is_sign_in_mode,default_view} from "./log-in-functions";
 
 let error_div=document.getElementById("error-div");
 let news_view=document.getElementById("news_view");
@@ -14,7 +14,7 @@ default_view(sign_in_form,news_view,error_div);
 
 sign_in_button.onclick=(ev)=>{
   if(is_sign_in_mode(sign_in_button)){
-    is_valid_user(username,password,sign_in_form,news_view,error_div)
+    validate_user(username,password,sign_in_form,news_view,error_div)
   }
   else{
     console.log("Bla");
