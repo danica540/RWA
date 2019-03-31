@@ -1,7 +1,6 @@
 import {is_valid_user,change_to_sign_up_mode,is_sign_in_mode,change_to_news_browsing_mode,default_view,display_error_message} from "./log-in-functions";
 
 let error_div=document.getElementById("error-div");
-let error_label=document.getElementById("error-message");
 let news_view=document.getElementById("news_view");
 let sign_in_form=document.getElementById("sign-in-form");
 let username=document.getElementById("username");
@@ -15,17 +14,11 @@ default_view(sign_in_form,news_view,error_div);
 
 sign_in_button.onclick=(ev)=>{
   if(is_sign_in_mode(sign_in_button)){
-    if(is_valid_user(username,password)){
-      change_to_news_browsing_mode(sign_in_form,news_view,error_div);
-    }
-    else{
-      display_error_message(error_div,error_label);
-    }
+    is_valid_user(username,password,sign_in_form,news_view,error_div)
   }
   else{
     console.log("Bla");
   }
-  
 }
 
 sign_up_link.onclick=(ev)=>{
