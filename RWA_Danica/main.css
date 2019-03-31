@@ -1,13 +1,16 @@
 body{
+    margin: 0;
+    padding: 0;
     align-content: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 #sign-in-form{
-    padding: 2%;
+    padding: 4%;
     align-items: center;
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
 }
 
 #sign-in-label{
@@ -23,7 +26,7 @@ body{
 
 .log-in-labels{
     padding-top: 1%;
-    padding-bottom: 1%;
+    padding-bottom: 2%;
     font-size: 25px;
     
 }
@@ -33,6 +36,7 @@ body{
     width: 242px;
     border: none;
     border-bottom: 2px solid gray;
+    background: none;
     
 }
 
@@ -45,7 +49,11 @@ body{
     border: none;
     padding: 10px 32px;
     font-size: 18px;
+    border-radius: 4px;
+    border: 1px solid #babdc1;
+
 }
+
 
 .sign-in-button:hover {
     background-color: #e7e7e7;
@@ -54,4 +62,17 @@ body{
 #sign-up-div{
     padding-top: 2%;
 }
+
+#error-div{
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 1%;
+}
+
+#error-message{
+    color:red;
+    font-size: 15px;
+    padding-left: 2%;
+}
+
 

@@ -2,14 +2,19 @@
 <html>
   <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link rel="stylesheet" href="main.css">
   </head>
   <body>
     <div id="sign-in-form">
         <img id="log-in-pic" src="resource/login.png">
         <label id="sign-in-label">
-            Please sing in
+            Please sign in
         </label>
+        <div id="error-div">
+          <i class="fas fa-exclamation-circle"></i>
+          <label id="error-message"></label>
+        </div>
         <label class="log-in-labels">Username</label>
         <input class="sign-in-inputs" placeholder="Enter username" id="username" type="text">
         <label class="log-in-labels">Password</label>
@@ -18,8 +23,13 @@
         <div id="sign-up-div">
           <label id="sign-up-label" >Don't have an account? <a href="#" id="sign-up-link">Sing up</a></label>
         </div>
-        
     </div>
+
+    
+    <div id="news_view">
+      Bllaaaa
+    </div>
+
     <script src="dist/bundle.js"></script>
   </body>
 </html>
