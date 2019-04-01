@@ -19,7 +19,8 @@
 
 .single-news-div{
     display: flex;
-    width:80%;
+    max-width: 75%;
+    height: auto;
     border: 2px solid gray;
     border-radius: 5px;
     padding: 1%;
@@ -33,8 +34,9 @@
 }
 
 .news-image{
-    width: 100%;
-    height: 80%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 2px;
 }
 
 .content-div{
