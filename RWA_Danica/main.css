@@ -26,17 +26,24 @@
     padding: 1%;
     margin:1%;
     background: #a8a3a3;
-    transition: background 0.4s;
+    transition: background 0.5s;
 }
 
 .single-news-div:hover{
     background: #dbd2d2;
+    opacity: 1;
+}
+
+.single-news-div:hover .image-div .news-image{
+    opacity: 1;
 }
 
 .news-image{
     max-width: 100%;
     height: auto;
     border-radius: 2px;
+    opacity: 0.8;
+    transition: opacity 0.5s;
 }
 
 .content-div{
