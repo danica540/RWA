@@ -58,11 +58,21 @@ function import_content_in_a_div(side_div,news){
 function draw(news_list_div,news){
     let news_div=document.createElement("div");
     news_div.className="single-news-div";
-    
-    draw_header(news_div,news);
 
-    import_image_in_a_div(news_div,news);
-    import_content_in_a_div(news_div,news);
+    let image_div=document.createElement("div");
+    image_div.className="image-div";
+
+    let content_div=document.createElement("div");
+    content_div.className="content-div";
+
+    draw_header(content_div,news);
+    import_content_in_a_div(content_div,news);
+
+    import_image_in_a_div(image_div,news);
+
+    news_div.appendChild(content_div);
+    news_div.appendChild(image_div);
+    
     news_list_div.appendChild(news_div);
 
 }
