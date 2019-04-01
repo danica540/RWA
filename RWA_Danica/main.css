@@ -1,78 +1,67 @@
-body{
+* {
     margin: 0;
     padding: 0;
-    align-content: center;
+    box-sizing: border-box;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-#sign-in-form{
-    padding: 4%;
+.navbar-container{
+    width: 100%;
+    display: flex;
+    background: black;
+    justify-content: space-between;
+}
+
+.navbar-container ul{
+    list-style: none;
+    display: flex;
+}
+
+.navbar-container li{
+    text-align: center;
+    position: relative;
+    width:80px;
+    
+}
+
+.navbar-container a{
+    color: #f6f7f8;
+    background: black;
+    height: 50px;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.4s;
+    
+}
+
+.navbar-container a:hover, .submenu a:hover{
+    background: #262626;
+}
+
+.navbar-container li:hover .submenu > li{
+    display: block;
+    flex-direction: column;
+    top: 0px;
+}
+
+.submenu li{
+    display: none;
+    position: absolute;
+    top: 0px;
+    width:80px;
+}
+
+.submenu{
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
+    position: absolute;
 }
 
-#sign-in-label{
-    padding-bottom: 1%;
-    font-size: 42px;
+.submenu li{
+    position: relative;
 }
 
-#log-in-pic{
-    padding-bottom: 2%;
-    width: 128px;
-    height: 128px;
-}
-
-.log-in-labels{
-    padding-top: 1%;
-    padding-bottom: 2%;
-    font-size: 25px;
-    
-}
-
-.sign-in-inputs{
-    font-size: 18px;
-    width: 242px;
-    border: none;
-    border-bottom: 2px solid gray;
-    background: none;
-    
-}
-
-.sign-in-inputs:focus{
-    border-bottom: 2px solid red;
-}
-
-.sign-in-button {
-    margin-top: 3%;
-    border: none;
-    padding: 10px 32px;
-    font-size: 18px;
-    border-radius: 4px;
-    border: 1px solid #babdc1;
-
-}
-
-
-.sign-in-button:hover {
-    background-color: #e7e7e7;
-}
-
-#sign-up-div{
-    padding-top: 2%;
-}
-
-#error-div{
-    display: flex;
-    flex-wrap: nowrap;
-    padding: 1%;
-}
-
-#error-message{
-    color:red;
-    font-size: 15px;
-    padding-left: 2%;
-}
 
 

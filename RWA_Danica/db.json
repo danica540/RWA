@@ -4,6 +4,12 @@
         {"id":"2","username":"mika", "password":"mika123"},
         {"id":"3","username":"pera", "password":"pera123"}
     ],
+    "subscriptions":[
+        {"user_id":"1", "news_tag":"sport"},
+        {"user_id":"1", "news_tag":"politics"},
+        {"user_id":"2", "news_tag":"sport"},
+        {"user_id":"3", "news_tag":"crime"}
+    ],
     "news":[
         
     ]
