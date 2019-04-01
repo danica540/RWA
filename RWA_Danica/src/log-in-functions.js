@@ -62,6 +62,6 @@ export function change_to_sign_up_mode(sign_in_label,sign_in_button,sign_up_div,
 }
 
 export function display_error_message(error_div,error_label){
-    error_div.style.display="flex";
-    error_label.innerHTML="Invalid login, please try again";
+    make_element_visible(error_div);
+    change_text_in_an_element(error_label);
 }

@@ -1,7 +1,6 @@
 import {validate_user,change_to_sign_up_mode,is_sign_in_mode,sign_in_view} from "./log-in-functions";
 import {default_view} from "./default_page_functions";
-import {interval, range, Observable,fromEvent} from "rxjs";
-import {take,filter,map,scan} from "rxjs/operators";
+import {fromEvent} from "rxjs";
 
 let error_div=document.getElementById("error-div");
 let news_view=document.getElementById("news_view");
@@ -18,9 +17,7 @@ let profile_menu=document.getElementById("profile-menu");
 
 default_view(sign_in_form,news_view,error_div,profile_link,profile_menu);
 
-//sign_in_view(sign_in_form,news_view,error_div);
-
-// data source is the click event on the button, it goes from the data source to the function we pass to the subscribe method, it's like date travels through a funnel
+// data source is the click event on the button, it goes from the data source to the function we pass and then to the subscribe method, it's like data travels through a funnel
 
 fromEvent(sign_in_button, 'click')
   .subscribe(() => {
