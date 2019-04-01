@@ -37,7 +37,7 @@ function draw(news_list_div,news){
     news_div.appendChild(headline);
     let tag=document.createElement("label");
     tag.class="news-tag";
-    tag.style.color="green";
+    tag.style.color="#4f758e";
     tag.innerHTML=news.tag;
     
     news_div.appendChild(tag);
