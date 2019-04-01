@@ -29,9 +29,7 @@ export function display_default_news_list(news_list_div,news_list){
     });
 }
 
-function draw(news_list_div,news){
-    let news_div=document.createElement("div");
-    news_div.className="single-news-div";
+function draw_header(news_div,news){
     let headline=document.createElement("h2");
     headline.innerHTML=news.headline;
     news_div.appendChild(headline);
@@ -39,18 +37,32 @@ function draw(news_list_div,news){
     tag.class="news-tag";
     tag.style.color="#4f758e";
     tag.innerHTML=news.tag;
-    
     news_div.appendChild(tag);
-    let br=document.createElement("br");
-    news_div.appendChild(br);
+}
 
+function import_image_in_a_div(image_div,news){
+    let br=document.createElement("br");
+    image_div.appendChild(br);
     let image=document.createElement("img");
     image.src=news.img;
     image.className="news-image";
-    news_div.appendChild(image);
-    
+    image_div.appendChild(image);
+}
+
+function import_content_in_a_div(side_div,news){
     let content=document.createElement("p");
     content.innerHTML=news.content;
-    news_div.appendChild(content);
+    side_div.appendChild(content);
+}
+
+function draw(news_list_div,news){
+    let news_div=document.createElement("div");
+    news_div.className="single-news-div";
+    
+    draw_header(news_div,news);
+
+    import_image_in_a_div(news_div,news);
+    import_content_in_a_div(news_div,news);
     news_list_div.appendChild(news_div);
+
 }

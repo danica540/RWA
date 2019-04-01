@@ -17,11 +17,6 @@
     padding: 2%;
 }
 
-.news-image{
-    width: 30%;
-    height: 50%;
-}
-
 .single-news-div{
     width:80%;
     border: 2px solid gray;
@@ -35,5 +30,12 @@
 .single-news-div:hover{
     background: #dbd2d2;
 }
+
+.news-image{
+    width: 30%;
+    height: 50%;
+}
+
+
 
 
