@@ -1,5 +1,5 @@
 import {validate_user,change_to_sign_up_mode,is_sign_in_mode,sign_in_view} from "./log-in-functions";
-import {default_view} from "./default_page_functions";
+import {default_view,news_list_view} from "./default_page_functions";
 import {fromEvent} from "rxjs";
 
 let error_div=document.getElementById("error-div");
@@ -14,8 +14,10 @@ let sign_up_div=document.getElementById("sign-up-div");
 let sign_in_link=document.getElementById("sign-in-link");
 let profile_link=document.getElementById("profile_link");
 let profile_menu=document.getElementById("profile-menu");
+let news_list_div=document.getElementById("news-list-view");
 
 default_view(sign_in_form,news_view,error_div,profile_link,profile_menu);
+news_list_view(news_list_div);
 
 // data source is the click event on the button, it goes from the data source to the function we pass and then to the subscribe method, it's like data travels through a funnel
 

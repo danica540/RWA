@@ -5,7 +5,34 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+#news_view{
+    display: flex;
+    flex-direction: column;
+}
 
+#news-list-view{
+    background: #3f3d3d;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
 
+.news-image{
+    /*width: 50%;
+    height: 30%;*/
+}
+
+.single-news-div{
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 2%;
+    margin:1%;
+    background: #a8a3a3;
+    transition: background 0.4s;
+}
+
+.single-news-div:hover{
+    background: #dbd2d2;
+}
 
 
