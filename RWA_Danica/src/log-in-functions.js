@@ -1,14 +1,4 @@
-function hide_element(element){
-    element.style.display="none";
-}
-
-function make_element_visible(element){
-    element.style.display="flex";
-}
-
-function change_text_in_an_element(element,new_text){
-    element.innerHTML=new_text;
-}
+import {hide_element,make_element_visible,change_text_in_an_element,return_capitalized_username} from "./basic-functions";
 
 export function sign_in_view(sign_in_form,news_view,error_div){
     hide_element(news_view);
@@ -16,12 +6,14 @@ export function sign_in_view(sign_in_form,news_view,error_div){
     hide_element(error_div);
 }
 
-export function change_to_news_browsing_mode(sign_in_form,news_view,error_div,profile_link,sign_in_link){
+export function change_to_news_browsing_mode(sign_in_form,news_view,error_div,profile_link,sign_in_link,username, profile_menu){
     make_element_visible(news_view);
     hide_element(sign_in_form);
     hide_element(error_div);
     change_text_in_an_element(sign_in_link,"Sing out");
+    change_text_in_an_element(profile_link,return_capitalized_username(username));
     make_element_visible(profile_link);
+    make_element_visible(profile_menu);
 }
 
 function clear_log_in_inputs(username_input,password_input){
@@ -29,7 +21,7 @@ function clear_log_in_inputs(username_input,password_input){
     password_input.value="";
 }
 
-export function validate_user(username_input,password_input,sign_in_form,news_view,error_div,profile_link,sign_in_link){
+export function validate_user(username_input,password_input,sign_in_form,news_view,error_div,profile_link,sign_in_link, profile_menu){
     fetch("http://localhost:3000/users?username="+username_input.value+"&password="+password_input.value)
     .then(res=>{
         if(!res.ok){
@@ -47,7 +39,7 @@ export function validate_user(username_input,password_input,sign_in_form,news_vi
         }
         else{
             clear_log_in_inputs(username_input,password_input);
-            change_to_news_browsing_mode(sign_in_form,news_view,error_div,profile_link,sign_in_link);
+            change_to_news_browsing_mode(sign_in_form,news_view,error_div,profile_link,sign_in_link,user[0].username, profile_menu);
         }
     })
     .catch(err=>console.log(err))

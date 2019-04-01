@@ -14,8 +14,9 @@ let sign_in_label=document.getElementById("sign-in-label");
 let sign_up_div=document.getElementById("sign-up-div");
 let sign_in_link=document.getElementById("sign-in-link");
 let profile_link=document.getElementById("profile_link");
+let profile_menu=document.getElementById("profile-menu");
 
-default_view(sign_in_form,news_view,error_div,profile_link);
+default_view(sign_in_form,news_view,error_div,profile_link,profile_menu);
 
 //sign_in_view(sign_in_form,news_view,error_div);
 
@@ -24,7 +25,7 @@ default_view(sign_in_form,news_view,error_div,profile_link);
 fromEvent(sign_in_button, 'click')
   .subscribe(() => {
     if(is_sign_in_mode(sign_in_button)){
-      validate_user(username,password,sign_in_form,news_view,error_div,profile_link,sign_in_link);
+      validate_user(username, password, sign_in_form, news_view, error_div, profile_link, sign_in_link, profile_menu);
     }
     else{
       console.log("Bla");
