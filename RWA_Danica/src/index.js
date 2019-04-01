@@ -27,7 +27,7 @@ fromEvent(sign_in_button, 'click')
       validate_user(username, password, sign_in_form, news_view, error_div, profile_link, sign_in_link, profile_menu);
     }
     else{
-      console.log("Bla");
+      console.log("Sing up mode");
     }
 });
 
