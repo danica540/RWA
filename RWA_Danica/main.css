@@ -22,30 +22,30 @@
     max-width: 75%;
     height: auto;
     border: 2px solid gray;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 1%;
     margin:1%;
     background: #a8a3a3;
     opacity: 0.8;
-    transition: background 0.6s;
-    transition: opacity 0.6s;
+    transition: background 0.9s;
+    /*transition: opacity 0.9s;*/
 }
 
 .single-news-div:hover{
     background: #dbd2d2;
-    opacity: 1;
+    /*opacity: 1;*/
 }
 
-/*.single-news-div:hover .image-div .news-image{
+.single-news-div:hover .image-div .news-image{
     opacity: 1;
-}*/
+}
 
 .news-image{
     max-width: 100%;
     height: auto;
     border-radius: 2px;
-    /*opacity: 0.8;
-    transition: opacity 0.5s;*/
+    opacity: 0.8;
+    transition: opacity 0.9s;
 }
 
 .content-div{
