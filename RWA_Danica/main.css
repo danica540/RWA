@@ -9,6 +9,7 @@
     width: 100%;
     display: flex;
     background: black;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -20,8 +21,10 @@
 .navbar-container li{
     text-align: center;
     position: relative;
-    width:80px;
-    
+}
+
+.submenu li, .navbar-container li{
+    width:120px;
 }
 
 .navbar-container a{
@@ -50,7 +53,6 @@
     display: none;
     position: absolute;
     top: 0px;
-    width:80px;
 }
 
 .submenu{

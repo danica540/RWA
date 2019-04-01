@@ -24,7 +24,7 @@ default_view(sign_in_form,news_view,error_div,profile_link);
 fromEvent(sign_in_button, 'click')
   .subscribe(() => {
     if(is_sign_in_mode(sign_in_button)){
-      validate_user(username,password,sign_in_form,news_view,error_div)
+      validate_user(username,password,sign_in_form,news_view,error_div,profile_link,sign_in_link);
     }
     else{
       console.log("Bla");
