@@ -5,65 +5,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.navbar-container{
-    width: 100%;
-    display: flex;
-    background: black;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
 
-.navbar-container ul{
-    list-style: none;
-    display: flex;
-}
-
-.navbar-container li{
-    text-align: center;
-    position: relative;
-}
-
-.submenu li, .navbar-container li{
-    width:120px;
-}
-
-.navbar-container a{
-    color: #f6f7f8;
-    background: black;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: background 0.4s;
-    
-}
-
-.navbar-container a:hover, .submenu a:hover{
-    background: #262626;
-}
-
-.navbar-container li:hover .submenu > li{
-    display: block;
-    flex-direction: column;
-    top: 0px;
-}
-
-.submenu li{
-    display: none;
-    position: absolute;
-    top: 0px;
-}
-
-.submenu{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-}
-
-.submenu li{
-    position: relative;
-}
 
 
 
