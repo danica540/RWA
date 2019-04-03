@@ -38,8 +38,10 @@ export function validate_user(username_input,password_input,sign_in_form,news_vi
             display_error_message(error_div,error_label);
         }
         else{
+            user=user.pop();
             clear_log_in_inputs(username_input,password_input);
-            change_to_news_browsing_mode(sign_in_form,news_view,error_div,profile_link,sign_in_link,user[0].username, profile_menu);
+            //pop ili first umesto user[0]
+            change_to_news_browsing_mode(sign_in_form,news_view,error_div,profile_link,sign_in_link,user.username, profile_menu);
         }
     })
     .catch(err=>console.log(err))
