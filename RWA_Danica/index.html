@@ -1,80 +1,106 @@
 <!doctype html>
 <html>
-  <head>
-        <meta charset="utf-8">
-        <title>News</title>
-        <link rel="icon" type="image/png" href="resource/text-lines(2).png" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <link rel="stylesheet" href="main.css">
-        <link rel="stylesheet" href="sign-in-style.css">
-        <link rel="stylesheet" href="nav-style.css">
-  </head>
-  <body>
-    <div id="sign-in-form">
-        <img id="log-in-pic" src="resource/users.png">
-        <label id="sign-in-label">
-            Please sign in
-        </label>
-        <div id="error-div">
-          <i class="fas fa-exclamation-circle"></i>
-          <label id="error-message">Invalid username or password</label>
-        </div>
-        <label class="log-in-labels">Username</label>
-        <input class="sign-in-inputs" placeholder="Enter username" id="username" type="text">
-        <label class="log-in-labels">Password</label>
-        <input class="sign-in-inputs" placeholder="Enter password" id="password" type="password">
-        <input type="button" id="sign-in-button" class="sign-in-button" value="Sign in">
-        <div id="sign-up-div">
-          <label id="sign-up-label" >Don't have an account? <a href="#" id="sign-up-link">Sing up</a></label>
-        </div>
+
+<head>
+  <meta charset="utf-8">
+  <title>News</title>
+  <link rel="icon" type="image/png" href="resource/text-lines(2).png" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="sign-in-style.css">
+  <link rel="stylesheet" href="nav-style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div id="sign-in-form">
+    <img id="log-in-pic" src="resource/users.png">
+    <label id="sign-in-label">
+      Please sign in
+    </label>
+    <div id="error-div">
+      <i class="fas fa-exclamation-circle"></i>
+      <label id="error-message">Invalid username or password</label>
     </div>
-
-
-    <div id="news_view">
-      <nav class="navbar-container">
-        <ul>
-          <li>
-            <a href="#">Top news</a>
-          </li>
-          <li>
-            <a href="#">Topics</a>
-            <ul class="submenu">
-                <li><a href="#">World</a></li>
-                <li><a href="#">Nation</a></li>
-                <li><a href="#">Local news</a></li>
-                <li><a href="#">Politics</a></li>
-                <li><a href="#">Crime</a></li>
-                <li><a href="#">Entertainment</a></li>
-                <li><a href="#">Sports</a></li>
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Science</a></li>
-                <li><a href="#">Food</a></li>
-                <li><a href="#">Travel</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Weather</a></li>
-        </ul>
-
-        <ul>
-          <li>
-            <a href="#" id="profile_link"></a>
-            <ul class="submenu" id="profile-menu">
-                <li><a href="#">Subscriptions</a></li>
-                <li><a href="#">Profile</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#" id="sign-in-link">Sign in</a>
-          </li>
-        </ul>
-      </nav>
-
-      <div id="news-list-view">   </div>
-      <div id="weather-view">     </div>
-
+    <label class="log-in-labels">Username</label>
+    <input class="sign-in-inputs" placeholder="Enter username" id="username" type="text">
+    <label class="log-in-labels">Password</label>
+    <input class="sign-in-inputs" placeholder="Enter password" id="password" type="password">
+    <input type="button" id="sign-in-button" class="sign-in-button" value="Sign in">
+    <div id="sign-up-div">
+      <label id="sign-up-label">Don't have an account? <a href="#" id="sign-up-link">Sing up</a></label>
     </div>
+  </div>
 
-    <script src="dist/bundle.js"></script>
-  </body>
+  <div id="news_view">
+      <div class="pos-f-t">
+          <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+              <h5 class="text-white h4">Collapsed content</h5>
+              <span class="text-muted">Toggleable via the navbar brand.</span>
+            </div>
+          </div>
+          <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </nav>
+        </div>
+    <!-- <nav class="navbar-container">
+      <ul>
+        <li>
+          <a href="#">Top news</a>
+        </li>
+        <li>
+          <a href="#">Topics</a>
+          <ul class="submenu">
+            <li><a href="#">World</a></li>
+            <li><a href="#">Nation</a></li>
+            <li><a href="#">Local news</a></li>
+            <li><a href="#">Politics</a></li>
+            <li><a href="#">Crime</a></li>
+            <li><a href="#">Entertainment</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Science</a></li>
+            <li><a href="#">Food</a></li>
+            <li><a href="#">Travel</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Weather</a></li>
+      </ul>
+
+      <ul>
+        <li>
+          <a href="#" id="profile_link"></a>
+          <ul class="submenu" id="profile-menu">
+            <li><a href="#">Subscriptions</a></li>
+            <li><a href="#">Profile</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" id="sign-in-link">Sign in</a>
+        </li>
+      </ul>
+    </nav> -->
+
+    <div id="news-list-view"> </div>
+    <div id="weather-view"> </div>
+
+  </div>
+
+  <script src="dist/bundle.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
-
