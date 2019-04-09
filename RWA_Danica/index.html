@@ -8,16 +8,16 @@
   <link rel="icon" type="image/png" href="resource/text-lines(2).png" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="sign-in-style.css">
-  <link rel="stylesheet" href="nav-style.css">
+    <!--<link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/nav-style.css">-->
+    <link rel="stylesheet" href="./css/sign-in-style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">News</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,24 +25,27 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Top news <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+                Topics
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">World</a>
+                <a class="dropdown-item" href="#">Nation</a>
+                <a class="dropdown-item" href="#">Local news</a>
+                <a class="dropdown-item" href="#">Politics</a>
+                <a class="dropdown-item" href="#">Crime</a>
+                <a class="dropdown-item" href="#">Entertainment</a>
+                <a class="dropdown-item" href="#">Sports</a>
+                <a class="dropdown-item" href="#">Technology</a>
+                <a class="dropdown-item" href="#">Science</a>
+                <a class="dropdown-item" href="#">Food</a>
+                <a class="dropdown-item" href="#">Travel</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">Weather</a>
               </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -70,44 +73,7 @@
       <label id="sign-up-label">Don't have an account? <a href="#" id="sign-up-link">Sing up</a></label>
     </div>
   </div>
-    <!-- <nav class="navbar-container">
-      <ul>
-        <li>
-          <a href="#">Top news</a>
-        </li>
-        <li>
-          <a href="#">Topics</a>
-          <ul class="submenu">
-            <li><a href="#">World</a></li>
-            <li><a href="#">Nation</a></li>
-            <li><a href="#">Local news</a></li>
-            <li><a href="#">Politics</a></li>
-            <li><a href="#">Crime</a></li>
-            <li><a href="#">Entertainment</a></li>
-            <li><a href="#">Sports</a></li>
-            <li><a href="#">Technology</a></li>
-            <li><a href="#">Science</a></li>
-            <li><a href="#">Food</a></li>
-            <li><a href="#">Travel</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Weather</a></li>
-      </ul>
-
-      <ul>
-        <li>
-          <a href="#" id="profile_link"></a>
-          <ul class="submenu" id="profile-menu">
-            <li><a href="#">Subscriptions</a></li>
-            <li><a href="#">Profile</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" id="sign-in-link">Sign in</a>
-        </li>
-      </ul>
-    </nav> -->
-
+    
     <div id="news-list-view"> </div>
     <div id="weather-view"> </div>
 
