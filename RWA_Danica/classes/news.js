@@ -8,5 +8,5 @@ export class News {
         this._content = content;
     }
 
-    
+
 }

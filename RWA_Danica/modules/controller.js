@@ -11,8 +11,8 @@ export class Controller {
 
     on_load_view() {
         this._ui_controller.default_view();
-        let news_list=this._data_controller.get_news_list();
-        console.log(news_list);
+        this._data_controller.get_news_list().subscribe(news_list => this._ui_controller.show_news_list(news_list));
+
     }
 
     create_sing_in_event() {

@@ -1,5 +1,6 @@
 import * as basic_functions from "../functions/basic-functions";
 
+
 export class UIModule {
     constructor() {
         this._sing_up_form = document.getElementById("sign-in-form");
@@ -108,5 +109,71 @@ export class UIModule {
         basic_functions.hide_element(user_link);
         basic_functions.hide_element(this._weather_view);
         basic_functions.make_element_visible(this._news_list_div);
+    }
+
+    draw_news(news, container) {
+        let news_div = document.createElement("div");
+        news_div.className = "card";
+        news_div.style.width = "100%";
+
+
+        let news_img = document.createElement("img");
+        news_img.src = news.img;
+        news_img.className = "card-img-top";
+        news_div.appendChild(news_img);
+
+        let news_body = document.createElement("div");
+        news_body.className = "card-body";
+
+        let headline = document.createElement("h4");
+        headline.innerHTML = news.headline;
+        news_body.appendChild(headline);
+
+        let date = document.createElement("h6");
+        date.innerHTML = news.date;
+        news_body.appendChild(date);
+
+        let paragraph = document.createElement("p");
+        paragraph.innerHTML = news.content;
+        paragraph.className = "card-text";
+        news_body.appendChild(paragraph);
+
+        let link = document.createElement("a");
+        link.href = "#";
+        link.className = "btn btn-dark";
+        link.innerHTML = "More";
+        news_body.appendChild(link);
+
+        news_div.appendChild(news_body);
+
+        container.appendChild(news_div);
+
+
+    }
+
+    show_news_list(news_list) {
+        let left = document.createElement("div");
+        let right = document.createElement("div");
+        let center = document.createElement("div");
+
+        left.className = "container";
+        center.className = "container";
+        right.className = "container";
+
+        this._news_list_div.appendChild(left);
+        this._news_list_div.appendChild(center);
+        this._news_list_div.appendChild(right);
+
+        news_list.forEach((news, index) => {
+            if (index % 3 === 0) {
+                this.draw_news(news, left);
+            }
+            else if (index % 3 === 1) {
+                this.draw_news(news, center);
+            }
+            else {
+                this.draw_news(news, right);
+            }
+        })
     }
 }
