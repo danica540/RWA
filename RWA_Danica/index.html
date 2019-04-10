@@ -8,74 +8,69 @@
   <link rel="icon" type="image/png" href="resource/text-lines(2).png" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <!--<link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/nav-style.css">-->
-    <link rel="stylesheet" href="./css/sign-in-style.css">
+  <link rel="stylesheet" href="./css/sign-in-style.css">
+  <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">News</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">News</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Top news <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Topics
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">World</a>
+            <a class="dropdown-item" href="#">Nation</a>
+            <a class="dropdown-item" href="#">Local news</a>
+            <a class="dropdown-item" href="#">Politics</a>
+            <a class="dropdown-item" href="#">Crime</a>
+            <a class="dropdown-item" href="#">Entertainment</a>
+            <a class="dropdown-item" href="#">Sports</a>
+            <a class="dropdown-item" href="#">Technology</a>
+            <a class="dropdown-item" href="#">Science</a>
+            <a class="dropdown-item" href="#">Food</a>
+            <a class="dropdown-item" href="#">Travel</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Weather</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Top news <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Topics
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">World</a>
-                <a class="dropdown-item" href="#">Nation</a>
-                <a class="dropdown-item" href="#">Local news</a>
-                <a class="dropdown-item" href="#">Politics</a>
-                <a class="dropdown-item" href="#">Crime</a>
-                <a class="dropdown-item" href="#">Entertainment</a>
-                <a class="dropdown-item" href="#">Sports</a>
-                <a class="dropdown-item" href="#">Technology</a>
-                <a class="dropdown-item" href="#">Science</a>
-                <a class="dropdown-item" href="#">Food</a>
-                <a class="dropdown-item" href="#">Travel</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Weather</a>
-              </div>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
+    </div>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" id="user-link" href="#">UserName <span class="sr-only">(current)</span></a>
+          </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Sing in <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </nav>
 
   <div id="sign-in-form">
-    <img id="log-in-pic" src="resource/users.png">
-    <label id="sign-in-label">
-      Please sign in
-    </label>
-    <div id="error-div">
-      <i class="fas fa-exclamation-circle"></i>
-      <label id="error-message">Invalid username or password</label>
-    </div>
-    <label class="log-in-labels">Username</label>
-    <input class="sign-in-inputs" placeholder="Enter username" id="username" type="text">
-    <label class="log-in-labels">Password</label>
-    <input class="sign-in-inputs" placeholder="Enter password" id="password" type="password">
-    <input type="button" id="sign-in-button" class="sign-in-button" value="Sign in">
-    <div id="sign-up-div">
-      <label id="sign-up-label">Don't have an account? <a href="#" id="sign-up-link">Sing up</a></label>
-    </div>
-  </div>
     
-    <div id="news-list-view"> </div>
-    <div id="weather-view"> </div>
+  </div>
+
+  <div id="news-list-view"> </div>
+  <div id="weather-view"> </div>
 
   </div>
 
