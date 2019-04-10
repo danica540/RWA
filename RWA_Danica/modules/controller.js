@@ -9,16 +9,22 @@ export class Controller {
         this._data_controller = data_controller;
     }
 
-    draw(parent) {
-        this._ui_controller.draw_sing_in_form(parent);
+    on_load_view() {
+        this._ui_controller.default_view();
+        let news_list = this._data_controller.get_news_list();
+        console.log(news_list);
     }
 
-    create_event() {
+    create_sing_in_event() {
         let btn = document.getElementById("sign-in-button");
         fromEvent(btn, "click").pipe(
             sampleTime(1000)
         )
-            .subscribe(event => console.log(event))
+            .subscribe(() => {
+                console.log("Sing in");
+            })
     }
+
+
 
 }

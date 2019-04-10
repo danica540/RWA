@@ -3,8 +3,8 @@ import * as basic_functions from "../functions/basic-functions";
 export class UIModule {
     constructor() {
         this._sing_up_form = document.getElementById("sign-in-form");
-        this._news_list_div=document.getElementById("news-list-view");
-        this._weather_view=document.getElementById("weather-view");
+        this._news_list_div = document.getElementById("news-list-view");
+        this._weather_view = document.getElementById("weather-view");
     }
 
     draw_img(parent) {
@@ -22,9 +22,9 @@ export class UIModule {
 
         let error_div = document.createElement("div");
         error_div.id = "error-div";
-        error_div.className="alert alert-danger";
-        error_div.role="alert";
-        error_div.innerHTML="Invalid username or password";
+        error_div.className = "alert alert-danger";
+        error_div.role = "alert";
+        error_div.innerHTML = "Invalid username or password";
         parent.appendChild(error_div);
     }
 
@@ -88,17 +88,25 @@ export class UIModule {
     }
 
     draw_sing_in_form() {
-        let parent=this._sing_up_form;
+        let parent = this._sing_up_form;
         this.draw_img(parent);
         this.draw_top_labels(parent);
         this.draw_items_in_sing_up_form(parent);
 
         let user_link = document.getElementById("user-link");
         let error_div = document.getElementById("error-div");
-        
+
         basic_functions.hide_element(user_link);
         basic_functions.hide_element(error_div);
         basic_functions.hide_element(this._weather_view);
         basic_functions.hide_element(this._news_list_div);
+    }
+
+    default_view() {
+        let user_link = document.getElementById("user-link");
+        basic_functions.hide_element(this._sing_up_form);
+        basic_functions.hide_element(user_link);
+        basic_functions.hide_element(this._weather_view);
+        basic_functions.make_element_visible(this._news_list_div);
     }
 }
