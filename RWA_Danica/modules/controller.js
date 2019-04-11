@@ -11,7 +11,7 @@ export class Controller {
 
     on_load_view() {
         this._ui_controller.default_view();
-        this._data_controller.get_news_list().subscribe(news_list => this._ui_controller.show_news_list(news_list));
+        this._data_controller.get_news_list().subscribe(news_list => this._ui_controller.news_list_view(news_list));
 
     }
 
