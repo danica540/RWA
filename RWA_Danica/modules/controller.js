@@ -10,9 +10,9 @@ export class Controller {
     }
 
     on_load_view() {
-        //this._ui_controller.default_view();
-        //this._data_controller.get_news_list().subscribe(news_list => this._ui_controller.news_list_view(news_list));
-        this._data_controller.get_weather().subscribe(weather_info => this._ui_controller.weather_view(weather_info));
+        this._ui_controller.default_view();
+        this._data_controller.get_news_list().subscribe(news_list => this._ui_controller.news_list_view(news_list));
+        //this._data_controller.get_weather().subscribe(weather_info => this._ui_controller.weather_view(weather_info));
     }
 
     create_sing_in_event() {
@@ -21,7 +21,24 @@ export class Controller {
             sampleTime(1000)
         )
             .subscribe(() => {
-                console.log("Sing in");
+                console.log("Sing in click");
+            })
+    }
+
+    create_weather_link_event(){
+        let weather_link=document.getElementById("weather-link");
+        fromEvent(weather_link, "click")
+            .subscribe(() => {
+                console.log("Weather click");
+                this._data_controller.get_weather().subscribe(weather_info => this._ui_controller.weather_view(weather_info));
+            })
+    }
+
+    create_top_news_event(){
+        let top_news_link=document.getElementById("top-news");
+        fromEvent(top_news_link, "click")
+            .subscribe(() => {
+                this.on_load_view();
             })
     }
 
