@@ -27,7 +27,7 @@ export class UIModule {
         this._news_list_div.hide();
         this._sing_up_form.hide();
         this._weather_view.make_visible();
-        this.weather_view.draw_weather_component(weather_info);
+        this._weather_view.draw_weather_component(weather_info);
     }
 
 

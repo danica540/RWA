@@ -15,4 +15,11 @@ export class DataModule {
         )
     }
 
+    get_weather() {
+        return from(
+            fetch("http://localhost:3000/week-weather/")
+                .then(res => { return res.json() })
+        )
+    }
+
 }

@@ -5,6 +5,10 @@ export class NewsListComponent {
         this._news_list_div = document.getElementById("news-list-view");
     }
 
+    hide(){
+        basic_functions.hide_element(this._news_list_div);
+    }
+
     make_visible() {
         basic_functions.make_element_visible(this._news_list_div);
     }

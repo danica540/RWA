@@ -10,9 +10,9 @@ export class Controller {
     }
 
     on_load_view() {
-        this._ui_controller.default_view();
-        this._data_controller.get_news_list().subscribe(news_list => this._ui_controller.news_list_view(news_list));
-
+        //this._ui_controller.default_view();
+        //this._data_controller.get_news_list().subscribe(news_list => this._ui_controller.news_list_view(news_list));
+        this._data_controller.get_weather().subscribe(weather_info => this._ui_controller.weather_view(weather_info));
     }
 
     create_sing_in_event() {
