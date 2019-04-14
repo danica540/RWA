@@ -19,11 +19,12 @@ export class Module {
     }
 
     defaultView() {
-        this._navBarComponent.makeVisible();
+        this._singInComponent.drawSingInForm();
+        /*this._navBarComponent.makeVisible();
         this._singInComponent.hide();
         this._singInComponent.hideUserLink();
         this._weatherComponent.hide();
-        this._newsListComponent.makeVisible();
+        this._newsListComponent.makeVisible();*/
     }
 
     news_list_view(news_list) {

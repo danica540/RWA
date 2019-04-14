@@ -7,5 +7,5 @@ export function initialize() {
     HTMLElement.prototype.hideElement = function () {
         this.style.display = "none";
     }
-    
+
 }

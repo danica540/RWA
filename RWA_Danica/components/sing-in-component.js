@@ -12,83 +12,35 @@ export class SingInComponent {
     }
 
     drawImage(parent) {
-        let img = document.createElement("img");
-        img.id = "log-in-pic";
-        img.src = "../resource/users.png";
-        parent.appendChild(img);
+        parent.innerHTML += `<img id="log-in-pic" src="../resource/users.png">`;
     }
 
     drawTopLabels(parent) {
-        let label = document.createElement("label");
-        label.id = "sign-in-label";
-        label.innerHTML = "Please sing in";
-        parent.appendChild(label);
-
-        let errorDiv = document.createElement("div");
-        errorDiv.id = "error-div";
-        errorDiv.className = "alert alert-danger";
-        errorDiv.role = "alert";
-        errorDiv.innerHTML = "Invalid username or password";
-        parent.appendChild(errorDiv);
+        parent.innerHTML += `<label id="sign-in-label">${"Please sing in"}</label>
+                            <div id="error-div" class="alert alert-danger" role="alert">
+                            ${"Invalid username or password"}
+                            </div>`;
     }
 
     drawSingInButton(parent) {
-        let button = document.createElement("button");
-        button.id = "sign-in-button";
-        button.className = "sign-in-button";
-        button.innerHTML = "Sign in";
-        parent.appendChild(button);
-
-        fromEvent(button, "click").pipe(
-            sampleTime(1000)
-        )
-            .subscribe(() => {
-                console.log("Sing in click");
-            })
+        parent.innerHTML += `<button id="sign-in-button" class="sign-in-button">${"Sign In"}</button>`;
     }
 
     drawSingUpDiv(parent) {
-        let singUpDiv = document.createElement("div");
-        singUpDiv.id = "sign-up-div";
-        let label3 = document.createElement("label");
-        label3.innerHTML = "Don't have an account?";
-        let link = document.createElement("a");
-        link.href = "#";
-        link.id = "sign-up-link";
-        link.innerHTML = "Sing up";
-        label3.appendChild(link);
-        singUpDiv.appendChild(label3);
-        parent.appendChild(singUpDiv);
+        parent.innerHTML += `<div id="sign-up-div">
+                            <label>${"Don't have an account?"}</label>
+                            <a href="#" id="sign-up-link">${"Sing up"}</a>
+                            </div>`;
     }
 
     drawPasswordInput(parent) {
-        let label2 = document.createElement("label");
-        label2.className = "log-in-labels";
-        label2.innerHTML = "Password";
-        parent.appendChild(label2);
-
-        let input = document.createElement("input");
-        input.className = "sign-in-inputs";
-        input.placeholder = "Enter password";
-        input.id = "password";
-        input.type = "password";
-        parent.appendChild(input);
+        parent.innerHTML += `<label class="log-in-labels">${"Password"}</label>
+                            <input type="password" id="password" class="sign-in-inputs" placeholder="Enter password">`;
     }
 
     drawUserInput(parent) {
-        let label = document.createElement("label");
-        label.className = "log-in-labels";
-        label.innerHTML = "Username";
-        parent.appendChild(label);
-
-        let input = document.createElement("input");
-        input.className = "sign-in-inputs";
-        input.placeholder = "Enter username";
-        input.id = "username";
-        input.type = "text";
-        parent.appendChild(input);
-
-
+        parent.innerHTML += `<label class="log-in-labels">${"Username"}</label>
+                            <input type="text" id="username" class="sign-in-inputs" placeholder="Enter username">`;
     }
 
     drawItemsInSingInForm(parent) {
@@ -99,16 +51,29 @@ export class SingInComponent {
 
     }
 
+    createEventForSingInButton(signInBtn) {
+        fromEvent(signInBtn, "click").pipe(
+            sampleTime(1000)
+        )
+            .subscribe(() => {
+                console.log("Sing in click");
+            })
+    }
+
+
     drawSingInForm() {
         let parent = this._singUpForm;
+        parent.innerHTML = "";
         this.drawImage(parent);
         this.drawTopLabels(parent);
         this.drawItemsInSingInForm(parent);
+        let signInBtn = document.getElementById("sign-in-button");
+        this.createEventForSingInButton(signInBtn);
 
         let userLink = document.getElementById("user-link");
         let errorDiv = document.getElementById("error-div");
 
-        userLink.hideElement();
+        //userLink.hideElement();
         errorDiv.hideElement();
         /*this._weather_view.hideElement();
         this._news_list_div.hideElement();*/

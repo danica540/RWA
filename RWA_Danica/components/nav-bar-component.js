@@ -71,7 +71,7 @@ export class NavBarComponent {
     
     </nav>`;
 
-    
+
     this._topNewsLink = document.getElementById("top-news");
     this._weatherLink = document.getElementById("weather-link");
 
