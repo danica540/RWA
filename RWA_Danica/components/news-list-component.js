@@ -1,21 +1,39 @@
-import * as basic_functions from "../functions/basic-functions";
+import { NewsListService } from "../services/news-list-service"
+import { fromEvent } from "rxjs";
+import { sampleTime } from "rxjs/operators";
+
+// on click eventi
 
 export class NewsListComponent {
     constructor() {
-        this._news_list_div = document.getElementById("news-list-view");
+        this._newsService = new NewsListService();
+        this._newsListDiv = document.getElementById("news-list-view");
     }
 
-    hide(){
-        basic_functions.hide_element(this._news_list_div);
+    hide() {
+        this._newsListDiv.hideElement();
     }
 
-    make_visible() {
-        basic_functions.make_element_visible(this._news_list_div);
+    makeVisible() {
+        this._newsService.getNewsList().subscribe(newsList=>this.showNewsList(newsList));
+        this._newsListDiv.showElement();
     }
 
-    draw_news(news, container) {
-
-        let news_div = document.createElement("div");
+    drawNews(news, container) {
+        //div.innerHTML="crtam preko stringa"
+        let divContent=`<div class="card">
+        <span class="badge">${news.tag}</span>
+        <img src="${news.img}" class="card-img-top">
+        <div class="card-body">
+        <h4>${news.headline}</h4>
+        <h6> ${news.date}</h6>
+        <p class="card-text">${news.content}</p>
+        <a href="#" class="btn btn-secondary">More</a>
+        </div>
+        </div>`;
+        container.innerHTML+=divContent;
+        
+        /*let news_div = document.createElement("div");
         news_div.className = "card";
         news_div.style.width = "100%";
 
@@ -28,7 +46,6 @@ export class NewsListComponent {
         tag.style.fontSize = "15px";
         news_div.appendChild(tag);
 
-
         let news_img = document.createElement("img");
         news_img.src = news.img;
         news_img.className = "card-img-top";
@@ -38,13 +55,9 @@ export class NewsListComponent {
         let news_body = document.createElement("div");
         news_body.className = "card-body";
 
-
-
         let headline = document.createElement("h4");
         headline.innerHTML = news.headline;
         news_body.appendChild(headline);
-
-
 
         let date = document.createElement("h6");
         date.innerHTML = news.date;
@@ -63,13 +76,21 @@ export class NewsListComponent {
 
         news_div.appendChild(news_body);
 
-        container.appendChild(news_div);
-
-
+        container.appendChild(news_div);*/
     }
 
-    show_news_list(news_list) {
-        let left = document.createElement("div");
+    showNewsList(news_list) {
+        this._newsListDiv.innerHTML="";
+        let divContent=`<div class="container" id="right"></div>
+                        <div class="container" id="center"></div>
+                        <div class="container" id="left"></div>`;
+        this._newsListDiv.innerHTML=divContent;
+
+        let left = document.getElementById("left");
+        let right = document.getElementById("right");
+        let center = document.getElementById("center");
+
+        /*let left = document.createElement("div");
         let right = document.createElement("div");
         let center = document.createElement("div");
 
@@ -77,19 +98,19 @@ export class NewsListComponent {
         center.className = "container";
         right.className = "container";
 
-        this._news_list_div.appendChild(left);
-        this._news_list_div.appendChild(center);
-        this._news_list_div.appendChild(right);
+        this._newsListDiv.appendChild(left);
+        this._newsListDiv.appendChild(center);
+        this._newsListDiv.appendChild(right);*/
 
         news_list.forEach((news, index) => {
             if (index % 3 === 0) {
-                this.draw_news(news, left);
+                this.drawNews(news, left);
             }
             else if (index % 3 === 1) {
-                this.draw_news(news, center);
+                this.drawNews(news, center);
             }
             else {
-                this.draw_news(news, right);
+                this.drawNews(news, right);
             }
         })
     }

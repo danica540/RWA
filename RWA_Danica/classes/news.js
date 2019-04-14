@@ -7,6 +7,4 @@ export class News {
         this._headline = headline;
         this._content = content;
     }
-
-
 }

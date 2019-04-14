@@ -1,5 +1,5 @@
-import * as basic_functions from "../functions/basic-functions";
-
+import { fromEvent } from "rxjs";
+import { sampleTime } from "rxjs/operators";
 
 export class WeatherComponent {
     constructor() {
@@ -9,11 +9,11 @@ export class WeatherComponent {
     }
 
     hide() {
-        basic_functions.hide_element(this._weather_view);
+        this._weather_view.hideElement();
     }
 
-    make_visible() {
-        basic_functions.make_element_visible(this._weather_view);
+    makeVisible() {
+        this._weather_view.showElement();
     }
 
     draw_weather_component(weather_info) {

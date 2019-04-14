@@ -1,13 +1,14 @@
-import * as basic_functions from "../functions/basic-functions";
+import { fromEvent } from "rxjs";
+import { sampleTime } from "rxjs/operators";
 
 export class SingInComponent {
     constructor() {
         this._sing_up_form = document.getElementById("sign-in-form");
     }
 
-    hide_user_link() {
+    hideUserLink() {
         let user_link = document.getElementById("user-link");
-        basic_functions.hide_element(user_link);
+        user_link.hideElement();
     }
 
     draw_img(parent) {
@@ -37,6 +38,13 @@ export class SingInComponent {
         button.className = "sign-in-button";
         button.innerHTML = "Sign in";
         parent.appendChild(button);
+
+        fromEvent(button, "click").pipe(
+            sampleTime(1000)
+        )
+            .subscribe(() => {
+                console.log("Sing in click");
+            })
     }
 
     draw_sing_up_div(parent) {
@@ -88,6 +96,7 @@ export class SingInComponent {
         this.draw_password_input(parent);
         this.draw_sing_in_button(parent);
         this.draw_sing_up_div(parent);
+
     }
 
     draw_sing_in_form() {
@@ -99,13 +108,13 @@ export class SingInComponent {
         let user_link = document.getElementById("user-link");
         let error_div = document.getElementById("error-div");
 
-        basic_functions.hide_element(user_link);
-        basic_functions.hide_element(error_div);
-        basic_functions.hide_element(this._weather_view);
-        basic_functions.hide_element(this._news_list_div);
+        user_link.hideElement();
+        error_div.hideElement();
+        this._weather_view.hideElement();
+        this._news_list_div.hideElement();
     }
 
     hide() {
-        basic_functions.hide_element(this._sing_up_form);
+        this._sing_up_form.showElement();
     }
 }

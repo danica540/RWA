@@ -1,17 +1,20 @@
-import { Controller } from "../modules/controller";
-import { UIModule } from "../modules/ui_module";
-import { DataModule } from "../modules/data_module";
+import { Module } from "../modules/module"
+import { initialize } from "../functions/prototype_functions";
 
-let ui = new UIModule();
-let data = new DataModule();
-let con = new Controller(ui, data);
+initialize();
 
-con.on_load_view();
+let ui = new Module();
+ui.defaultView();
 
-con.create_sing_in_event();
-con.create_weather_link_event();
-con.create_top_news_event();
+/*
+//con.on_load_view();
+let ime = "dna"
 
+let div = document.createElement("div");
+div.innerHTML = `<p>${ime}</p>
+                <h1>Blaaa</h1>`;
 
+//` multiline ${}
+document.body.appendChild(div);*/
 
 
