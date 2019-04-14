@@ -79,7 +79,7 @@ export class NewsListComponent {
         container.appendChild(news_div);*/
     }
 
-    showNewsList(news_list) {
+    showNewsList(newsList) {
         this._newsListDiv.innerHTML="";
         let divContent=`<div class="container" id="right"></div>
                         <div class="container" id="center"></div>
@@ -102,7 +102,7 @@ export class NewsListComponent {
         this._newsListDiv.appendChild(center);
         this._newsListDiv.appendChild(right);*/
 
-        news_list.forEach((news, index) => {
+        newsList.forEach((news, index) => {
             if (index % 3 === 0) {
                 this.drawNews(news, left);
             }

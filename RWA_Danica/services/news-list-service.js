@@ -4,7 +4,6 @@ export class NewsListService {
 
     //servis
     constructor() {
-        this._news_list = new Array();
     }
 
     getNewsList() {
