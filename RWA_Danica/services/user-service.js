@@ -1,6 +1,6 @@
 import { from } from "rxjs";
 
-export class NewsListService {
+export class UserService {
 
     //servis
     constructor() {

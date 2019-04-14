@@ -60,7 +60,6 @@ export class SingInComponent {
             })
     }
 
-
     drawSingInForm() {
         let parent = this._singUpForm;
         parent.innerHTML = "";

@@ -1,66 +1,43 @@
 import { fromEvent } from "rxjs";
 import { sampleTime } from "rxjs/operators";
+import { WeatherService } from "../services/weather-service";
 
 export class WeatherComponent {
     constructor() {
-        this._weather_view = document.getElementById("weather-view");
-        this._weather_data = document.getElementById("weather-data");
-        this._news_side = document.getElementById("news-side");
+        this._weatherView = document.getElementById("weather-view");
+        this._weatherTable = document.getElementById("weather-data");
+        this._weatherService = new WeatherService();
     }
 
     hide() {
-        this._weather_view.hideElement();
+        this._weatherView.hideElement();
     }
 
     makeVisible() {
-        this._weather_view.showElement();
+        this._weatherService.getWeather().subscribe(weekWeather => this.drawWeatherComponent(weekWeather));
+        this._weatherView.showElement();
     }
 
-    draw_weather_component(weather_info) {
-        //console.log(weather_info);
-
-        let weather_table = document.createElement("table");
-        //weather_table.className="weather-table";
-        let row = document.createElement("tr");
-        let column = document.createElement("th");
-        column.innerHTML = "Day";
-        row.appendChild(column);
-
-        column = document.createElement("th");
-        column.innerHTML = "Description";
-        row.appendChild(column);
-
-        column = document.createElement("th");
-        column.innerHTML = "Temperature";
-        row.appendChild(column);
-
-        column = document.createElement("th");
-        column.innerHTML = "Precipitation";
-        row.appendChild(column);
-
-        column = document.createElement("th");
-        column.innerHTML = "Humidity";
-        row.appendChild(column);
-
-        column = document.createElement("th");
-        column.innerHTML = "Wind";
-        row.appendChild(column);
-
-        weather_table.appendChild(row);
-
+    drawWeatherComponent(weather_info) {
+        this._weatherTable.innerHTML = `<tr>
+                                        <th>Day</th>
+                                        <th>Description</th>
+                                        <th>Temperature</th>
+                                        <th>Precipitation</th>
+                                        <th>Humidity</th>
+                                        <th>Wind</th>
+                                        </tr>`;
         weather_info.forEach(el => {
-            this.draw_single_day(weather_table, el);
+            this.drawSingleDay(this._weatherTable, el);
         });
-
-        this._weather_data.appendChild(weather_table);
     }
 
-    draw_side_news() {
+    drawSideNews() {
         // code
     }
 
 
-    return_image(description) {
+    returnImage(description) {
         switch (description) {
             case "Sunny":
                 return "../resource/sun(2).png";
@@ -80,40 +57,17 @@ export class WeatherComponent {
     }
 
 
-    draw_single_day(weather_table, el) {
-
-        let row = document.createElement("tr");
-        let column = document.createElement("td");
-        column.innerHTML = el.day;
-        row.appendChild(column);
-
-        column = document.createElement("td");
-        column.innerHTML = el.description;
-        let img_div = document.createElement("div");
-        let img = document.createElement("img");
-        img.src = this.return_image(el.description);
-        img.style.width = "70px";
-        img.style.height = "70px";
-        img_div.appendChild(img);
-        column.appendChild(img_div);
-        row.appendChild(column);
-
-        column = document.createElement("td");
-        column.innerHTML = el.temperature;
-        row.appendChild(column);
-
-        column = document.createElement("td");
-        column.innerHTML = el.precipitation;
-        row.appendChild(column);
-
-        column = document.createElement("td");
-        column.innerHTML = el.humidity;
-        row.appendChild(column);
-
-        column = document.createElement("td");
-        column.innerHTML = el.wind;
-        row.appendChild(column);
-
-        weather_table.appendChild(row);
+    drawSingleDay(parent, el) {
+        parent.innerHTML += `<tr><td>${el.day}</td>
+                            <td>${el.description}
+                            <div>
+                            <img height="70px" width="70px" src=${this.returnImage(el.description)}>
+                            </div>
+                            </td>
+                            <td>${el.temperature}</td>
+                            <td>${el.precipitation}</td>
+                            <td>${el.humidity}</td>
+                            <td>${el.wind}</td>
+                            </tr> `;
     }
 }

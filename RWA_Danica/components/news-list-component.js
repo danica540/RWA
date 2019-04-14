@@ -40,6 +40,7 @@ export class NewsListComponent {
 
     showNewsList(newsList) {
         this._newsListDiv.innerHTML = "";
+        this._newsListDiv.innerHTML+="";
         let divContent = `<div class="container" id="right"></div>
                         <div class="container" id="center"></div>
                         <div class="container" id="left"></div>`;
@@ -51,13 +52,13 @@ export class NewsListComponent {
 
         newsList.forEach((news, index) => {
             if (index % 3 === 0) {
-                this.drawNews(news, left);
+                this.drawNews(news, right);
             }
             else if (index % 3 === 1) {
                 this.drawNews(news, center);
             }
             else {
-                this.drawNews(news, right);
+                this.drawNews(news, left);
             }
         })
     }

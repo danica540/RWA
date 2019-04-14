@@ -3,11 +3,6 @@ import { NewsListComponent } from "../components/news-list-component";
 import { WeatherComponent } from "../components/weather-component";
 import { NavBarComponent } from "../components/nav-bar-component";
 
-/*on_load_view() {
-        this._ui_controller.default_view();
-        this._data_controller.get_news_list().subscribe(news_list => this._ui_controller.news_list_view(news_list));
-    }*/
-
 export class Module {
 
     //modul
@@ -19,12 +14,13 @@ export class Module {
     }
 
     defaultView() {
-        this._singInComponent.drawSingInForm();
-        /*this._navBarComponent.makeVisible();
+        //this._singInComponent.drawSingInForm();
+        //this._weatherComponent.makeVisible();
+        this._navBarComponent.makeVisible();
         this._singInComponent.hide();
         this._singInComponent.hideUserLink();
         this._weatherComponent.hide();
-        this._newsListComponent.makeVisible();*/
+        this._newsListComponent.makeVisible();
     }
 
     news_list_view(news_list) {
@@ -39,7 +35,4 @@ export class Module {
         this._weather_view.make_visible();
         this._weather_view.draw_weather_component(weather_info);
     }
-
-
-
 }

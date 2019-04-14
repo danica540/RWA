@@ -1,13 +1,13 @@
 import { from } from "rxjs";
 
-export class NewsListService {
+export class WeatherService {
 
     //servis
     constructor() {
         this._weatherList = new Array();
     }
 
-    get_weather() {
+    getWeather() {
         return from(
             fetch("http://localhost:3000/week-weather/")
                 .then(res => { return res.json() })
