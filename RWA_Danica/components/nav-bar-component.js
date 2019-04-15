@@ -3,7 +3,7 @@ import { sampleTime } from "rxjs/operators";
 
 export class NavBarComponent {
   constructor() {
-    this._navBar = document.getElementById("nav-bar-div");
+    this._navBar = document.getElementById("navbar");
     this._topNewsLink;
     this._weatherLink;
   }
@@ -13,13 +13,13 @@ export class NavBarComponent {
   }
 
   makeVisible() {
-    this.drawNavBAr();
+    //this.drawNavBAr();
     this._navBar.showElement();
   }
 
   drawNavBAr() {
     this._navBar.innerHTML = "";
-    this._navBar.innerHTML = `<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+    this._navBar.innerHTML = `
     <a class="navbar-brand" href="#">News</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,9 +67,7 @@ export class NavBarComponent {
           </li>
         </ul>
       </div>
-    </div>
-    
-    </nav>`;
+    </div>`;
 
 
     this._topNewsLink = document.getElementById("top-news");
