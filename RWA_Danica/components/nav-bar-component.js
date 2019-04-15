@@ -13,11 +13,11 @@ export class NavBarComponent {
   }
 
   makeVisible() {
-    //this.drawNavBAr();
+    this.drawNavBar();
     this._navBar.showElement();
   }
 
-  drawNavBAr() {
+  drawNavBar() {
     this._navBar.innerHTML = "";
     this._navBar.innerHTML = `
     <a class="navbar-brand" href="#">News</a>
