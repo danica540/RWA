@@ -26,13 +26,13 @@ export class NewsListComponent {
 
     drawNews(news, container) {
         let divContent = `<div class="card">
-        <span class="badge">${news.tag}</span>
+        <span id="tag-news" class="badge">${news.tag}</span>
         <img src="${news.img}" class="card-img-top">
         <div class="card-body">
         <h4>${news.headline}</h4>
         <h6> ${news.date}</h6>
         <p class="card-text">${this.returnShortVersionOfContent(news.content)}</p>
-        <a href="#" class="btn btn-secondary">More</a>
+        <a href="#" class="btn" id="more-btn">More</a>
         </div>
         </div>`;
         container.innerHTML += divContent;
