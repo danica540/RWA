@@ -8,9 +8,11 @@ body{
     width:100%;
 }
 
-#news-list-view{
-    padding: 1%;
+
+#news-list{
+    display: flex;
 }
+
 
 #more-btn{
     background-color: #eaeaea;
