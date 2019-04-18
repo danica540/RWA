@@ -1,11 +1,16 @@
 import { fromEvent } from "rxjs";
-import { sampleTime } from "rxjs/operators";
+import { NewsListService } from "../services/news-list-service"
+import { sampleTime, debounceTime, map, switchMap, filter, take } from "rxjs/operators";
+
+const date="/04/2019";
 
 export class NavBarComponent {
   constructor() {
     this._navBar = document.getElementById("navbar");
-    this._topNewsLink;
+    this._newsService = new NewsListService();
     this._weatherLink;
+    this._searchInput;
+    //this._searchBtn;
   }
 
   hide() {
@@ -28,9 +33,6 @@ export class NavBarComponent {
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a id="top-news" class="nav-link" href="#">Top news <span class="sr-only">(current)</span></a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -54,8 +56,7 @@ export class NavBarComponent {
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="search-btn">Search</button>
+        <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       </form>
       <div class="text-right">
         <ul class="navbar-nav mr-auto">
@@ -69,21 +70,26 @@ export class NavBarComponent {
       </div>
     </div>`;
 
-
-    this._topNewsLink = document.getElementById("top-news");
+    this._searchInput = document.getElementById("search-input");
+    // <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="search-btn">Search</button>
+    //this._searchBtn = document.getElementById("search-btn"); //uraditi
+    
     this._weatherLink = document.getElementById("weather-link");
 
-    fromEvent(this._topNewsLink, "click")
-      .subscribe(() => {
-        console.log("Top news")
-        //this.on_load_view();
-      })
+    fromEvent(this._searchInput, "input").pipe(
+      debounceTime(1000),
+      map(ev => ev.target.value),
+      switchMap(text => this._newsService.getNewsByTextSearch(text))
+    )
+      .subscribe(news => console.log(news));
+
+    
 
 
     fromEvent(this._weatherLink, "click")
       .subscribe(() => {
         console.log("Weather click");
         // prikazati weather kontejner
-      })
+      });
   }
 }

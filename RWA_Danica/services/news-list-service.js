@@ -13,4 +13,18 @@ export class NewsListService {
         )
     }
 
+    getNewsListByDate(date){
+        return from(
+            fetch("http://localhost:3000/news?q=" + date)
+                .then(res => { return res.json() })
+        )
+    }
+
+    getNewsByTextSearch(headline) {
+        return from(
+            fetch("http://localhost:3000/news?q=" + headline)
+                .then(res => { return res.json() })
+        )
+    }
+
 }

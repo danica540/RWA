@@ -1,27 +1,65 @@
-import { NewsListService } from "../services/news-list-service"
-import { fromEvent } from "rxjs";
-import { sampleTime } from "rxjs/operators";
+import { NewsListService } from "../services/news-list-service";
+import { sampleTime, filter, map, switchMap, tap, flatMap } from "rxjs/operators";
 
-const CHARACTER_NUMBER = 100;
+const characterNumber = 100;
 // on click eventi
 
 export class NewsListComponent {
     constructor() {
         this._newsService = new NewsListService();
         this._newsListDiv = document.getElementById("news-list-view");
+        this._left = document.getElementById("left");
+        this._right = document.getElementById("right");
+        this._center = document.getElementById("center");
     }
 
     hide() {
         this._newsListDiv.hideElement();
     }
 
+    initializeComponent(){
+        const newsListObs = this._newsService.getNewsList();
+        const latestNewsListObs = this._newsService.getNewsList().pipe(
+            flatMap(news => news),
+            filter(news => news.new === "true"),
+            map(news => ({
+                headline: news.headline,
+                date: news.date
+            })
+            ));
+        newsListObs.subscribe(newsList => this.showNewsList(newsList));
+        this.drawLatestNews();
+        latestNewsListObs.subscribe(shortNews => this.showLatestNews(shortNews));
+    }
+
     makeVisible() {
-        this._newsService.getNewsList().subscribe(newsList => this.showNewsList(newsList));
+        this.initializeComponent();
         this._newsListDiv.showElement();
     }
 
+    drawLatestNews() {
+        this._left.innerHTML = `<ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="latestNews-tab" data-toggle="tab" href="#latestNews" role="tab" aria-controls="latestNews" aria-selected="true">Latest news</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="latestNews" role="tabpanel" aria-labelledby="latestNews-tab"></div>
+      </div>`;
+    }
+
+    showLatestNews(news) {
+        const contentDiv = document.getElementById("myTabContent");
+        this.drawSingleLatestNews(contentDiv, news)
+    }
+
+    drawSingleLatestNews(contentDiv, news) {
+        contentDiv.innerHTML += `<div class="tab-pane fade show active" id="latestNews" role="tabpanel" aria-labelledby="latestNews-tab">
+        <label class="bold">${news.date}</label><a id="latestHeadline" href="#">${news.headline}</a></div><hr>`;
+    }
+
     returnShortVersionOfContent(content) {
-        return content.substring(0, CHARACTER_NUMBER).concat("...");
+        return content.substring(0, characterNumber).concat("...");
     }
 
     drawNews(news, container) {
@@ -39,52 +77,17 @@ export class NewsListComponent {
     }
 
     showNewsList(newsList) {
-        this._newsListDiv.innerHTML = "";
-        this._newsListDiv.innerHTML+="";
-        let divContent = `<div class="container" id="right"></div>
-                        <div class="container" id="center"></div>
-                        <div class="container" id="left"></div>`;
-        this._newsListDiv.innerHTML = divContent;
-
-        let left = document.getElementById("left");
-        let right = document.getElementById("right");
-        let center = document.getElementById("center");
+        this._right.innerHTML = "";
+        this._center.innerHTML = "";
 
         newsList.forEach((news, index) => {
-            if (index % 3 === 0) {
-                this.drawNews(news, right);
-            }
-            else if (index % 3 === 1) {
-                this.drawNews(news, center);
+            if (index % 2 === 0) {
+                this.drawNews(news, this._right);
             }
             else {
-                this.drawNews(news, left);
+                this.drawNews(news, this._center);
             }
         })
     }
 
-    getColor(tag) {
-        switch (tag) {
-            case "politics":
-                return "#db6027";
-            case "sports":
-                return "#7de8d2";
-            case "travel":
-                return "#156812";
-            case "food":
-                return "#e7ea3c";
-            case "local news":
-                return "#783a82";
-            case "science":
-                return "#4d367c";
-            case "technology":
-                return "#2c7211";
-            case "entertainment":
-                return "#962b66";
-            case "crime":
-                return "#6b1312";
-            case "world":
-                return "#215e3d";
-        }
-    }
 }

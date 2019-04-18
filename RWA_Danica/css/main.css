@@ -9,8 +9,33 @@ body{
 }
 
 
-#news-list{
+#news-list-view{
     display: flex;
+}
+
+#left{
+    flex: 0.5 0.5;
+}
+
+#right,#center{
+    flex: 1 1;
+}
+
+#latestHeadline{
+    color:rgb(139, 5, 5);
+    text-decoration: none;
+}
+
+#myTabContent{
+    border: 1px solid #eaeaea;
+}
+
+.margins{
+    margin:2px;
+}
+
+.bold{
+    font-weight: bold;
 }
 
 
