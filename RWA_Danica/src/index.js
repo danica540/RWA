@@ -5,6 +5,7 @@ initialize();
 
 let ui = new Module();
 ui.defaultView();
+ui.initializeEvents();
 
 
 

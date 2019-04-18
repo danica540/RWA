@@ -20,6 +20,13 @@ export class NewsListService {
         )
     }
 
+    getCertainNews(topic){
+        return from(
+            fetch("http://localhost:3000/news?tag=" + topic)
+                .then(res => { return res.json() })
+        )
+    }
+
     getNewsByTextSearch(headline) {
         return from(
             fetch("http://localhost:3000/news?q=" + headline)

@@ -1,16 +1,21 @@
 import { fromEvent } from "rxjs";
 import { NewsListService } from "../services/news-list-service"
 import { sampleTime, debounceTime, map, switchMap, filter, take } from "rxjs/operators";
+import { UserService } from "../services/user-service";
+import { Router } from "../classes/router";
+import { User } from "../classes/user";
 
-const date="/04/2019";
+const topicList=["world", "nation","local-news","politics","crime","entertainment","sports","technology","science","food","travel"]
+//const date = "/04/2019";
 
 export class NavBarComponent {
   constructor() {
     this._navBar = document.getElementById("navbar");
+    this._router = new Router();
+    this._user = new User();
     this._newsService = new NewsListService();
     this._weatherLink;
     this._searchInput;
-    //this._searchBtn;
   }
 
   hide() {
@@ -39,17 +44,17 @@ export class NavBarComponent {
             Topics
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">World</a>
-            <a class="dropdown-item" href="#">Nation</a>
-            <a class="dropdown-item" href="#">Local news</a>
-            <a class="dropdown-item" href="#">Politics</a>
-            <a class="dropdown-item" href="#">Crime</a>
-            <a class="dropdown-item" href="#">Entertainment</a>
-            <a class="dropdown-item" href="#">Sports</a>
-            <a class="dropdown-item" href="#">Technology</a>
-            <a class="dropdown-item" href="#">Science</a>
-            <a class="dropdown-item" href="#">Food</a>
-            <a class="dropdown-item" href="#">Travel</a>
+            <a class="dropdown-item" id="world" href="#">World</a>
+            <a class="dropdown-item" id="nation" href="#">Nation</a>
+            <a class="dropdown-item" id="local-news" href="#">Local news</a>
+            <a class="dropdown-item" id="politics" href="#">Politics</a>
+            <a class="dropdown-item" id="crime" href="#">Crime</a>
+            <a class="dropdown-item" id="entertainment" href="#">Entertainment</a>
+            <a class="dropdown-item" id="sports" href="#">Sports</a>
+            <a class="dropdown-item" id="technology" href="#">Technology</a>
+            <a class="dropdown-item" id="science" href="#">Science</a>
+            <a class="dropdown-item" id="food" href="#">Food</a>
+            <a class="dropdown-item" id="travel" href="#">Travel</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" id="weather-link" href="#">Weather</a>
           </div>
@@ -64,32 +69,61 @@ export class NavBarComponent {
             <a class="nav-link" id="user-link" href="#">UserName</a>
           </li>
           <li class="nav-item active">
-            <a id="sign-in-button" class="nav-link" href="#">Sing in</a>
+            <a id="sign-in-link" class="nav-link" href="#">Sing in</a>
+          </li>
+          <li class="nav-item active">
+            <a id="sign-out-link" class="nav-link" href="#">Sing out</a>
           </li>
         </ul>
       </div>
     </div>`;
 
-    this._searchInput = document.getElementById("search-input");
-    // <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="search-btn">Search</button>
-    //this._searchBtn = document.getElementById("search-btn"); //uraditi
-    
-    this._weatherLink = document.getElementById("weather-link");
+    this.initializeEvents();
+  }
 
+  initializeEvents() {
+    this.initializeSearchInputEvent();
+    this.initializeTopicEvents();
+    this.initializeWeatherClickEvent();
+    this.initializeSignInEvent();
+  }
+
+  initializeTopicEvents(){
+    topicList.forEach(topic=>{
+      this.initializeSingleTopicEvent(topic);
+    })
+  }
+
+  initializeSingleTopicEvent(topic){
+    let link=document.getElementById(topic);
+    link.onclick = () => {
+      this._router.navigateToTopic(topic);
+    }
+    
+  }
+
+  initializeSignInEvent() {
+    let singInButton = document.getElementById("sign-in-link");
+    singInButton.onclick = () => {
+      this._router.navigateToSignIn();
+    }
+  }
+
+  initializeWeatherClickEvent() {
+    this._weatherLink = document.getElementById("weather-link");
+    fromEvent(this._weatherLink, "click")
+      .subscribe(() => {
+        this._router.navigateToWeather();
+      });
+  }
+
+  initializeSearchInputEvent() {
+    this._searchInput = document.getElementById("search-input");
     fromEvent(this._searchInput, "input").pipe(
       debounceTime(1000),
       map(ev => ev.target.value),
       switchMap(text => this._newsService.getNewsByTextSearch(text))
     )
       .subscribe(news => console.log(news));
-
-    
-
-
-    fromEvent(this._weatherLink, "click")
-      .subscribe(() => {
-        console.log("Weather click");
-        // prikazati weather kontejner
-      });
   }
 }

@@ -32,10 +32,6 @@ export class WeatherComponent {
         });
     }
 
-    drawSideNews() {
-        // code
-    }
-
 
     returnImage(description) {
         switch (description) {

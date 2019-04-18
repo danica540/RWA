@@ -7,8 +7,11 @@ export class UserService {
         this._user = null;
     }
 
-    getUser() {
-
+    getUser(username, password) {
+        return from(
+            fetch("http://localhost:3000/users?username=" + username + "&password=" + password)
+                .then(res => { return res.json() })
+        )
     }
 
 }

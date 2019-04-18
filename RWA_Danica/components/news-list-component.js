@@ -17,8 +17,19 @@ export class NewsListComponent {
         this._newsListDiv.hideElement();
     }
 
-    initializeComponent(){
+    initializeComponent() {
         const newsListObs = this._newsService.getNewsList();
+        newsListObs.subscribe(newsList => this.showNewsList(newsList));
+        this.initializeLatestNews();
+    }
+
+    makeCertainTopicVisible(topic) {
+        const certainNewsObs = this._newsService.getCertainNews(topic);
+        certainNewsObs.subscribe(newsList => this.showNewsList(newsList));
+        this.initializeLatestNews();
+    }
+
+    initializeLatestNews() {
         const latestNewsListObs = this._newsService.getNewsList().pipe(
             flatMap(news => news),
             filter(news => news.new === "true"),
@@ -27,7 +38,6 @@ export class NewsListComponent {
                 date: news.date
             })
             ));
-        newsListObs.subscribe(newsList => this.showNewsList(newsList));
         this.drawLatestNews();
         latestNewsListObs.subscribe(shortNews => this.showLatestNews(shortNews));
     }
