@@ -1,5 +1,6 @@
 import { NewsListService } from "../services/news-list-service";
-import { sampleTime, filter, map, switchMap, tap, flatMap } from "rxjs/operators";
+import { sampleTime, filter, map, reduce, flatMap } from "rxjs/operators";
+import { range } from "rxjs";
 
 const characterNumber = 100;
 const begining = 0;
@@ -84,23 +85,57 @@ export class NewsListComponent {
         <h4>${news.headline}</h4>
         <h6> ${news.date}</h6>
         <p class="card-text">${this.returnShortVersionOfContent(news.content)}</p>
-        <a href="#" class="btn" id="more-btn">More</a>
+        <a href="#" id="${news.id}"  class="btn">More</a>
         </div>
         </div>`;
-        /*console.log(news.id);
-        let btnMore = document.getElementById("btn1");
-        btnMore.onclick = () => {
-            console.log("more btn click");
-        }*/
-        //this.createMoreBtnClickEvent(news.id);
         container.innerHTML += divContent;
     }
 
-    createMoreBtnClickEvent(id) {
-        
+    numberOfNews() {
+        const numberOfNews = this._newsService.getNewsList().pipe(
+            flatMap(news => news),
+            reduce((acc => acc + 1), 0)
+        );
+        numberOfNews.subscribe(acc => this.createMoreBtnClickEvent(acc));
+    }
+
+    createMoreBtnClickEvent(numberOfNews) {
+        range(1, numberOfNews).subscribe(val => {
+            let btn = document.getElementById(val);
+            if (!btn) {
+                return;
+            }
+            btn.onclick = () => {
+                this.getSingleNews(btn.id);
+            }
+        })
+    }
+
+    getSingleNews(id) {
+        this._newsService.getNewsById(id).pipe(
+            map(news => news[0])
+        ).subscribe(news => this.showSingleNews(news))
+    }
+
+    showSingleNews(news) {
+        this._right.innerHTML = "";
+        this._right.hideElement();
+        let divContent = `<div class="card">
+        <span id="tag-news" class="badge">${news.tag}</span>
+        <img src="${news.img}" class="card-img-top">
+        <div class="card-body">
+        <h4>${news.headline}</h4>
+        <h6> ${news.date}</h6>
+        <p class="card-text">${news.content}</p>
+        </div>
+        </div>`;
+        this._center.innerHTML = divContent;
     }
 
     showNewsList(newsList) {
+        if (this._right.style.display === "none") {
+            this._right.style.display="block";
+        }
         this._right.innerHTML = "";
         this._center.innerHTML = "";
 
@@ -112,6 +147,7 @@ export class NewsListComponent {
                 this.drawNews(news, this._center);
             }
         })
+        this.numberOfNews();
     }
 
 }

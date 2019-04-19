@@ -17,7 +17,11 @@ body{
     flex: 0.5 0.5;
 }
 
-#right,#center{
+#center{
+    flex: 1 1;
+}
+
+#right{
     flex: 1 1;
 }
 
@@ -42,7 +46,7 @@ body{
 }
 
 
-#more-btn{
+.card a{
     background-color: #eaeaea;
 }
 
