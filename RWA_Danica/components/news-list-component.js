@@ -2,14 +2,14 @@ import { NewsListService } from "../services/news-list-service";
 import { sampleTime, filter, map, switchMap, tap, flatMap } from "rxjs/operators";
 
 const characterNumber = 100;
-// on click eventi
+const begining = 0;
 
 export class NewsListComponent {
     constructor() {
         this._newsService = new NewsListService();
         this._newsListDiv = document.getElementById("news-list-view");
-        this._left = document.getElementById("left");
         this._right = document.getElementById("right");
+        this._left = document.getElementById("left");
         this._center = document.getElementById("center");
     }
 
@@ -18,9 +18,13 @@ export class NewsListComponent {
     }
 
     initializeComponent() {
+        this.initializeAllNews();
+        this.initializeLatestNews();
+    }
+
+    initializeAllNews() {
         const newsListObs = this._newsService.getNewsList();
         newsListObs.subscribe(newsList => this.showNewsList(newsList));
-        this.initializeLatestNews();
     }
 
     makeCertainTopicVisible(topic) {
@@ -69,7 +73,7 @@ export class NewsListComponent {
     }
 
     returnShortVersionOfContent(content) {
-        return content.substring(0, characterNumber).concat("...");
+        return content.substring(begining, characterNumber).concat("...");
     }
 
     drawNews(news, container) {
@@ -83,7 +87,17 @@ export class NewsListComponent {
         <a href="#" class="btn" id="more-btn">More</a>
         </div>
         </div>`;
+        /*console.log(news.id);
+        let btnMore = document.getElementById("btn1");
+        btnMore.onclick = () => {
+            console.log("more btn click");
+        }*/
+        //this.createMoreBtnClickEvent(news.id);
         container.innerHTML += divContent;
+    }
+
+    createMoreBtnClickEvent(id) {
+        
     }
 
     showNewsList(newsList) {

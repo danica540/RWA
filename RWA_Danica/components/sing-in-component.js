@@ -2,6 +2,7 @@ import { fromEvent } from "rxjs";
 import { sampleTime, map } from "rxjs/operators";
 import { UserService } from "../services/user-service";
 import { User } from "../classes/user";
+import { Router } from "../classes/router";
 
 export class SingInComponent {
     constructor() {

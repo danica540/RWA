@@ -5,14 +5,13 @@ import { UserService } from "../services/user-service";
 import { Router } from "../classes/router";
 import { User } from "../classes/user";
 
-const topicList=["world", "nation","local-news","politics","crime","entertainment","sports","technology","science","food","travel"]
+const topicList = ["world", "nation", "local-news", "politics", "crime", "entertainment", "sports", "technology", "science", "food", "travel"]
 //const date = "/04/2019";
 
 export class NavBarComponent {
   constructor() {
     this._navBar = document.getElementById("navbar");
     this._router = new Router();
-    this._user = new User();
     this._newsService = new NewsListService();
     this._weatherLink;
     this._searchInput;
@@ -30,7 +29,7 @@ export class NavBarComponent {
   drawNavBar() {
     this._navBar.innerHTML = "";
     this._navBar.innerHTML = `
-    <a class="navbar-brand" href="#">News</a>
+    <a class="navbar-brand" id="home" href="#">News</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -82,24 +81,32 @@ export class NavBarComponent {
   }
 
   initializeEvents() {
+    this.initializeNewsLinkEvent();
     this.initializeSearchInputEvent();
     this.initializeTopicEvents();
     this.initializeWeatherClickEvent();
     this.initializeSignInEvent();
   }
 
-  initializeTopicEvents(){
-    topicList.forEach(topic=>{
+  initializeNewsLinkEvent(){
+    const newsLink=document.getElementById("home");
+    newsLink.onclick=()=>{
+      this._router.navigateToNewsList();
+    }
+  }
+
+  initializeTopicEvents() {
+    topicList.forEach(topic => {
       this.initializeSingleTopicEvent(topic);
     })
   }
 
-  initializeSingleTopicEvent(topic){
-    let link=document.getElementById(topic);
+  initializeSingleTopicEvent(topic) {
+    let link = document.getElementById(topic);
     link.onclick = () => {
       this._router.navigateToTopic(topic);
     }
-    
+
   }
 
   initializeSignInEvent() {

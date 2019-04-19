@@ -13,6 +13,13 @@ export class NewsListService {
         )
     }
 
+    getNewsById(id) {
+        return from(
+            fetch("http://localhost:3000/news?id="+id)
+                .then(res => { return res.json() })
+        )
+    }
+
     getNewsListByDate(date){
         return from(
             fetch("http://localhost:3000/news?q=" + date)
