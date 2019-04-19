@@ -4,6 +4,10 @@ export function initialize() {
         this.style.display = "flex";
     }
 
+    HTMLElement.prototype.showElementBlock = function () {
+        this.style.display = "block";
+    }
+
     HTMLElement.prototype.hideElement = function () {
         this.style.display = "none";
     }

@@ -1,9 +1,7 @@
 import { fromEvent } from "rxjs";
 import { NewsListService } from "../services/news-list-service"
-import { sampleTime, debounceTime, map, switchMap, filter, take } from "rxjs/operators";
-import { UserService } from "../services/user-service";
+import { debounceTime, map, switchMap } from "rxjs/operators";
 import { Router } from "../classes/router";
-import { User } from "../classes/user";
 
 const topicList = ["world", "nation", "local-news", "politics", "crime", "entertainment", "sports", "technology", "science", "food", "travel"]
 //const date = "/04/2019";

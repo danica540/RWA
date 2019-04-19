@@ -1,5 +1,5 @@
 import { NewsListService } from "../services/news-list-service";
-import { sampleTime, filter, map, reduce, flatMap } from "rxjs/operators";
+import { filter, map, reduce, flatMap } from "rxjs/operators";
 import { range } from "rxjs";
 
 const characterNumber = 100;
@@ -29,6 +29,9 @@ export class NewsListComponent {
     }
 
     makeCertainTopicVisible(topic) {
+        if (this._newsListDiv.style.display === "none") {
+            this._newsListDiv.showElement();
+        }
         const certainNewsObs = this._newsService.getCertainNews(topic);
         certainNewsObs.subscribe(newsList => this.showNewsList(newsList));
         this.initializeLatestNews();
@@ -156,7 +159,7 @@ export class NewsListComponent {
 
     showNewsList(newsList) {
         if (this._right.style.display === "none") {
-            this._right.style.display = "block";
+            this._right.showElementBlock();
         }
         this._right.innerHTML = "";
         this._center.innerHTML = "";

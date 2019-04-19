@@ -2,7 +2,6 @@ import { from } from "rxjs";
 
 export class WeatherService {
 
-    //servis
     constructor() {
         this._weatherList = new Array();
     }

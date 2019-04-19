@@ -1,5 +1,3 @@
-import { fromEvent } from "rxjs";
-import { sampleTime } from "rxjs/operators";
 import { WeatherService } from "../services/weather-service";
 
 export class WeatherComponent {
