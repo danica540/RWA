@@ -40,10 +40,11 @@ export class NewsListComponent {
             filter(news => news.new === "true"),
             map(news => ({
                 headline: news.headline,
-                date: news.date
+                date: news.date,
+                id: news.id
             })
             ));
-        this.drawLatestNews();
+        this.drawLatestNewsDiv();
         latestNewsListObs.subscribe(shortNews => this.showLatestNews(shortNews));
     }
 
@@ -52,7 +53,7 @@ export class NewsListComponent {
         this._newsListDiv.showElement();
     }
 
-    drawLatestNews() {
+    drawLatestNewsDiv() {
         this._left.innerHTML = `<ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="latestNews-tab" data-toggle="tab" href="#latestNews" role="tab" aria-controls="latestNews" aria-selected="true">Latest news</a>
@@ -65,12 +66,33 @@ export class NewsListComponent {
 
     showLatestNews(news) {
         const contentDiv = document.getElementById("myTabContent");
-        this.drawSingleLatestNews(contentDiv, news)
+        this.drawSingleLatestNews(contentDiv, news);
+        this.createEventsForLatestNewsLinks();
+    }
+
+    createEventsForLatestNewsLinks() {
+
+        const latestNewsObs = this._newsService.getNewsList().pipe(
+            flatMap(news => news),
+            filter(news => news.new === "true")
+        );
+        latestNewsObs.subscribe(news => this.createLatestNewsClickEvent(news));
+
+    }
+
+    createLatestNewsClickEvent(news) {
+        let latestNewsLink = document.getElementById("link" + news.id);
+
+        latestNewsLink.onclick = () => {
+            const newsId = latestNewsLink.id.replace("link", "");
+            this.getSingleNews(newsId);
+        }
     }
 
     drawSingleLatestNews(contentDiv, news) {
         contentDiv.innerHTML += `<div class="tab-pane fade show active" id="latestNews" role="tabpanel" aria-labelledby="latestNews-tab">
-        <label class="bold">${news.date}</label><a id="latestHeadline" href="#">${news.headline}</a></div><hr>`;
+        <label>${news.date}</label><a id="${"link" + news.id}" class="latestHeadline" href="#">${news.headline}</a></div><hr>`;
+
     }
 
     returnShortVersionOfContent(content) {
@@ -134,7 +156,7 @@ export class NewsListComponent {
 
     showNewsList(newsList) {
         if (this._right.style.display === "none") {
-            this._right.style.display="block";
+            this._right.style.display = "block";
         }
         this._right.innerHTML = "";
         this._center.innerHTML = "";

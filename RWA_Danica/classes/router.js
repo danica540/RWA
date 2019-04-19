@@ -9,7 +9,7 @@ export class Router {
         this._weatherComponent = new WeatherComponent();
     }
 
-    navigateToTopic(topic){
+    navigateToTopic(topic) {
         this._weatherComponent.hide();
         this._singInComponent.hide();
         this._newsListComponent.makeCertainTopicVisible(topic);

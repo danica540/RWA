@@ -25,8 +25,13 @@ body{
     flex: 1 1;
 }
 
-#latestHeadline{
+.latestHeadline{
     color:rgb(139, 5, 5);
+    text-decoration: none;
+}
+
+.latestHeadline:hover{
+    color:rgb(202, 14, 14);
     text-decoration: none;
 }
 
@@ -41,7 +46,7 @@ body{
     margin-top: 20px;
 }
 
-.bold{
+#latestNews{
     font-weight: bold;
 }
 

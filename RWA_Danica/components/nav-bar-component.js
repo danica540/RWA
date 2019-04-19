@@ -88,9 +88,9 @@ export class NavBarComponent {
     this.initializeSignInEvent();
   }
 
-  initializeNewsLinkEvent(){
-    const newsLink=document.getElementById("home");
-    newsLink.onclick=()=>{
+  initializeNewsLinkEvent() {
+    const newsLink = document.getElementById("home");
+    newsLink.onclick = () => {
       this._router.navigateToNewsList();
     }
   }

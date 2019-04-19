@@ -15,19 +15,19 @@ export class NewsListService {
 
     getNewsById(id) {
         return from(
-            fetch("http://localhost:3000/news?id="+id)
+            fetch("http://localhost:3000/news?id=" + id)
                 .then(res => { return res.json() })
         )
     }
 
-    getNewsListByDate(date){
+    getNewsListByDate(date) {
         return from(
             fetch("http://localhost:3000/news?q=" + date)
                 .then(res => { return res.json() })
         )
     }
 
-    getCertainNews(topic){
+    getCertainNews(topic) {
         return from(
             fetch("http://localhost:3000/news?tag=" + topic)
                 .then(res => { return res.json() })
