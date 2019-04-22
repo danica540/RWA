@@ -10,14 +10,6 @@ export class LibraryBranches {
         this._service = new BranchService();
     }
 
-    hide() {
-        this._contentDiv.style.display = "none";
-    }
-
-    show() {
-        this._contentDiv.style.display = "flex";
-    }
-
     drawDefaultView() {
         let divContent = `<h1>Libraries of Niš</h1>
                         <div id="table-div">

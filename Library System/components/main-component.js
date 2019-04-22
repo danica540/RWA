@@ -10,15 +10,6 @@ export class MainComponent {
         this._router=new Router();
     }
 
-    hide(){
-        this._contentDiv.style.display="none";
-    }
-
-    show(){
-        this._contentDiv.style.display="flex";
-        this._contentDiv.style.display="flex";
-    }
-
     drawMainView() {
         let divContent = `<h1>Welcome to Library System of Niš</h1>
                             <div id="container"></div`;
