@@ -1,0 +1,50 @@
+#news-list-view{
+    display: flex;
+}
+
+#left{
+    flex: 0.5 0.5;
+}
+
+#center{
+    flex: 1 1;
+}
+
+#right{
+    flex: 1 1;
+}
+
+.latestHeadline{
+    color:rgb(139, 5, 5);
+    text-decoration: none;
+}
+
+.latestHeadline:hover{
+    color:rgb(202, 14, 14);
+    text-decoration: none;
+}
+
+#myTabContent{
+    border: 1px solid #eaeaea;
+    border-top:none;
+    border-bottom: none;
+}
+
+.margins{
+    margin:2px;
+    margin-top: 20px;
+}
+
+
+.bold{
+    font-weight: bold;
+}
+
+#latestNews{
+    font-weight: bold;
+}
+
+
+.card a{
+    background-color: #eaeaea;
+}

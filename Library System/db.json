@@ -1,0 +1,90 @@
+{
+  "main_view": [
+    {
+      "id": 1,
+      "title": "Library Catalog",
+      "img": "../resources/library_catalog.jpeg",
+      "description": "View library assets."
+    },
+    {
+      "id": 2,
+      "title": "Patrons",
+      "img": "../resources/patrons.jpg",
+      "description": "View library patrone data."
+    },
+    {
+      "id": 3,
+      "title": "Branches",
+      "img": "../resources/library_branches.jpg",
+      "description": "View local branches."
+    }
+  ],
+  "branches": [
+    {
+      "id": 1,
+      "name": "Narodna biblioteka 'Stevan Sremac'",
+      "img": "../resources/narodna_biblioteka.jpg",
+      "address": "Borivoja Gojkovića 9, 18000 Niš",
+      "telephone": "018/511-403",
+      "email": "biblioteka@nbss.rs",
+      "year_opened": "1879.",
+      "about":"Narodna biblioteka „Stevan Sremac“ jedna je od najstarijih kulturnih ustanova u Gradu i prva javna biblioteka u Južnoj Srbiji.",
+      "week_hours_id": 1
+    },
+    {
+      "id": 2,
+      "name": "Univerzitetska biblioteka 'Nikola Tesla'",
+      "img": "../resources/nikola_tesla.jpg",
+      "address": "Kej Mike Paligorića 2a, 18000 Niš",
+      "telephone": "018/523-421",
+      "email": "info-ubn[at]ni.ac.rs",
+      "year_opened": "18.5.1967.",
+      "about":"Univerzitetska biblioteka 'Nikola Tesla' u Nišu je naučna biblioteka, čiji fond pokriva potrebe svih studijskih grupa Univerziteta u Nišu. Osnovana je 18. maja 1967. godine, a od 1978. godine nosi ime Nikole Tesle.",
+      "week_hours_id": 2
+    },
+    {
+      "id": 3,
+      "name": "Dečija biblioteka",
+      "img": "../resources/dečja-biblioteka2.jpg",
+      "address": "Lole Ribara 2, 18000 Niš",
+      "telephone": "018/523‑605",
+      "email": "decijaBiblioteka.rs",
+      "year_opened": "3.3.1950.",
+      "about":"Jedina dečija biblioteka u Nišu",
+      "week_hours_id": 3
+    }
+  ],
+  
+  "week_hours": [
+    {
+      "id": 1,
+      "monday": "07:30 to 20:00",
+      "tuesday": "07:30 to 20:00",
+      "wednesday": "07:30 to 20:00",
+      "thursday": "07:30 to 20:00",
+      "friday": "07:30 to 20:00",
+      "saturday": "08:00 to 13:00",
+      "sunday": "Closed"
+    },
+    {
+      "id": 2,
+      "monday": "07:30 to 20:00",
+      "tuesday": "07:30 to 20:00",
+      "wednesday": "07:30 to 20:00",
+      "thursday": "07:30 to 20:00",
+      "friday": "07:30 to 20:00",
+      "saturday": "Closed",
+      "sunday": "Closed"
+    },
+    {
+      "id": 3,
+      "monday": "07:30 to 20:00",
+      "tuesday": "07:30 to 20:00",
+      "wednesday": "07:30 to 20:00",
+      "thursday": "07:30 to 20:00",
+      "friday": "07:30 to 20:00",
+      "saturday": "07:30 to 13:00",
+      "sunday": "Closed"
+    }
+  ]
+}
