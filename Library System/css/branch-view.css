@@ -1,14 +1,14 @@
-table,th,tr,td{
+#branches,.branch-table{
     border:black solid 1px;
     border-collapse: collapse;
     text-align: center;
 }
 
-tr,th,td{
+.branch-table{
     padding: 10px;
 }
 
-table{
+#branches{
     margin: 3%;
     width: 900px;
     height: 300px;

@@ -1,0 +1,50 @@
+.catalog-header{ 
+    margin-left: 20%;
+    margin-right: 20%;
+    display:flex;
+    flex-direction: row;
+}
+
+.header-left{
+    display: flex;
+    text-align: left;
+    flex:1 1;
+}
+
+.header-right{
+    display: flex;
+    flex:1 1;
+    align-content: right;
+}
+
+.options{
+    display: flex;
+}
+
+input{
+    align-items: flex-end;
+}
+
+table{
+    margin-top: 4%;
+    margin-left: 20%;
+    margin-right: 20%;
+    width:900px;
+}
+
+table,th,td,tr{
+    border:black solid 1px;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 10px;
+}
+
+input, label{
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.book-cover{
+    width:100px;
+    height: auto;
+}

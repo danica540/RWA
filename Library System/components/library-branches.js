@@ -16,9 +16,9 @@ export class LibraryBranches {
                         <div class="side"></div>
                         <div class="center">
                         <table id="branches">
-                        <tr>
-                        <th>Branch Name</th>
-                        <th>Open Now</th>
+                        <tr class="branch-table">
+                        <th class="branch-table">Branch Name</th>
+                        <th class="branch-table">Open Now</th>
                         </tr>
                         </table>
                         </div>
@@ -40,10 +40,10 @@ export class LibraryBranches {
     }
 
     drawTableContent(object, table) {
-        let innerContent = `<tr>
-                            <td><a class="library-name" href="#" id="table-${object.id}">${object.name}</a></td>
-                            <td>${"Yes"}</td>
-                            </tr>`
+        let innerContent = `<tr class="branch-table">
+                            <td class="branch-table"><a class="library-name" href="#" id="table-${object.id}">${object.name}</a></td>
+                            <td class="branch-table">${"Yes"}</td>
+                            </tr>`;
         // OPEN NOW SREDITI
         table.innerHTML += innerContent;
         this.createClickEvents();
@@ -70,7 +70,6 @@ export class LibraryBranches {
     }
 
     drawSingleBranch(object) {
-        console.log(object);
         let content = `<div id="single-branch">
                         <img class="branch-img" src=${object.branch.img}></img>
                         <div id="all">

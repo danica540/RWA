@@ -86,5 +86,119 @@
       "saturday": "07:30 to 13:00",
       "sunday": "Closed"
     }
+  ],
+  "books":[
+    {
+      "id":"1",
+      "author":"Paulo Coelho",
+      "genre":"drama",
+      "title":"The Alchemist",
+      "img":"../resources/alchemist.jpg"
+    },
+    {
+      "id":"2",
+      "author":"Paulo Coelho",
+      "genre":"novel",
+      "title":"Aleph",
+      "img":"../resources/aleph.jpg"
+    },
+    {
+      "id":"3",
+      "author":"Dan Brown",
+      "genre":"mystery",
+      "title":"Angels & Demons",
+      "img":"../resources/andjeli_i_demoni.jpg"
+    },
+    {
+      "id":"4",
+      "author":"Jo Nesbo",
+      "genre":"thriller",
+      "title":"The Bat",
+      "img":"../resources/bat.jpg"
+    },
+    {
+      "id":"5",
+      "author":"Haruki Murakami",
+      "genre":"fiction",
+      "title":"Wind Up Bird Chronicle",
+      "img":"../resources/bird.jpg"
+    },
+    {
+      "id":"6",
+      "author":"Jose Saramago",
+      "genre":"thriller",
+      "title":"Blindness",
+      "img":"../resources/blindness.jpg"
+    },
+    {
+      "id":"7",
+      "author":"Jose Saramago",
+      "genre":"drama",
+      "title":"Cain",
+      "img":"../resources/cain.jpeg"
+    },
+    {
+      "id":"8",
+      "author":"Stephen King",
+      "genre":"horror",
+      "title":"Carrie",
+      "img":"../resources/carrie.jpg"
+    },
+    {
+      "id":"9",
+      "author":"Dan Simons",
+      "genre":"mystery",
+      "title":"Da Vinci's Code",
+      "img":"../resources/da_vinci.jpg"
+    },
+    {
+      "id":"10",
+      "author":"Nicholas Sparks",
+      "genre":"romance",
+      "title":"Dear John",
+      "img":"../resources/dear-john.jpg"
+    },
+    {
+      "id":"11",
+      "author":"Jose Saramago",
+      "genre":"fiction",
+      "title":"Death With Interruptions",
+      "img":"../resources/death.jpg"
+    },
+    {
+      "id":"12",
+      "author":"Jostein Gaarder",
+      "genre":"fiction",
+      "title":"Appelsinpiken",
+      "img":"../resources/devojka_sa_pomorandzama.jpg"
+    },
+    {
+      "id":"13",
+      "author":"Jose Saramago",
+      "genre":"historical",
+      "title":"Elephant's Journey",
+      "img":"../resources/elephant.jpg"
+    },
+    {
+      "id":"14",
+      "author":"Paulo Coelho",
+      "genre":"novel",
+      "title":"Aleph",
+      "img":"../resources/aleph.jpg"
+    },
+    {
+      "id":"15",
+      "author":"Paulo Coelho",
+      "genre":"novel",
+      "title":"Aleph",
+      "img":"../resources/aleph.jpg"
+    },
+    {
+      "id":"16",
+      "author":"Paulo Coelho",
+      "genre":"novel",
+      "title":"Aleph",
+      "img":"../resources/aleph.jpg"
+    }
   ]
 }

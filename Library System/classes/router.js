@@ -7,7 +7,6 @@ export class Router {
     }
 
     navigateToPage(val) {
-        console.log(val);
         switch (val) {
             case 1: {
                 this.navigateToLibraryCatalog();
@@ -30,7 +29,7 @@ export class Router {
 
     navigateToLibraryCatalog() {
         let catalogLibrary = new LibraryCatalog();
-        catalogLibrary.draw();
+        catalogLibrary.drawLibraryCatalog();
     }
 
     navigateToLibraryPatrons() {
