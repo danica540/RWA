@@ -32,6 +32,11 @@ table{
     width:900px;
 }
 
+a{
+    color:black;
+    text-decoration: none;
+}
+
 table,th,td,tr{
     border:black solid 1px;
     border-collapse: collapse;

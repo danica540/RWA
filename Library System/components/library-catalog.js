@@ -36,7 +36,7 @@ export class LibraryCatalog {
         let table = document.getElementById("book-catalog");
         this.drawTable(table);
         this.createOptionClickEvents();
-        this.createImageClickEvent();
+        this.createBookLinkClickEvent(selectorValues[0]);
     }
 
     drawTable(table) {
@@ -53,13 +53,13 @@ export class LibraryCatalog {
             take(selectorValue)
         ).subscribe(book => this.drawCatalogueContent(book, table));
         this.calculateTotalBookCount(selectorValue);
-        this.createImageClickEvent();
+        this.createBookLinkClickEvent(selectorValue);
     }
 
     drawCatalogueContent(book, table) {
         let content = `<tr>
-                        <td><img class="book-cover" id=${"img-" + book.id} src=${book.img}></img></td>
-                        <td>${book.title}</td>
+                        <td><img class="book-cover" src=${book.img}></img></td>
+                        <td><a id=${"book" + book.id} href="#">${book.title}</a></td>
                         <td>${book.author}</td>
                         <td>${book.genre}</td>
                     </tr>`;
@@ -88,23 +88,27 @@ export class LibraryCatalog {
         })
     }
 
-    createImageClickEvent() {
-        let selector = document.getElementById("number-of-books");
-        let selectorValue = selector.value;
-        range(1, selectorValue).subscribe(val => {
-            let image = document.getElementById("img-" + val);
-            if(!image){
-                return;
-            }
-            image.onclick = () => {
-                this.drawSingleBook(val);
-            }
-        });
+    createBookLinkClickEvent(selectorValue) {
+        // let selector = document.getElementById("number-of-books");
+        // let selectorValue = selector.value;
+        range(1, selectorValue).subscribe(val => this.clickEvent(val));
     }
 
-    drawSingleBook(val){
+    clickEvent(val) {
+        let id = "book" + val;
+        let bookLink = document.getElementById(id);
+        console.log(bookLink);
+        if (!bookLink) {
+            return;
+        }
+        bookLink.onclick = () => {
+            this.drawSingleBook(val);
+        }
+    }
+
+    drawSingleBook(val) {
         this._service.getBookById(val).pipe(
-            map(book=>book[0])
-        ).subscribe(x=>console.log(x));
+            map(book => book[0])
+        ).subscribe(x => console.log(x));
     }
 }
