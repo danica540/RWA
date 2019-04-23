@@ -1,6 +1,7 @@
 #content{
     text-align: center;
-    font-family: Trebuchet MS;
+    /* font-family: Trebuchet MS; */
+    font-family: 'Open Sans', sans-serif;
     align-content: center;
     align-items: center;
 }
