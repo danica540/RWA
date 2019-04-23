@@ -1,6 +1,7 @@
 import { BranchService } from "../services/branch-service";
 import { map, flatMap } from "rxjs/operators";
 import { zip } from 'rxjs';
+const moment = require('moment'); // iz node-a
 
 const weekDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
@@ -40,6 +41,13 @@ export class LibraryBranches {
     }
 
     drawTableContent(object, table) {
+        //let date = moment().format("DD");
+        //let day = date.day;
+        console.log(moment().format('dddd'));
+        let day=moment().format('dddd');
+        day=day.charAt(0).toLowerCase()+day.slice(1);
+        console.log(day);
+        let libraryDay=object[day];
         let innerContent = `<tr class="branch-table">
                             <td class="branch-table"><a class="library-name" href="#" id="table-${object.id}">${object.name}</a></td>
                             <td class="branch-table">${"Yes"}</td>
@@ -92,9 +100,9 @@ export class LibraryBranches {
 
     drawWorkingHours(object) {
         let content = `<ul class="working-hours">`;
-        weekDays.forEach(day=>{
-            let weekDay=day.charAt(0).toUpperCase() + day.slice(1);
-            content+=`<li> <span>${weekDay}</span> ${object[day]}</li>`
+        weekDays.forEach(day => {
+            let weekDay = day.charAt(0).toUpperCase() + day.slice(1);
+            content += `<li> <span>${weekDay}</span> ${object[day]}</li>`
         })
         content += `</ul>`;
         return content;

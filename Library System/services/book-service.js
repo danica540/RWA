@@ -11,6 +11,17 @@ export class BookService {
         )
     }
 
+    changeBookTitle(book) {
+        let formData=new FormData();
+        formData.append("title",book.title);
+        formData.append("author","Paulo Coelho");
+        
+        return from(
+            fetch(`http://localhost:3000/books/${book.id}`, { method: "PUT", body: formData })
+                .then(res => { return res.json() })
+        )
+    }
+
     getBookById(id) {
         return from(
             fetch("http://localhost:3000/books/" + id)

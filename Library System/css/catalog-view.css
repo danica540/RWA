@@ -14,27 +14,31 @@
 .header-right{
     display: flex;
     flex:1 1;
-    align-content: right;
+    margin:auto;
 }
 
 .options{
     display: flex;
 }
 
-input{
-    align-items: flex-end;
+input,select{
+    border: 1px solid #c5cbd6;
+}
+
+input:hover, select:hover{
+    border: 1px solid #75787c;
 }
 
 table{
-    margin-top: 4%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin:auto;
+    margin-top:10px;
     width:900px;
 }
 
 a{
-    color:black;
+    color:#000000;
     text-decoration: none;
+    font-weight: bolder;
 }
 
 th{
@@ -56,4 +60,23 @@ input, label{
 .book-cover{
     width:100px;
     height: auto;
+}
+
+#all-library-item{
+    background-color: #dedee5;
+    display: flex;
+    margin: auto;
+    padding: 15px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#center-library-item{
+    flex: 1 1;
+    text-align: center;
+}
+
+#right-library-item{
+    flex: 1 1;
+    text-align: right;
 }

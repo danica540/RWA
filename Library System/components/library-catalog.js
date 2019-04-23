@@ -1,6 +1,7 @@
 import { BookService } from "../services/book-service";
-import { flatMap, take, scan, map, debounceTime, switchMap } from "rxjs/operators";
+import { flatMap, take, scan, map, debounceTime, switchMap, filter } from "rxjs/operators";
 import { fromEvent, range } from "rxjs";
+import { BranchService } from "../services/branch-service";
 
 const selectorValues = [10, 20, 30, 40, 50];
 
@@ -8,10 +9,11 @@ export class LibraryCatalog {
     constructor() {
         this._contentDiv = document.getElementById("content");
         this._service = new BookService();
+        this._branchService = new BranchService();
     }
 
     drawLibraryCatalog() {
-        let content = `<h3>Library Catalog</h3>
+        let content = `<h1>Library Catalog</h1>
                     <div class="catalog-header">
                     <div class="header-left>
                         <div class="options">
@@ -29,44 +31,52 @@ export class LibraryCatalog {
                         <input id="search-input" placeholder="Search">
                         </div>
                     </div>
+                    <div id="center-table">
                     <table id="book-catalog">
-                    </table>
-            <h3 id="statistic"></h3>`;
-        this._contentDiv.innerHTML = content;
-        let table = document.getElementById("book-catalog");
-        this.drawTable(table);
-        this.createOptionClickEvents();
-        this.createSearchInputEvent();
-        //this.createBookLinkClickEvent(selectorValues[0]);
-    }
-
-    drawTable(table) {
-        let selector = document.getElementById("number-of-books");
-        let selectorValue = selector.value;
-        table.innerHTML = `<tr>
+                    <tr>
                             <th>Book Cover</th>
                             <th>Title</th>
                             <th>Author</th>
                             <th>Genre</th>
                             <th></th>
-                        </tr>`;
+                        </tr>
+                    </table>
+                    <div>
+            <h4 id="statistic"></h4>`;
+        this._contentDiv.innerHTML = content;
+        let table = document.getElementById("book-catalog");
+        this.drawTable(table);
+        this.createOptionClickEvents();
+        this.createSearchInputEvent();
+    }
+
+    drawTable(table) {
+        let selector = document.getElementById("number-of-books");
+        let selectorValue = selector.value;
         this._service.getBooks().pipe(
             flatMap(book => book),
             take(selectorValue)
-        ).subscribe(book => this.drawCatalogueContent(book, table));
+        ).subscribe(book => this.drawCatalogueContent(book, table, selectorValue));
         this.calculateTotalBookCount(selectorValue);
     }
 
-    drawCatalogueContent(book, table) {
+    returnBookContent(book) {
         let content = `<tr>
                         <td><img class="book-cover" src=${book.img}></img></td>
                         <td>${book.title}</td>
                         <td>${book.author}</td>
                         <td>${book.genre}</td>
-                        <td><a class="book-link" id=${book.id} href="#">More</a></td>
+                        <td><a id="book-link${book.id}" href="#">More</a></td>
                     </tr>`;
-        table.innerHTML += content;
+        return content;
     }
+
+    drawCatalogueContent(book, table, selectorValue) {
+        let content = this.returnBookContent(book);
+        table.innerHTML += content;
+        this.createBookLinkClickEvent(selectorValue);
+    }
+
 
     calculateTotalBookCount(selectorValue) {
         let stat = document.getElementById("statistic");
@@ -90,22 +100,43 @@ export class LibraryCatalog {
     }
 
     createBookLinkClickEvent(selectorValue) {
-        //range(1, selectorValue).subscribe(val => this.clickEvent(val));
-    }
-
-    clickEvent(val) {
-        let bookLinkList = document.querySelectorAll("book-link");
-        console.log(bookLinkList);
-        // if (!bookLink) {
-        //     return;
-        // }
-        // bookLink.onclick = () => {
-        //     this.drawSingleBook(val);
-        // }
+        range(1, selectorValue).subscribe(val => {
+            let bookLink = document.getElementById("book-link" + val);
+            if (!bookLink) {
+                return;
+            }
+            bookLink.onclick = () => {
+                this.drawSingleBook(val);
+            }
+        });
     }
 
     drawSingleBook(val) {
-        this._service.getBookById(val).subscribe(x => console.log(x));
+        this._service.getBookById(val).subscribe(book => {
+            this._branchService.getBranches().pipe(
+                flatMap(lib => lib),
+                filter(lib => lib.id === book.library_id),
+                map(lib => lib.name)
+            ).subscribe(lib => this.drawSingleBookContent(lib, book));
+        });
+    }
+
+    drawSingleBookContent(libName, book) {
+        this._contentDiv.innerHTML = `<h1>View Library Item</h1>
+                                        <div id="all-library-item">
+                                        <div>
+                                        <img src=${book.img}></img>
+                                        </div>
+                                        <div id="center-library-item">
+                                        <h3>${book.title}</h3>
+                                        <h4>${book.author}</h4>
+                                        <label><span>Last Location: </span>${libName}</label>
+                                        </div>
+                                        <div id="right-library-item">
+                                        <label><span>Book Genre: </span>${book.genre}</label>
+                                        <label><span>Replacement Cost: </span>${book.value} €</label>
+                                        </div>
+                                        </div>`;
     }
 
     createSearchInputEvent() {
@@ -138,13 +169,7 @@ export class LibraryCatalog {
     drawSearchedContent(bookList, table) {
         let content = "";
         bookList.forEach(book => {
-            content += `<tr>
-                            <td><img class="book-cover" src=${book.img}></img></td>
-                            <td>${book.title}</td>
-                            <td>${book.author}</td>
-                            <td>${book.genre}</td>
-                            <td><a class="book-link" id=${book.id} href="#">More</a></td>
-                        </tr>`;
+            content += this.returnBookContent(book);
         });
         table.innerHTML += content;
     }

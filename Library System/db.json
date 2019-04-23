@@ -28,7 +28,7 @@
       "telephone": "018/511-403",
       "email": "biblioteka@nbss.rs",
       "year_opened": "1879.",
-      "about":"Narodna biblioteka „Stevan Sremac“ jedna je od najstarijih kulturnih ustanova u Gradu i prva javna biblioteka u Južnoj Srbiji.",
+      "about": "Narodna biblioteka „Stevan Sremac“ jedna je od najstarijih kulturnih ustanova u Gradu i prva javna biblioteka u Južnoj Srbiji.",
       "week_hours_id": 1
     },
     {
@@ -39,7 +39,7 @@
       "telephone": "018/523-421",
       "email": "info-ubn[at]ni.ac.rs",
       "year_opened": "18.5.1967.",
-      "about":"Univerzitetska biblioteka 'Nikola Tesla' u Nišu je naučna biblioteka, čiji fond pokriva potrebe svih studijskih grupa Univerziteta u Nišu. Osnovana je 18. maja 1967. godine, a od 1978. godine nosi ime Nikole Tesle.",
+      "about": "Univerzitetska biblioteka 'Nikola Tesla' u Nišu je naučna biblioteka, čiji fond pokriva potrebe svih studijskih grupa Univerziteta u Nišu. Osnovana je 18. maja 1967. godine, a od 1978. godine nosi ime Nikole Tesle.",
       "week_hours_id": 2
     },
     {
@@ -50,11 +50,10 @@
       "telephone": "018/523‑605",
       "email": "decijaBiblioteka.rs",
       "year_opened": "3.3.1950.",
-      "about":"Jedina dečija biblioteka u Nišu",
+      "about": "Jedina dečija biblioteka u Nišu",
       "week_hours_id": 3
     }
   ],
-  
   "week_hours": [
     {
       "id": 1,
@@ -87,286 +86,366 @@
       "sunday": "Closed"
     }
   ],
-  "books":[
+  "books": [
     {
-      "id":"1",
-      "author":"Paulo Coelho",
-      "genre":"drama",
-      "title":"The Alchemist",
-      "img":"../resources/alchemist.jpg"
+      "id": "1",
+      "author": "Paulo Coelho",
+      "genre": "novel",
+      "title": "Alchemist",
+      "img": "../resources/alchemist.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"2",
-      "author":"Paulo Coelho",
-      "genre":"novel",
-      "title":"Aleph",
-      "img":"../resources/aleph.jpg"
+      "id": "2",
+      "author": "Paulo Coelho",
+      "genre": "novel",
+      "title": "Aleph",
+      "img": "../resources/aleph.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"3",
-      "author":"Dan Brown",
-      "genre":"mystery",
-      "title":"Angels & Demons",
-      "img":"../resources/andjeli_i_demoni.jpg"
+      "id": "3",
+      "author": "Dan Brown",
+      "genre": "mystery",
+      "title": "Angels & Demons",
+      "img": "../resources/andjeli_i_demoni.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"4",
-      "author":"Jo Nesbo",
-      "genre":"thriller",
-      "title":"The Bat",
-      "img":"../resources/bat.jpg"
+      "id": "4",
+      "author": "Jo Nesbo",
+      "genre": "thriller",
+      "title": "The Bat",
+      "img": "../resources/bat.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"5",
-      "author":"Haruki Murakami",
-      "genre":"fiction",
-      "title":"Wind Up Bird Chronicle",
-      "img":"../resources/bird.jpg"
+      "id": "5",
+      "author": "Haruki Murakami",
+      "genre": "fiction",
+      "title": "Wind Up Bird Chronicle",
+      "img": "../resources/bird.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"6",
-      "author":"Jose Saramago",
-      "genre":"thriller",
-      "title":"Blindness",
-      "img":"../resources/blindness.jpg"
+      "id": "6",
+      "author": "Jose Saramago",
+      "genre": "thriller",
+      "title": "Blindness",
+      "img": "../resources/blindness.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"7",
-      "author":"Jose Saramago",
-      "genre":"drama",
-      "title":"Cain",
-      "img":"../resources/cain.jpeg"
+      "id": "7",
+      "author": "Jose Saramago",
+      "genre": "drama",
+      "title": "Cain",
+      "img": "../resources/cain.jpeg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"8",
-      "author":"Stephen King",
-      "genre":"horror",
-      "title":"Carrie",
-      "img":"../resources/carrie.jpg"
+      "id": "8",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "Carrie",
+      "img": "../resources/carrie.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"9",
-      "author":"Dan Simons",
-      "genre":"mystery",
-      "title":"Da Vinci's Code",
-      "img":"../resources/da_vinci.jpg"
+      "id": "9",
+      "author": "Dan Simons",
+      "genre": "mystery",
+      "title": "Da Vinci's Code",
+      "img": "../resources/da_vinci.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"10",
-      "author":"Nicholas Sparks",
-      "genre":"romance",
-      "title":"Dear John",
-      "img":"../resources/dear-john.jpg"
+      "id": "10",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "Dear John",
+      "img": "../resources/dear-john.jpg",
+      "library_id": 3,
+      "value": 30.36
     },
     {
-      "id":"11",
-      "author":"Jose Saramago",
-      "genre":"fiction",
-      "title":"Death With Interruptions",
-      "img":"../resources/death.jpg"
+      "id": "11",
+      "author": "Jose Saramago",
+      "genre": "fiction",
+      "title": "Death With Interruptions",
+      "img": "../resources/death.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"12",
-      "author":"Jostein Gaarder",
-      "genre":"fiction",
-      "title":"Appelsinpiken",
-      "img":"../resources/devojka_sa_pomorandzama.jpg"
+      "id": "12",
+      "author": "Jostein Gaarder",
+      "genre": "fiction",
+      "title": "Appelsinpiken",
+      "img": "../resources/devojka_sa_pomorandzama.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"13",
-      "author":"Jose Saramago",
-      "genre":"historical",
-      "title":"Elephant's Journey",
-      "img":"../resources/elephant.jpg"
+      "id": "13",
+      "author": "Jose Saramago",
+      "genre": "historical",
+      "title": "Elephant's Journey",
+      "img": "../resources/elephant.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"14",
-      "author":"Stephen King",
-      "genre":"crime fiction",
-      "title":"End of Watch",
-      "img":"../resources/end_watch.jpg"
+      "id": "14",
+      "author": "Stephen King",
+      "genre": "crime fiction",
+      "title": "End of Watch",
+      "img": "../resources/end_watch.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"15",
-      "author":"Dan Brown",
-      "genre":"conspiracy fiction",
-      "title":"Inferno",
-      "img":"../resources/inferno.jpg"
+      "id": "15",
+      "author": "Dan Brown",
+      "genre": "conspiracy fiction",
+      "title": "Inferno",
+      "img": "../resources/inferno.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"16",
-      "author":"Stephen King",
-      "genre":"horror",
-      "title":"It",
-      "img":"../resources/it.jpg"
+      "id": "16",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "It",
+      "img": "../resources/it.jpg",
+      "library_id": 3,
+      "value": 30.36
     },
     {
-      "id":"17",
-      "author":"Dan Brown",
-      "genre":"conspiracy fiction",
-      "title":"Lost Symbol",
-      "img":"../resources/izgubljeni_simbol.jpg"
+      "id": "17",
+      "author": "Dan Brown",
+      "genre": "conspiracy fiction",
+      "title": "Lost Symbol",
+      "img": "../resources/izgubljeni_simbol.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"18",
-      "author":"Haruki Murakami",
-      "genre":"magical realism",
-      "title":"Kafka On The Shore",
-      "img":"../resources/kafka.jpg"
+      "id": "18",
+      "author": "Haruki Murakami",
+      "genre": "magical realism",
+      "title": "Kafka On The Shore",
+      "img": "../resources/kafka.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"19",
-      "author":"Nicholas Sparks",
-      "genre":"romance",
-      "title":"The Last Song",
-      "img":"../resources/last-song.jpg"
+      "id": "19",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Last Song",
+      "img": "../resources/last-song.jpg",
+      "library_id": 3,
+      "value": 30.36
     },
     {
-      "id":"20",
-      "author":"Nicholas Sparks",
-      "genre":"drama",
-      "title":"Longest Ride",
-      "img":"../resources/longest-ride.jpg"
+      "id": "20",
+      "author": "Nicholas Sparks",
+      "genre": "drama",
+      "title": "Longest Ride",
+      "img": "../resources/longest-ride.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"21",
-      "author":"Stephen King",
-      "genre":"thriller",
-      "title":"Mr Mercedes",
-      "img":"../resources/mercedes.jpg"
+      "id": "21",
+      "author": "Stephen King",
+      "genre": "thriller",
+      "title": "Mr Mercedes",
+      "img": "../resources/mercedes.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"22",
-      "author":"Stephen King",
-      "genre":"mystery",
-      "title":"Misery",
-      "img":"../resources/misery.jpg"
+      "id": "22",
+      "author": "Stephen King",
+      "genre": "mystery",
+      "title": "Misery",
+      "img": "../resources/misery.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"23",
-      "author":"Jo Nesbo",
-      "genre":"horror",
-      "title":"Nemesis",
-      "img":"../resources/nemesis.jpg"
+      "id": "23",
+      "author": "Jo Nesbo",
+      "genre": "horror",
+      "title": "Nemesis",
+      "img": "../resources/nemesis.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"24",
-      "author":"Nicholas Sparks",
-      "genre":"romance",
-      "title":"The Notebook",
-      "img":"../resources/notebook.jpg"
+      "id": "24",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Notebook",
+      "img": "../resources/notebook.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"25",
-      "author":"Jo Nesbo",
-      "genre":"crime",
-      "title":"Police",
-      "img":"../resources/police.jpg"
+      "id": "25",
+      "author": "Jo Nesbo",
+      "genre": "crime",
+      "title": "Police",
+      "img": "../resources/police.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"26",
-      "author":"Jo Nesbo",
-      "genre":"crime",
-      "title":"The Redbeast",
-      "img":"../resources/redbeast.jpg"
+      "id": "26",
+      "author": "Jo Nesbo",
+      "genre": "crime",
+      "title": "The Redbeast",
+      "img": "../resources/redbeast.jpg",
+      "library_id": 3,
+      "value": 30.36
     },
     {
-      "id":"27",
-      "author":"Jo Nesbo",
-      "genre":"crime fiction",
-      "title":"Cockroaches",
-      "img":"../resources/roach.jpg"
+      "id": "27",
+      "author": "Jo Nesbo",
+      "genre": "crime fiction",
+      "title": "Cockroaches",
+      "img": "../resources/roach.jpg",
+      "library_id": 3,
+      "value": 30.36
     },
     {
-      "id":"28",
-      "author":"Nicholas Sparks",
-      "genre":"drama",
-      "title":"Safe Haven",
-      "img":"../resources/safe-haven.jpg"
+      "id": "28",
+      "author": "Nicholas Sparks",
+      "genre": "drama",
+      "title": "Safe Haven",
+      "img": "../resources/safe-haven.jpg",
+      "library_id": 3,
+      "value": 30.36
     },
     {
-      "id":"29",
-      "author":"Stephen King",
-      "genre":"horror",
-      "title":"Salem's Lot",
-      "img":"../resources/salems_lot.jpg"
+      "id": "29",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "Salem's Lot",
+      "img": "../resources/salems_lot.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"30",
-      "author":"Nicholas Sparks",
-      "genre":"romance",
-      "title":"See me",
-      "img":"../resources/see-me.jpg"
+      "id": "30",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "See me",
+      "img": "../resources/see-me.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"31",
-      "author":"Haruki Murakami",
-      "genre":"fantasy",
-      "title":"A Wild Sheep Chase",
-      "img":"../resources/sheep.jpg"
+      "id": "31",
+      "author": "Haruki Murakami",
+      "genre": "fantasy",
+      "title": "A Wild Sheep Chase",
+      "img": "../resources/sheep.jpg",
+      "library_id": 3,
+      "value": 30.36
     },
     {
-      "id":"32",
-      "author":"Stephen King",
-      "genre":"horror",
-      "title":"The Shining",
-      "img":"../resources/shining.jpg"
+      "id": "32",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "The Shining",
+      "img": "../resources/shining.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"33",
-      "author":"Jo Nesbo",
-      "genre":"mystery",
-      "title":"The Snowman",
-      "img":"../resources/snowman.jpg"
+      "id": "33",
+      "author": "Jo Nesbo",
+      "genre": "mystery",
+      "title": "The Snowman",
+      "img": "../resources/snowman.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"34",
-      "author":"Jo Nesbo",
-      "genre":"mystery",
-      "title":"Midnight Sun",
-      "img":"../resources/sun.jpg"
+      "id": "34",
+      "author": "Jo Nesbo",
+      "genre": "mystery",
+      "title": "Midnight Sun",
+      "img": "../resources/sun.jpg",
+      "library_id": 3,
+      "value": 30.36
     },
     {
-      "id":"35",
-      "author":"Jo Nesbo",
-      "genre":"mystery",
-      "title":"The Thirst",
-      "img":"../resources/thirst.jpg"
+      "id": "35",
+      "author": "Jo Nesbo",
+      "genre": "mystery",
+      "title": "The Thirst",
+      "img": "../resources/thirst.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"36",
-      "author":"Nicholas Sparks",
-      "genre":"romance",
-      "title":"The Wedding",
-      "img":"../resources/wedding.jpg"
+      "id": "36",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Wedding",
+      "img": "../resources/wedding.jpg",
+      "library_id": 2,
+      "value": 30.36
     },
     {
-      "id":"37",
-      "author":"Haruki Murakami",
-      "genre":"fantasy",
-      "title":"Norwegian Wood",
-      "img":"../resources/woods.jpg"
+      "id": "37",
+      "author": "Haruki Murakami",
+      "genre": "fantasy",
+      "title": "Norwegian Wood",
+      "img": "../resources/woods.jpg",
+      "library_id": 3,
+      "value": 30.36
     },
     {
-      "id":"38",
-      "author":"Haruki Murakami",
-      "genre":"magical realism",
-      "title":"Kafka On The Shore",
-      "img":"../resources/kafka.jpg"
+      "id": "38",
+      "author": "Haruki Murakami",
+      "genre": "magical realism",
+      "title": "Kafka On The Shore",
+      "img": "../resources/kafka.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"39",
-      "author":"Nicholas Sparks",
-      "genre":"romance",
-      "title":"The Last Song",
-      "img":"../resources/last-song.jpg"
+      "id": "39",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Last Song",
+      "img": "../resources/last-song.jpg",
+      "library_id": 1,
+      "value": 30.36
     },
     {
-      "id":"40",
-      "author":"Nicholas Sparks",
-      "genre":"drama",
-      "title":"Longest Ride",
-      "img":"../resources/longest-ride.jpg"
+      "id": "40",
+      "author": "Nicholas Sparks",
+      "genre": "drama",
+      "title": "Longest Ride",
+      "img": "../resources/longest-ride.jpg",
+      "library_id": 2,
+      "value": 30.36
     }
   ]
 }
