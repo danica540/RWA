@@ -181,24 +181,192 @@
     },
     {
       "id":"14",
-      "author":"Paulo Coelho",
-      "genre":"novel",
-      "title":"Aleph",
-      "img":"../resources/aleph.jpg"
+      "author":"Stephen King",
+      "genre":"crime fiction",
+      "title":"End of Watch",
+      "img":"../resources/end_watch.jpg"
     },
     {
       "id":"15",
-      "author":"Paulo Coelho",
-      "genre":"novel",
-      "title":"Aleph",
-      "img":"../resources/aleph.jpg"
+      "author":"Dan Brown",
+      "genre":"conspiracy fiction",
+      "title":"Inferno",
+      "img":"../resources/inferno.jpg"
     },
     {
       "id":"16",
-      "author":"Paulo Coelho",
-      "genre":"novel",
-      "title":"Aleph",
-      "img":"../resources/aleph.jpg"
+      "author":"Stephen King",
+      "genre":"horror",
+      "title":"It",
+      "img":"../resources/it.jpg"
+    },
+    {
+      "id":"17",
+      "author":"Dan Brown",
+      "genre":"conspiracy fiction",
+      "title":"Lost Symbol",
+      "img":"../resources/izgubljeni_simbol.jpg"
+    },
+    {
+      "id":"18",
+      "author":"Haruki Murakami",
+      "genre":"magical realism",
+      "title":"Kafka On The Shore",
+      "img":"../resources/kafka.jpg"
+    },
+    {
+      "id":"19",
+      "author":"Nicholas Sparks",
+      "genre":"romance",
+      "title":"The Last Song",
+      "img":"../resources/last-song.jpg"
+    },
+    {
+      "id":"20",
+      "author":"Nicholas Sparks",
+      "genre":"drama",
+      "title":"Longest Ride",
+      "img":"../resources/longest-ride.jpg"
+    },
+    {
+      "id":"21",
+      "author":"Stephen King",
+      "genre":"thriller",
+      "title":"Mr Mercedes",
+      "img":"../resources/mercedes.jpg"
+    },
+    {
+      "id":"22",
+      "author":"Stephen King",
+      "genre":"mystery",
+      "title":"Misery",
+      "img":"../resources/misery.jpg"
+    },
+    {
+      "id":"23",
+      "author":"Jo Nesbo",
+      "genre":"horror",
+      "title":"Nemesis",
+      "img":"../resources/nemesis.jpg"
+    },
+    {
+      "id":"24",
+      "author":"Nicholas Sparks",
+      "genre":"romance",
+      "title":"The Notebook",
+      "img":"../resources/notebook.jpg"
+    },
+    {
+      "id":"25",
+      "author":"Jo Nesbo",
+      "genre":"crime",
+      "title":"Police",
+      "img":"../resources/police.jpg"
+    },
+    {
+      "id":"26",
+      "author":"Jo Nesbo",
+      "genre":"crime",
+      "title":"The Redbeast",
+      "img":"../resources/redbeast.jpg"
+    },
+    {
+      "id":"27",
+      "author":"Jo Nesbo",
+      "genre":"crime fiction",
+      "title":"Cockroaches",
+      "img":"../resources/roach.jpg"
+    },
+    {
+      "id":"28",
+      "author":"Nicholas Sparks",
+      "genre":"drama",
+      "title":"Safe Haven",
+      "img":"../resources/safe-haven.jpg"
+    },
+    {
+      "id":"29",
+      "author":"Stephen King",
+      "genre":"horror",
+      "title":"Salem's Lot",
+      "img":"../resources/salems_lot.jpg"
+    },
+    {
+      "id":"30",
+      "author":"Nicholas Sparks",
+      "genre":"romance",
+      "title":"See me",
+      "img":"../resources/see-me.jpg"
+    },
+    {
+      "id":"31",
+      "author":"Haruki Murakami",
+      "genre":"fantasy",
+      "title":"A Wild Sheep Chase",
+      "img":"../resources/sheep.jpg"
+    },
+    {
+      "id":"32",
+      "author":"Stephen King",
+      "genre":"horror",
+      "title":"The Shining",
+      "img":"../resources/shining.jpg"
+    },
+    {
+      "id":"33",
+      "author":"Jo Nesbo",
+      "genre":"mystery",
+      "title":"The Snowman",
+      "img":"../resources/snowman.jpg"
+    },
+    {
+      "id":"34",
+      "author":"Jo Nesbo",
+      "genre":"mystery",
+      "title":"Midnight Sun",
+      "img":"../resources/sun.jpg"
+    },
+    {
+      "id":"35",
+      "author":"Jo Nesbo",
+      "genre":"mystery",
+      "title":"The Thirst",
+      "img":"../resources/thirst.jpg"
+    },
+    {
+      "id":"36",
+      "author":"Nicholas Sparks",
+      "genre":"romance",
+      "title":"The Wedding",
+      "img":"../resources/wedding.jpg"
+    },
+    {
+      "id":"37",
+      "author":"Haruki Murakami",
+      "genre":"fantasy",
+      "title":"Norwegian Wood",
+      "img":"../resources/woods.jpg"
+    },
+    {
+      "id":"38",
+      "author":"Haruki Murakami",
+      "genre":"magical realism",
+      "title":"Kafka On The Shore",
+      "img":"../resources/kafka.jpg"
+    },
+    {
+      "id":"39",
+      "author":"Nicholas Sparks",
+      "genre":"romance",
+      "title":"The Last Song",
+      "img":"../resources/last-song.jpg"
+    },
+    {
+      "id":"40",
+      "author":"Nicholas Sparks",
+      "genre":"drama",
+      "title":"Longest Ride",
+      "img":"../resources/longest-ride.jpg"
     }
   ]
 }

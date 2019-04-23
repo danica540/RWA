@@ -51,22 +51,20 @@ export class LibraryCatalog {
                             <th></th>
                         </tr>`;
         this._service.getBooks().pipe(
+            flatMap(book => book),
             take(selectorValue)
-        ).subscribe(bookList => this.drawCatalogueContent(bookList, table));
+        ).subscribe(book => this.drawCatalogueContent(book, table));
         this.calculateTotalBookCount(selectorValue);
     }
 
-    drawCatalogueContent(bookList, table) {
-        let content = "";
-        bookList.forEach(book => {
-            content += `<tr>
+    drawCatalogueContent(book, table) {
+        let content = `<tr>
                         <td><img class="book-cover" src=${book.img}></img></td>
                         <td>${book.title}</td>
                         <td>${book.author}</td>
                         <td>${book.genre}</td>
                         <td><a class="book-link" id=${book.id} href="#">More</a></td>
                     </tr>`;
-        });
         table.innerHTML += content;
     }
 
@@ -85,7 +83,6 @@ export class LibraryCatalog {
                 return;
             }
             option.onclick = () => {
-                console.log("Click");
                 let table = document.getElementById("book-catalog");
                 this.drawTable(table);
             }
@@ -134,7 +131,21 @@ export class LibraryCatalog {
                             <th>Genre</th>
                             <th></th>
                         </tr>`;
-        this.drawCatalogueContent(bookList, table);
+        this.drawSearchedContent(bookList, table);
         this.calculateTotalBookCount(bookList.length);
+    }
+
+    drawSearchedContent(bookList, table) {
+        let content = "";
+        bookList.forEach(book => {
+            content += `<tr>
+                            <td><img class="book-cover" src=${book.img}></img></td>
+                            <td>${book.title}</td>
+                            <td>${book.author}</td>
+                            <td>${book.genre}</td>
+                            <td><a class="book-link" id=${book.id} href="#">More</a></td>
+                        </tr>`;
+        });
+        table.innerHTML += content;
     }
 }
