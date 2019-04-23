@@ -37,6 +37,10 @@ a{
     text-decoration: none;
 }
 
+th{
+    background-color:#bbd1f5
+}
+
 table,th,td,tr{
     border:black solid 1px;
     border-collapse: collapse;
