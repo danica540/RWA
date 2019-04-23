@@ -125,7 +125,7 @@ export class LibraryCatalog {
         this._contentDiv.innerHTML = `<h1>View Library Item</h1>
                                         <div id="all-library-item">
                                         <div>
-                                        <img src=${book.img}></img>
+                                        <img id="img-library-item" src=${book.img}></img>
                                         </div>
                                         <div id="center-library-item">
                                         <h3>${book.title}</h3>

@@ -1,13 +1,13 @@
 import { MainViewService } from "../services/main-view-service";
 import { map, flatMap, reduce } from "rxjs/operators";
 import { range } from "rxjs";
-import {Router} from "../classes/router";
+import { Router } from "../classes/router";
 
 export class MainComponent {
     constructor() {
         this._contentDiv = document.getElementById("content");
         this._service = new MainViewService();
-        this._router=new Router();
+        this._router = new Router();
     }
 
     drawMainView() {

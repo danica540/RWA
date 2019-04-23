@@ -35,6 +35,11 @@ table{
     width:900px;
 }
 
+#img-library-item{
+    width:200px;
+    height: auto;
+}
+
 a{
     color:#000000;
     text-decoration: none;
