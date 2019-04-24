@@ -53,7 +53,8 @@ export class LibraryCatalogComponent {
                         </tr>
                     </table>
                     <div>
-            <h4 id="statistic"></h4>`;
+            <h4 id="statistic"></h4>
+            <h5 id="pages"></h5>`;
         return content;
     }
 
@@ -186,7 +187,6 @@ export class LibraryCatalogComponent {
         this._patronService.getPatronByIdPromise(id)
             .then(res => { return res.json() })
             .then(user => {
-                console.log(user);
                 if (!user.id) {
                     alert("Invalid Library Card Id");
                 }
@@ -235,7 +235,6 @@ export class LibraryCatalogComponent {
     }
 
     drawSearchedBooks(bookList) {
-        console.log(bookList);
         if (bookList.length === 0) {
             this._contentDiv.innerHTML = "<h5>No search results</h5>";
         }

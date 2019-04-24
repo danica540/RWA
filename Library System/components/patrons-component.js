@@ -1,6 +1,4 @@
 import { BranchService } from "../services/branch-service";
-import { BookService } from "../services/book-service";
-import { map, flatMap, filter, scan, range } from "rxjs/operators";
 import { PatronService } from "../services/patron-services";
 
 export class PatronsComponent {

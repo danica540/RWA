@@ -12,6 +12,7 @@ export class BookService {
     }
 
     changeBookTitle(book) {
+        // delete
         console.log(book);
         return from(
             fetch(`http://localhost:3000/books`, { 
