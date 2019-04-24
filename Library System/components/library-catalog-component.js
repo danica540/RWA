@@ -190,7 +190,7 @@ export class LibraryCatalogComponent {
                     alert("Invalid Library Card Id");
                 }
                 else {
-                    alert("Your reservation was a success");
+                    alert("Your reservation was a success \n You have 24 hours to pick up your book.");
                     book.time_placed=moment().format('LLLL');
                     book.available = "false";
                     book.patron_id = user.id;

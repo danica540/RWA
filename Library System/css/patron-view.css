@@ -20,12 +20,6 @@
     flex-direction: column;
 }
 
-/* .center-patron-item{
-    display: flex;
-    flex-direction: column;
-    flex: 1 1;
-} */
-
 label{
     margin-top:2px;
     margin-bottom: 2px;

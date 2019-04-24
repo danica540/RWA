@@ -195,9 +195,7 @@
       "img": "../resources/alchemist.jpg",
       "library_id": 1,
       "value": 13.65,
-      "available": "false",
-      "patron_id": 1,
-      "time_placed": "Thursday, May 2 2018 13:30 PM"
+      "available": "true"
     },
     {
       "id": "2",
@@ -207,9 +205,7 @@
       "img": "../resources/aleph.jpg",
       "library_id": 1,
       "value": 11.54,
-      "available": "false",
-      "patron_id": "11",
-      "time_placed": "Thursday, August 2 2018 08:30 PM"
+      "available": "true"
     },
     {
       "id": "3",
@@ -219,7 +215,9 @@
       "img": "../resources/andjeli_i_demoni.jpg",
       "library_id": 2,
       "value": 11.2,
-      "available": "true"
+      "available": "false",
+      "time_placed": "Wednesday, April 24, 2019 4:06 PM",
+      "patron_id": "4"
     },
     {
       "id": "4",

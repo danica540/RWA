@@ -96,9 +96,6 @@ export class PatronsComponent {
                         </div>
                         </div>`;
         return content;
-
-        // <div class="center-patron-item">
-        // </div>
     }
 
     drawItemsCurrentlyOnHoldTemplate(patron) {
