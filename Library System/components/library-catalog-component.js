@@ -53,8 +53,7 @@ export class LibraryCatalogComponent {
                         </tr>
                     </table>
                     <div>
-            <h4 id="statistic"></h4>
-            <h5 id="pages"></h5>`;
+            <h4 id="statistic"></h4>`;
         return content;
     }
 
