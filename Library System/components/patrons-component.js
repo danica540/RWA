@@ -20,7 +20,6 @@ export class PatronsComponent {
                         <th class="patron-table">Profile Link</th>
                         <th class="patron-table">Last Name</th>
                         <th class="patron-table">First Name</th>
-                        <th class="patron-table">Library Card Id</th>
                         <th class="patron-table">Home Library</th>
                         </tr>
                         </table>
@@ -30,6 +29,7 @@ export class PatronsComponent {
         this._contentDiv.innerHTML = divContent;
         let table = document.getElementById("patrons");
         this.drawTable(table);
+        //<th class="patron-table">Library Card Id</th>
     }
 
     drawTable(table) {
@@ -48,11 +48,11 @@ export class PatronsComponent {
                             <td class="patron-table"><a id="profile-link${patron.id}" href="#"><img class="profile-pic" src="../resources/user(4).png"></img></a></td>
                             <td class="patron-table">${patron.last_name}</td>
                             <td class="patron-table">${patron.first_name}</td>
-                            <td class="patron-table">${patron.id}</td>
                             <td class="patron-table" id="library-name">${this.getHomeLibraryName(patron.library_id, libraryList)}</td>
                             </tr>`;
         table.innerHTML += innerContent;
         this.createClickEvents();
+        //<td class="patron-table">${patron.id}</td>
     }
 
     getHomeLibraryName(patronLibraryId, libraryList) {
@@ -88,7 +88,6 @@ export class PatronsComponent {
                         <div id="all-patron-item">
                         <div class="left-patron-item">
                         <h2>${patron.first_name + " " + patron.last_name}</h2>
-                        <label><span>Library Card ID: </span>${patron.id}</label>
                         <label><span>Member since: </span>${patron.member_since}</label>
                         <label><span>Home Library: </span>${libName}</label>
                         </div>
@@ -96,6 +95,7 @@ export class PatronsComponent {
                         </div>
                         </div>`;
         return content;
+        //<label><span>Library Card ID: </span>${patron.id}</label>
     }
 
     drawItemsCurrentlyOnHoldTemplate(patron) {
