@@ -101,7 +101,7 @@ export class LibraryBranches {
                             <label><span>Email: </span>${object.branch.email}</label>
                             <h4>About ${object.branch.name}</h4>
                             <p>${object.branch.about}</p>
-                            <h5>Working hours:</h5>` + this.drawWorkingHours(object.week) + `
+                            <h4>Working hours:</h4>` + this.drawWorkingHours(object.week) + `
                         </div>
                         <div id="right">
                             <label><span>Year opened: </span> ${object.branch.year_opened}</label>

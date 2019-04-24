@@ -13,6 +13,15 @@ export class LibraryCatalog {
     }
 
     drawLibraryCatalog() {
+        let content = this.returnLibraryCatalogTemplate();
+        this._contentDiv.innerHTML = content;
+        let table = document.getElementById("book-catalog");
+        this.drawTable(table);
+        this.createOptionClickEvents();
+        this.createSearchInputEvent();
+    }
+
+    returnLibraryCatalogTemplate(){
         let content = `<h1>Library Catalog</h1>
                     <div class="catalog-header">
                     <div class="header-left>
@@ -43,11 +52,7 @@ export class LibraryCatalog {
                     </table>
                     <div>
             <h4 id="statistic"></h4>`;
-        this._contentDiv.innerHTML = content;
-        let table = document.getElementById("book-catalog");
-        this.drawTable(table);
-        this.createOptionClickEvents();
-        this.createSearchInputEvent();
+            return content;
     }
 
     drawTable(table) {
@@ -122,17 +127,12 @@ export class LibraryCatalog {
     }
 
     drawSingleBookContent(libName, book) {
-        let isItAvailable = "Available";
-        let checkOut = "Reserve";
-        if (book.available === "false") {
-            isItAvailable = "Not Available";
-            checkOut = "Reserved";
-        }
-        this._contentDiv.innerHTML = this.returnSingleBookTemplate(book, libName, isItAvailable, checkOut);
-        this.changeBookButtons();
+        this._contentDiv.innerHTML = this.returnSingleBookTemplate(book, libName);
+        this.changeBookButtons(book.available);
+        this.addReserveEvent(book);
     }
 
-    returnSingleBookTemplate(book, libName, isItAvailable, checkOut) {
+    returnSingleBookTemplate(book, libName) {
         let content = `<h1>View Library Item</h1>
                         <div id="all-library-item">
                         <div>
@@ -142,8 +142,8 @@ export class LibraryCatalog {
                         <h3>${book.title}</h3>
                         <h4>${book.author}</h4>
                         <label><span>Last Location: </span>${libName}</label>
-                        <button class="library-item-button" id="available">${isItAvailable}</button>
-                        <button class="library-item-button" id="reserve">${checkOut}</button>
+                        <button class="library-item-button" id="available"></button>
+                        <input class="library-item-button" id="reserve" type = "button" >
                         </div>
                         <div id="right-library-item">
                         <label><span>Book Genre: </span>${book.genre}</label>
@@ -153,10 +153,40 @@ export class LibraryCatalog {
         return content;
     }
 
-    changeBookButtons() {
+    addReserveEvent(book) {
+        let reserveButton = document.getElementById("reserve");
+        reserveButton.onclick = () => {
+            this.getConfirmation(book);
+        }
+    }
+
+    getConfirmation(book) {
+        let retVal = confirm("Do you want to reserve this book ?");
+        if (retVal == true) {
+            alert(`You reserved ${book.title} by ${book.author}`);
+            this.changeBookButtons("false");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    changeBookButtons(available) {
+        let isItAvailable = "Available";
+        let checkOut = "Reserve";
+        if (available === "false") {
+            isItAvailable = "Not Available";
+            checkOut = "Reserved";
+        }
         let availableButton = document.getElementById("available");
         let reserveButton = document.getElementById("reserve");
-        if (availableButton.innerHTML === "Available") {
+        availableButton.innerHTML = isItAvailable;
+        reserveButton.value = checkOut;
+        this.changeButtonColors(availableButton, reserveButton, isItAvailable);
+    }
+
+    changeButtonColors(availableButton, reserveButton, isItAvailable) {
+        if (isItAvailable === "Available") {
             availableButton.style.backgroundColor = "#c93a4f";
             reserveButton.style.backgroundColor = "#3a83c9";
             reserveButton.disabled = false;
