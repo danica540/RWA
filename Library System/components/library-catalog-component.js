@@ -149,6 +149,7 @@ export class LibraryCatalogComponent {
                         <input class="library-item-button" id="reserve" type = "button" >
                         </div>
                         <div id="right-library-item">
+                        <label><span>ISBN: </span>${book.id}</label>
                         <label><span>Book Genre: </span>${book.genre}</label>
                         <label><span>Replacement Cost: </span>${book.value} €</label>
                         </div>

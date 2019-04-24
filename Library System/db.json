@@ -195,7 +195,9 @@
       "img": "../resources/alchemist.jpg",
       "library_id": 1,
       "value": 13.65,
-      "available": "true"
+      "available": "false",
+      "time_placed": "Wednesday, April 24, 2019 6:55 PM",
+      "patron_id": "3"
     },
     {
       "id": "2",

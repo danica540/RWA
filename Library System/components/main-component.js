@@ -16,34 +16,47 @@ export class MainComponent {
         this._contentDiv.innerHTML = divContent;
         let containerDiv = document.getElementById("container");
         containerDiv.innerHTML = "";
-        this._service.getMainViewItems().pipe(
-            flatMap(item => item),
-            map(item => ({
-                id: item.id,
-                img: item.img,
-                description: item.description,
-                btnContent: "VIEW " + item.title.toUpperCase()
-            }))
-        )
-            .subscribe(item => this.drawContainerElements(containerDiv, item));
+        this._service.getMainViewItemsPromise()
+            .then(res => { return res.json() })
+            .then(mainItemsList => {
+                mainItemsList.forEach(item => this.drawContainerElements(containerDiv, item))
+            })
+        // this._service.getMainViewItems().pipe(
+        //     flatMap(item => item),
+        //     map(item => ({
+        //         id: item.id,
+        //         img: item.img,
+        //         description: item.description,
+        //         btnContent: "VIEW " + item.title.toUpperCase()
+        //     }))
+        // )
+        //     .subscribe(item => this.drawContainerElements(containerDiv, item));
         this.createClickEvents();
     }
 
     drawContainerElements(containerDiv, item) {
+        let btnContent = "VIEW " + item.title.toUpperCase()
         let divContent = `<div id="${item.id}" class="container-element">
                         <img class="container-img" src=${item.img}></img>
                         <p>${item.description}</p>
-                        <p class="button">${item.btnContent}</p>
+                        <p class="button">${btnContent}</p>
                         </div>`;
         containerDiv.innerHTML += divContent;
     }
 
     createClickEvents() {
-        let numberOfContainerElements = this._service.getMainViewItems().pipe(
-            flatMap(item => item),
-            reduce((acc => acc + 1), 0)
-        );
-        numberOfContainerElements.subscribe(number => this.createContainerElementClickEvent(number));
+        //let numberOfContainerElements = 
+        this._service.getMainViewItemsPromise()
+        .then(res => { return res.json() })
+            .then(mainItemsList => {
+                let number=mainItemsList.reduce((acc => acc + 1), 0);
+                this.createContainerElementClickEvent(number)
+            })
+        // .pipe(
+        //     flatMap(item => item),
+        //     reduce((acc => acc + 1), 0)
+        // );
+        // numberOfContainerElements.subscribe(number => this.createContainerElementClickEvent(number));
     }
 
     createContainerElementClickEvent(number) {
