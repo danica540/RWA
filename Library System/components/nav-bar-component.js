@@ -10,7 +10,7 @@ export class NavBarComponent {
     onInit() {
         let divContent = `
         <ul>
-            <li class="list-item">Library System of Niš</li>
+            <li id="logo" class="list-item">Library System of Niš</li>
             <li class="separator"></li>
             <li><a class="list-item" id="link-4" href="#home">Home</a></li>
             <li><a class="list-item" id="link-1" href="#catalog">Catalog</a></li>

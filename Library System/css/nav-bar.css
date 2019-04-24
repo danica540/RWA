@@ -22,7 +22,7 @@ ul{
     flex-shrink: 1;
 }
 
-.list-item:hover {
+.list-item:hover:not(#logo) {
     background-color: #111;
 }
 

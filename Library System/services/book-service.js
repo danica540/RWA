@@ -12,12 +12,20 @@ export class BookService {
     }
 
     changeBookTitle(book) {
-        let formData=new FormData();
-        formData.append("title",book.title);
-        formData.append("author","Paulo Coelho");
-        
+        console.log(book);
         return from(
-            fetch(`http://localhost:3000/books/${book.id}`, { method: "PUT", body: formData })
+            fetch(`http://localhost:3000/books`, { 
+                method: "POST", 
+                headers: { "Content-type": "application/json;" },
+                body: `{      
+                "id": "52",
+                "author": "Paulo Coelho222",
+                "genre": "novel",
+                "title": "Alchemist",
+                "img": "../resources/alchemist.jpg",
+                "library_id": 1,
+                "value": 2040000.36}`
+            })
                 .then(res => { return res.json() })
         )
     }

@@ -122,21 +122,50 @@ export class LibraryCatalog {
     }
 
     drawSingleBookContent(libName, book) {
-        this._contentDiv.innerHTML = `<h1>View Library Item</h1>
-                                        <div id="all-library-item">
-                                        <div>
-                                        <img id="img-library-item" src=${book.img}></img>
-                                        </div>
-                                        <div id="center-library-item">
-                                        <h3>${book.title}</h3>
-                                        <h4>${book.author}</h4>
-                                        <label><span>Last Location: </span>${libName}</label>
-                                        </div>
-                                        <div id="right-library-item">
-                                        <label><span>Book Genre: </span>${book.genre}</label>
-                                        <label><span>Replacement Cost: </span>${book.value} €</label>
-                                        </div>
-                                        </div>`;
+        let isItAvailable = "Available";
+        let checkOut = "Reserve";
+        if (book.available === "false") {
+            isItAvailable = "Not Available";
+            checkOut = "Reserved";
+        }
+        this._contentDiv.innerHTML = this.returnSingleBookTemplate(book, libName, isItAvailable, checkOut);
+        this.changeBookButtons();
+    }
+
+    returnSingleBookTemplate(book, libName, isItAvailable, checkOut) {
+        let content = `<h1>View Library Item</h1>
+                        <div id="all-library-item">
+                        <div>
+                        <img id="img-library-item" src=${book.img}></img>
+                        </div>
+                        <div id="center-library-item">
+                        <h3>${book.title}</h3>
+                        <h4>${book.author}</h4>
+                        <label><span>Last Location: </span>${libName}</label>
+                        <button class="library-item-button" id="available">${isItAvailable}</button>
+                        <button class="library-item-button" id="reserve">${checkOut}</button>
+                        </div>
+                        <div id="right-library-item">
+                        <label><span>Book Genre: </span>${book.genre}</label>
+                        <label><span>Replacement Cost: </span>${book.value} €</label>
+                        </div>
+                        </div>`;
+        return content;
+    }
+
+    changeBookButtons() {
+        let availableButton = document.getElementById("available");
+        let reserveButton = document.getElementById("reserve");
+        if (availableButton.innerHTML === "Available") {
+            availableButton.style.backgroundColor = "#c93a4f";
+            reserveButton.style.backgroundColor = "#3a83c9";
+            reserveButton.disabled = false;
+        }
+        else {
+            availableButton.style.backgroundColor = "#3a83c9";
+            reserveButton.style.backgroundColor = "#c93a4f";
+            reserveButton.disabled = true;
+        }
     }
 
     createSearchInputEvent() {

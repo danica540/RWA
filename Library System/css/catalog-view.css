@@ -79,9 +79,33 @@ input, label{
 #center-library-item{
     flex: 1 1;
     text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #right-library-item{
     flex: 1 1;
     text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+#available{
+    width:150px;
+    font-size: 20px;
+}
+
+#reserve{
+    width:100px;
+    font-size: 15px;
+}
+
+.library-item-button{
+    border: none;
+    /* border-radius: 8px; */
+    color: white;
+    height: auto;
+    margin: auto;
+    padding: 10px;
 }

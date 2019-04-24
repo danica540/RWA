@@ -10,4 +10,11 @@ export class MainViewService {
         )
     }
 
+    getMainViewItemsPromise(){
+        return new Promise((resolve,reject)=>{
+            const randomNumber=Math.random()*100;
+            setTimeout(()=>resolve(fetch("http://localhost:3000/main_view/")),randomNumber); 
+        })
+    }
+
 }
