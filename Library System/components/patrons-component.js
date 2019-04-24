@@ -1,11 +1,13 @@
 import { BranchService } from "../services/branch-service";
 import { PatronService } from "../services/patron-services";
+import { BookService } from "../services/book-service";
 
 export class PatronsComponent {
     constructor() {
         this._contentDiv = document.getElementById("content");
         this._service = new PatronService();
         this._branchService = new BranchService();
+        this._bookService = new BookService();
     }
 
     drawPatronList() {
@@ -77,6 +79,7 @@ export class PatronsComponent {
             .then(res => { return res.json() })
             .then(patron => {
                 this._contentDiv.innerHTML = this.returnSinglePatronTemplate(patron, libraryName);
+                this.drawItemsCurrentlyOnHoldTemplate(patron);
             })
     }
 
@@ -89,15 +92,35 @@ export class PatronsComponent {
                         <label><span>Member since: </span>${patron.member_since}</label>
                         <label><span>Home Library: </span>${libName}</label>
                         </div>
-                        <div class="center-patron-item">
-                        <h3>Assets Currently Cheched Out</h3>
-                        
-                        </div>
-                        <div class="right-patron-item">
-                        <h3>Assets Currently On Hold</h3>
+                        <div id="right-patron-item">
                         </div>
                         </div>`;
         return content;
+
+        // <div class="center-patron-item">
+        // </div>
+    }
+
+    drawItemsCurrentlyOnHoldTemplate(patron) {
+        this._bookService.getBooksByPatronId(patron.id)
+            .then(res => { return res.json() })
+            .then(bookList => {
+                let rightDiv = document.getElementById("right-patron-item");
+                let content = `<h3>Assets Currently On Hold</h3>`;
+                if (bookList.length === 0) {
+                    content += `<label>No Books On Hold</label>`;
+                }
+                else {
+                    content += `<ul class="patron-ul">`;
+                    bookList.forEach(book => {
+                        content += `<li>
+                                ${"<span>Book: </span>" + book.title + " by " + book.author + " <span>Time placed: </span>" + book.time_placed}
+                        </li>`
+                    })
+                    content += `</ul>`;
+                }
+                rightDiv.innerHTML = content;
+            })
     }
 
 }

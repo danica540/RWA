@@ -86,7 +86,7 @@
       "sunday": "Closed"
     }
   ],
-  "patrons":[
+  "patrons": [
     {
       "id": "1",
       "last_name": "Antić",
@@ -195,7 +195,9 @@
       "img": "../resources/alchemist.jpg",
       "library_id": 1,
       "value": 13.65,
-      "available": "true"
+      "available": "false",
+      "patron_id": 1,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "2",
@@ -205,7 +207,9 @@
       "img": "../resources/aleph.jpg",
       "library_id": 1,
       "value": 11.54,
-      "available": "true"
+      "available": "false",
+      "patron_id": "11",
+      "time_placed": "Thursday, August 2 2018 08:30 PM"
     },
     {
       "id": "3",
@@ -214,7 +218,7 @@
       "title": "Angels & Demons",
       "img": "../resources/andjeli_i_demoni.jpg",
       "library_id": 2,
-      "value": 11.20,
+      "value": 11.2,
       "available": "true"
     },
     {
@@ -245,7 +249,9 @@
       "img": "../resources/blindness.jpg",
       "library_id": 1,
       "value": 23.32,
-      "available": "false"
+      "available": "false",
+      "patron_id": 2,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "7",
@@ -264,8 +270,10 @@
       "title": "Carrie",
       "img": "../resources/carrie.jpg",
       "library_id": 1,
-      "value": 13.20,
-      "available": "false"
+      "value": 13.2,
+      "available": "false",
+      "patron_id": 1,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "9",
@@ -274,7 +282,7 @@
       "title": "Da Vinci's Code",
       "img": "../resources/da_vinci.jpg",
       "library_id": 2,
-      "value": 15.20,
+      "value": 15.2,
       "available": "true"
     },
     {
@@ -295,7 +303,9 @@
       "img": "../resources/death.jpg",
       "library_id": 1,
       "value": 18.99,
-      "available": "false"
+      "available": "false",
+      "patron_id": 6,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "12",
@@ -304,7 +314,7 @@
       "title": "Appelsinpiken",
       "img": "../resources/devojka_sa_pomorandzama.jpg",
       "library_id": 2,
-      "value": 19.30,
+      "value": 19.3,
       "available": "true"
     },
     {
@@ -315,7 +325,9 @@
       "img": "../resources/elephant.jpg",
       "library_id": 1,
       "value": 12.67,
-      "available": "false"
+      "available": "false",
+      "patron_id": 3,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "14",
@@ -355,7 +367,9 @@
       "img": "../resources/izgubljeni_simbol.jpg",
       "library_id": 1,
       "value": 9.99,
-      "available": "false"
+      "available": "false",
+      "patron_id": 8,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "18",
@@ -375,7 +389,9 @@
       "img": "../resources/last-song.jpg",
       "library_id": 3,
       "value": 19.05,
-      "available": "false"
+      "available": "false",
+      "patron_id": 10,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "20",
@@ -395,7 +411,9 @@
       "img": "../resources/mercedes.jpg",
       "library_id": 1,
       "value": 16.35,
-      "available": "false"
+      "available": "false",
+      "patron_id": 11,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "22",
@@ -425,7 +443,9 @@
       "img": "../resources/notebook.jpg",
       "library_id": 1,
       "value": 3.36,
-      "available": "false"
+      "available": "false",
+      "patron_id": 14,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "25",
@@ -455,7 +475,9 @@
       "img": "../resources/roach.jpg",
       "library_id": 3,
       "value": 13.16,
-      "available": "false"
+      "available": "false",
+      "patron_id": 6,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "28",
@@ -475,7 +497,9 @@
       "img": "../resources/salems_lot.jpg",
       "library_id": 1,
       "value": 8.76,
-      "available": "false"
+      "available": "false",
+      "patron_id": 12,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "30",
@@ -494,8 +518,10 @@
       "title": "A Wild Sheep Chase",
       "img": "../resources/sheep.jpg",
       "library_id": 3,
-      "value": 14.50,
-      "available": "false"
+      "value": 14.5,
+      "available": "false",
+      "patron_id": 13,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "32",
@@ -504,7 +530,7 @@
       "title": "The Shining",
       "img": "../resources/shining.jpg",
       "library_id": 2,
-      "value": 13.30,
+      "value": 13.3,
       "available": "true"
     },
     {
@@ -525,7 +551,9 @@
       "img": "../resources/sun.jpg",
       "library_id": 3,
       "value": 9.23,
-      "available": "false"
+      "available": "false",
+      "patron_id": 10,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "35",
@@ -565,7 +593,9 @@
       "img": "../resources/kafka.jpg",
       "library_id": 1,
       "value": 10.36,
-      "available": "false"
+      "available": "false",
+      "patron_id": 14,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "39",
@@ -614,7 +644,7 @@
       "title": "Angels & Demons",
       "img": "../resources/andjeli_i_demoni.jpg",
       "library_id": 2,
-      "value": 11.20,
+      "value": 11.2,
       "available": "true"
     },
     {
@@ -664,8 +694,10 @@
       "title": "Carrie",
       "img": "../resources/carrie.jpg",
       "library_id": 1,
-      "value": 13.20,
-      "available": "false"
+      "value": 13.2,
+      "available": "false",
+      "patron_id": 2,
+      "time_placed": "Thursday, May 2 2018 13:30 PM"
     },
     {
       "id": "49",
@@ -674,7 +706,7 @@
       "title": "Da Vinci's Code",
       "img": "../resources/da_vinci.jpg",
       "library_id": 2,
-      "value": 15.20,
+      "value": 15.2,
       "available": "true"
     },
     {

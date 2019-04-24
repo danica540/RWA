@@ -10,6 +10,8 @@ export class PatronService {
         })
     }
 
+    
+
     getAllPatronsPromise() {
         return new Promise((resolve, reject) => {
             const randomNumber = Math.random() * 100;

@@ -6,6 +6,7 @@
 #all-patron-item{
     background-color: #dedee5;
     display: flex;
+    padding: 10px;
     margin-left:5%;
     margin-right:5%;
 }
@@ -14,21 +15,34 @@
     margin-left: 2%;
     text-align: left;
     display: flex;
+    flex:0.8 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* .center-patron-item{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+} */
+
+label{
+    margin-top:2px;
+    margin-bottom: 2px;
+}
+
+#right-patron-item{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
     flex:1 1;
-    display: flex;
-    flex-direction: column;
 }
 
-.center-patron-item{
-    display: flex;
-    flex-direction: column;
-    flex: 1 1;
+.patron-ul{
+    background-color: transparent;
+    list-style:circle;
 }
 
-.right-patron-item{
-    margin-right: 2%;
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    flex: 1 1;
+.patron-ul li{
+    font-weight: initial;
 }

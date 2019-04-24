@@ -4,6 +4,7 @@ import { fromEvent, range } from "rxjs";
 import { BranchService } from "../services/branch-service";
 import { PatronService } from "../services/patron-services";
 
+const moment = require('moment');
 const selectorValues = [10, 20, 30, 40, 50];
 
 export class LibraryCatalogComponent {
@@ -170,8 +171,7 @@ export class LibraryCatalogComponent {
         let onHoldBtn = document.getElementById("place-on-hold-button");
         onHoldBtn.onclick = () => {
             let patronId = document.getElementById("library-card-id-input").value;
-            this.validatePatronId(patronId);
-            this.drawSingleBook(book.id);
+            this.validatePatronId(patronId, book);
         }
     }
 
@@ -182,7 +182,7 @@ export class LibraryCatalogComponent {
         centerDiv.innerHTML = content;
     }
 
-    validatePatronId(id) {
+    validatePatronId(id, book) {
         this._patronService.getPatronByIdPromise(id)
             .then(res => { return res.json() })
             .then(user => {
@@ -191,7 +191,13 @@ export class LibraryCatalogComponent {
                 }
                 else {
                     alert("Your reservation was a success");
-                    //update book.available
+                    book.time_placed=moment().format('LLLL');
+                    book.available = "false";
+                    book.patron_id = user.id;
+                    this._service.updateBookAvailability(book)
+                        .then(res => { return res.json() })
+                        .then(book => this.drawSingleBook(book.id));
+
                 }
             })
     }

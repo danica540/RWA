@@ -11,26 +11,6 @@ export class BookService {
         )
     }
 
-    changeBookTitle(book) {
-        // delete
-        console.log(book);
-        return from(
-            fetch(`http://localhost:3000/books`, { 
-                method: "POST", 
-                headers: { "Content-type": "application/json;" },
-                body: `{      
-                "id": "52",
-                "author": "Paulo Coelho222",
-                "genre": "novel",
-                "title": "Alchemist",
-                "img": "../resources/alchemist.jpg",
-                "library_id": 1,
-                "value": 2040000.36}`
-            })
-                .then(res => { return res.json() })
-        )
-    }
-
     getBookById(id) {
         return from(
             fetch("http://localhost:3000/books/" + id)
@@ -43,5 +23,25 @@ export class BookService {
             fetch("http://localhost:3000/books?q=" + text)
                 .then(res => { return res.json() })
         )
+    }
+
+    updateBookAvailability(book) {
+        return new Promise((resolve, reject) => {
+            const randomNumber = Math.random() * 10;
+            setTimeout(() => resolve(fetch(`http://localhost:3000/books/${book.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(book)
+            }), randomNumber))
+        })
+    }
+
+    getBooksByPatronId(id) {
+        return new Promise((resolve, reject) => {
+            const randomNumber = Math.random() * 100;
+            setTimeout(() => resolve(fetch(`http://localhost:3000/books?patron_id=${id}`)), randomNumber);
+        })
     }
 }
