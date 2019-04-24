@@ -1,0 +1,34 @@
+.profile-pic{
+    width:70px;
+    height: auto;
+}
+
+#all-patron-item{
+    background-color: #dedee5;
+    display: flex;
+    margin-left:5%;
+    margin-right:5%;
+}
+
+.left-patron-item{
+    margin-left: 2%;
+    text-align: left;
+    display: flex;
+    flex:1 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.center-patron-item{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+}
+
+.right-patron-item{
+    margin-right: 2%;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+}

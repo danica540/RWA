@@ -1,6 +1,7 @@
-import { LibraryBranches } from "../components/library-branches";
+import { LibraryBranchesComponent } from "../components/library-branches-component";
 import { MainComponent } from "../components/main-component";
-import { LibraryCatalog } from "../components/library-catalog";
+import { LibraryCatalogComponent } from "../components/library-catalog-component";
+import { PatronsComponent } from "../components/patrons-component";
 
 export class Router {
     constructor() {
@@ -28,16 +29,17 @@ export class Router {
     }
 
     navigateToLibraryCatalog() {
-        let catalogLibrary = new LibraryCatalog();
+        let catalogLibrary = new LibraryCatalogComponent();
         catalogLibrary.drawLibraryCatalog();
     }
 
     navigateToLibraryPatrons() {
-
+        let patronView=new PatronsComponent();
+        patronView.drawPatronList();
     }
 
     navigateToLibraryBranches() {
-        let branchComponent = new LibraryBranches();
+        let branchComponent = new LibraryBranchesComponent();
         branchComponent.drawDefaultView();
     }
 

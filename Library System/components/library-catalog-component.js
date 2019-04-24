@@ -5,7 +5,7 @@ import { BranchService } from "../services/branch-service";
 
 const selectorValues = [10, 20, 30, 40, 50];
 
-export class LibraryCatalog {
+export class LibraryCatalogComponent {
     constructor() {
         this._contentDiv = document.getElementById("content");
         this._service = new BookService();
@@ -156,19 +156,23 @@ export class LibraryCatalog {
     addReserveEvent(book) {
         let reserveButton = document.getElementById("reserve");
         reserveButton.onclick = () => {
-            this.getConfirmation(book);
+            this.reserveBook(book);
         }
     }
 
-    getConfirmation(book) {
-        let retVal = confirm("Do you want to reserve this book ?");
-        if (retVal == true) {
+    reserveBook(book) {
+        let patronId = prompt("Enter your patron id : ", "your patron id here");  
+        if(this.validatePatronId(patronId)){
             alert(`You reserved ${book.title} by ${book.author}`);
             this.changeBookButtons("false");
-            return true;
-        } else {
-            return false;
         }
+        else{
+            alert("Wrong patron id");
+        }
+    }
+
+    validatePatronId(){
+        // DODATI
     }
 
     changeBookButtons(available) {

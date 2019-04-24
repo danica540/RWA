@@ -1,11 +1,11 @@
 import { MainComponent } from "../components/main-component";
 import { NavBarComponent } from "../components/nav-bar-component";
-import { LibraryBranches } from "../components/library-branches";
-export class MainModule{
-    constructor(){
+import { LibraryBranchesComponent } from "../components/library-branches-component";
+export class MainModule {
+    constructor() {
 
     }
-    mainView(){
+    mainView() {
         const nav = new NavBarComponent();
         nav.onInit();
         const main = new MainComponent();

@@ -2,16 +2,18 @@ import { BranchService } from "../services/branch-service";
 import { BookService } from "../services/book-service";
 import { map, flatMap, filter, scan } from "rxjs/operators";
 import { zip } from 'rxjs';
+import { PatronService } from "../services/patron-services";
 
-const moment = require('moment'); // iz node-a
+const moment = require('moment');
 
 const weekDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
-export class LibraryBranches {
+export class LibraryBranchesComponent {
     constructor() {
         this._contentDiv = document.getElementById("content");
         this._service = new BranchService();
         this._bookService = new BookService();
+        this._patronService = new PatronService();
     }
 
     drawDefaultView() {
@@ -99,13 +101,13 @@ export class LibraryBranches {
                             <label><span>Address: </span> ${object.branch.address}</label>
                             <label><span>Telephone: </span> ${object.branch.telephone}</label>
                             <label><span>Email: </span>${object.branch.email}</label>
-                            <h4>About ${object.branch.name}</h4>
+                            <h4>About ${object.branch.name}:</h4>
                             <p>${object.branch.about}</p>
                             <h4>Working hours:</h4>` + this.drawWorkingHours(object.week) + `
                         </div>
                         <div id="right">
                             <label><span>Year opened: </span> ${object.branch.year_opened}</label>
-                            <label><span>Number Of Patrons: </span> ${object.branch.year_opened}</label>
+                            <label id="number-of-patrons"></label>
                             <label id="number-of-assets"></label>
                             <label id="value-of-assets"></label>
                         </div>
@@ -113,12 +115,18 @@ export class LibraryBranches {
                     </div>`;
         this._contentDiv.innerHTML = content;
         this.updateNumberOfAssetsLabel(object.branch.id);
-        this.updateNumberOfPatronsLabel(object.branch.id); // DODATI
+        this.updateNumberOfPatronsLabel(object.branch.id);
         this.updateValueOfAssetsLabel(object.branch.id);
     }
 
     updateNumberOfPatronsLabel(libraryId) {
-        // URADITI
+        this._patronService.getAllPatronsWithLibraryIdPromise(libraryId)
+            .then(res => { return res.json() })
+            .then(patronList => {
+                let numberOfPatrons = patronList.reduce((acc => { return acc + 1 }), 0);
+                let numberOfPatronsLabel = document.getElementById("number-of-patrons");
+                numberOfPatronsLabel.innerHTML = `<span>Number Of Patrons: </span> ${numberOfPatrons}`;
+            });
     }
 
     updateValueOfAssetsLabel(libraryId) {
@@ -128,7 +136,7 @@ export class LibraryBranches {
             scan(((acc, book) => acc + book.value), 0)
         ).subscribe(valueOfBooks => {
             let valueOfAssetsLabel = document.getElementById("value-of-assets");
-            valueOfAssetsLabel.innerHTML = `<span>Value Of Assets: </span> ${valueOfBooks.toFixed(2)}`;
+            valueOfAssetsLabel.innerHTML = `<span>Value Of Assets: </span> ${valueOfBooks.toFixed(2)} €`;
         })
     }
 

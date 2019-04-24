@@ -17,4 +17,18 @@ export class BranchService {
         )
     }
 
+    getBranchByIdPromise(id){
+        return new Promise((resolve, reject) => {
+            const randomNumber = Math.random() * 10;
+            setTimeout(() => resolve(fetch(`http://localhost:3000/branches/${id}`)), randomNumber);
+        })
+    }
+
+    getBranchesPromise(){
+        return new Promise((resolve, reject) => {
+            const randomNumber = Math.random() * 10;
+            setTimeout(() => resolve(fetch(`http://localhost:3000/branches/`)), randomNumber);
+        })
+    }
+
 }

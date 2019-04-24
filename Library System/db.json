@@ -89,143 +89,101 @@
   "patrons":[
     {
       "id": "1",
-      "author": "Paulo Coelho",
-      "genre": "novel",
-      "title": "Alchemist",
-      "img": "../resources/alchemist.jpg",
-      "library_id": 1,
-      "value": 13.65,
-      "available": "true"
+      "last_name": "Antić",
+      "first_name": "Ana",
+      "library_id": 2,
+      "member_since": "02/03/2010"
     },
     {
       "id": "2",
-      "author": "Paulo Coelho",
-      "genre": "novel",
-      "title": "Aleph",
-      "img": "../resources/aleph.jpg",
+      "last_name": "Antić",
+      "first_name": "Ana",
       "library_id": 1,
-      "value": 11.54,
-      "available": "true"
+      "member_since": "02/03/2010"
     },
     {
       "id": "3",
-      "author": "Dan Brown",
-      "genre": "mystery",
-      "title": "Angels & Demons",
-      "img": "../resources/andjeli_i_demoni.jpg",
+      "last_name": "Antić",
+      "first_name": "Ana",
       "library_id": 2,
-      "value": 11.20,
-      "available": "true"
+      "member_since": "02/03/2010"
     },
     {
       "id": "4",
-      "author": "Jo Nesbo",
-      "genre": "thriller",
-      "title": "The Bat",
-      "img": "../resources/bat.jpg",
-      "library_id": 2,
-      "value": 17.77,
-      "available": "true"
+      "last_name": "Antić",
+      "first_name": "Ana",
+      "library_id": 3,
+      "member_since": "02/03/2010"
     },
     {
       "id": "5",
-      "author": "Haruki Murakami",
-      "genre": "fiction",
-      "title": "Wind Up Bird Chronicle",
-      "img": "../resources/bird.jpg",
+      "last_name": "Antić",
+      "first_name": "Ana",
       "library_id": 1,
-      "value": 18.36,
-      "available": "true"
+      "member_since": "02/03/2010"
     },
     {
       "id": "6",
-      "author": "Jose Saramago",
-      "genre": "thriller",
-      "title": "Blindness",
-      "img": "../resources/blindness.jpg",
+      "last_name": "Antić",
+      "first_name": "Ana",
       "library_id": 1,
-      "value": 23.32,
-      "available": "false"
+      "member_since": "02/03/2010"
     },
     {
       "id": "7",
-      "author": "Jose Saramago",
-      "genre": "drama",
-      "title": "Cain",
-      "img": "../resources/cain.jpeg",
-      "library_id": 1,
-      "value": 30.36,
-      "available": "true"
+      "last_name": "Antić",
+      "first_name": "Ana",
+      "library_id": 2,
+      "member_since": "02/03/2010"
     },
     {
       "id": "8",
-      "author": "Stephen King",
-      "genre": "horror",
-      "title": "Carrie",
-      "img": "../resources/carrie.jpg",
+      "last_name": "Antić",
+      "first_name": "Ana",
       "library_id": 1,
-      "value": 13.20,
-      "available": "false"
+      "member_since": "02/03/2010"
     },
     {
       "id": "9",
-      "author": "Dan Simons",
-      "genre": "mystery",
-      "title": "Da Vinci's Code",
-      "img": "../resources/da_vinci.jpg",
+      "last_name": "Antić",
+      "first_name": "Ana",
       "library_id": 2,
-      "value": 15.20,
-      "available": "true"
+      "member_since": "02/03/2010"
     },
     {
       "id": "10",
-      "author": "Nicholas Sparks",
-      "genre": "romance",
-      "title": "Dear John",
-      "img": "../resources/dear-john.jpg",
+      "last_name": "Antić",
+      "first_name": "Ana",
       "library_id": 3,
-      "value": 7.45,
-      "available": "true"
+      "member_since": "02/03/2010"
     },
     {
       "id": "11",
-      "author": "Jose Saramago",
-      "genre": "fiction",
-      "title": "Death With Interruptions",
-      "img": "../resources/death.jpg",
-      "library_id": 1,
-      "value": 18.99,
-      "available": "false"
+      "last_name": "Antić",
+      "first_name": "Ana",
+      "library_id": 2,
+      "member_since": "02/03/2010"
     },
     {
       "id": "12",
-      "author": "Jostein Gaarder",
-      "genre": "fiction",
-      "title": "Appelsinpiken",
-      "img": "../resources/devojka_sa_pomorandzama.jpg",
-      "library_id": 2,
-      "value": 19.30,
-      "available": "true"
+      "last_name": "Antić",
+      "first_name": "Ana",
+      "library_id": 3,
+      "member_since": "02/03/2010"
     },
     {
       "id": "13",
-      "author": "Jose Saramago",
-      "genre": "historical",
-      "title": "Elephant's Journey",
-      "img": "../resources/elephant.jpg",
-      "library_id": 1,
-      "value": 12.67,
-      "available": "false"
+      "last_name": "Antić",
+      "first_name": "Ana",
+      "library_id": 2,
+      "member_since": "02/03/2010"
     },
     {
       "id": "14",
-      "author": "Stephen King",
-      "genre": "crime fiction",
-      "title": "End of Watch",
-      "img": "../resources/end_watch.jpg",
+      "last_name": "Antić",
+      "first_name": "Ana",
       "library_id": 1,
-      "value": 18.65,
-      "available": "true"
+      "member_since": "02/03/2010"
     }
   ],
   "books": [
