@@ -110,3 +110,18 @@ input, label{
     margin: auto;
     padding: 10px;
 }
+
+#library-card-id-input{
+    margin-top:10px;
+    margin-bottom:10px;
+    height: 25px;
+    width: 150px;
+}
+
+#place-on-hold-button{
+    padding: 10px;
+    border: none;
+    background-color: #4cb597;
+    font-size: 15px;
+    color:white;
+}

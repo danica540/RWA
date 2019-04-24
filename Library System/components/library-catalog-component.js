@@ -2,6 +2,7 @@ import { BookService } from "../services/book-service";
 import { flatMap, take, scan, map, debounceTime, switchMap, filter } from "rxjs/operators";
 import { fromEvent, range } from "rxjs";
 import { BranchService } from "../services/branch-service";
+import { PatronService } from "../services/patron-services";
 
 const selectorValues = [10, 20, 30, 40, 50];
 
@@ -10,6 +11,7 @@ export class LibraryCatalogComponent {
         this._contentDiv = document.getElementById("content");
         this._service = new BookService();
         this._branchService = new BranchService();
+        this._patronService = new PatronService();
     }
 
     drawLibraryCatalog() {
@@ -21,7 +23,7 @@ export class LibraryCatalogComponent {
         this.createSearchInputEvent();
     }
 
-    returnLibraryCatalogTemplate(){
+    returnLibraryCatalogTemplate() {
         let content = `<h1>Library Catalog</h1>
                     <div class="catalog-header">
                     <div class="header-left>
@@ -52,7 +54,7 @@ export class LibraryCatalogComponent {
                     </table>
                     <div>
             <h4 id="statistic"></h4>`;
-            return content;
+        return content;
     }
 
     drawTable(table) {
@@ -161,18 +163,38 @@ export class LibraryCatalogComponent {
     }
 
     reserveBook(book) {
-        let patronId = prompt("Enter your patron id : ", "your patron id here");  
-        if(this.validatePatronId(patronId)){
-            alert(`You reserved ${book.title} by ${book.author}`);
-            this.changeBookButtons("false");
-        }
-        else{
-            alert("Wrong patron id");
+        let rightDiv = document.getElementById("right-library-item");
+        rightDiv.innerHTML = ``;
+        let centerDiv = document.getElementById("center-library-item");
+        this.drawIdInput(centerDiv);
+        let onHoldBtn = document.getElementById("place-on-hold-button");
+        onHoldBtn.onclick = () => {
+            let patronId = document.getElementById("library-card-id-input").value;
+            this.validatePatronId(patronId);
+            this.drawSingleBook(book.id);
         }
     }
 
-    validatePatronId(){
-        // DODATI
+    drawIdInput(centerDiv) {
+        let content = `<span>Enter Your Library Card Id</span>
+                    <input id="library-card-id-input" type="text">
+                    <button id="place-on-hold-button">Place on hold</button>`;
+        centerDiv.innerHTML = content;
+    }
+
+    validatePatronId(id) {
+        this._patronService.getPatronByIdPromise(id)
+            .then(res => { return res.json() })
+            .then(user => {
+                console.log(user);
+                if (!user.id) {
+                    alert("Invalid Library Card Id");
+                }
+                else {
+                    alert("Your reservation was a success");
+                    //update book.available
+                }
+            })
     }
 
     changeBookButtons(available) {

@@ -41,7 +41,6 @@ export class PatronsComponent {
                     this.drawPatronTableRow(patron, table, values[1]);
                 });
             });
-        //this.createClickEvents();
     }
 
     drawPatronTableRow(patron, table, libraryList) {
