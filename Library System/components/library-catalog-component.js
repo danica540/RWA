@@ -19,7 +19,9 @@ export class LibraryCatalogComponent {
         let content = this.returnLibraryCatalogTemplate();
         this._contentDiv.innerHTML = content;
         let table = document.getElementById("book-catalog");
-        this.drawTable(table);
+        let selector = document.getElementById("number-of-books");
+        let selectorValue = selector.value;
+        this.drawTable(table, selectorValue);
         this.createOptionClickEvents();
         this.createSearchInputEvent();
     }
@@ -45,22 +47,21 @@ export class LibraryCatalogComponent {
                     </div>
                     <div id="center-table">
                     <table id="book-catalog">
-                    <tr>
-                            <th>Book Cover</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Genre</th>
-                            <th></th>
-                        </tr>
+                    
                     </table>
                     <div>
             <h4 id="statistic"></h4>`;
         return content;
     }
 
-    drawTable(table) {
-        let selector = document.getElementById("number-of-books");
-        let selectorValue = selector.value;
+    drawTable(table, selectorValue) {
+        table.innerHTML = `<tr>
+                            <th>Book Cover</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Genre</th>
+                            <th></th>
+                        </tr>`;
         this._service.getBooks().pipe(
             flatMap(book => book),
             take(selectorValue)
@@ -102,7 +103,7 @@ export class LibraryCatalogComponent {
             }
             option.onclick = () => {
                 let table = document.getElementById("book-catalog");
-                this.drawTable(table);
+                this.drawTable(table, option.value);
             }
         })
     }
@@ -162,6 +163,13 @@ export class LibraryCatalogComponent {
         reserveButton.onclick = () => {
             this.reserveBook(book);
         }
+
+        fromEvent(document,"keypress").subscribe(ev=>{
+            if (ev.keyCode === 13){
+                console.log("enter");
+                this.reserveBook(book);
+            }
+        });
     }
 
     reserveBook(book) {
@@ -192,7 +200,7 @@ export class LibraryCatalogComponent {
                 }
                 else {
                     alert("Your reservation was a success \n You have 24 hours to pick up your book.");
-                    book.time_placed=moment().format('LLLL');
+                    book.time_placed = moment().format('LLLL');
                     book.available = "false";
                     book.patron_id = user.id;
                     this._service.updateBookAvailability(book)
