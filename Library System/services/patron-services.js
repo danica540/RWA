@@ -1,4 +1,5 @@
 import { from } from "rxjs";
+
 export class PatronService {
     constructor() {
     }
@@ -9,8 +10,6 @@ export class PatronService {
             setTimeout(() => resolve(fetch(`http://localhost:3000/patrons?library_id=${id}`)), randomNumber);
         })
     }
-
-    
 
     getAllPatronsPromise() {
         return new Promise((resolve, reject) => {

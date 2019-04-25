@@ -40,3 +40,7 @@ label{
 .patron-ul li{
     font-weight: initial;
 }
+
+#warning{
+    color: #bd1d1d;
+}

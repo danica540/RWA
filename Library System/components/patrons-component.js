@@ -1,6 +1,8 @@
 import { BranchService } from "../services/branch-service";
 import { PatronService } from "../services/patron-services";
 import { BookService } from "../services/book-service";
+import { map, debounceTime, switchMap } from "rxjs/operators";
+import { fromEvent, range } from "rxjs";
 
 export class PatronsComponent {
     constructor() {
@@ -10,7 +12,7 @@ export class PatronsComponent {
         this._bookService = new BookService();
     }
 
-    returnPatronViewTemplate(){
+    returnPatronViewTemplate() {
         let divContent = `<h1>Patron List</h1>
                         <div id="table-div">
                         <div class="side"></div>
@@ -46,7 +48,7 @@ export class PatronsComponent {
             });
     }
 
-    returnSinglePatronRow(patron,libraryList){
+    returnSinglePatronRow(patron, libraryList) {
         let innerContent = `<tr class="patron-table">
                             <td class="patron-table"><a id="profile-link${patron.id}" href="#"><img class="profile-pic" src="../resources/user(4).png"></img></a></td>
                             <td class="patron-table">${patron.last_name}</td>
@@ -57,7 +59,7 @@ export class PatronsComponent {
     }
 
     drawPatronTableRow(patron, table, libraryList) {
-        table.innerHTML += this.returnSinglePatronRow(patron,libraryList);
+        table.innerHTML += this.returnSinglePatronRow(patron, libraryList);
         this.createClickEvents();
     }
 
@@ -107,6 +109,10 @@ export class PatronsComponent {
         this._bookService.getBooksByPatronId(patron.id)
             .then(res => { return res.json() })
             .then(bookList => {
+                let warning = " ";
+                if (bookList.length === 3) {
+                    warning = "<h3 id='warning'>You can't reserve any more books.</h3>"
+                }
                 let rightDiv = document.getElementById("right-patron-item");
                 let content = `<h3>Assets Currently On Hold</h3>`;
                 if (bookList.length === 0) {
@@ -121,7 +127,7 @@ export class PatronsComponent {
                     })
                     content += `</ul>`;
                 }
-                rightDiv.innerHTML = content;
+                rightDiv.innerHTML = (content + warning);
             })
     }
 

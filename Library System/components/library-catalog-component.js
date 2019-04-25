@@ -166,12 +166,12 @@ export class LibraryCatalogComponent {
             this.reserveBook(book);
         }
 
-        fromEvent(document, "keypress").subscribe(ev => {
-            if (ev.keyCode === 13) {
-                console.log("enter");
-                this.reserveBook(book);
-            }
-        });
+        // fromEvent(document, "keypress").subscribe(ev => {
+        //     if (ev.keyCode === 13) {
+        //         console.log("enter");
+        //         this.reserveBook(book);
+        //     }
+        // });
     }
 
     reserveBook(book) {
@@ -201,16 +201,30 @@ export class LibraryCatalogComponent {
                     alert("Invalid Library Card Id");
                 }
                 else {
-                    alert("Your reservation was a success. \nYou have 24 hours to pick up your book.");
-                    book.time_placed = moment().format('LLLL');
-                    book.available = "false";
-                    book.patron_id = user.id;
-                    this._service.updateBookAvailability(book)
+                    this._service.getBooksByPatronId(id)
                         .then(res => { return res.json() })
-                        .then(book => this.drawSingleBook(book.id));
-
+                        .then(bookList => {
+                            if (bookList.length === 3) {
+                                alert("You can't reserve any more books.\nYou can only have 3 books on hold at the same time!");
+                                this.drawSingleBook(book.id)
+                                return;
+                            }
+                            else {
+                                this.updateBook(book, user);
+                            }
+                        });
                 }
             })
+    }
+
+    updateBook(book, user) {
+        alert("Your reservation was a success. \nYou have 24 hours to pick up your book.");
+        book.time_placed = moment().format('LLLL');
+        book.available = "false";
+        book.patron_id = user.id;
+        this._service.updateBookAvailability(book)
+            .then(res => { return res.json() })
+            .then(book => this.drawSingleBook(book.id));
     }
 
     changeBookButtons(available) {
@@ -252,7 +266,7 @@ export class LibraryCatalogComponent {
 
     drawSearchedBooks(bookList) {
         if (bookList.length === 0) {
-            this._contentDiv.innerHTML = "<h5>No search results</h5>";
+            this._contentDiv.innerHTML = "<h5>No search results found</h5>";
         }
         let table = document.getElementById("book-catalog");
         table.innerHTML = this.returnTableHeaderTemplate();
