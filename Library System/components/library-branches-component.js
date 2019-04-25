@@ -53,61 +53,6 @@ export class LibraryBranchesComponent {
         });
     }
 
-    isSunday(day) {
-        return (day === weekDays[6])
-    }
-
-    isSaturday(day) {
-        return (day === weekDays[5]);
-    }
-
-    isClosed(openingHours) {
-        return (openingHours === "Close");
-    }
-
-    returnMondayWorkingHours(object) {
-        const mondayOpeningHours = object.week[weekDays[0]].substring(0, 5);
-        let mondayWorkingHours = `<h5>Opens Monday at ${mondayOpeningHours} AM</h5>`;
-        return mondayWorkingHours;
-    }
-
-    isPassClosingHours(closingHours, currentTime) {
-        return (currentTime > closingHours);
-    }
-
-    isPreOpeningHours(openingHours, currentTime) {
-        return (currentTime < openingHours);
-    }
-
-    isSaturdayNonWorkingDay(object) {
-        return (object.week[weekDays[5]].substring(0, 5) === "Close");
-    }
-
-    isFriday(day) {
-        return (day === weekDays[4]);
-    }
-
-    returnLibraryIsItOpenObj(closingHours, currentTime, openingHours, libraryIsItOpenObj) {
-        if (this.isPassClosingHours(closingHours, currentTime)) {
-            libraryIsItOpenObj.whenItOpens = `<h5>Opens Tomorrow at ${openingHours} AM</h5>`;
-        }
-        else {
-            libraryIsItOpenObj = this.isPastOrPreWorkingHours(libraryIsItOpenObj, openingHours, currentTime, closingHours);
-        }
-        return libraryIsItOpenObj;
-    }
-
-    isPastOrPreWorkingHours(libraryIsItOpenObj, openingHours, currentTime, closingHours) {
-        if (!this.isPassClosingHours(closingHours, currentTime) && !this.isPreOpeningHours(openingHours, currentTime)) {
-            libraryIsItOpenObj.isItOpen = "Yes ";
-            libraryIsItOpenObj.whenItOpens = `<h5>Closes Today at ${closingHours} AM</h5>`;
-        }
-        else if (this.isPreOpeningHours(openingHours, currentTime)) {
-            libraryIsItOpenObj.whenItOpens = `<h5>Opens Today at ${openingHours} AM</h5>`;
-        }
-        return libraryIsItOpenObj;
-    }
-
     isLibraryOpen(object) {
         let day = moment().format('dddd');
         day = day.charAt(0).toLowerCase() + day.slice(1);
@@ -252,5 +197,60 @@ export class LibraryBranchesComponent {
         })
         content += `</ul>`;
         return content;
+    }
+
+    isSunday(day) {
+        return (day === weekDays[6])
+    }
+
+    isSaturday(day) {
+        return (day === weekDays[5]);
+    }
+
+    isClosed(openingHours) {
+        return (openingHours === "Close");
+    }
+
+    returnMondayWorkingHours(object) {
+        const mondayOpeningHours = object.week[weekDays[0]].substring(0, 5);
+        let mondayWorkingHours = `<h5>Opens Monday at ${mondayOpeningHours} AM</h5>`;
+        return mondayWorkingHours;
+    }
+
+    isPassClosingHours(closingHours, currentTime) {
+        return (currentTime > closingHours);
+    }
+
+    isPreOpeningHours(openingHours, currentTime) {
+        return (currentTime < openingHours);
+    }
+
+    isSaturdayNonWorkingDay(object) {
+        return (object.week[weekDays[5]].substring(0, 5) === "Close");
+    }
+
+    isFriday(day) {
+        return (day === weekDays[4]);
+    }
+
+    returnLibraryIsItOpenObj(closingHours, currentTime, openingHours, libraryIsItOpenObj) {
+        if (this.isPassClosingHours(closingHours, currentTime)) {
+            libraryIsItOpenObj.whenItOpens = `<h5>Opens Tomorrow at ${openingHours} AM</h5>`;
+        }
+        else {
+            libraryIsItOpenObj = this.isPastOrPreWorkingHours(libraryIsItOpenObj, openingHours, currentTime, closingHours);
+        }
+        return libraryIsItOpenObj;
+    }
+
+    isPastOrPreWorkingHours(libraryIsItOpenObj, openingHours, currentTime, closingHours) {
+        if (!this.isPassClosingHours(closingHours, currentTime) && !this.isPreOpeningHours(openingHours, currentTime)) {
+            libraryIsItOpenObj.isItOpen = "Yes ";
+            libraryIsItOpenObj.whenItOpens = `<h5>Closes Today at ${closingHours} AM</h5>`;
+        }
+        else if (this.isPreOpeningHours(openingHours, currentTime)) {
+            libraryIsItOpenObj.whenItOpens = `<h5>Opens Today at ${openingHours} AM</h5>`;
+        }
+        return libraryIsItOpenObj;
     }
 }
