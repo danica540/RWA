@@ -10,7 +10,7 @@ export class MainComponent {
     }
 
     drawMainView() {
-        let divContent = `<h1>Welcome to Library System of Niš</h1>
+        let divContent = `<h1>Welcome to The Library System of Niš</h1>
                             <div id="container"></div`;
         this._contentDiv.innerHTML = divContent;
         let containerDiv = document.getElementById("container");
