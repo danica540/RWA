@@ -1,4 +1,3 @@
-import { from } from "rxjs";
 
 export class PatronService {
     constructor() {

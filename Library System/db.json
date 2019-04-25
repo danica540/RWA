@@ -281,7 +281,9 @@
       "img": "../resources/da_vinci.jpg",
       "library_id": 2,
       "value": 15.2,
-      "available": "true"
+      "available": "false",
+      "time_placed": "Thursday, April 25, 2019 5:56 PM",
+      "patron_id": "8"
     },
     {
       "id": "10",
@@ -717,9 +719,7 @@
       "img": "../resources/hp2.jpg",
       "library_id": 3,
       "value": 7.45,
-      "available": "false",
-      "time_placed": "Thursday, April 25, 2019 12:25 PM",
-      "patron_id": "3"
+      "available": "true"
     },
     {
       "id": "51",

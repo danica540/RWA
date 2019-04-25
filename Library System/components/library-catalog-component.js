@@ -165,13 +165,6 @@ export class LibraryCatalogComponent {
         reserveButton.onclick = () => {
             this.reserveBook(book);
         }
-
-        // fromEvent(document, "keypress").subscribe(ev => {
-        //     if (ev.keyCode === 13) {
-        //         console.log("enter");
-        //         this.reserveBook(book);
-        //     }
-        // });
     }
 
     reserveBook(book) {
@@ -257,7 +250,7 @@ export class LibraryCatalogComponent {
     createSearchInputEvent() {
         this._searchInput = document.getElementById("search-input");
         fromEvent(this._searchInput, "input").pipe(
-            debounceTime(1000),
+            debounceTime(500),
             map(ev => ev.target.value),
             switchMap(text => this._service.getBookBySearchValue(text))
         )
