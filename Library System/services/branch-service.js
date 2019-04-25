@@ -1,4 +1,5 @@
 import { from } from "rxjs";
+
 export class BranchService {
     constructor() {
     }
@@ -15,13 +16,6 @@ export class BranchService {
             fetch("http://localhost:3000/week_hours/")
                 .then(res => { return res.json() })
         )
-    }
-
-    getBranchesPromise(){
-        return new Promise((resolve, reject) => {
-            const randomNumber = Math.random() * 10;
-            setTimeout(() => resolve(fetch(`http://localhost:3000/branches/`)), randomNumber);
-        })
     }
 
 }

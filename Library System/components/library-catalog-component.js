@@ -95,6 +95,7 @@ export class LibraryCatalogComponent {
     }
 
     createOptionClickEvents() {
+        document.getElementById("pages").style.display="flex";
         selectorValues.forEach(val => {
             let option = document.getElementById(val);
             if (!option) {
@@ -258,6 +259,7 @@ export class LibraryCatalogComponent {
         table.innerHTML = this.returnTableHeaderTemplate();
         this.drawSearchedContent(bookList, table);
         this.updateStatisticsLabel(bookList.length);
+        document.getElementById("pages").style.display="none";
     }
 
     drawSearchedContent(bookList, table) {
@@ -269,6 +271,7 @@ export class LibraryCatalogComponent {
     }
 
     createPageBtnClickEvents() {
+        document.getElementById("pages").style.display="flex";
         let nextBtn = document.getElementById("next");
         let previousBtn = document.getElementById("previous");
         let ofset = parseInt(document.getElementById("page-number").innerHTML);
