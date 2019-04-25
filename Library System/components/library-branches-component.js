@@ -16,7 +16,7 @@ export class LibraryBranchesComponent {
         this._patronService = new PatronService();
     }
 
-    returnDefaultViewTemplate(){
+    returnDefaultViewTemplate() {
         let divContent = `<h1>Libraries of Niš</h1>
                         <div id="table-div">
                         <div class="side"></div>
@@ -53,18 +53,103 @@ export class LibraryBranchesComponent {
         });
     }
 
+    isSunday(day) {
+        return (day === weekDays[6])
+    }
+
+    isSaturday(day) {
+        return (day === weekDays[5]);
+    }
+
+    isClosed(openingHours) {
+        return (openingHours === "Close");
+    }
+
+    returnMondayWorkingHours(object) {
+        const mondayOpeningHours = object.week[weekDays[0]].substring(0, 5);
+        let mondayWorkingHours = `<h5>Opens Monday at ${mondayOpeningHours} AM</h5>`;
+        return mondayWorkingHours;
+    }
+
+    isPassClosingHours(closingHours, currentTime) {
+        return (currentTime > closingHours);
+    }
+
+    isPreOpeningHours(openingHours, currentTime) {
+        return (currentTime < openingHours);
+    }
+
+    isSaturdayNonWorkingDay(object) {
+        return (object.week[weekDays[5]].substring(0, 5) === "Close");
+    }
+
+    isFriday(day) {
+        return (day === weekDays[4]);
+    }
+
+    returnLibraryIsItOpenObj(closingHours, currentTime, openingHours, libraryIsItOpenObj) {
+        if (this.isPassClosingHours(closingHours, currentTime)) {
+            libraryIsItOpenObj.whenItOpens = `<h5>Opens Tomorrow at ${openingHours} AM</h5>`;
+        }
+        else {
+            libraryIsItOpenObj = this.isPastOrPreWorkingHours(libraryIsItOpenObj, openingHours, currentTime, closingHours);
+        }
+        return libraryIsItOpenObj;
+    }
+
+    isPastOrPreWorkingHours(libraryIsItOpenObj, openingHours, currentTime, closingHours) {
+        if (!this.isPassClosingHours(closingHours, currentTime) && !this.isPreOpeningHours(openingHours, currentTime)) {
+            libraryIsItOpenObj.isItOpen = "Yes ";
+            libraryIsItOpenObj.whenItOpens = `<h5>Closes Today at ${closingHours} AM</h5>`;
+        }
+        else if (this.isPreOpeningHours(openingHours, currentTime)) {
+            libraryIsItOpenObj.whenItOpens = `<h5>Opens Today at ${openingHours} AM</h5>`;
+        }
+        return libraryIsItOpenObj;
+    }
+
     isLibraryOpen(object) {
         let day = moment().format('dddd');
         day = day.charAt(0).toLowerCase() + day.slice(1);
-        let libraryDayTime = object.week[day];
+        const libraryDayTime = object.week[day];
         let currentTime = moment().format('HH:mm');
-        let closingHours = libraryDayTime.substr(libraryDayTime.length - 5);
-        let openingHours = libraryDayTime.substring(0, 5);
-        let isItOpen = "No";
-        if (currentTime < closingHours && currentTime > openingHours) {
-            isItOpen = "Yes";
+        const closingHours = libraryDayTime.substr(libraryDayTime.length - 5);
+        const openingHours = libraryDayTime.substring(0, 5);
+
+        let libraryIsItOpenObj = {
+            isItOpen: "No",
+            whenItOpens: ""
         }
-        return isItOpen;
+
+        if (this.isSunday(day)) {
+            libraryIsItOpenObj.whenItOpens = this.returnMondayWorkingHours(object);
+        }
+        else if (this.isSaturday(day)) {
+            if (this.isClosed(openingHours)) {
+                libraryIsItOpenObj.whenItOpens = this.returnMondayWorkingHours(object);
+            }
+            else {
+                if (this.isPassClosingHours(closingHours, currentTime)) {
+                    libraryIsItOpenObj.whenItOpens = this.returnMondayWorkingHours(object);
+                }
+                else {
+                    libraryIsItOpenObj = this.isPastOrPreWorkingHours(libraryIsItOpenObj, openingHours, currentTime, closingHours);
+                }
+            }
+
+        }
+        else if (this.isFriday(day)) {
+            if (this.isSaturdayNonWorkingDay(object) || this.isPassClosingHours(closingHours, currentTime)) {
+                libraryIsItOpenObj.whenItOpens = this.returnMondayWorkingHours(object);
+            }
+            else {
+                libraryIsItOpenObj = this.returnLibraryIsItOpenObj(closingHours, currentTime, openingHours, libraryIsItOpenObj);
+            }
+        }
+        else {
+            libraryIsItOpenObj = this.returnLibraryIsItOpenObj(closingHours, currentTime, openingHours, libraryIsItOpenObj);
+        }
+        return (libraryIsItOpenObj.isItOpen + libraryIsItOpenObj.whenItOpens);
     }
 
     drawTableContent(object, table) {
@@ -96,7 +181,7 @@ export class LibraryBranchesComponent {
         });
     }
 
-    returnSingleBranchTemplate(object){
+    returnSingleBranchTemplate(object) {
         let content = `<div id="single-branch">
                         <img class="branch-img" src=${object.branch.img}></img>
                         <div id="all">
