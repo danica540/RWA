@@ -131,3 +131,22 @@ input, label{
     font-size: 15px;
     color:white;
 }
+
+#pages{
+    display: flex;
+    margin-left: 45%;
+    margin-bottom: 10px;
+}
+
+.page-btn{
+    background-color: white;
+    border: none;
+    width:65px;
+    height: 28px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.page-btn:disabled{
+    color: #d1d1d1;
+}

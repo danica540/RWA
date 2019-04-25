@@ -11,6 +11,13 @@ export class BookService {
         )
     }
 
+    getBooksPromise() {
+        return new Promise((resolve, reject) => {
+            const randomNumber = Math.random() * 10;
+            setTimeout(() => resolve(fetch("http://localhost:3000/books/")), randomNumber);
+        })
+    }
+
     getBookById(id) {
         return from(
             fetch("http://localhost:3000/books/" + id)
@@ -44,4 +51,6 @@ export class BookService {
             setTimeout(() => resolve(fetch(`http://localhost:3000/books?patron_id=${id}`)), randomNumber);
         })
     }
+
+
 }

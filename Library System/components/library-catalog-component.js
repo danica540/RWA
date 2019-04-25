@@ -50,7 +50,12 @@ export class LibraryCatalogComponent {
                     
                     </table>
                     <div>
-            <h4 id="statistic"></h4>`;
+            <h4 id="statistic"></h4>
+            <div id="pages">
+            <button id="previous" class="page-btn">Previous</button>
+            <label><span id="page-number">1</span></label>
+            <button id="next" class="page-btn">Next</button>
+            </div>`;
         return content;
     }
 
@@ -66,7 +71,8 @@ export class LibraryCatalogComponent {
             flatMap(book => book),
             take(selectorValue)
         ).subscribe(book => this.drawCatalogueContent(book, table, selectorValue));
-        this.calculateTotalBookCount(selectorValue);
+        this.updateStatisticsLabel(selectorValue);
+        this.createPageBtnClickEvents();
     }
 
     returnBookContent(book) {
@@ -87,7 +93,7 @@ export class LibraryCatalogComponent {
     }
 
 
-    calculateTotalBookCount(selectorValue) {
+    updateStatisticsLabel(selectorValue) {
         let stat = document.getElementById("statistic");
         this._service.getBooks().pipe(
             flatMap(book => book),
@@ -164,8 +170,8 @@ export class LibraryCatalogComponent {
             this.reserveBook(book);
         }
 
-        fromEvent(document,"keypress").subscribe(ev=>{
-            if (ev.keyCode === 13){
+        fromEvent(document, "keypress").subscribe(ev => {
+            if (ev.keyCode === 13) {
                 console.log("enter");
                 this.reserveBook(book);
             }
@@ -261,7 +267,7 @@ export class LibraryCatalogComponent {
                             <th></th>
                         </tr>`;
         this.drawSearchedContent(bookList, table);
-        this.calculateTotalBookCount(bookList.length);
+        this.updateStatisticsLabel(bookList.length);
     }
 
     drawSearchedContent(bookList, table) {
@@ -270,5 +276,56 @@ export class LibraryCatalogComponent {
             content += this.returnBookContent(book);
         });
         table.innerHTML += content;
+    }
+
+    createPageBtnClickEvents() {
+        let nextBtn = document.getElementById("next");
+        let previousBtn = document.getElementById("previous");
+        let ofset = parseInt(document.getElementById("page-number").innerHTML);
+        let pageSize = parseInt(document.getElementById("number-of-books").value);
+
+        this.updateNextBtnAppearance(ofset, pageSize, nextBtn);
+        this.updatePreviousBtnAppearance(ofset, previousBtn);
+        
+        nextBtn.onclick = () => {
+            this.createNextClickEvent();
+        }
+        previousBtn.onclick = () => {
+            this.createPreviousClickEvent();
+        }
+    }
+
+    updatePreviousBtnAppearance(ofset, previousBtn) {
+        if (ofset === 1) {
+            previousBtn.disabled = true;
+        }
+        else {
+            previousBtn.disabled = false;
+        }
+    }
+
+    updateNextBtnAppearance(ofset, pageSize, nextBtn) {
+        this._service.getBooksPromise()
+            .then(res => { return res.json() })
+            .then(bookList => {
+                return bookList.reduce((acc => acc + 1), 0);
+            })
+            .then(totalBookCount => {
+                if (totalBookCount <= ofset * pageSize) {
+                    nextBtn.disabled = true;
+                }
+                else {
+                    nextBtn.disabled = false;
+                }
+            });
+    }
+
+    createPreviousClickEvent() {
+
+
+    }
+
+    createNextClickEvent() {
+
     }
 }

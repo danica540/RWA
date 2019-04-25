@@ -20,18 +20,8 @@ export class MainComponent {
             .then(res => { return res.json() })
             .then(mainItemsList => {
                 mainItemsList.forEach(item => this.drawContainerElements(containerDiv, item))
-            })
-        // this._service.getMainViewItems().pipe(
-        //     flatMap(item => item),
-        //     map(item => ({
-        //         id: item.id,
-        //         img: item.img,
-        //         description: item.description,
-        //         btnContent: "VIEW " + item.title.toUpperCase()
-        //     }))
-        // )
-        //     .subscribe(item => this.drawContainerElements(containerDiv, item));
-        this.createClickEvents();
+            });
+        // this.createClickEvents();
     }
 
     drawContainerElements(containerDiv, item) {
@@ -42,21 +32,16 @@ export class MainComponent {
                         <p class="button">${btnContent}</p>
                         </div>`;
         containerDiv.innerHTML += divContent;
+        this.createClickEvents();
     }
 
     createClickEvents() {
-        //let numberOfContainerElements = 
         this._service.getMainViewItemsPromise()
-        .then(res => { return res.json() })
+            .then(res => { return res.json() })
             .then(mainItemsList => {
-                let number=mainItemsList.reduce((acc => acc + 1), 0);
+                let number = mainItemsList.reduce((acc => acc + 1), 0);
                 this.createContainerElementClickEvent(number)
-            })
-        // .pipe(
-        //     flatMap(item => item),
-        //     reduce((acc => acc + 1), 0)
-        // );
-        // numberOfContainerElements.subscribe(number => this.createContainerElementClickEvent(number));
+            });
     }
 
     createContainerElementClickEvent(number) {
