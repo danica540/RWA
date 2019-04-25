@@ -11,6 +11,13 @@ export class BookService {
         )
     }
 
+    getBooksByPage(ofset,pageSize){
+        return new Promise((resolve, reject) => {
+            const randomNumber = Math.random() * 10;
+            setTimeout(() => resolve(fetch(`http://localhost:3000/books?_page=${ofset}&_limit=${pageSize}`)), randomNumber);
+        })
+    }
+
     getBooksPromise() {
         return new Promise((resolve, reject) => {
             const randomNumber = Math.random() * 10;

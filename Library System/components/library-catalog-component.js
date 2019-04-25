@@ -19,8 +19,7 @@ export class LibraryCatalogComponent {
         let content = this.returnLibraryCatalogTemplate();
         this._contentDiv.innerHTML = content;
         let table = document.getElementById("book-catalog");
-        let selector = document.getElementById("number-of-books");
-        let selectorValue = selector.value;
+        let selectorValue = document.getElementById("number-of-books").value;
         this.drawTable(table, selectorValue);
         this.createOptionClickEvents();
         this.createSearchInputEvent();
@@ -60,13 +59,7 @@ export class LibraryCatalogComponent {
     }
 
     drawTable(table, selectorValue) {
-        table.innerHTML = `<tr>
-                            <th>Book Cover</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Genre</th>
-                            <th></th>
-                        </tr>`;
+        table.innerHTML = this.returnTableHeaderTemplate();
         this._service.getBooks().pipe(
             flatMap(book => book),
             take(selectorValue)
@@ -108,6 +101,7 @@ export class LibraryCatalogComponent {
                 return;
             }
             option.onclick = () => {
+                document.getElementById("page-number").innerHTML = "1";
                 let table = document.getElementById("book-catalog");
                 this.drawTable(table, option.value);
             }
@@ -115,7 +109,9 @@ export class LibraryCatalogComponent {
     }
 
     createBookLinkClickEvent(selectorValue) {
-        range(1, selectorValue).subscribe(val => {
+        // MENJANO 1
+        let ofset = parseInt(document.getElementById("page-number").innerHTML);
+        range((ofset - 1) * selectorValue + 1, selectorValue).subscribe(val => {
             let bookLink = document.getElementById("book-link" + val);
             if (!bookLink) {
                 return;
@@ -259,13 +255,7 @@ export class LibraryCatalogComponent {
             this._contentDiv.innerHTML = "<h5>No search results</h5>";
         }
         let table = document.getElementById("book-catalog");
-        table.innerHTML = `<tr>
-                            <th>Book Cover</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Genre</th>
-                            <th></th>
-                        </tr>`;
+        table.innerHTML = this.returnTableHeaderTemplate();
         this.drawSearchedContent(bookList, table);
         this.updateStatisticsLabel(bookList.length);
     }
@@ -286,12 +276,12 @@ export class LibraryCatalogComponent {
 
         this.updateNextBtnAppearance(ofset, pageSize, nextBtn);
         this.updatePreviousBtnAppearance(ofset, previousBtn);
-        
+
         nextBtn.onclick = () => {
-            this.createNextClickEvent();
+            this.createNextClickEvent(ofset, pageSize);
         }
         previousBtn.onclick = () => {
-            this.createPreviousClickEvent();
+            this.createPreviousClickEvent(ofset, pageSize);
         }
     }
 
@@ -320,12 +310,43 @@ export class LibraryCatalogComponent {
             });
     }
 
-    createPreviousClickEvent() {
-
-
+    updatePageNumber(ofset) {
+        document.getElementById("page-number").innerHTML = ofset;
     }
 
-    createNextClickEvent() {
+    createPreviousClickEvent(ofset, pageSize) {
+        let table = document.getElementById("book-catalog");
+        this.updatePageNumber(parseInt(ofset - 1));
+        this.drawSinglePageOfBooks(table, (ofset - 1), pageSize);
+    }
 
+    createNextClickEvent(ofset, pageSize) {
+        let table = document.getElementById("book-catalog");
+        this.updatePageNumber(parseInt(ofset + 1));
+        this.drawSinglePageOfBooks(table, (ofset + 1), pageSize);
+    }
+
+    returnTableHeaderTemplate() {
+        let content = `<tr>
+                        <th>Book Cover</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Genre</th>
+                        <th></th>
+                    </tr>`;
+        return content;
+    }
+
+    drawSinglePageOfBooks(table, ofset, pageSize) {
+        table.innerHTML = this.returnTableHeaderTemplate();
+        this._service.getBooksByPage(ofset, pageSize)
+            .then(res => { return res.json() })
+            .then(bookList => {
+                bookList.forEach(book => {
+                    this.drawCatalogueContent(book, table, pageSize);
+                    this.updateStatisticsLabel(bookList.length);
+                })
+            })
+        this.createPageBtnClickEvents();
     }
 }

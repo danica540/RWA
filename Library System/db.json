@@ -283,7 +283,9 @@
       "img": "../resources/da_vinci.jpg",
       "library_id": 2,
       "value": 15.2,
-      "available": "true"
+      "available": "false",
+      "time_placed": "Thursday, April 25, 2019 11:51 AM",
+      "patron_id": "3"
     },
     {
       "id": "10",
@@ -652,7 +654,7 @@
       "author": "Jo Nesbo",
       "genre": "thriller",
       "title": "The Bat",
-      "img": "../resources/bat.jpg",
+      "img": "../resources/no.jpg",
       "library_id": 2,
       "value": 17.77,
       "available": "true"
@@ -704,7 +706,7 @@
       "author": "Dan Simons",
       "genre": "mystery",
       "title": "Da Vinci's Code",
-      "img": "../resources/da_vinci.jpg",
+      "img": "../resources/no.jpg",
       "library_id": 2,
       "value": 15.2,
       "available": "true"
@@ -714,9 +716,369 @@
       "author": "Nicholas Sparks",
       "genre": "romance",
       "title": "Dear John",
-      "img": "../resources/dear-john.jpg",
+      "img": "../resources/no.jpg",
       "library_id": 3,
       "value": 7.45,
+      "available": "true"
+    },
+    {
+      "id": "51",
+      "author": "Jose Saramago",
+      "genre": "fiction",
+      "title": "Death With Interruptions",
+      "img": "../resources/death.jpg",
+      "library_id": 1,
+      "value": 18.99,
+      "available": "false"
+    },
+    {
+      "id": "52",
+      "author": "Jostein Gaarder",
+      "genre": "fiction",
+      "title": "Appelsinpiken",
+      "img": "../resources/devojka_sa_pomorandzama.jpg",
+      "library_id": 2,
+      "value": 19.3,
+      "available": "true"
+    },
+    {
+      "id": "53",
+      "author": "Jose Saramago",
+      "genre": "historical",
+      "title": "Elephant's Journey",
+      "img": "../resources/elephant.jpg",
+      "library_id": 1,
+      "value": 12.67,
+      "available": "false"
+    },
+    {
+      "id": "54",
+      "author": "Stephen King",
+      "genre": "crime fiction",
+      "title": "End of Watch",
+      "img": "../resources/end_watch.jpg",
+      "library_id": 1,
+      "value": 18.65,
+      "available": "true"
+    },
+    {
+      "id": "55",
+      "author": "Dan Brown",
+      "genre": "conspiracy fiction",
+      "title": "Inferno",
+      "img": "../resources/inferno.jpg",
+      "library_id": 2,
+      "value": 7.99,
+      "available": "true"
+    },
+    {
+      "id": "56",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "It",
+      "img": "../resources/it.jpg",
+      "library_id": 3,
+      "value": 8.39,
+      "available": "true"
+    },
+    {
+      "id": "57",
+      "author": "Dan Brown",
+      "genre": "conspiracy fiction",
+      "title": "Lost Symbol",
+      "img": "../resources/izgubljeni_simbol.jpg",
+      "library_id": 1,
+      "value": 9.99,
+      "available": "false"
+    },
+    {
+      "id": "58",
+      "author": "Haruki Murakami",
+      "genre": "magical realism",
+      "title": "Kafka On The Shore",
+      "img": "../resources/kafka.jpg",
+      "library_id": 2,
+      "value": 16.33,
+      "available": "true"
+    },
+    {
+      "id": "59",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Last Song",
+      "img": "../resources/last-song.jpg",
+      "library_id": 3,
+      "value": 19.05,
+      "available": "false"
+    },
+    {
+      "id": "60",
+      "author": "Nicholas Sparks",
+      "genre": "drama",
+      "title": "Longest Ride",
+      "img": "../resources/longest-ride.jpg",
+      "library_id": 2,
+      "value": 21.36,
+      "available": "true"
+    },
+    {
+      "id": "61",
+      "author": "Stephen King",
+      "genre": "thriller",
+      "title": "Mr Mercedes",
+      "img": "../resources/mercedes.jpg",
+      "library_id": 1,
+      "value": 16.35,
+      "available": "false"
+    },
+    {
+      "id": "62",
+      "author": "Stephen King",
+      "genre": "mystery",
+      "title": "Misery",
+      "img": "../resources/misery.jpg",
+      "library_id": 2,
+      "value": 11.89,
+      "available": "true"
+    },
+    {
+      "id": "63",
+      "author": "Jo Nesbo",
+      "genre": "horror",
+      "title": "Nemesis",
+      "img": "../resources/nemesis.jpg",
+      "library_id": 1,
+      "value": 11.36,
+      "available": "true"
+    },
+    {
+      "id": "64",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Notebook",
+      "img": "../resources/notebook.jpg",
+      "library_id": 1,
+      "value": 3.36,
+      "available": "false"
+    },
+    {
+      "id": "65",
+      "author": "Jo Nesbo",
+      "genre": "crime",
+      "title": "Police",
+      "img": "../resources/police.jpg",
+      "library_id": 2,
+      "value": 14.36,
+      "available": "true"
+    },
+    {
+      "id": "66",
+      "author": "Jo Nesbo",
+      "genre": "crime",
+      "title": "The Redbeast",
+      "img": "../resources/redbeast.jpg",
+      "library_id": 3,
+      "value": 25.36,
+      "available": "true"
+    },
+    {
+      "id": "67",
+      "author": "Jo Nesbo",
+      "genre": "crime fiction",
+      "title": "Cockroaches",
+      "img": "../resources/roach.jpg",
+      "library_id": 3,
+      "value": 13.16,
+      "available": "false"
+    },
+    {
+      "id": "68",
+      "author": "Nicholas Sparks",
+      "genre": "drama",
+      "title": "Safe Haven",
+      "img": "../resources/safe-haven.jpg",
+      "library_id": 3,
+      "value": 15.03,
+      "available": "true"
+    },
+    {
+      "id": "69",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "Salem's Lot",
+      "img": "../resources/salems_lot.jpg",
+      "library_id": 1,
+      "value": 8.76,
+      "available": "false"
+    },
+    {
+      "id": "70",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "See me",
+      "img": "../resources/see-me.jpg",
+      "library_id": 2,
+      "value": 9.36,
+      "available": "true"
+    },
+    {
+      "id": "71",
+      "author": "Haruki Murakami",
+      "genre": "fantasy",
+      "title": "A Wild Sheep Chase",
+      "img": "../resources/sheep.jpg",
+      "library_id": 3,
+      "value": 14.5,
+      "available": "false"
+    },
+    {
+      "id": "72",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "The Shining",
+      "img": "../resources/shining.jpg",
+      "library_id": 2,
+      "value": 13.3,
+      "available": "true"
+    },
+    {
+      "id": "73",
+      "author": "Jo Nesbo",
+      "genre": "mystery",
+      "title": "The Snowman",
+      "img": "../resources/snowman.jpg",
+      "library_id": 1,
+      "value": 12.03,
+      "available": "true"
+    },
+    {
+      "id": "74",
+      "author": "Jo Nesbo",
+      "genre": "mystery",
+      "title": "Midnight Sun",
+      "img": "../resources/sun.jpg",
+      "library_id": 3,
+      "value": 9.23,
+      "available": "false"
+    },
+    {
+      "id": "75",
+      "author": "Jo Nesbo",
+      "genre": "mystery",
+      "title": "The Thirst",
+      "img": "../resources/thirst.jpg",
+      "library_id": 1,
+      "value": 6.36,
+      "available": "true"
+    },
+    {
+      "id": "76",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Wedding",
+      "img": "../resources/wedding.jpg",
+      "library_id": 2,
+      "value": 7.77,
+      "available": "true"
+    },
+    {
+      "id": "77",
+      "author": "Haruki Murakami",
+      "genre": "fantasy",
+      "title": "Norwegian Wood",
+      "img": "../resources/woods.jpg",
+      "library_id": 3,
+      "value": 9.36,
+      "available": "true"
+    },
+    {
+      "id": "78",
+      "author": "Haruki Murakami",
+      "genre": "magical realism",
+      "title": "Kafka On The Shore",
+      "img": "../resources/kafka.jpg",
+      "library_id": 1,
+      "value": 10.36,
+      "available": "false"
+    },
+    {
+      "id": "79",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Last Song",
+      "img": "../resources/last-song.jpg",
+      "library_id": 1,
+      "value": 4.52,
+      "available": "true"
+    },
+    {
+      "id": "80",
+      "author": "Nicholas Sparks",
+      "genre": "drama",
+      "title": "Longest Ride",
+      "img": "../resources/longest-ride.jpg",
+      "library_id": 2,
+      "value": 15.23,
+      "available": "true"
+    },
+    {
+      "id": "81",
+      "author": "Jo Nesbo",
+      "genre": "mystery",
+      "title": "The Thirst",
+      "img": "../resources/no.jpg",
+      "library_id": 1,
+      "value": 6.36,
+      "available": "true"
+    },
+    {
+      "id": "82",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Wedding",
+      "img": "../resources/wedding.jpg",
+      "library_id": 2,
+      "value": 7.77,
+      "available": "true"
+    },
+    {
+      "id": "83",
+      "author": "Haruki Murakami",
+      "genre": "fantasy",
+      "title": "Norwegian Wood",
+      "img": "../resources/no.jpg",
+      "library_id": 3,
+      "value": 9.36,
+      "available": "true"
+    },
+    {
+      "id": "84",
+      "author": "Haruki Murakami",
+      "genre": "magical realism",
+      "title": "Kafka On The Shore",
+      "img": "../resources/kafka.jpg",
+      "library_id": 1,
+      "value": 10.36,
+      "available": "false"
+    },
+    {
+      "id": "85",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Last Song",
+      "img": "../resources/last-song.jpg",
+      "library_id": 1,
+      "value": 4.52,
+      "available": "true"
+    },
+    {
+      "id": "86",
+      "author": "Nicholas Sparks",
+      "genre": "drama",
+      "title": "Longest Ride",
+      "img": "../resources/longest-ride.jpg",
+      "library_id": 2,
+      "value": 15.23,
       "available": "true"
     }
   ]
