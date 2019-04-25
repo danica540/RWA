@@ -195,7 +195,9 @@
       "img": "../resources/alchemist.jpg",
       "library_id": 1,
       "value": 13.65,
-      "available": "true"
+      "available": "false",
+      "time_placed": "Thursday, April 25, 2019 6:03 PM",
+      "patron_id": "14"
     },
     {
       "id": "2",
@@ -227,7 +229,9 @@
       "img": "../resources/bat.jpg",
       "library_id": 2,
       "value": 17.77,
-      "available": "true"
+      "available": "false",
+      "time_placed": "Thursday, April 25, 2019 6:04 PM",
+      "patron_id": "3"
     },
     {
       "id": "5",
@@ -359,7 +363,9 @@
       "img": "../resources/it.jpg",
       "library_id": 3,
       "value": 8.39,
-      "available": "true"
+      "available": "false",
+      "time_placed": "Saturday, July 6, 2019 8:38 PM",
+      "patron_id": "5"
     },
     {
       "id": "17",
@@ -709,7 +715,9 @@
       "img": "../resources/war.jpg",
       "library_id": 2,
       "value": 15.2,
-      "available": "true"
+      "available": "false",
+      "time_placed": "Monday, April 29, 2019 2:46 PM",
+      "patron_id": "7"
     },
     {
       "id": "50",

@@ -3,10 +3,8 @@ import { BookService } from "../services/book-service";
 import { map, flatMap, filter, scan } from "rxjs/operators";
 import { zip } from 'rxjs';
 import { PatronService } from "../services/patron-services";
-
+import { weekDays } from "../constants/week-constant";
 const moment = require('moment');
-
-const weekDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
 export class LibraryBranchesComponent {
     constructor() {
@@ -14,6 +12,12 @@ export class LibraryBranchesComponent {
         this._service = new BranchService();
         this._bookService = new BookService();
         this._patronService = new PatronService();
+    }
+
+    drawDefaultView() {
+        this._contentDiv.innerHTML = this.returnDefaultViewTemplate();
+        let table = document.getElementById("branches");
+        this.drawTable(table);
     }
 
     returnDefaultViewTemplate() {
@@ -33,12 +37,6 @@ export class LibraryBranchesComponent {
         return divContent;
     }
 
-    drawDefaultView() {
-        this._contentDiv.innerHTML = this.returnDefaultViewTemplate();
-        let table = document.getElementById("branches");
-        this.drawTable(table);
-    }
-
     drawTable(table) {
         let branches$ = this._service.getBranches().pipe(
             flatMap(item => item)
@@ -51,6 +49,15 @@ export class LibraryBranchesComponent {
         ).subscribe(object => {
             this.drawTableContent(object, table)
         });
+    }
+
+    drawTableContent(object, table) {
+        let innerContent = `<tr class="branch-table">
+                            <td class="branch-table"><a class="library-name" href="#" id="table-${object.branch.id}">${object.branch.name}</a></td>
+                            <td class="branch-table">${this.isLibraryOpen(object)}</td>
+                            </tr>`;
+        table.innerHTML += innerContent;
+        this.createClickEvents();
     }
 
     isLibraryOpen(object) {
@@ -95,15 +102,6 @@ export class LibraryBranchesComponent {
             libraryIsItOpenObj = this.returnLibraryIsItOpenObj(closingHours, currentTime, openingHours, libraryIsItOpenObj);
         }
         return (libraryIsItOpenObj.isItOpen + libraryIsItOpenObj.whenItOpens);
-    }
-
-    drawTableContent(object, table) {
-        let innerContent = `<tr class="branch-table">
-                            <td class="branch-table"><a class="library-name" href="#" id="table-${object.branch.id}">${object.branch.name}</a></td>
-                            <td class="branch-table">${this.isLibraryOpen(object)}</td>
-                            </tr>`;
-        table.innerHTML += innerContent;
-        this.createClickEvents();
     }
 
     createClickEvents() {

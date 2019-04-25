@@ -1,11 +1,11 @@
 import { BookService } from "../services/book-service";
-import { flatMap, take, scan, map, debounceTime, switchMap, filter } from "rxjs/operators";
-import { fromEvent, range } from "rxjs";
+import { flatMap, take, scan, map, debounceTime, switchMap, filter, pairwise } from "rxjs/operators";
+import { fromEvent, range, Observable } from "rxjs";
 import { BranchService } from "../services/branch-service";
 import { PatronService } from "../services/patron-services";
-
+import { selectorValues } from '../constants/selector-constants';
 const moment = require('moment');
-const selectorValues = [10, 20, 30, 40, 50];
+
 
 export class LibraryCatalogComponent {
     constructor() {
@@ -266,6 +266,23 @@ export class LibraryCatalogComponent {
         this.drawSearchedContent(bookList, table);
         this.updateStatisticsLabel(bookList.length);
         document.getElementById("pages").style.display = "none";
+        this.createSearchedBookLinkClickEvent(bookList);
+    }
+
+    createSearchedBookLinkClickEvent(bookList) {
+        bookList.forEach(book => {
+            Observable.create(generator => {
+                generator.next(book.id)
+            }).subscribe(id => {
+                let bookLink = document.getElementById("book-link" + id);
+                if (!bookLink) {
+                    return;
+                }
+                bookLink.onclick = () => {
+                    this.drawSingleBook(id);
+                }
+            })
+        })
     }
 
     drawSearchedContent(bookList, table) {

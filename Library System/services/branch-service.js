@@ -1,4 +1,7 @@
 import { from } from "rxjs";
+import { urlCons } from "../constants/url-constants";
+
+const url=urlCons.URL;
 
 export class BranchService {
     constructor() {
@@ -6,14 +9,14 @@ export class BranchService {
 
     getBranches() {
         return from(
-            fetch("http://localhost:3000/branches/")
+            fetch(`${url}/branches/`)
                 .then(res => { return res.json() })
         )
     }
 
     getWeekHours() {
         return from(
-            fetch("http://localhost:3000/week_hours/")
+            fetch(`${url}/week_hours/`)
                 .then(res => { return res.json() })
         )
     }
@@ -21,7 +24,7 @@ export class BranchService {
     getBranchesPromise() {
         return new Promise((resolve, reject) => {
             const randomNumber = Math.random() * 10;
-            setTimeout(() => resolve(fetch("http://localhost:3000/branches/")), randomNumber);
+            setTimeout(() => resolve(fetch(`${url}/branches/`)), randomNumber);
         })
     }
 

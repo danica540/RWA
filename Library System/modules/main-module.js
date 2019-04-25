@@ -2,9 +2,7 @@ import { MainComponent } from "../components/main-component";
 import { NavBarComponent } from "../components/nav-bar-component";
 
 export class MainModule {
-    constructor() {
-
-    }
+    constructor() { }
     mainView() {
         const nav = new NavBarComponent();
         nav.onInit();

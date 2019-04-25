@@ -1,4 +1,7 @@
 import { from } from "rxjs";
+import { urlCons } from "../constants/url-constants";
+
+const url=urlCons.URL;
 
 export class BookService {
     constructor() {
@@ -6,7 +9,7 @@ export class BookService {
 
     getBooks() {
         return from(
-            fetch("http://localhost:3000/books/")
+            fetch(`${url}/books/`)
                 .then(res => { return res.json() })
         )
     }
@@ -14,27 +17,27 @@ export class BookService {
     getBooksByPage(ofset,pageSize){
         return new Promise((resolve, reject) => {
             const randomNumber = Math.random() * 10;
-            setTimeout(() => resolve(fetch(`http://localhost:3000/books?_page=${ofset}&_limit=${pageSize}`)), randomNumber);
+            setTimeout(() => resolve(fetch(`${url}/books?_page=${ofset}&_limit=${pageSize}`)), randomNumber);
         })
     }
 
     getBooksPromise() {
         return new Promise((resolve, reject) => {
             const randomNumber = Math.random() * 10;
-            setTimeout(() => resolve(fetch("http://localhost:3000/books/")), randomNumber);
+            setTimeout(() => resolve(fetch(`${url}/books/`)), randomNumber);
         })
     }
 
     getBookById(id) {
         return from(
-            fetch("http://localhost:3000/books/" + id)
+            fetch(`${url}/books/` + id)
                 .then(res => { return res.json() })
         )
     }
 
     getBookBySearchValue(text) {
         return from(
-            fetch("http://localhost:3000/books?q=" + text)
+            fetch(`${url}/books?q=${text}`)
                 .then(res => { return res.json() })
         )
     }
@@ -42,7 +45,7 @@ export class BookService {
     updateBookAvailability(book) {
         return new Promise((resolve, reject) => {
             const randomNumber = Math.random() * 10;
-            setTimeout(() => resolve(fetch(`http://localhost:3000/books/${book.id}`, {
+            setTimeout(() => resolve(fetch(`${url}/books/${book.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -55,7 +58,7 @@ export class BookService {
     getBooksByPatronId(id) {
         return new Promise((resolve, reject) => {
             const randomNumber = Math.random() * 100;
-            setTimeout(() => resolve(fetch(`http://localhost:3000/books?patron_id=${id}`)), randomNumber);
+            setTimeout(() => resolve(fetch(`${url}/books?patron_id=${id}`)), randomNumber);
         })
     }
 

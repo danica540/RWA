@@ -1,4 +1,7 @@
 import { from } from "rxjs";
+import { urlCons } from "../constants/url-constants";
+
+const url=urlCons.URL;
 
 export class MainViewService {
     constructor() {
@@ -8,13 +11,13 @@ export class MainViewService {
 
         return new Promise((resolve, reject) => {
             const randomNumber = Math.random() * 10;
-            setTimeout(() => resolve(fetch(`http://localhost:3000/main_view/`)), randomNumber);
+            setTimeout(() => resolve(fetch(`${url}/main_view/`)), randomNumber);
         })
     }
 
     getMainViewItems() {
         return from(
-            fetch("http://localhost:3000/main_view/")
+            fetch(`${url}/main_view/`)
                 .then(res => { return res.json() })
         )
     }
