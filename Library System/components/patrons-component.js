@@ -10,7 +10,7 @@ export class PatronsComponent {
         this._bookService = new BookService();
     }
 
-    drawPatronList() {
+    returnPatronViewTemplate(){
         let divContent = `<h1>Patron List</h1>
                         <div id="table-div">
                         <div class="side"></div>
@@ -26,10 +26,13 @@ export class PatronsComponent {
                         </div>
                         <div class="side"></div>
                         </div>`;
-        this._contentDiv.innerHTML = divContent;
+        return divContent;
+    }
+
+    drawPatronList() {
+        this._contentDiv.innerHTML = this.returnPatronViewTemplate();
         let table = document.getElementById("patrons");
         this.drawTable(table);
-        //<th class="patron-table">Library Card Id</th>
     }
 
     drawTable(table) {
@@ -43,16 +46,19 @@ export class PatronsComponent {
             });
     }
 
-    drawPatronTableRow(patron, table, libraryList) {
+    returnSinglePatronRow(patron,libraryList){
         let innerContent = `<tr class="patron-table">
                             <td class="patron-table"><a id="profile-link${patron.id}" href="#"><img class="profile-pic" src="../resources/user(4).png"></img></a></td>
                             <td class="patron-table">${patron.last_name}</td>
                             <td class="patron-table">${patron.first_name}</td>
                             <td class="patron-table" id="library-name">${this.getHomeLibraryName(patron.library_id, libraryList)}</td>
                             </tr>`;
-        table.innerHTML += innerContent;
+        return innerContent;
+    }
+
+    drawPatronTableRow(patron, table, libraryList) {
+        table.innerHTML += this.returnSinglePatronRow(patron,libraryList);
         this.createClickEvents();
-        //<td class="patron-table">${patron.id}</td>
     }
 
     getHomeLibraryName(patronLibraryId, libraryList) {
@@ -95,7 +101,6 @@ export class PatronsComponent {
                         </div>
                         </div>`;
         return content;
-        //<label><span>Library Card ID: </span>${patron.id}</label>
     }
 
     drawItemsCurrentlyOnHoldTemplate(patron) {

@@ -95,7 +95,7 @@ export class LibraryCatalogComponent {
     }
 
     createOptionClickEvents() {
-        document.getElementById("pages").style.display="flex";
+        document.getElementById("pages").style.display = "flex";
         selectorValues.forEach(val => {
             let option = document.getElementById(val);
             if (!option) {
@@ -110,7 +110,6 @@ export class LibraryCatalogComponent {
     }
 
     createBookLinkClickEvent(selectorValue) {
-        // MENJANO 1
         let ofset = parseInt(document.getElementById("page-number").innerHTML);
         range((ofset - 1) * selectorValue + 1, selectorValue).subscribe(val => {
             let bookLink = document.getElementById("book-link" + val);
@@ -202,7 +201,7 @@ export class LibraryCatalogComponent {
                     alert("Invalid Library Card Id");
                 }
                 else {
-                    alert("Your reservation was a success \n You have 24 hours to pick up your book.");
+                    alert("Your reservation was a success. \nYou have 24 hours to pick up your book.");
                     book.time_placed = moment().format('LLLL');
                     book.available = "false";
                     book.patron_id = user.id;
@@ -259,7 +258,7 @@ export class LibraryCatalogComponent {
         table.innerHTML = this.returnTableHeaderTemplate();
         this.drawSearchedContent(bookList, table);
         this.updateStatisticsLabel(bookList.length);
-        document.getElementById("pages").style.display="none";
+        document.getElementById("pages").style.display = "none";
     }
 
     drawSearchedContent(bookList, table) {
@@ -271,7 +270,7 @@ export class LibraryCatalogComponent {
     }
 
     createPageBtnClickEvents() {
-        document.getElementById("pages").style.display="flex";
+        document.getElementById("pages").style.display = "flex";
         let nextBtn = document.getElementById("next");
         let previousBtn = document.getElementById("previous");
         let ofset = parseInt(document.getElementById("page-number").innerHTML);

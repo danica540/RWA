@@ -1,5 +1,4 @@
 import { MainViewService } from "../services/main-view-service";
-import { map, flatMap, reduce } from "rxjs/operators";
 import { range } from "rxjs";
 import { Router } from "../classes/router";
 
@@ -21,7 +20,6 @@ export class MainComponent {
             .then(mainItemsList => {
                 mainItemsList.forEach(item => this.drawContainerElements(containerDiv, item))
             });
-        // this.createClickEvents();
     }
 
     drawContainerElements(containerDiv, item) {

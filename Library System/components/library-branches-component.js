@@ -16,7 +16,7 @@ export class LibraryBranchesComponent {
         this._patronService = new PatronService();
     }
 
-    drawDefaultView() {
+    returnDefaultViewTemplate(){
         let divContent = `<h1>Libraries of Niš</h1>
                         <div id="table-div">
                         <div class="side"></div>
@@ -30,7 +30,11 @@ export class LibraryBranchesComponent {
                         </div>
                         <div class="side"></div>
                         </div>`;
-        this._contentDiv.innerHTML = divContent;
+        return divContent;
+    }
+
+    drawDefaultView() {
+        this._contentDiv.innerHTML = this.returnDefaultViewTemplate();
         let table = document.getElementById("branches");
         this.drawTable(table);
     }
@@ -92,7 +96,7 @@ export class LibraryBranchesComponent {
         });
     }
 
-    drawSingleBranch(object) {
+    returnSingleBranchTemplate(object){
         let content = `<div id="single-branch">
                         <img class="branch-img" src=${object.branch.img}></img>
                         <div id="all">
@@ -113,7 +117,11 @@ export class LibraryBranchesComponent {
                         </div>
                     </div>
                     </div>`;
-        this._contentDiv.innerHTML = content;
+        return content;
+    }
+
+    drawSingleBranch(object) {
+        this._contentDiv.innerHTML = this.returnSingleBranchTemplate(object);
         this.updateNumberOfAssetsLabel(object.branch.id);
         this.updateNumberOfPatronsLabel(object.branch.id);
         this.updateValueOfAssetsLabel(object.branch.id);

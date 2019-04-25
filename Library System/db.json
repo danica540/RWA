@@ -295,7 +295,9 @@
       "img": "../resources/dear-john.jpg",
       "library_id": 3,
       "value": 7.45,
-      "available": "true"
+      "available": "false",
+      "time_placed": "Thursday, April 25, 2019 12:26 PM",
+      "patron_id": "6"
     },
     {
       "id": "11",
@@ -719,7 +721,9 @@
       "img": "../resources/no.jpg",
       "library_id": 3,
       "value": 7.45,
-      "available": "true"
+      "available": "false",
+      "time_placed": "Thursday, April 25, 2019 12:25 PM",
+      "patron_id": "3"
     },
     {
       "id": "51",
