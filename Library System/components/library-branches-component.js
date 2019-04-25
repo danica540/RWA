@@ -246,7 +246,7 @@ export class LibraryBranchesComponent {
     isPastOrPreWorkingHours(libraryIsItOpenObj, openingHours, currentTime, closingHours) {
         if (!this.isPassClosingHours(closingHours, currentTime) && !this.isPreOpeningHours(openingHours, currentTime)) {
             libraryIsItOpenObj.isItOpen = "Yes ";
-            libraryIsItOpenObj.whenItOpens = `<h5>Closes Today at ${closingHours} AM</h5>`;
+            libraryIsItOpenObj.whenItOpens = `<h5>Closes Today at ${closingHours} PM</h5>`;
         }
         else if (this.isPreOpeningHours(openingHours, currentTime)) {
             libraryIsItOpenObj.whenItOpens = `<h5>Opens Today at ${openingHours} AM</h5>`;
