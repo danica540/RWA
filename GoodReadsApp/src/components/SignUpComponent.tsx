@@ -39,6 +39,8 @@ class SignUpComponent extends Component<Props, State>{
         return (
             <div>
                 <form className="form" onSubmit={this.handleSubmit}>
+                    <h1>Sign Up</h1>
+                    <img src={require("../resources/user.png")}></img>
                     <h4>Name</h4>
                     <input type="text" id="name-su" onChange={this.handleOnChange}></input>
                     <h4>E-mail</h4>

@@ -34,6 +34,7 @@ class Navbar extends Component<Props, State> {
                     <li id="browse"><a href="#" onClick={this.browseClick}>Browse</a></li>
                     <li className="search"><input id="searchInput" type="text" placeholder="Search.."></input></li>
                     <li className="separator"></li>
+                    <li ><a href="sign-in">Sign In</a></li>
                     <li id="my-profile"><a href="#">My Profile</a></li>
                 </ul>
             </div>
