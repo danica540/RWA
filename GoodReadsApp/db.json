@@ -1,606 +1,613 @@
 {
-    "books": [
-      {
-        "isbn": "1",
-        "author": "Paulo Coelho",
-        "genre": "novel",
-        "title": "Alchemist",
-        "cover": "../resources/alchemist.jpg"
-      },
-      {
-        "isbn": "2",
-        "author": "Paulo Coelho",
-        "genre": "novel",
-        "title": "Aleph",
-        "cover": "../resources/aleph.jpg"
-      },
-      {
-        "isbn": "3",
-        "author": "Dan Brown",
-        "genre": "mystery",
-        "title": "Angels & Demons",
-        "cover": "../resources/andjeli_i_demoni.jpg"
-      },
-      {
-        "isbn": "4",
-        "author": "Jo Nesbo",
-        "genre": "thriller",
-        "title": "The Bat",
-        "cover": "../resources/bat.jpg"
-      },
-      {
-        "isbn": "5",
-        "author": "Haruki Murakami",
-        "genre": "fiction",
-        "title": "Wind Up Bird Chronicle",
-        "cover": "../resources/bird.jpg"
-      },
-      {
-        "isbn": "6",
-        "author": "Jose Saramago",
-        "genre": "thriller",
-        "title": "Blindness",
-        "cover": "../resources/blindness.jpg"
-      },
-      {
-        "isbn": "7",
-        "author": "Jose Saramago",
-        "genre": "drama",
-        "title": "Cain",
-        "cover": "../resources/cain.jpeg"
-      },
-      {
-        "isbn": "8",
-        "author": "Stephen King",
-        "genre": "horror",
-        "title": "Carrie",
-        "cover": "../resources/carrie.jpg"
-      },
-      {
-        "isbn": "9",
-        "author": "Dan Simons",
-        "genre": "mystery",
-        "title": "Da Vinci's Code",
-        "cover": "../resources/da_vinci.jpg"
-      },
-      {
-        "isbn": "10",
-        "author": "Nicholas Sparks",
-        "genre": "romance",
-        "title": "Dear John",
-        "cover": "../resources/dear-john.jpg"
-      },
-      {
-        "isbn": "11",
-        "author": "Jose Saramago",
-        "genre": "fiction",
-        "title": "Death With Interruptions",
-        "cover": "../resources/death.jpg"
-      },
-      {
-        "isbn": "12",
-        "author": "Jostein Gaarder",
-        "genre": "fiction",
-        "title": "Appelsinpiken",
-        "cover": "../resources/devojka_sa_pomorandzama.jpg"
-      },
-      {
-        "isbn": "13",
-        "author": "Jose Saramago",
-        "genre": "historical",
-        "title": "Elephant's Journey",
-        "cover": "../resources/elephant.jpg"
-      },
-      {
-        "isbn": "14",
-        "author": "Stephen King",
-        "genre": "crime fiction",
-        "title": "End of Watch",
-        "cover": "../resources/end_watch.jpg"
-      },
-      {
-        "isbn": "15",
-        "author": "Dan Brown",
-        "genre": "conspiracy fiction",
-        "title": "Inferno",
-        "cover": "../resources/inferno.jpg"
-      },
-      {
-        "isbn": "16",
-        "author": "Stephen King",
-        "genre": "horror",
-        "title": "It",
-        "cover": "../resources/it.jpg"
-      },
-      {
-        "isbn": "17",
-        "author": "Dan Brown",
-        "genre": "conspiracy fiction",
-        "title": "Lost Symbol",
-        "cover": "../resources/izgubljeni_simbol.jpg"
-      },
-      {
-        "isbn": "18",
-        "author": "Haruki Murakami",
-        "genre": "magical realism",
-        "title": "Kafka On The Shore",
-        "cover": "../resources/kafka.jpg"
-      },
-      {
-        "isbn": "19",
-        "author": "Nicholas Sparks",
-        "genre": "romance",
-        "title": "The Last Song",
-        "cover": "../resources/last-song.jpg"
-      },
-      {
-        "isbn": "20",
-        "author": "Nicholas Sparks",
-        "genre": "drama",
-        "title": "Longest Risbne",
-        "cover": "../resources/longest-risbne.jpg"
-      },
-      {
-        "isbn": "21",
-        "author": "Stephen King",
-        "genre": "thriller",
-        "title": "Mr Mercedes",
-        "cover": "../resources/mercedes.jpg"
-      },
-      {
-        "isbn": "22",
-        "author": "Stephen King",
-        "genre": "mystery",
-        "title": "Misery",
-        "cover": "../resources/misery.jpg"
-      },
-      {
-        "isbn": "23",
-        "author": "Jo Nesbo",
-        "genre": "horror",
-        "title": "Nemesis",
-        "cover": "../resources/nemesis.jpg"
-      },
-      {
-        "isbn": "24",
-        "author": "Nicholas Sparks",
-        "genre": "romance",
-        "title": "The Notebook",
-        "cover": "../resources/notebook.jpg"
-      },
-      {
-        "isbn": "25",
-        "author": "Jo Nesbo",
-        "genre": "crime",
-        "title": "Police",
-        "cover": "../resources/police.jpg"
-      },
-      {
-        "isbn": "26",
-        "author": "Jo Nesbo",
-        "genre": "crime",
-        "title": "The Redbeast",
-        "cover": "../resources/redbeast.jpg"
-      },
-      {
-        "isbn": "27",
-        "author": "Jo Nesbo",
-        "genre": "crime fiction",
-        "title": "Cockroaches",
-        "cover": "../resources/roach.jpg"
-      },
-      {
-        "isbn": "28",
-        "author": "Nicholas Sparks",
-        "genre": "drama",
-        "title": "Safe Haven",
-        "cover": "../resources/safe-haven.jpg"
-      },
-      {
-        "isbn": "29",
-        "author": "Stephen King",
-        "genre": "horror",
-        "title": "Salem's Lot",
-        "cover": "../resources/salems_lot.jpg"
-      },
-      {
-        "isbn": "30",
-        "author": "Nicholas Sparks",
-        "genre": "romance",
-        "title": "See me",
-        "cover": "../resources/see-me.jpg"
-      },
-      {
-        "isbn": "31",
-        "author": "Haruki Murakami",
-        "genre": "fantasy",
-        "title": "A Wild Sheep Chase",
-        "cover": "../resources/sheep.jpg"
-      },
-      {
-        "isbn": "32",
-        "author": "Stephen King",
-        "genre": "horror",
-        "title": "The Shining",
-        "cover": "../resources/shining.jpg"
-      },
-      {
-        "isbn": "33",
-        "author": "Jo Nesbo",
-        "genre": "mystery",
-        "title": "The Snowman",
-        "cover": "../resources/snowman.jpg"
-      },
-      {
-        "isbn": "34",
-        "author": "Jo Nesbo",
-        "genre": "mystery",
-        "title": "Misbnnight Sun",
-        "cover": "../resources/sun.jpg"
-      },
-      {
-        "isbn": "35",
-        "author": "Jo Nesbo",
-        "genre": "mystery",
-        "title": "The Thirst",
-        "cover": "../resources/thirst.jpg"
-      },
-      {
-        "isbn": "36",
-        "author": "Nicholas Sparks",
-        "genre": "romance",
-        "title": "The Wedding",
-        "cover": "../resources/wedding.jpg"
-      },
-      {
-        "isbn": "37",
-        "author": "Haruki Murakami",
-        "genre": "fantasy",
-        "title": "Norwegian Wood",
-        "cover": "../resources/woods.jpg"
-      },
-      {
-        "isbn": "38",
-        "author": "Haruki Murakami",
-        "genre": "magical realism",
-        "title": "Kafka On The Shore",
-        "cover": "../resources/kafka.jpg"
-      },
-      {
-        "isbn": "39",
-        "author": "Nicholas Sparks",
-        "genre": "romance",
-        "title": "The Last Song",
-        "cover": "../resources/last-song.jpg"
-      },
-      {
-        "isbn": "40",
-        "author": "Nicholas Sparks",
-        "genre": "drama",
-        "title": "Longest Risbne",
-        "cover": "../resources/longest-risbne.jpg"
-      },
-      {
-        "isbn": "41",
-        "author": "Mark Twain",
-        "genre": "classic",
-        "title": "The Adventures of Tom Sawyer",
-        "cover": "../resources/no.jpg"
-      },
-      {
-        "isbn": "42",
-        "author": "Joseph Heller",
-        "genre": "war",
-        "title": "Catch-22",
-        "cover": "../resources/no.jpg"
-      },
-      {
-        "isbn": "43",
-        "author": "Margaret Atwood",
-        "genre": "feminism",
-        "title": "The Handmaisbn's Tale ",
-        "cover": "../resources/no.jpg"
-      },
-      {
-        "isbn": "44",
-        "author": "Khaled Hosseini",
-        "genre": "drama",
-        "title": "A Thousand Splendisbn Suns ",
-        "cover": "../resources/suns.jpg"
-      },
-      {
-        "isbn": "45",
-        "author": "Khaled Hosseini",
-        "genre": "drama",
-        "title": "And the Mountains Echoed ",
-        "cover": "../resources/echoed.jpeg"
-      },
-      {
-        "isbn": "46",
-        "author": "Gabriel García Márquez",
-        "genre": "classic",
-        "title": "One Hundred Years of Solitude ",
-        "cover": "../resources/years.jpg"
-      },
-      {
-        "isbn": "47",
-        "author": "Gabriel García Márquez",
-        "genre": "magical realism",
-        "title": "Of Love and Other Demons ",
-        "cover": "../resources/love.jpg"
-      },
-      {
-        "isbn": "48",
-        "author": "Arthur Golden",
-        "genre": "historical",
-        "title": "Memoirs of a Geisha ",
-        "cover": "../resources/geisha.jpg"
-      },
-      {
-        "isbn": "49",
-        "author": "Leo Tolstoy",
-        "genre": "classic",
-        "title": "War and Peace ",
-        "cover": "../resources/war.jpg"
-      },
-      {
-        "isbn": "50",
-        "author": "J.K. Rowling",
-        "genre": "fantasy",
-        "title": "Harry Potter and the Chamber of Secrets",
-        "cover": "../resources/hp2.jpg"
-      },
-      {
-        "isbn": "51",
-        "author": "Harper Lee",
-        "genre": "legal story",
-        "title": "To Kill a Mockingbird",
-        "cover": "../resources/mockingbird.jpg"
-      },
-      {
-        "isbn": "52",
-        "author": "J.K. Rowling",
-        "genre": "fantasy",
-        "title": "Harry Potter and the Sorcerer's Stone",
-        "cover": "../resources/hp1.jpg"
-      },
-      {
-        "isbn": "53",
-        "author": "Jane Austen",
-        "genre": "classic",
-        "title": "Prisbne and Prejudice",
-        "cover": "../resources/prisbne.jpg"
-      },
-      {
-        "isbn": "54",
-        "author": "Anne Frank",
-        "genre": "biography",
-        "title": "The Diary of a Young Girl ",
-        "cover": "../resources/diary.jpg"
-      },
-      {
-        "isbn": "55",
-        "author": "J.K. Rowling",
-        "genre": "fantasy",
-        "title": "Harry Potter and the Deathly Hallows",
-        "cover": "../resources/hp7.jpg"
-      },
-      {
-        "isbn": "56",
-        "author": "William Golding",
-        "genre": "classic",
-        "title": "Lord of the Flies",
-        "cover": "../resources/flies.jpg"
-      },
-      {
-        "isbn": "57",
-        "author": "Leo Tolstoy",
-        "genre": "classic",
-        "title": "Anna Karenina",
-        "cover": "../resources/ak.jpg"
-      },
-      {
-        "isbn": "58",
-        "author": "George Orwell",
-        "genre": "science fiction",
-        "title": "1984",
-        "cover": "../resources/1984.jpg"
-      },
-      {
-        "isbn": "59",
-        "author": "Antoine de Saint-Exupéry",
-        "genre": "classic",
-        "title": "The Little Prince",
-        "cover": "../resources/prince.jpg"
-      },
-      {
-        "isbn": "60",
-        "author": "F. Scott Fitzgerald",
-        "genre": "academic",
-        "title": "The Great Gatsby",
-        "cover": "../resources/gatsby.jpg"
-      },
-      {
-        "isbn": "61",
-        "author": "J.D. Salinger",
-        "genre": "classic",
-        "title": "The Catcher in the Rye",
-        "cover": "../resources/rye.jpg"
-      },
-      {
-        "isbn": "62",
-        "author": "George Orwell",
-        "genre": "science fiction",
-        "title": "Animal Farm",
-        "cover": "../resources/farm.jpg"
-      },
-      {
-        "isbn": "63",
-        "author": "J.R.R. Tolkien",
-        "genre": "fantasy",
-        "title": "The Lord of the Rings ",
-        "cover": "../resources/rings.jpg"
-      },
-      {
-        "isbn": "64",
-        "author": "Nicholas Sparks",
-        "genre": "romance",
-        "title": "The Notebook",
-        "cover": "../resources/notebook.jpg"
-      },
-      {
-        "isbn": "65",
-        "author": "Charlotte Brontë",
-        "genre": "romance",
-        "title": "Jane Eyre",
-        "cover": "../resources/jane.jpg"
-      },
-      {
-        "isbn": "66",
-        "author": "Markus Zusak",
-        "genre": "classic",
-        "title": "The Book Thief",
-        "cover": "../resources/bookthief.jpg"
-      },
-      {
-        "isbn": "67",
-        "author": "William Shakespeare",
-        "genre": "romance",
-        "title": "Romeo and Juliet ",
-        "cover": "../resources/romeo.jpg"
-      },
-      {
-        "isbn": "68",
-        "author": "Khaled Hosseini",
-        "genre": "drama",
-        "title": "The Kite Runner",
-        "cover": "../resources/kiterunner.jpg"
-      },
-      {
-        "isbn": "69",
-        "author": "Shel Silverstein",
-        "genre": "childrens",
-        "title": "The Giving Tree",
-        "cover": "../resources/tree.jpg"
-      },
-      {
-        "isbn": "70",
-        "author": "J.R.R. Tolkien",
-        "genre": "fantasy",
-        "title": "The Hobbit or There and Back Again",
-        "cover": "../resources/hobbit.jpg"
-      },
-      {
-        "isbn": "71",
-        "author": "John Steinbeck",
-        "genre": "fiction",
-        "title": "Of Mice and Men",
-        "cover": "../resources/mice.jpg"
-      },
-      {
-        "isbn": "72",
-        "author": "Lewis Carroll",
-        "genre": "childrens",
-        "title": "Alice's Adventures in Wonderland",
-        "cover": "../resources/alice.jpg"
-      },
-      {
-        "isbn": "73",
-        "author": "J.K. Rowling",
-        "genre": "fantasy",
-        "title": "Harry Potter and the Prisoner of Azkaban",
-        "cover": "../resources/hp3.jpg"
-      },
-      {
-        "isbn": "74",
-        "author": "J.K. Rowling",
-        "genre": "fantasy",
-        "title": "Harry Potter and the Goblet of Fire",
-        "cover": "../resources/hp4.jpg"
-      },
-      {
-        "isbn": "75",
-        "author": "J.K. Rowling",
-        "genre": "fantasy",
-        "title": "Harry Potter and the Half-Blood Prince ",
-        "cover": "../resources/hp6.jpg"
-      },
-      {
-        "isbn": "76",
-        "author": "Ray Bradbury",
-        "genre": "science fiction",
-        "title": "Fahrenheit 451 ",
-        "cover": "../resources/451.jpg"
-      },
-      {
-        "isbn": "77",
-        "author": "Oscar Wilde",
-        "genre": "gothic",
-        "title": "The Picture of Dorian Gray ",
-        "cover": "../resources/gray.jpg"
-      },
-      {
-        "isbn": "78",
-        "author": "Douglas Adams",
-        "genre": "science fiction",
-        "title": "The Hitchhiker's Guisbne to the Galaxy",
-        "cover": "../resources/galaxy.jpg"
-      },
-      {
-        "isbn": "79",
-        "author": "Victor Hugo",
-        "genre": "fiction",
-        "title": "Les Misérables",
-        "cover": "../resources/lm.jpg"
-      },
-      {
-        "isbn": "80",
-        "author": "Fyodor Dostoyevsky",
-        "genre": "classic",
-        "title": "Crime and Punishment ",
-        "cover": "../resources/crime.jpg"
-      },
-      {
-        "isbn": "81",
-        "author": "Albert Camus",
-        "genre": "classic",
-        "title": "The Stranger",
-        "cover": "../resources/stranger.jpg"
-      },
-      {
-        "isbn": "82",
-        "author": "Franz Kafka",
-        "genre": "fantasy",
-        "title": "The Metamorphosis",
-        "cover": "../resources/franz.jpeg"
-      },
-      {
-        "isbn": "83",
-        "author": "Hermann Hesse",
-        "genre": "philosophy",
-        "title": "Sisbndhartha",
-        "cover": "../resources/hese.jpg"
-      },
-      {
-        "isbn": "84",
-        "author": "Vladimir Nabokov",
-        "genre": "classic",
-        "title": "Lolita",
-        "cover": "../resources/lolita.jpg"
-      },
-      {
-        "isbn": "85",
-        "author": "William Shakespeare",
-        "genre": "drama",
-        "title": "Macbeth ",
-        "cover": "../resources/macbeth.jpg"
-      },
-      {
-        "isbn": "86",
-        "author": "Ernest Hemingway",
-        "genre": "classic",
-        "title": "The Old Man and the Sea ",
-        "cover": "../resources/sea.jpg"
-      }
-    ]
-  }
+  "users": [
+    {
+      "name": "Danica",
+      "email":"danicadjordjevic540@gmail.com",
+      "password":"danica1234"
+    }
+  ],
+  "books": [
+    {
+      "isbn": "1",
+      "author": "Paulo Coelho",
+      "genre": "novel",
+      "title": "Alchemist",
+      "cover": "../resources/alchemist.jpg"
+    },
+    {
+      "isbn": "2",
+      "author": "Paulo Coelho",
+      "genre": "novel",
+      "title": "Aleph",
+      "cover": "../resources/aleph.jpg"
+    },
+    {
+      "isbn": "3",
+      "author": "Dan Brown",
+      "genre": "mystery",
+      "title": "Angels & Demons",
+      "cover": "../resources/andjeli_i_demoni.jpg"
+    },
+    {
+      "isbn": "4",
+      "author": "Jo Nesbo",
+      "genre": "thriller",
+      "title": "The Bat",
+      "cover": "../resources/bat.jpg"
+    },
+    {
+      "isbn": "5",
+      "author": "Haruki Murakami",
+      "genre": "fiction",
+      "title": "Wind Up Bird Chronicle",
+      "cover": "../resources/bird.jpg"
+    },
+    {
+      "isbn": "6",
+      "author": "Jose Saramago",
+      "genre": "thriller",
+      "title": "Blindness",
+      "cover": "../resources/blindness.jpg"
+    },
+    {
+      "isbn": "7",
+      "author": "Jose Saramago",
+      "genre": "drama",
+      "title": "Cain",
+      "cover": "../resources/cain.jpeg"
+    },
+    {
+      "isbn": "8",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "Carrie",
+      "cover": "../resources/carrie.jpg"
+    },
+    {
+      "isbn": "9",
+      "author": "Dan Simons",
+      "genre": "mystery",
+      "title": "Da Vinci's Code",
+      "cover": "../resources/da_vinci.jpg"
+    },
+    {
+      "isbn": "10",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "Dear John",
+      "cover": "../resources/dear-john.jpg"
+    },
+    {
+      "isbn": "11",
+      "author": "Jose Saramago",
+      "genre": "fiction",
+      "title": "Death With Interruptions",
+      "cover": "../resources/death.jpg"
+    },
+    {
+      "isbn": "12",
+      "author": "Jostein Gaarder",
+      "genre": "fiction",
+      "title": "Appelsinpiken",
+      "cover": "../resources/devojka_sa_pomorandzama.jpg"
+    },
+    {
+      "isbn": "13",
+      "author": "Jose Saramago",
+      "genre": "historical",
+      "title": "Elephant's Journey",
+      "cover": "../resources/elephant.jpg"
+    },
+    {
+      "isbn": "14",
+      "author": "Stephen King",
+      "genre": "crime fiction",
+      "title": "End of Watch",
+      "cover": "../resources/end_watch.jpg"
+    },
+    {
+      "isbn": "15",
+      "author": "Dan Brown",
+      "genre": "conspiracy fiction",
+      "title": "Inferno",
+      "cover": "../resources/inferno.jpg"
+    },
+    {
+      "isbn": "16",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "It",
+      "cover": "../resources/it.jpg"
+    },
+    {
+      "isbn": "17",
+      "author": "Dan Brown",
+      "genre": "conspiracy fiction",
+      "title": "Lost Symbol",
+      "cover": "../resources/izgubljeni_simbol.jpg"
+    },
+    {
+      "isbn": "18",
+      "author": "Haruki Murakami",
+      "genre": "magical realism",
+      "title": "Kafka On The Shore",
+      "cover": "../resources/kafka.jpg"
+    },
+    {
+      "isbn": "19",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Last Song",
+      "cover": "../resources/last-song.jpg"
+    },
+    {
+      "isbn": "20",
+      "author": "Nicholas Sparks",
+      "genre": "drama",
+      "title": "Longest Risbne",
+      "cover": "../resources/longest-risbne.jpg"
+    },
+    {
+      "isbn": "21",
+      "author": "Stephen King",
+      "genre": "thriller",
+      "title": "Mr Mercedes",
+      "cover": "../resources/mercedes.jpg"
+    },
+    {
+      "isbn": "22",
+      "author": "Stephen King",
+      "genre": "mystery",
+      "title": "Misery",
+      "cover": "../resources/misery.jpg"
+    },
+    {
+      "isbn": "23",
+      "author": "Jo Nesbo",
+      "genre": "horror",
+      "title": "Nemesis",
+      "cover": "../resources/nemesis.jpg"
+    },
+    {
+      "isbn": "24",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Notebook",
+      "cover": "../resources/notebook.jpg"
+    },
+    {
+      "isbn": "25",
+      "author": "Jo Nesbo",
+      "genre": "crime",
+      "title": "Police",
+      "cover": "../resources/police.jpg"
+    },
+    {
+      "isbn": "26",
+      "author": "Jo Nesbo",
+      "genre": "crime",
+      "title": "The Redbeast",
+      "cover": "../resources/redbeast.jpg"
+    },
+    {
+      "isbn": "27",
+      "author": "Jo Nesbo",
+      "genre": "crime fiction",
+      "title": "Cockroaches",
+      "cover": "../resources/roach.jpg"
+    },
+    {
+      "isbn": "28",
+      "author": "Nicholas Sparks",
+      "genre": "drama",
+      "title": "Safe Haven",
+      "cover": "../resources/safe-haven.jpg"
+    },
+    {
+      "isbn": "29",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "Salem's Lot",
+      "cover": "../resources/salems_lot.jpg"
+    },
+    {
+      "isbn": "30",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "See me",
+      "cover": "../resources/see-me.jpg"
+    },
+    {
+      "isbn": "31",
+      "author": "Haruki Murakami",
+      "genre": "fantasy",
+      "title": "A Wild Sheep Chase",
+      "cover": "../resources/sheep.jpg"
+    },
+    {
+      "isbn": "32",
+      "author": "Stephen King",
+      "genre": "horror",
+      "title": "The Shining",
+      "cover": "../resources/shining.jpg"
+    },
+    {
+      "isbn": "33",
+      "author": "Jo Nesbo",
+      "genre": "mystery",
+      "title": "The Snowman",
+      "cover": "../resources/snowman.jpg"
+    },
+    {
+      "isbn": "34",
+      "author": "Jo Nesbo",
+      "genre": "mystery",
+      "title": "Misbnnight Sun",
+      "cover": "../resources/sun.jpg"
+    },
+    {
+      "isbn": "35",
+      "author": "Jo Nesbo",
+      "genre": "mystery",
+      "title": "The Thirst",
+      "cover": "../resources/thirst.jpg"
+    },
+    {
+      "isbn": "36",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Wedding",
+      "cover": "../resources/wedding.jpg"
+    },
+    {
+      "isbn": "37",
+      "author": "Haruki Murakami",
+      "genre": "fantasy",
+      "title": "Norwegian Wood",
+      "cover": "../resources/woods.jpg"
+    },
+    {
+      "isbn": "38",
+      "author": "Haruki Murakami",
+      "genre": "magical realism",
+      "title": "Kafka On The Shore",
+      "cover": "../resources/kafka.jpg"
+    },
+    {
+      "isbn": "39",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Last Song",
+      "cover": "../resources/last-song.jpg"
+    },
+    {
+      "isbn": "40",
+      "author": "Nicholas Sparks",
+      "genre": "drama",
+      "title": "Longest Risbne",
+      "cover": "../resources/longest-risbne.jpg"
+    },
+    {
+      "isbn": "41",
+      "author": "Mark Twain",
+      "genre": "classic",
+      "title": "The Adventures of Tom Sawyer",
+      "cover": "../resources/no.jpg"
+    },
+    {
+      "isbn": "42",
+      "author": "Joseph Heller",
+      "genre": "war",
+      "title": "Catch-22",
+      "cover": "../resources/no.jpg"
+    },
+    {
+      "isbn": "43",
+      "author": "Margaret Atwood",
+      "genre": "feminism",
+      "title": "The Handmaisbn's Tale ",
+      "cover": "../resources/no.jpg"
+    },
+    {
+      "isbn": "44",
+      "author": "Khaled Hosseini",
+      "genre": "drama",
+      "title": "A Thousand Splendisbn Suns ",
+      "cover": "../resources/suns.jpg"
+    },
+    {
+      "isbn": "45",
+      "author": "Khaled Hosseini",
+      "genre": "drama",
+      "title": "And the Mountains Echoed ",
+      "cover": "../resources/echoed.jpeg"
+    },
+    {
+      "isbn": "46",
+      "author": "Gabriel García Márquez",
+      "genre": "classic",
+      "title": "One Hundred Years of Solitude ",
+      "cover": "../resources/years.jpg"
+    },
+    {
+      "isbn": "47",
+      "author": "Gabriel García Márquez",
+      "genre": "magical realism",
+      "title": "Of Love and Other Demons ",
+      "cover": "../resources/love.jpg"
+    },
+    {
+      "isbn": "48",
+      "author": "Arthur Golden",
+      "genre": "historical",
+      "title": "Memoirs of a Geisha ",
+      "cover": "../resources/geisha.jpg"
+    },
+    {
+      "isbn": "49",
+      "author": "Leo Tolstoy",
+      "genre": "classic",
+      "title": "War and Peace ",
+      "cover": "../resources/war.jpg"
+    },
+    {
+      "isbn": "50",
+      "author": "J.K. Rowling",
+      "genre": "fantasy",
+      "title": "Harry Potter and the Chamber of Secrets",
+      "cover": "../resources/hp2.jpg"
+    },
+    {
+      "isbn": "51",
+      "author": "Harper Lee",
+      "genre": "legal story",
+      "title": "To Kill a Mockingbird",
+      "cover": "../resources/mockingbird.jpg"
+    },
+    {
+      "isbn": "52",
+      "author": "J.K. Rowling",
+      "genre": "fantasy",
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "cover": "../resources/hp1.jpg"
+    },
+    {
+      "isbn": "53",
+      "author": "Jane Austen",
+      "genre": "classic",
+      "title": "Prisbne and Prejudice",
+      "cover": "../resources/prisbne.jpg"
+    },
+    {
+      "isbn": "54",
+      "author": "Anne Frank",
+      "genre": "biography",
+      "title": "The Diary of a Young Girl ",
+      "cover": "../resources/diary.jpg"
+    },
+    {
+      "isbn": "55",
+      "author": "J.K. Rowling",
+      "genre": "fantasy",
+      "title": "Harry Potter and the Deathly Hallows",
+      "cover": "../resources/hp7.jpg"
+    },
+    {
+      "isbn": "56",
+      "author": "William Golding",
+      "genre": "classic",
+      "title": "Lord of the Flies",
+      "cover": "../resources/flies.jpg"
+    },
+    {
+      "isbn": "57",
+      "author": "Leo Tolstoy",
+      "genre": "classic",
+      "title": "Anna Karenina",
+      "cover": "../resources/ak.jpg"
+    },
+    {
+      "isbn": "58",
+      "author": "George Orwell",
+      "genre": "science fiction",
+      "title": "1984",
+      "cover": "../resources/1984.jpg"
+    },
+    {
+      "isbn": "59",
+      "author": "Antoine de Saint-Exupéry",
+      "genre": "classic",
+      "title": "The Little Prince",
+      "cover": "../resources/prince.jpg"
+    },
+    {
+      "isbn": "60",
+      "author": "F. Scott Fitzgerald",
+      "genre": "academic",
+      "title": "The Great Gatsby",
+      "cover": "../resources/gatsby.jpg"
+    },
+    {
+      "isbn": "61",
+      "author": "J.D. Salinger",
+      "genre": "classic",
+      "title": "The Catcher in the Rye",
+      "cover": "../resources/rye.jpg"
+    },
+    {
+      "isbn": "62",
+      "author": "George Orwell",
+      "genre": "science fiction",
+      "title": "Animal Farm",
+      "cover": "../resources/farm.jpg"
+    },
+    {
+      "isbn": "63",
+      "author": "J.R.R. Tolkien",
+      "genre": "fantasy",
+      "title": "The Lord of the Rings ",
+      "cover": "../resources/rings.jpg"
+    },
+    {
+      "isbn": "64",
+      "author": "Nicholas Sparks",
+      "genre": "romance",
+      "title": "The Notebook",
+      "cover": "../resources/notebook.jpg"
+    },
+    {
+      "isbn": "65",
+      "author": "Charlotte Brontë",
+      "genre": "romance",
+      "title": "Jane Eyre",
+      "cover": "../resources/jane.jpg"
+    },
+    {
+      "isbn": "66",
+      "author": "Markus Zusak",
+      "genre": "classic",
+      "title": "The Book Thief",
+      "cover": "../resources/bookthief.jpg"
+    },
+    {
+      "isbn": "67",
+      "author": "William Shakespeare",
+      "genre": "romance",
+      "title": "Romeo and Juliet ",
+      "cover": "../resources/romeo.jpg"
+    },
+    {
+      "isbn": "68",
+      "author": "Khaled Hosseini",
+      "genre": "drama",
+      "title": "The Kite Runner",
+      "cover": "../resources/kiterunner.jpg"
+    },
+    {
+      "isbn": "69",
+      "author": "Shel Silverstein",
+      "genre": "childrens",
+      "title": "The Giving Tree",
+      "cover": "../resources/tree.jpg"
+    },
+    {
+      "isbn": "70",
+      "author": "J.R.R. Tolkien",
+      "genre": "fantasy",
+      "title": "The Hobbit or There and Back Again",
+      "cover": "../resources/hobbit.jpg"
+    },
+    {
+      "isbn": "71",
+      "author": "John Steinbeck",
+      "genre": "fiction",
+      "title": "Of Mice and Men",
+      "cover": "../resources/mice.jpg"
+    },
+    {
+      "isbn": "72",
+      "author": "Lewis Carroll",
+      "genre": "childrens",
+      "title": "Alice's Adventures in Wonderland",
+      "cover": "../resources/alice.jpg"
+    },
+    {
+      "isbn": "73",
+      "author": "J.K. Rowling",
+      "genre": "fantasy",
+      "title": "Harry Potter and the Prisoner of Azkaban",
+      "cover": "../resources/hp3.jpg"
+    },
+    {
+      "isbn": "74",
+      "author": "J.K. Rowling",
+      "genre": "fantasy",
+      "title": "Harry Potter and the Goblet of Fire",
+      "cover": "../resources/hp4.jpg"
+    },
+    {
+      "isbn": "75",
+      "author": "J.K. Rowling",
+      "genre": "fantasy",
+      "title": "Harry Potter and the Half-Blood Prince ",
+      "cover": "../resources/hp6.jpg"
+    },
+    {
+      "isbn": "76",
+      "author": "Ray Bradbury",
+      "genre": "science fiction",
+      "title": "Fahrenheit 451 ",
+      "cover": "../resources/451.jpg"
+    },
+    {
+      "isbn": "77",
+      "author": "Oscar Wilde",
+      "genre": "gothic",
+      "title": "The Picture of Dorian Gray ",
+      "cover": "../resources/gray.jpg"
+    },
+    {
+      "isbn": "78",
+      "author": "Douglas Adams",
+      "genre": "science fiction",
+      "title": "The Hitchhiker's Guisbne to the Galaxy",
+      "cover": "../resources/galaxy.jpg"
+    },
+    {
+      "isbn": "79",
+      "author": "Victor Hugo",
+      "genre": "fiction",
+      "title": "Les Misérables",
+      "cover": "../resources/lm.jpg"
+    },
+    {
+      "isbn": "80",
+      "author": "Fyodor Dostoyevsky",
+      "genre": "classic",
+      "title": "Crime and Punishment ",
+      "cover": "../resources/crime.jpg"
+    },
+    {
+      "isbn": "81",
+      "author": "Albert Camus",
+      "genre": "classic",
+      "title": "The Stranger",
+      "cover": "../resources/stranger.jpg"
+    },
+    {
+      "isbn": "82",
+      "author": "Franz Kafka",
+      "genre": "fantasy",
+      "title": "The Metamorphosis",
+      "cover": "../resources/franz.jpeg"
+    },
+    {
+      "isbn": "83",
+      "author": "Hermann Hesse",
+      "genre": "philosophy",
+      "title": "Sisbndhartha",
+      "cover": "../resources/hese.jpg"
+    },
+    {
+      "isbn": "84",
+      "author": "Vladimir Nabokov",
+      "genre": "classic",
+      "title": "Lolita",
+      "cover": "../resources/lolita.jpg"
+    },
+    {
+      "isbn": "85",
+      "author": "William Shakespeare",
+      "genre": "drama",
+      "title": "Macbeth ",
+      "cover": "../resources/macbeth.jpg"
+    },
+    {
+      "isbn": "86",
+      "author": "Ernest Hemingway",
+      "genre": "classic",
+      "title": "The Old Man and the Sea ",
+      "cover": "../resources/sea.jpg"
+    }
+  ]
+}

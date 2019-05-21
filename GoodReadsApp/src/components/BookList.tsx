@@ -9,12 +9,12 @@ interface Props {
 }
 
 interface State {
-    
+   
 }
 
 class BookList extends Component<Props, State> {
 
-    render() {
+    render(){
         if (!this.props.books) {
             return (<h2>No books</h2>);
         }

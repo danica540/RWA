@@ -5,9 +5,11 @@ import React from 'react';
 class Header extends Component {
     render() {
         return (
-            <ul>
-                <li><a href="#">Good Reads</a></li>
-            </ul>
+            <div className="header">
+                <ul>
+                    <li><a href="#">Good Reads</a></li>
+                </ul>
+            </div>
         )
     }
 }

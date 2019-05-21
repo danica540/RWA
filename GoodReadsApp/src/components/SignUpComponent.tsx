@@ -8,9 +8,10 @@ interface Props {
 interface State {
     email: string;
     password: string;
+    name: string;
 }
 
-class SignInComponent extends Component<Props, State>{
+class SignUpComponent extends Component<Props, State>{
 
     handleOnChange = (e: any) => {
         const parameter = ((e.target as HTMLInputElement).id).toString();
@@ -21,11 +22,14 @@ class SignInComponent extends Component<Props, State>{
         else if (parameter === "password") {
             this.setState({ password: value })
         }
+        else if (parameter === "name") {
+            this.setState({ name: value })
+        }
 
         // console.log(this.state); - stampa prethodno stanje
     }
 
-    handleSubmit=(e:FormEvent)=>{
+    handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         console.log(e.target);
         console.log(this.state);
@@ -35,17 +39,19 @@ class SignInComponent extends Component<Props, State>{
         return (
             <div>
                 <form className="form" onSubmit={this.handleSubmit}>
-                <h4>E-mail</h4>
-                <input type="text" id="email-si" onChange={this.handleOnChange}></input>
-                <h4>Password</h4>
-                <input type="password" id="password-si" onChange={this.handleOnChange}></input>
-                <button>Sign In</button>
+                    <h4>Name</h4>
+                    <input type="text" id="name-su" onChange={this.handleOnChange}></input>
+                    <h4>E-mail</h4>
+                    <input type="text" id="email-su" onChange={this.handleOnChange}></input>
+                    <h4>Password</h4>
+                    <input type="password" id="password-su" onChange={this.handleOnChange}></input>
+                    <button>Sign Up</button>
                 </form>
             </div>
         )
     }
 }
 
-export default SignInComponent;
+export default SignUpComponent;
 
 

@@ -1,0 +1,47 @@
+.list-item{
+    width:200px;
+    height:auto;
+    text-align: center;
+    margin:2%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .list-item:hover{
+    background-color: #eaeaea;
+    
+  }
+  
+  .star{
+    font-weight:15px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  #shelf{
+    background-color: green;
+    color:white;
+    font-weight: bold;
+    width:150px;
+    margin:auto;
+    margin-top:4px;
+    margin-bottom:4px;
+    height: auto;
+    border:none;
+    padding:3px;
+    font-size: 15px;
+    
+  }
+  
+  .genre{
+    font-weight: bold;
+    margin:auto;
+  }
+  
+  .list-item img{
+    max-width: 150px;
+    height: auto;
+    margin:auto;
+    margin-bottom: 4px;
+    margin-top: 4px;
+  }
