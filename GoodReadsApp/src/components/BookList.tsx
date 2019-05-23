@@ -3,27 +3,44 @@ import { connect } from "react-redux";
 import { Action } from "redux";
 import { Book } from "../models/Book";
 import BookComponent from "./BookComponent";
+import "../style/BookList.css";
+
 
 interface Props {
-    books?: Book[];
 }
 
 interface State {
-   
+   books?:Book[];
 }
 
 class BookList extends Component<Props, State> {
 
+    constructor(props: Props) {
+        super(props);
+        this.state={books:undefined};
+    }
+
+    componentDidMount(){
+        fetch("http://localhost:3002/books")
+        .then(res=>res.json())
+        .then(niz=>this.setState({
+            books:niz
+        }))
+    }
+
     render(){
-        if (!this.props.books) {
-            return (<h2>No books</h2>);
+        if (!this.state.books) {
+            return (<label>Loading...</label>);
         }
         return (
-            <div>
-                {this.props.books.map((book: Book,index:number) =>
+            <div className="book-list">
+                {this.state.books.map((book: Book,index:number) =>{
+                //const bookCover=require(book.cover);
+                const bookCover=book.cover;
                     (
-                        <BookComponent key={index} genre={book.genre} cover={book.cover}></BookComponent>
+                        <BookComponent key={index} id={book.id} cover={bookCover} genre={book.genre}></BookComponent>
                     )
+                }
                 )}
             </div>
         );

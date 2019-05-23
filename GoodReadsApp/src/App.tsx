@@ -6,20 +6,25 @@ import createSagaMiddleware from '@redux-saga/core';
 import Navbar from './components/Navbar';
 import SignInComponent from './components/SignInComponent';
 import SignUpComponent from './components/SignUpComponent';
-import { BrowserRouter, Route, RouteProps } from "react-router-dom";
+import { BrowserRouter, Route, RouteProps, Switch, RouteComponentProps } from "react-router-dom";
+import BookList from './components/BookList';
+import BookInfo from './components/BookInfo';
 
 class App extends Component {
+
   render() {
     return (
-      
-        <BrowserRouter>
-        <div>
+
+      <BrowserRouter>
+          <div>
           <Navbar/>
-          <Route path="/sign-in" component={SignInComponent}/>
+          {/* <BookList/> */}
+          {/* <Route exact path="/"  component={SignInComponent} /> */}
+          <Route path="/sign-in" component={SignInComponent} />
           <Route path="/sign-up" component={SignUpComponent} />
-          
+          <Route path="/:book_id" component={BookInfo}/>
         </div>
-        </BrowserRouter>
+      </BrowserRouter>
     );
   }
 }

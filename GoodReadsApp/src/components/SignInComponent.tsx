@@ -1,6 +1,7 @@
 import { Component, FormEvent } from "react";
 import React from 'react';
 import "../style/SignInComponent.css"
+import { Link } from "react-router-dom";
 
 interface Props {
 }
@@ -25,7 +26,7 @@ class SignInComponent extends Component<Props, State>{
         // console.log(this.state); - stampa prethodno stanje
     }
 
-    handleSubmit=(e:FormEvent)=>{
+    handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         console.log(e.target);
         console.log(this.state);
@@ -35,14 +36,14 @@ class SignInComponent extends Component<Props, State>{
         return (
             <div>
                 <form className="form" onSubmit={this.handleSubmit}>
-                <h1>Sign In</h1>
-                <img src={require("../resources/user.png")}></img>
-                <h4>E-mail</h4>
-                <input type="text" id="email-si" onChange={this.handleOnChange}></input>
-                <h4>Password</h4>
-                <input type="password" id="password-si" onChange={this.handleOnChange}></input>
-                <button>Sign In</button>
-                <label>Don't have an account? <a href="sign-up">Sign up</a></label>
+                    <h1>Sign In</h1>
+                    <img src={require("../resources/user.png")}></img>
+                    <h4>E-mail</h4>
+                    <input type="text" id="email-si" onChange={this.handleOnChange}></input>
+                    <h4>Password</h4>
+                    <input type="password" id="password-si" onChange={this.handleOnChange}></input>
+                    <button>Sign In</button>
+                    <label>Don't have an account? <Link to={"/sign-up"}>Sign up</Link></label>
                 </form>
             </div>
         )
