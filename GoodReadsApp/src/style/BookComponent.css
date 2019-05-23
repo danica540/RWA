@@ -12,12 +12,12 @@
     
   }
   
-  .star{
-    font-weight:15px;
-    text-decoration: none;
-    color: black;
+  .list-item .rating img{
+    width:22px;
+    height: auto;
+    margin: auto;
   }
-  
+
   .shelf{
     background-color: green;
     color:white;

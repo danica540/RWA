@@ -9,6 +9,7 @@ import SignUpComponent from './components/SignUpComponent';
 import { BrowserRouter, Route, RouteProps, Switch, RouteComponentProps } from "react-router-dom";
 import BookList from './components/BookList';
 import BookInfo from './components/BookInfo';
+import ErrorPage from './components/ErrorPage';
 
 class App extends Component {
 
@@ -18,11 +19,12 @@ class App extends Component {
       <BrowserRouter>
           <div>
           <Navbar/>
-          {/* <BookList/> */}
+          <BookList></BookList>
           {/* <Route exact path="/"  component={SignInComponent} /> */}
-          <Route path="/sign-in" component={SignInComponent} />
+          <Route path="/sign-in" component={SignInComponent}/>
           <Route path="/sign-up" component={SignUpComponent} />
-          <Route path="/:book_id" component={BookInfo}/>
+          <Route path="/books/:book_id" component={BookInfo}/>
+          <Route path="*" component={ErrorPage}/>
         </div>
       </BrowserRouter>
     );

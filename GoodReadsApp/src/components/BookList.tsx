@@ -23,9 +23,9 @@ class BookList extends Component<Props, State> {
     componentDidMount(){
         fetch("http://localhost:3002/books")
         .then(res=>res.json())
-        .then(niz=>this.setState({
-            books:niz
-        }))
+        .then(niz=>{
+            this.setState({books:niz})
+        })
     }
 
     render(){
@@ -34,13 +34,10 @@ class BookList extends Component<Props, State> {
         }
         return (
             <div className="book-list">
-                {this.state.books.map((book: Book,index:number) =>{
-                //const bookCover=require(book.cover);
-                const bookCover=book.cover;
+                {this.state.books.map((book: Book,index:number) =>
                     (
-                        <BookComponent key={index} id={book.id} cover={bookCover} genre={book.genre}></BookComponent>
+                        <BookComponent key={index} id={book.id} cover={book.cover} genre={book.genre}></BookComponent>
                     )
-                }
                 )}
             </div>
         );
