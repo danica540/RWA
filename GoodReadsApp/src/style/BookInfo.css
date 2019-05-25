@@ -35,3 +35,18 @@
 .single-book .right h1{
     margin-top: 0%;
 }
+
+.review-list{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+
+.review-list .single-review{
+    flex:1 1;
+    width:70%;
+    margin-top: 1%;
+    height: auto;
+}
+
+

@@ -13,13 +13,14 @@ interface Props {
 interface State {
     book_id: string;
     book?: Book;
+    reviews: any;
 }
 
 class BookInfo extends Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
-        this.state = { book_id: " " };
+        this.state = { book_id: " ", reviews:[] };
     }
 
     componentDidMount = () => {
@@ -33,25 +34,31 @@ class BookInfo extends Component<Props, State> {
                 this.setState({ book: bookTmp });
             })
 
+        fetch("http://localhost:3002/reviews/?bookId=" + id)
+            .then(res => res.json())
+            .then(arrayOfReviews => {
+                this.setState({ reviews: arrayOfReviews })
+            })
+
     }
 
-    wantToReadClick=()=>{
+    wantToReadClick = () => {
         console.log("I want to read it")
     }
 
-    handleRating=(e:FormEvent,bookId)=>{
-        const upOrDown=(e.target as any).id;
-        if(upOrDown==="up"){
-            const labela=document.getElementById("rate-"+bookId);
-            let content=parseInt(labela.innerHTML);
-            content+=1;
-            labela.innerHTML=content.toString();
+    handleRating = (e: FormEvent, bookId) => {
+        const upOrDown = (e.target as any).id;
+        if (upOrDown === "up") {
+            const labela = document.getElementById("rate-" + bookId);
+            let content = parseInt(labela.innerHTML);
+            content += 1;
+            labela.innerHTML = content.toString();
         }
-        else if(upOrDown==="down"){
-            const labela=document.getElementById("rate-"+bookId);
-            let content=parseInt(labela.innerHTML);
-            content-=1;
-            labela.innerHTML=content.toString();
+        else if (upOrDown === "down") {
+            const labela = document.getElementById("rate-" + bookId);
+            let content = parseInt(labela.innerHTML);
+            content -= 1;
+            labela.innerHTML = content.toString();
         }
     }
 
@@ -61,21 +68,36 @@ class BookInfo extends Component<Props, State> {
         }
         else {
             return (
-                <div className="single-book">
-                    <div className="left">
-                        <img src={require("../resources/no.jpg")}></img>
-                        <button id={this.state.book.id} className="shelf" onClick={this.wantToReadClick}>Want to Read</button>
-                        <label className="rate-label">Rate this book</label>
-                        <div className="rating">
-                            <img id="up" onClick={(e) => this.handleRating(e, this.state.book.id)} src={require("../resources/sort-up.png")}></img>
-                            <img id="down" onClick={(e) => this.handleRating(e, this.state.book.id)} src={require("../resources/caret-down.png")}></img>
+                <div>
+                    <div className="single-book">
+                        <div className="left">
+                            <img src={require("../resources/no.jpg")}></img>
+                            <button id={this.state.book.id} className="shelf" onClick={this.wantToReadClick}>Want to Read</button>
+                            <label className="rate-label">Rate this book</label>
+                            <div className="rating">
+                                <img id="up" onClick={(e) => this.handleRating(e, this.state.book.id)} src={require("../resources/sort-up.png")}></img>
+                                <img id="down" onClick={(e) => this.handleRating(e, this.state.book.id)} src={require("../resources/caret-down.png")}></img>
+                            </div>
+                            <label id={"rate-" + this.state.book.id}> 0 </label>
                         </div>
-                        <label id={"rate-" + this.state.book.id}> 0 </label>
-                    </div>
-                    <div className="right">
-                        <h1>{this.state.book.title}</h1>
-                        <label>by {this.state.book.author}</label>
+                        <div className="right">
+                            <h1>{this.state.book.title}</h1>
+                            <label>by {this.state.book.author}</label>
 
+                        </div>
+                    </div>
+                    <div className="review-list">
+                        <h1>Reviews</h1>
+                        {this.state.reviews.map((el: any) =>
+                            (
+                                <div className="single-review">
+                                    <h3>{el.title}</h3>
+                                    <label>Posted On: {el.postedOn}</label>
+                                    <p>{el.content}</p>
+                                    <hr/>
+                                </div>
+                            )
+                        )}
                     </div>
                 </div>
             )

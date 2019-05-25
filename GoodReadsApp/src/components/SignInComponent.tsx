@@ -31,8 +31,6 @@ class SignInComponent extends Component<Props, State>{
         else if (parameter === "password-si") {
             this.setState({ password: value })
         }
-
-        // console.log(this.state); - stampa prethodno stanje
     }
 
     validateForm() {

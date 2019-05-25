@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import BookList from './components/BookList';
 import Navbar from './components/Navbar';
 import SignInComponent from './components/SignInComponent';
@@ -10,9 +10,11 @@ import BrowseComponent from './components/BrowseComponent';
 import ProfileComponent from './components/ProfileComponent';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { reducer } from './store/reducer';
+import RecommendedBooks from './components/RecommendedBooks';
+import { rootReducer } from './store';
+import ListsComponent from './components/ListsComponent';
 
-const store=createStore(reducer);
+const store=createStore(rootReducer);
 
 class Routes extends Component {
 
@@ -22,12 +24,18 @@ class Routes extends Component {
         <BrowserRouter>
           <div>
             <Navbar></Navbar>
-            <Route exact path="/" component={BookList}></Route>
+            <Switch>
+            {/* <Route exact path="/" component={BookList}></Route> */}
+            <Route exact path="/" component={ErrorPage}></Route>
             <Route exact path="/books" component={BrowseComponent} />
             <Route path="/sign-in" component={SignInComponent} />
             <Route path="/sign-up" component={SignUpComponent} />
+            <Route exact path="/books/undefined" component={ErrorPage} />
             <Route exact path="/books/:book_id" component={BookInfo} />
             <Route exact path="/profile/:user_id" component={ProfileComponent} />
+            <Route exact path="/recommendations" component={RecommendedBooks} />
+            <Route exact path="/lists" component={ListsComponent} />
+            </Switch>
             {/* <Route path="*" component={ErrorPage}/> */}
           </div>
         </BrowserRouter >

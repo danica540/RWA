@@ -111,16 +111,29 @@
   "reviews": [
     {
       "id": "1",
+      "postedOn": "Wednesday, April 24, 2019 4:06 PM",
+      "title": "Best book ever!!!!!",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "bookId": "22"
     },
     {
       "id": "2",
+      "title": "Excelenttt",
+      "postedOn": "Wednesday, April 24, 2019 4:06 PM",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "bookId": "22"
+    },
+    {
+      "id": "3",
+      "title": "Best book ever",
+      "postedOn": "Wednesday, April 22, 2019 4:06 PM",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "bookId": "23"
     },
     {
-      "id": "3",
+      "id": "4",
+      "title": "Best book ever!!!!!!!!!!!!!",
+      "postedOn": "Wednesday, April 24, 2018 4:06 PM",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "bookId": "26"
     }
@@ -792,5 +805,29 @@
       "title": "The Old Man and the Sea ",
       "cover": "../resources/sea.jpg"
     }
+  ],
+  "genres": [
+    "novel",
+    "thriller",
+    "fiction",
+    "drama",
+    "mystery",
+    "horror",
+    "romance",
+    "war",
+    "feminism",
+    "childrens",
+    "historical",
+    "crime fistion",
+    "conspiracy fiction",
+    "magical realism",
+    "crime",
+    "fantasy",
+    "classic",
+    "legal story",
+    "biography",
+    "academic",
+    "science fiction",
+    "gothic"
   ]
 }

@@ -1,0 +1,12 @@
+.lists-component li a{
+    text-decoration: none;
+    color:black;
+}
+
+.lists-component ul{
+    list-style: none;
+}
+
+.lists-component{
+    text-align: center;
+}
