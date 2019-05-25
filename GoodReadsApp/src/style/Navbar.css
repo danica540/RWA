@@ -13,21 +13,7 @@
     flex-grow: 0.2;
     background-color: transparent; 
   }
-  
-  
-  
-  .navbar li input{
-    background-color: transparent; 
-    border:none;
-    margin:0;
-    display: block; 
-    color: black;
-    text-align: left;
-    padding: 16px 10px;
-    font-weight: bold;
-  }
-  
-  
+
   .navbar li a{
     display: block;
     color: black;
@@ -40,16 +26,7 @@
     background-color: #eaeaea;
   }
   
-  .navbar li input:hover {
-    background-color: #eaeaea;
-  }
-  
   .navbar .separator{
       flex: 1 1;
   }
   
-  ::placeholder { 
-    color:black;
-    opacity: 1; 
-    font-weight: bold;
-  }

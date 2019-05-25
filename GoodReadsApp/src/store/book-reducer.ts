@@ -9,6 +9,7 @@ export function booksReducer(state: Book[] = initialState, action: Action){ //ak
     switch(action.type) {
         case ADD_BOOKS: {
             const {books} = action as AddBooks;
+            // u trenutni state, doda novu knjigu
             return [...state, ...books];//...spread operator? rasturi elemente i onda napravi novi niz
         }
         default:

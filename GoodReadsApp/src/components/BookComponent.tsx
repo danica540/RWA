@@ -56,7 +56,7 @@ class BookComponent extends Component<Props, State>{
 
     render() {
         // this.setState({imgCover:[require(this.props.cover)]});
-        const link: string = "/books/" + this.props.id;
+        const link: string = "/book/" + this.props.id;
         return (
             <div className="list-item">
                 <h3 className="genre">{this.props.genre}</h3>

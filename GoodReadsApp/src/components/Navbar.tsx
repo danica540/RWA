@@ -1,46 +1,57 @@
+
 import { Component } from "react";
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "../style/Navbar.css"
-
-interface Props {
-}
+import { User } from "../models/User";
 
 interface State {
-    browse: boolean;
+  user?: User;
+  logged: boolean;
 }
 
-class Navbar extends Component<Props, State> {
+class Navbar extends Component<{}, State> {
 
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            browse: false
-        }
-    }
+  state: State = {
+    user: null,
+    logged: false
+  }
 
-    browseClick = (ev: any) => {
-        console.log(this.state);
-        this.setState({
-            browse: true
-        })
+  logOut = () => {
+    this.setState({
+      logged:false,
+      user:null
+    })
+  }
+
+  render() {
+    if(!this.state.user){
+      return (
+        <div className="navbar">
+          <ul>
+            <li id="logo"><Link to={"/"}>Good Reads</Link></li>
+            <li id="browse"><Link to={"/books"}>Browse</Link></li>
+            <li className="separator"></li>
+            <li><Link to={`/sign-in`}>Sign In</Link></li>
+          </ul>
+        </div>
+      )
     }
-    render() {
-        return (
-            <div className="navbar">
-                <ul>
-                    <li id="logo"><Link to={"/"}>Good Reads</Link></li>
-                    <li id="my-books"><Link to={"#"}>My Books</Link></li>
-                    <li id="browse"><Link to={"#"} onClick={this.browseClick}>Browse</Link></li>
-                    <li className="search"><input id="searchInput" type="text" placeholder="Search.."></input></li>
-                    <li className="separator"></li>
-                    {/* <li ><a href="sign-in">Sign In</a></li> */}
-                    <li><Link to={`/sign-in`}>Sign In</Link></li>
-                    <li id="my-profile"><Link to={"#"}>My Profile</Link></li>
-                </ul>
-            </div>
-        )
+    else{
+      return (
+        <div className="navbar">
+          <ul>
+            <li id="logo"><Link to={"/"}>Good Reads</Link></li>
+            <li id="my-books"><Link to={"/bookshelves"}>My Books</Link></li>
+            <li id="browse"><Link to={"/books"}>Browse</Link></li>
+            <li className="separator"></li>
+            <li onClick={this.logOut}><Link to={`/`}>Log out</Link></li>
+            <li id="my-profile"><Link to={"/profile/"+this.state.user.id}>My Profile</Link></li>
+          </ul>
+        </div>
+      )
     }
+  }
 }
 
-export default withRouter(Navbar as any);
+export default Navbar;

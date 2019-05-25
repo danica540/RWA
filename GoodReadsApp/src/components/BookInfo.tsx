@@ -23,7 +23,7 @@ class BookInfo extends Component<Props, State> {
     }
 
     componentDidMount = () => {
-        const id = ((this.props.match as RouteComponentProps<any, any>).params.book_id);
+        const id = ((this.props.match as any).params.book_id);
         this.setState({
             book_id: id
         });
