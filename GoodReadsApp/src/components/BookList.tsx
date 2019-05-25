@@ -1,4 +1,4 @@
-import React, { Component, Dispatch } from "react";
+import React, { Component, Dispatch, FormEvent } from "react";
 import { connect } from "react-redux";
 import { Action } from "redux";
 import { Book } from "../models/Book";
@@ -20,11 +20,23 @@ class BookList extends Component<Props, State> {
         this.state = { books: undefined };
     }
 
-    handleSubmit() {
-        console.log("search");
+    handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        if (this.validateSearchInput()) {
+            fetch("http://localhost:3002/books/?q="+(document.getElementById("searchInput") as HTMLInputElement).value)
+            .then(res => res.json())
+            .then(niz => {
+                this.setState({ books: niz })
+            })
+        }
     }
 
-    componentDidMount() {
+    validateSearchInput = () => {
+        return (document.getElementById("searchInput") as HTMLInputElement).value.length !== 0;
+
+    }
+
+    componentDidMount = () => {
         fetch("http://localhost:3002/books")
             .then(res => res.json())
             .then(niz => {

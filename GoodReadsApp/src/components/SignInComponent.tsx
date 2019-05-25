@@ -4,6 +4,7 @@ import "../style/SignInComponent.css"
 import { Link } from "react-router-dom";
 
 interface Props {
+    history: any;
 }
 
 interface State {
@@ -13,23 +14,39 @@ interface State {
 
 class SignInComponent extends Component<Props, State>{
 
+    constructor(props: Props) {
+        super(props);
+        this.state = { 
+            email: "", 
+            password:"" 
+        };
+    }
+
     handleOnChange = (e: any) => {
         const parameter = ((e.target as HTMLInputElement).id).toString();
         const value = (e.target as HTMLInputElement).value;
-        if (parameter === "email") {
+        if (parameter === "email-si") {
             this.setState({ email: value });
         }
-        else if (parameter === "password") {
+        else if (parameter === "password-si") {
             this.setState({ password: value })
         }
 
         // console.log(this.state); - stampa prethodno stanje
     }
 
+    validateForm() {
+        return this.state.email.length > 0 && this.state.password.length > 0;
+    }
+
     handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        console.log(e.target);
-        console.log(this.state);
+        if(this.validateForm()){
+            console.log("Validno");
+            console.log(this.state);
+            this.props.history.push("/");
+        }
+        
     }
 
     render() {

@@ -3,6 +3,7 @@ import React from 'react';
 import "../style/SignInComponent.css"
 
 interface Props {
+    history:any;
 }
 
 interface State {
@@ -13,26 +14,42 @@ interface State {
 
 class SignUpComponent extends Component<Props, State>{
 
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: "",
+            name: ""
+        };
+    }
+
     handleOnChange = (e: any) => {
         const parameter = ((e.target as HTMLInputElement).id).toString();
         const value = (e.target as HTMLInputElement).value;
-        if (parameter === "email") {
+        if (parameter === "email-su") {
             this.setState({ email: value });
         }
-        else if (parameter === "password") {
+        else if (parameter === "password-su") {
             this.setState({ password: value })
         }
-        else if (parameter === "name") {
+        else if (parameter === "name-su") {
             this.setState({ name: value })
         }
 
         // console.log(this.state); - stampa prethodno stanje
     }
 
+    validateForm() {
+        return this.state.email.length > 0 && this.state.password.length > 0 && this.state.name.length > 0;
+    }
+
     handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        console.log(e.target);
-        console.log(this.state);
+        if(this.validateForm()){
+            console.log(this.state);
+            this.props.history.push("/sign-in");
+        }
+        
     }
 
     render() {

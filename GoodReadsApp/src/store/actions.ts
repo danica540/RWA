@@ -5,15 +5,14 @@ import { Book } from "../models/Book";
 export const FETCH_BOOKS = "FETCH BOOKS";
 export const ADD_BOOKS = "ADD BOOKS";
 
-export interface FetchBooks extends Action {
+export interface FetchBooks extends Action { }
 
-}
-export function fetchBooks() : FetchBooks{
+export function fetchBooks(): FetchBooks {
     return {
         type: FETCH_BOOKS
     };
 }
-export interface AddBooks extends Action{
+export interface AddBooks extends Action {
     books: Book[]
 }
 
