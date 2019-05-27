@@ -8,29 +8,25 @@ import BookInfo from './components/BookInfo';
 import ErrorPage from './components/ErrorPage';
 import BrowseComponent from './components/BrowseComponent';
 import ProfileComponent from './components/ProfileComponent';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import RecommendedBooks from './components/RecommendedBooks';
-import { rootReducer } from './store';
 import ListsComponent from './components/ListsComponent';
 
-const store=createStore(rootReducer);
 
 class Routes extends Component {
 
   render() {
     return (
-      <Provider store={store}>
         <BrowserRouter>
           <div>
             <Navbar></Navbar>
             <Switch>
             {/* <Route exact path="/" component={BookList}></Route> */}
-            <Route exact path="/" component={ErrorPage}></Route>
+            <Route exact path="/" component={BookList}></Route>
             <Route exact path="/books" component={BrowseComponent} />
             <Route path="/sign-in" component={SignInComponent} />
             <Route path="/sign-up" component={SignUpComponent} />
             <Route exact path="/books/undefined" component={ErrorPage} />
+            <Route exact path="/lists/:book_genre" component={BookList}></Route>
             <Route exact path="/books/:book_id" component={BookInfo} />
             <Route exact path="/profile/:user_id" component={ProfileComponent} />
             <Route exact path="/recommendations" component={RecommendedBooks} />
@@ -39,7 +35,6 @@ class Routes extends Component {
             {/* <Route path="*" component={ErrorPage}/> */}
           </div>
         </BrowserRouter >
-      </Provider>
     );
   }
 }
