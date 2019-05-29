@@ -1,9 +1,11 @@
 import { Component, FormEvent } from "react";
 import React from 'react';
 import "../style/SignInComponent.css"
+import { User } from "../models/User";
 
 interface Props {
     history:any;
+    user:User;
 }
 
 interface State {
@@ -35,8 +37,6 @@ class SignUpComponent extends Component<Props, State>{
         else if (parameter === "name-su") {
             this.setState({ name: value })
         }
-
-        // console.log(this.state); - stampa prethodno stanje
     }
 
     validateForm() {

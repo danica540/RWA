@@ -2,6 +2,7 @@ import { Component, FormEvent } from "react";
 import React from 'react';
 import "../style/SignInComponent.css"
 import { Link } from "react-router-dom";
+import { setCookie } from "../functions/cookie-functions";
 
 interface Props {
     history: any;
@@ -41,7 +42,8 @@ class SignInComponent extends Component<Props, State>{
         e.preventDefault();
         if(this.validateForm()){
             console.log("Validno");
-            console.log(this.state);
+            //kontartiram servis da vidim da li user postoji
+            setCookie('logedin','asdasdasda',1);
             this.props.history.push("/");
         }
         
