@@ -99,8 +99,7 @@ class PaintComponent extends Component<Props, State>{
             case "eraser": {
                 this.setState({
                     draw: true,
-                    eraser: true,
-                    color: "white"
+                    eraser: true
                 });
                 return;
             }

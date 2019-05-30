@@ -32,7 +32,7 @@ class CanvasComponent extends Component<Props, State>{
     constructor(props: Props) {
         super(props);
         this.state = {
-            imageId: 1,
+            imageId: 0,
             color: "black",
             width: 900,
             height: 600,
@@ -122,15 +122,22 @@ class CanvasComponent extends Component<Props, State>{
     handleImageChange = (e: any) => {
         //   NE RADI SELEKCIJA SLIKE
         console.log(e.target.value);
-        this.props.handleSelectImage((e.target.value as number));
-        this.setState({ imageId: e.target.value })
+        this.clearCanvas();
+        //this.props.handleSelectImage((e.target.value as number));
+        this.setState({ imageId: e.target.value });
+        this.drawImage(this.props.images[e.target.value]);
+    }
+
+    clearCanvas = () => {
+        const ctx = (document.getElementById("canvas") as any).getContext('2d');
+        ctx.clearRect(0, 0, this.state.width, this.state.height);
     }
 
     render() {
         if (this.props.images.length !== 0) {
             console.log(" IZ RENDERA   " + this.props.images);
-            console.log(this.state.imageId - 1);
-            this.drawImage(this.props.images[this.state.imageId - 1]);
+            console.log(this.state.imageId);
+            this.drawImage(this.props.images[this.state.imageId]);
         }
         else {
             console.log("nISta")
@@ -150,8 +157,8 @@ class CanvasComponent extends Component<Props, State>{
                             <div>
                                 <h4>Pick an image: </h4>
                                 <select onClick={this.handleImageChange}>
-                                    <option value="1">Batman Logo</option>
-                                    <option value="2">Fish</option>
+                                    <option value="0">Batman Logo</option>
+                                    <option value="1">Fish</option>
                                 </select>
                             </div>
                             <div>
