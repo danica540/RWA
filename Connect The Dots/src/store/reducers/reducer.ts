@@ -10,6 +10,7 @@ export function reducer(state: Image[] = initialState, action: Action) {
     switch (action.type) {
         case GET_IMAGE: {
             const {id} = action as GetImage;
+            console.log("SAGA "+id);
             return state.filter((img: Image) => img.id === id);
         }
         case CHANGE_STATE: {

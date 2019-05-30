@@ -9,7 +9,7 @@
 
 .left{
     float: right;
-    margin-right:10%;
+    margin-right:15%;
 }
 
 .left div{
@@ -41,4 +41,22 @@
 
 .left .saveButton:hover{
     color:rgb(131, 131, 131);
+}
+
+.left button{
+    background: transparent;
+    border: 1px solid #dddddd;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin:3px;
+}
+
+.left button:hover{
+    background-color: #dddddd;
+}
+
+.colorInput{
+    background: transparent;
+    border: 1px solid #dddddd;
 }

@@ -8,10 +8,9 @@ import { Action } from "redux";
 import { getImage, getImages } from "../store/actions/actions";
 import { Image } from "../models/Image";
 import { Dot } from "../models/Dot";
-import pen from "../assets/pen.png";
-import cursor from "../assets/cursor.png";
-import eraser from "../assets/er.png";
-import line from "../assets/line.png";
+import flower from "../assets/flower.gif";
+import pig from "../assets/pig.jpg";
+import turtle from "../assets/turtle.jpg";
 
 interface Props {
     handleSelectImage: Function;
@@ -20,13 +19,12 @@ interface Props {
 }
 
 interface State {
-    id: number;
     previousDot: Dot;
-    image?: Image[];
     width: number;
     height: number;
     color: string;
     brushSize: number;
+    imageId: number;
 }
 
 class CanvasComponent extends Component<Props, State>{
@@ -34,7 +32,7 @@ class CanvasComponent extends Component<Props, State>{
     constructor(props: Props) {
         super(props);
         this.state = {
-            id: 1,
+            imageId: 1,
             color: "black",
             width: 900,
             height: 600,
@@ -43,9 +41,9 @@ class CanvasComponent extends Component<Props, State>{
         }
     }
 
-    saveImage = (e:any) => {
+    saveImage = (e: any) => {
         let canvas: any = document.getElementById("canvas");
-        e.target.href=canvas.toDataURL();
+        e.target.href = canvas.toDataURL();
         e.target.download = "mypainting.jpeg";
     }
 
@@ -68,7 +66,7 @@ class CanvasComponent extends Component<Props, State>{
 
     transformY = (y: number) => {
         //console.log(this.state.height / (this.state.height / y))
-        return y * (-15) + this.state.height / 2;
+        return y * (-20) + this.state.height / 2;
     }
 
     transform = (image) => {
@@ -80,8 +78,6 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     drawImage = (img: any) => {
-        console.log("Image");
-        console.log(img)
         let image = this.transform(img);
         let c = document.getElementById("canvas") as any;
         let ctx = c.getContext("2d");
@@ -115,10 +111,29 @@ class CanvasComponent extends Component<Props, State>{
         this.setState({ brushSize: e.target.value });
     }
 
+    handleUndo = () => {
+
+    }
+
+    handleRedo = () => {
+
+    }
+
+    handleImageChange = (e: any) => {
+        //   NE RADI SELEKCIJA SLIKE
+        console.log(e.target.value);
+        this.props.handleSelectImage((e.target.value as number));
+        this.setState({ imageId: e.target.value })
+    }
+
     render() {
-        if(this.props.images.length!==0){
-            console.log(this.props.images[0]);
-            this.drawImage(this.props.images[0]);
+        if (this.props.images.length !== 0) {
+            console.log(" IZ RENDERA   " + this.props.images);
+            console.log(this.state.imageId - 1);
+            this.drawImage(this.props.images[this.state.imageId - 1]);
+        }
+        else {
+            console.log("nISta")
         }
         return (
             <div className="canvas-div">
@@ -130,17 +145,27 @@ class CanvasComponent extends Component<Props, State>{
                                 <Link className="link" to="/connect_the_dots">Connect The Dots</Link>
                             </div>
                             <div>
-                                <Link className="link" to="/">Freestyle paint</Link>
+                                <Link className="link" to="/">Paint Freestyle</Link>
+                            </div>
+                            <div>
+                                <h4>Pick an image: </h4>
+                                <select onClick={this.handleImageChange}>
+                                    <option value="1">Batman Logo</option>
+                                    <option value="2">Fish</option>
+                                </select>
                             </div>
                             <div>
                                 <label>Pick a color: </label>
-                                <input onChange={this.changeColor} type="color" />
+                                <input onChange={this.changeColor} className="colorInput" type="color" />
                             </div>
                             <div>
                                 <label>Pick brush size: </label>
                                 <input onChange={this.changeSize} type="number" name="quantity" min="1" max="10" />
                             </div>
-
+                            <div>
+                                <button onClick={this.handleUndo}>Undo</button>
+                                <button onClick={this.handleRedo}>Redo</button>
+                            </div>
                             <div>
                                 <a className="saveButton" onClick={this.saveImage}>Save image</a>
                             </div>

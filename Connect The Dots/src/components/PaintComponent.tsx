@@ -2,12 +2,6 @@ import { Component, FormEvent, Dispatch } from "react";
 import React from 'react';
 import { Link } from "react-router-dom";
 import "../style/CanvasComponent.css";
-import { connect } from "react-redux";
-import { AppState } from "../store/store";
-import { Action } from "redux";
-import { getImage, getImages } from "../store/actions/actions";
-import { Image } from "../models/Image";
-import { Dot } from "../models/Dot";
 import pen from "../assets/pen.png";
 import cursor from "../assets/cursor.png";
 import eraser from "../assets/er.png";
@@ -138,7 +132,7 @@ class PaintComponent extends Component<Props, State>{
                                 <Link className="link" to="/connect_the_dots">Connect The Dots</Link>
                             </div>
                             <div>
-                                <Link className="link" to="/">Freestyle paint</Link>
+                                <Link className="link" to="/">Paint Freestyle</Link>
                             </div>
                             <label>Tools: </label>
                             <div>
@@ -149,7 +143,7 @@ class PaintComponent extends Component<Props, State>{
                             </div>
                             <div>
                                 <label>Pick a color: </label>
-                                <input onChange={this.changeColor} type="color" />
+                                <input onChange={this.changeColor} className="colorInput" type="color" />
                             </div>
                             <div>
                                 <label>Pick brush size: </label>
