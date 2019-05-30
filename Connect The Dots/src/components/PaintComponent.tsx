@@ -14,38 +14,36 @@ import eraser from "../assets/er.png";
 import line from "../assets/line.png";
 
 interface Props {
-    handleSelectImage: Function;
-    images: Image[];
-    fetchImages: Function;
 }
 
 interface State {
-    id: number;
-    previousDot: Dot;
-    image?: Image[];
     width: number;
     height: number;
     color: string;
+    draw: boolean;
     brushSize: number;
+    eraser: boolean;
+    mouseDownOrUp: boolean; // false je up, a down je true
 }
 
-class CanvasComponent extends Component<Props, State>{
+class PaintComponent extends Component<Props, State>{
 
     constructor(props: Props) {
         super(props);
         this.state = {
-            id: 1,
+            eraser: false,
+            mouseDownOrUp: false,
+            draw: false,
             color: "black",
             width: 900,
             height: 600,
-            brushSize: 2,
-            previousDot: null
+            brushSize: 5
         }
     }
 
-    saveImage = (e:any) => {
+    saveImage = (e: any) => {
         let canvas: any = document.getElementById("canvas");
-        e.target.href=canvas.toDataURL();
+        e.target.href = canvas.toDataURL();
         e.target.download = "mypainting.jpeg";
     }
 
@@ -57,54 +55,28 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     componentDidMount = () => {
-        this.props.fetchImages();
         this.setCanvasSize();
     }
 
-    transformX = (x: number) => {
-        //console.log(this.state.width/(this.state.width/x))
-        return x * (-20) + this.state.width / 2;
-    }
-
-    transformY = (y: number) => {
-        //console.log(this.state.height / (this.state.height / y))
-        return y * (-15) + this.state.height / 2;
-    }
-
-    transform = (image) => {
-        image.dotArray.forEach(coordinate => {
-            coordinate.x = this.transformX(coordinate.x);
-            coordinate.y = this.transformY(coordinate.y);
-        })
-        return image;
-    }
-
-    drawImage = (img: any) => {
-        console.log("Image");
-        console.log(img)
-        let image = this.transform(img);
-        let c = document.getElementById("canvas") as any;
-        let ctx = c.getContext("2d");
-        image.dotArray.forEach((coordinate, index) => {
-            ctx.font = "10px Arial";
-            ctx.fillText(index + 1, coordinate.x + 3, coordinate.y - 3);
-            ctx.fillRect(coordinate.x, coordinate.y, 4, 4);
-        })
-    }
-
-    handleDotConnection = (event: any) => {
-        if (this.state.previousDot) {
+    handleDrawing = (event: any) => {
+        if (this.state.draw && this.state.mouseDownOrUp) {
             let c = document.getElementById("canvas") as any;
             let ctx = c.getContext("2d");
             ctx.beginPath();
-            ctx.moveTo(this.state.previousDot.x, this.state.previousDot.y);
-            ctx.lineTo(event.clientX, event.clientY);
-            ctx.strokeStyle = this.state.color;
+            ctx.arc(event.clientX, event.clientY, this.state.brushSize, 0, 2 * Math.PI);
+            if(!this.state.eraser){
+                ctx.fillStyle = this.state.color;
+                ctx.strokeStyle = this.state.color;
+            }
+            else{
+                ctx.fillStyle = "white";
+                ctx.strokeStyle = "white";
+            }
             ctx.lineWidth = this.state.brushSize;
+            ctx.fill();
             ctx.stroke();
             ctx.closePath();
         }
-        this.setState({ previousDot: new Dot(event.clientX, event.clientY) });
     }
 
     changeColor = (e: any) => {
@@ -115,15 +87,51 @@ class CanvasComponent extends Component<Props, State>{
         this.setState({ brushSize: e.target.value });
     }
 
-    render() {
-        if(this.props.images.length!==0){
-            console.log(this.props.images[0]);
-            this.drawImage(this.props.images[0]);
+    handleMode = (e: any) => {
+        switch (e.target.value) {
+            case "cursor": {
+                this.setState({ draw: false,eraser: false });
+                return;
+            }
+            case "pen": {
+                this.setState({ draw: true,eraser: false });
+                return;
+            }
+            case "line": {
+                //DODATI ZA LINIJE
+                return;
+
+            }
+            case "eraser": {
+                this.setState({
+                    draw: true,
+                    eraser: true,
+                    color: "white"
+                });
+                return;
+            }
+            default:
+                return;
         }
+    }
+
+    setMouseDownEvent = (e: any) => {
+        this.setState({
+            mouseDownOrUp: true
+        });
+    }
+
+    setMouseUpEvent = (e: any) => {
+        this.setState({
+            mouseDownOrUp: false
+        });
+    }
+
+    render() {
         return (
             <div className="canvas-div">
                 <div className="right">
-                    <canvas onClick={this.handleDotConnection} id="canvas"></canvas>
+                    <canvas onMouseDown={this.setMouseDownEvent} onMouseUp={this.setMouseUpEvent} onMouseMove={this.handleDrawing} id="canvas"></canvas>
                     <span>
                         <div className="left">
                             <div>
@@ -132,13 +140,20 @@ class CanvasComponent extends Component<Props, State>{
                             <div>
                                 <Link className="link" to="/">Freestyle paint</Link>
                             </div>
+                            <label>Tools: </label>
+                            <div>
+                                <input onClick={this.handleMode} className="img" value="cursor" type="image" src={cursor} />
+                                <input onClick={this.handleMode} className="img" value="pen" type="image" src={pen} />
+                                <input onClick={this.handleMode} className="img" value="line" type="image" src={line} />
+                                <input onClick={this.handleMode} className="img" value="eraser" type="image" src={eraser} />
+                            </div>
                             <div>
                                 <label>Pick a color: </label>
                                 <input onChange={this.changeColor} type="color" />
                             </div>
                             <div>
                                 <label>Pick brush size: </label>
-                                <input onChange={this.changeSize} type="number" name="quantity" min="1" max="10" />
+                                <input onChange={this.changeSize} type="number" name="quantity" min="1" max="18" />
                             </div>
 
                             <div>
@@ -152,18 +167,7 @@ class CanvasComponent extends Component<Props, State>{
     }
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action>) {
-    return {
-        handleSelectImage: (imageId: number) => dispatch(getImage(imageId)),
-        fetchImages: () => dispatch(getImages())
-    }
-}
-function mapStateToProps(state: AppState) {
-    return {
-        images: state.images
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(CanvasComponent);
+export default PaintComponent;
 
 

@@ -23,10 +23,22 @@
     margin-right: 2%;
 }
 
-.left a{
+.left .link{
     text-decoration: none;
     font-size: 19px;
     margin-right: 0;
     font-weight: bold;
     color:black;
+}
+
+.left .saveButton{
+    text-decoration: none;
+    font-size: 18px;
+    padding: 3px;
+    font-weight: bold;
+    color:black;
+}
+
+.left .saveButton:hover{
+    color:rgb(131, 131, 131);
 }
