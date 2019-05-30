@@ -8,10 +8,6 @@ import { Action } from "redux";
 import { getImage, getImages } from "../store/actions/actions";
 import { Image } from "../models/Image";
 import { Dot } from "../models/Dot";
-import pen from "../assets/pen.png";
-import cursor from "../assets/cursor.png";
-import eraser from "../assets/er.png";
-import line from "../assets/line.png";
 
 interface Props {
     handleSelectImage: Function;
@@ -26,7 +22,7 @@ interface State {
     width: number;
     height: number;
     color: string;
-    brushSize: number;
+    brushSize:number;
 }
 
 class CanvasComponent extends Component<Props, State>{
@@ -38,7 +34,7 @@ class CanvasComponent extends Component<Props, State>{
             color: "black",
             width: 900,
             height: 600,
-            brushSize: 2,
+            brushSize:2,
             previousDot: null
         }
     }
@@ -47,16 +43,19 @@ class CanvasComponent extends Component<Props, State>{
         let c: any = document.getElementById("canvas");
         c.width = this.state.width;
         c.height = this.state.height;
+        // c.width = c.height *(c.clientWidth / c.clientHeight);
+        // c.height = c.width *(c.clientHeight / c.clientWidth);
     }
 
     componentDidMount = () => {
-        this.props.fetchImages();
-        // fetch("http://localhost:3002/images/1")
-        //     .then(res => res.json())
-        //     .then(img => {
-        //         this.setState({ image: img });
-        //         this.drawImage(img);
-        //     })
+        // this.props.fetchImages();
+        // console.log(this.props);
+        fetch("http://localhost:3002/images/1")
+            .then(res => res.json())
+            .then(img => {
+                this.setState({ image: img });
+                this.drawImage(img);
+            })
         this.setCanvasSize();
     }
 
@@ -71,6 +70,7 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     transform = (image) => {
+        // 500, 250 je sredina
         image.dotArray.forEach(coordinate => {
             coordinate.x = this.transformX(coordinate.x);
             coordinate.y = this.transformY(coordinate.y);
@@ -79,14 +79,13 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     drawImage = (img: any) => {
-        console.log("Image");
-        console.log(img)
         let image = this.transform(img);
         let c = document.getElementById("canvas") as any;
         let ctx = c.getContext("2d");
         image.dotArray.forEach((coordinate, index) => {
             ctx.font = "10px Arial";
             ctx.fillText(index + 1, coordinate.x + 3, coordinate.y - 3);
+            //ctx.strokeText(index + 1, coordinate.x + 3, coordinate.y -3);
             ctx.fillRect(coordinate.x, coordinate.y, 4, 4);
         })
     }
@@ -113,52 +112,41 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     changeColor = (e: any) => {
-        this.setState({ color: e.target.value });
-    }
-
-    changeSize = (e: any) => {
-        this.setState({ brushSize: e.target.value });
-    }
-
-    handleMode = (e: any) => {
         console.log(e.target.value);
+        this.setState({color:e.target.value});
+    }
+
+    changeSize=(e:any)=>{
+        console.log(e.target.value);
+        this.setState({brushSize:e.target.value});
     }
 
     render() {
-        // if(this.props.images.length!==0){
-        //     console.log(this.props.images[0]);
-        //     this.drawImage(this.props.images[0]);
-        // }
         return (
             <div className="canvas-div">
+
+                {/* 
+                <button id="1" onClick={() => this.props.handleSelectImage(this.state.id)}>Select image number one</button> */}
                 <div className="right">
                     <canvas onClick={this.handleDotConnection} id="canvas"></canvas>
                     <span>
                         <div className="left">
+                            <h2>Connect The Dots</h2>
                             <div>
-                                <Link to="/connect_the_dots">Connect The Dots</Link>
+                            <label>Pick a color: </label>
+                            <input onChange={this.changeColor} type="color" />
                             </div>
                             <div>
-                                <Link to="/">Freestyle paint</Link>
-                            </div>
-                            <label>Tools: </label>
-                            <div>
-                                <input onClick={this.handleMode} className="img" value="cursor" type="image" src={cursor} />
-                                <input onClick={this.handleMode} className="img" value="pen" type="image" src={pen} />
-                                <input onClick={this.handleMode} className="img" value="line" type="image" src={line} />
-                                <input onClick={this.handleMode} className="img" value="eraser" type="image" src={eraser} />
-                            </div>
-                            <div>
-                                <label>Pick a color: </label>
-                                <input onChange={this.changeColor} type="color" />
-                            </div>
-                            <div>
-                                <label>Pick brush size: </label>
-                                <input onChange={this.changeSize} type="number" name="quantity" min="1" max="10" />
+                            <label>Pick brush size: </label>
+                            <input onChange={this.changeSize} type="number" name="quantity" min="1" max="10" />
                             </div>
                         </div>
                     </span>
                 </div>
+
+
+
+
             </div>
         )
     }

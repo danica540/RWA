@@ -8,9 +8,10 @@ class App extends Component{
   render() {
     return (
       <div className="App">
+        <CanvasComponent></CanvasComponent>
         <BrowserRouter>
             <Switch>
-            <Route exact path="/" component={CanvasComponent}></Route>
+            {/* <Route exact path="/" component={CanvasComponent}></Route> */}
             </Switch>
         </BrowserRouter >
       </div>

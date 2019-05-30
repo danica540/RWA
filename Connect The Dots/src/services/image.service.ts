@@ -1,12 +1,7 @@
 
-const url = 'http://localhost:3002/images/';
+const url = 'http://localhost:3002/images';
 
 export function getAllImages() {
-    return fetch("http://localhost:3002/images")
-        .then(response => response.json());
-}
-
-export function getImage(id: number) {
-    return fetch("http://localhost:3002/images/"+id)
+    return fetch(url)
         .then(response => response.json());
 }

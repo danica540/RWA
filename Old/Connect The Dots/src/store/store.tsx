@@ -1,18 +1,18 @@
 import { combineReducers } from "redux";
-import { reducer } from "./reducers/reducer";
+import { dotReducer } from "./reducers/dot-reducer";
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga';
 import { all, fork, takeEvery } from "@redux-saga/core/effects";
 import { Image } from "../models/Image";
 import { GET_IMAGES, GET_IMAGE } from "./actions/actions";
-import { fetchImages } from "./saga";
+import { fetchImages, fetchImage } from "./saga";
 
 export interface AppState {
   images: Image[]
 }
 
 export const rootReducer = combineReducers({
-  images: reducer
+  dots: dotReducer
 })
 
 
@@ -29,6 +29,7 @@ export default function configureStore() {
 
 export function* rootSaga() {
   yield all([
-    takeEvery(GET_IMAGES, fetchImages)
+    takeEvery(GET_IMAGES, fetchImages),
+    takeEvery(GET_IMAGE as any, fetchImage)
   ]);
 }
