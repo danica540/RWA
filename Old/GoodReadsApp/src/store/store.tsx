@@ -38,7 +38,6 @@ export default function configureStore() {
 
 export function* rootSaga() {
   yield all([
-    takeEvery(GET_BOOKS, fetchBooks),
-    takeEvery(GET_USER,fetchUser)
+    takeEvery(GET_BOOKS, fetchBooks)
   ]);
 }
