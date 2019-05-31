@@ -1,6 +1,5 @@
 import { Component, FormEvent, Dispatch } from "react";
 import React from 'react';
-import { Link } from "react-router-dom";
 import "../style/CanvasComponent.css";
 import { connect } from "react-redux";
 import { AppState } from "../store/store";
@@ -8,9 +7,13 @@ import { Action } from "redux";
 import { getImage, getImages } from "../store/actions/actions";
 import { Image } from "../models/Image";
 import { Dot } from "../models/Dot";
-import flower from "../assets/flower.gif";
-import pig from "../assets/pig.jpg";
-import turtle from "../assets/turtle.jpg";
+import pen from "../assets/pen.png";
+import cursor from "../assets/cursor.png";
+import eraser from "../assets/er.png";
+import line from "../assets/line.png";
+import multiline from "../assets/linem.png";
+import { Stack } from "../models/Stack";
+import { Line } from "../models/Line";
 
 interface Props {
     handleSelectImage: Function;
@@ -22,9 +25,15 @@ interface State {
     previousDot: Dot;
     width: number;
     height: number;
+    stack: Stack;
     color: string;
     brushSize: number;
     imageId: number;
+    draw: boolean;
+    lineCap: CanvasLineCap;
+    isImageDrawn: boolean;
+    mode: string; // line, pen, cursor, eraser
+    mouseDownOrUp: boolean; // false je up, a down je true
 }
 
 class CanvasComponent extends Component<Props, State>{
@@ -32,10 +41,16 @@ class CanvasComponent extends Component<Props, State>{
     constructor(props: Props) {
         super(props);
         this.state = {
+            lineCap: "round",
+            stack: new Stack(),
+            isImageDrawn: false,
+            mode: "cursor",
+            mouseDownOrUp: false,
+            draw: false,
             imageId: 0,
             color: "black",
-            width: 900,
-            height: 600,
+            width: window.innerWidth * 2 / 3,
+            height: window.innerHeight,
             brushSize: 2,
             previousDot: null
         }
@@ -59,48 +74,108 @@ class CanvasComponent extends Component<Props, State>{
         this.setCanvasSize();
     }
 
-    transformX = (x: number) => {
-        //console.log(this.state.width/(this.state.width/x))
-        return x * (-20) + this.state.width / 2;
+    transformX = (x: number, indicator: number) => {
+        return (x * (-1 * indicator) + this.state.width / 2);
     }
 
-    transformY = (y: number) => {
-        //console.log(this.state.height / (this.state.height / y))
-        return y * (-20) + this.state.height / 2;
+    transformY = (y: number, indicator: number) => {
+        return (y * (-1 * indicator) + this.state.height / 2);
     }
 
-    transform = (image) => {
-        image.dotArray.forEach(coordinate => {
-            coordinate.x = this.transformX(coordinate.x);
-            coordinate.y = this.transformY(coordinate.y);
+    returnMaxCoordinates = (arrayOfCoordinates) => {
+        let maxCoordinates = arrayOfCoordinates.reduce((acc, coordinate) => {
+            if (acc.y < coordinate.y) {
+                acc.y = coordinate.y;
+            }
+            if (acc.x < coordinate.x) {
+                acc.x = coordinate.x;
+            }
+            return acc;
+        }, { 'x': arrayOfCoordinates[0].x, 'y': arrayOfCoordinates[0].y });
+        return maxCoordinates;
+    }
+
+    drawDots = (coordinatesArray, maxCoordinates) => {
+        let ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext("2d");
+        coordinatesArray.forEach((coordinate, index) => {
+            let x = this.transformX(coordinate.x, (this.state.width / 2.3 / maxCoordinates.x));
+            let y = this.transformY(coordinate.y, (this.state.height / 2.3 / maxCoordinates.y));
+            ctx.font = "10px Arial";
+            ctx.fillText(index + 1, x + 3, y - 3); // pomeraj za brojeve
+            ctx.fillRect(x, y, 4, 4); //velicina tacke 4x4
         })
-        return image;
     }
 
     drawImage = (img: any) => {
-        let image = this.transform(img);
-        let c = document.getElementById("canvas") as any;
-        let ctx = c.getContext("2d");
-        image.dotArray.forEach((coordinate, index) => {
-            ctx.font = "10px Arial";
-            ctx.fillText(index + 1, coordinate.x + 3, coordinate.y - 3);
-            ctx.fillRect(coordinate.x, coordinate.y, 4, 4);
-        })
+        this.setState({ isImageDrawn: true });
+        let maxCoordinates = this.returnMaxCoordinates(img.dotArray);
+        this.drawDots(img.dotArray, maxCoordinates);
+    }
+
+    redrawImage(img: any, tempStack: Stack) {
+        this.clearCanvas();
+        this.drawImage(img);
+        tempStack.arrayOfLines.forEach(line => {
+            this.drawLine(line.firstDot, line.secondDot, null);
+        });
+
+        this.setState({ stack: tempStack });
+    }
+
+    addLine = (newDot: Dot) => {
+        let line = new Line(this.state.previousDot, newDot, this.state.brushSize);
+        let tmpStack: Stack = this.state.stack;
+        tmpStack.push(line);
+        this.setState({ stack: tmpStack });
+    }
+
+    enableUndoButton = () => {
+        let undoBtn = document.getElementById("undoBtn") as HTMLButtonElement;
+        undoBtn.disabled = false;
+        undoBtn.style.background = "transparent";
+    }
+
+    disableUndoButton = () => {
+        let undoBtn = document.getElementById("undoBtn") as HTMLButtonElement;
+        undoBtn.disabled = true;
+        undoBtn.style.background = "#dddddd";
+    }
+
+    drawLine = (firstDot: Dot, secondDot: Dot, color: string) => {
+        let colorValue = "white";
+        if (!color) {
+            colorValue = this.state.color;
+        }
+        let ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext("2d");
+        ctx.beginPath();
+        ctx.moveTo(firstDot.x, firstDot.y);
+        ctx.lineTo(secondDot.x, secondDot.y);
+        ctx.strokeStyle = colorValue;
+        ctx.lineCap = this.state.lineCap;
+        ctx.lineWidth = this.state.brushSize;
+        ctx.stroke();
+        ctx.closePath();
     }
 
     handleDotConnection = (event: any) => {
-        if (this.state.previousDot) {
-            let c = document.getElementById("canvas") as any;
-            let ctx = c.getContext("2d");
-            ctx.beginPath();
-            ctx.moveTo(this.state.previousDot.x, this.state.previousDot.y);
-            ctx.lineTo(event.clientX, event.clientY);
-            ctx.strokeStyle = this.state.color;
-            ctx.lineWidth = this.state.brushSize;
-            ctx.stroke();
-            ctx.closePath();
+        if (this.state.mode === "multiline" || this.state.mode === "line") {
+            if (this.state.previousDot) {
+                this.drawLine(this.state.previousDot, new Dot(event.clientX, event.clientY), null);
+                this.addLine(new Dot(event.clientX, event.clientY));
+                this.enableUndoButton();
+                if (this.state.mode === "multiline") {
+                    this.setState({ previousDot: new Dot(event.clientX, event.clientY) });
+                }
+                else if (this.state.mode === "line") {
+                    this.setState({ previousDot: null });
+                    return;
+                }
+            }
+            else {
+                this.setState({ previousDot: new Dot(event.clientX, event.clientY) });
+            }
+
         }
-        this.setState({ previousDot: new Dot(event.clientX, event.clientY) });
     }
 
     changeColor = (e: any) => {
@@ -112,7 +187,15 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     handleUndo = () => {
-
+        let tmpState: Stack = this.state.stack;
+        let line: Line = tmpState.pop();
+        if (!line) {
+            this.disableUndoButton();
+            return;
+        }
+        
+        //this.drawLine(line.firstDot, line.secondDot, "white");
+        this.redrawImage(this.props.images[0], tmpState);
     }
 
     handleRedo = () => {
@@ -121,12 +204,86 @@ class CanvasComponent extends Component<Props, State>{
 
     handleImageChange = (e: any) => {
         //   NE RADI SELEKCIJA SLIKE
-        console.log(e.target.value);
+        //console.log(e.target.value);
         this.clearCanvas();
         //this.props.handleSelectImage((e.target.value as number));
         this.setState({ imageId: e.target.value });
         this.drawImage(this.props.images[e.target.value]);
     }
+
+    handleMode = (e: any) => {
+        switch (e.target.value) {
+            case "cursor": {
+                this.setState({ draw: false, mode: "cursor", previousDot: null });
+                return;
+            }
+            case "pen": {
+                this.setState({ draw: true, mode: "pen" });
+                return;
+            }
+            case "line": {
+                this.setState({ draw: true, mode: "line" });
+                return;
+
+            }
+            case "multiline": {
+                this.setState({ draw: true, mode: "multiline" });
+                return;
+            }
+            case "eraser": {
+                this.setState({
+                    draw: true,
+                    mode: "eraser"
+                });
+                return;
+            }
+            default:
+                return;
+        }
+    }
+
+    setMouseDownEvent = (e: any) => {
+        this.setState({
+            mouseDownOrUp: true
+        });
+    }
+
+    setMouseUpEvent = (e: any) => {
+        this.setState({
+            mouseDownOrUp: false
+        });
+    }
+
+    isNotLineMode = () => {
+        return (this.state.mode !== "line" && this.state.mode !== "multiline");
+    }
+
+    drawingIsEnabled = () => {
+        return (this.state.draw && this.state.mouseDownOrUp && this.isNotLineMode())
+    }
+
+    drawFreestyleLines = (x: number, y: number) => {
+        let ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext("2d");
+        ctx.beginPath();
+        ctx.arc(x, y, this.state.brushSize, 0, 2 * Math.PI);
+        ctx.fillStyle = this.state.color;
+        ctx.strokeStyle = this.state.color;
+        if (this.state.mode === "eraser") {
+            ctx.fillStyle = "white";
+            ctx.strokeStyle = "white";
+        }
+        ctx.lineWidth = this.state.brushSize;
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+    }
+
+    handleDrawing = (event: any) => {
+        if (this.drawingIsEnabled()) {
+            this.drawFreestyleLines(event.clientX, event.clientY)
+        }
+    }
+
 
     clearCanvas = () => {
         const ctx = (document.getElementById("canvas") as any).getContext('2d');
@@ -134,32 +291,35 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     render() {
-        if (this.props.images.length !== 0) {
-            console.log(" IZ RENDERA   " + this.props.images);
-            console.log(this.state.imageId);
+        if (this.props.images.length !== 0 && !this.state.isImageDrawn) {
+            //console.log(" IZ RENDERA   " + this.props.images);
+            //console.log(this.state.imageId);
             this.drawImage(this.props.images[this.state.imageId]);
         }
         else {
-            console.log("nISta")
+            //console.log("nISta")
         }
         return (
             <div className="canvas-div">
                 <div className="right">
-                    <canvas onClick={this.handleDotConnection} id="canvas"></canvas>
+                    <canvas onMouseDown={this.setMouseDownEvent} onMouseUp={this.setMouseUpEvent} onMouseMove={this.handleDrawing} onClick={this.handleDotConnection} id="canvas"></canvas>
                     <span>
                         <div className="left">
-                            <div>
-                                <Link className="link" to="/connect_the_dots">Connect The Dots</Link>
-                            </div>
-                            <div>
-                                <Link className="link" to="/">Paint Freestyle</Link>
-                            </div>
                             <div>
                                 <h4>Pick an image: </h4>
                                 <select onClick={this.handleImageChange}>
                                     <option value="0">Batman Logo</option>
                                     <option value="1">Fish</option>
                                 </select>
+                                <button onClick={this.clearCanvas}>Clear Canvas</button>
+                            </div>
+                            <label>Tools: </label>
+                            <div>
+                                <input onClick={this.handleMode} className="img" value="cursor" type="image" src={cursor} />
+                                <input onClick={this.handleMode} className="img" value="pen" type="image" src={pen} />
+                                <input onClick={this.handleMode} className="img" value="line" type="image" src={line} />
+                                <input onClick={this.handleMode} className="img" value="multiline" type="image" src={multiline} />
+                                <input onClick={this.handleMode} className="img" value="eraser" type="image" src={eraser} />
                             </div>
                             <div>
                                 <label>Pick a color: </label>
@@ -170,11 +330,11 @@ class CanvasComponent extends Component<Props, State>{
                                 <input onChange={this.changeSize} type="number" name="quantity" min="1" max="10" />
                             </div>
                             <div>
-                                <button onClick={this.handleUndo}>Undo</button>
+                                <button id="undoBtn" onClick={this.handleUndo}>Undo</button>
                                 <button onClick={this.handleRedo}>Redo</button>
                             </div>
                             <div>
-                                <a className="saveButton" onClick={this.saveImage}>Save image</a>
+                                <a className="saveButton" onClick={this.saveImage}> Save Image</a>
                             </div>
                         </div>
                     </span>

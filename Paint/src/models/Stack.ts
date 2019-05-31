@@ -1,28 +1,37 @@
 import { Line } from "./Line";
 
 export class Stack {
+    public arrayOfLines: Line[];
+    public pointer: number;
 
-    constructor(public stack: Line[], public pointer: number) {
+    constructor() {
         this.pointer = -1;
+        this.arrayOfLines = [];
     }
 
     peak = () => {
-        return this.stack[this.pointer];
+        if (this.pointer === -1) {
+            return null;
+        }
+        return this.arrayOfLines[this.pointer];
     }
 
     pop = () => {
+        if (this.pointer === -1) {
+            return null;
+        }
         this.pointer--;
-        return this.stack[this.pointer + 1];
+        return this.arrayOfLines[this.pointer + 1];
     }
 
     push = (line: Line) => {
         this.pointer++;
-        this.stack[this.pointer] = line;
+        this.arrayOfLines[this.pointer] = line;
     }
 
-    emptyStack=()=>{
-        while(this.pointer!==-1){
-            this.stack[this.pointer]=null;
+    emptyStack = () => {
+        while (this.pointer !== -1) {
+            this.arrayOfLines[this.pointer] = null;
             this.pointer--;
         }
     }
