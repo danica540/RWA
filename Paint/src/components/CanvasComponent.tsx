@@ -71,6 +71,7 @@ class CanvasComponent extends Component<Props, State>{
 
     componentDidMount = () => {
         this.props.fetchImages();
+        this.disableUndoButton();
         this.setCanvasSize();
     }
 
@@ -193,13 +194,14 @@ class CanvasComponent extends Component<Props, State>{
             this.disableUndoButton();
             return;
         }
-        
-        //this.drawLine(line.firstDot, line.secondDot, "white");
-        this.redrawImage(this.props.images[0], tmpState);
+
+        this.setState({ stack: tmpState });
+        this.drawLine(line.firstDot, line.secondDot, "white");
+        //this.redrawImage(this.props.images[0], tmpState);
     }
 
     handleRedo = () => {
-
+        // DODATI NOVI STACK
     }
 
     handleImageChange = (e: any) => {
@@ -211,26 +213,46 @@ class CanvasComponent extends Component<Props, State>{
         this.drawImage(this.props.images[e.target.value]);
     }
 
+    hideUndoRedoBtns=()=>{
+        let undoBtn = document.getElementById("undoBtn") as HTMLButtonElement;
+        undoBtn.style.display = "none";
+
+        let redoBtn = document.getElementById("redoBtn") as HTMLButtonElement;
+        redoBtn.style.display = "none";
+    }
+
+    makeVisibleUndoRedoBtns=()=>{
+        let undoBtn = document.getElementById("undoBtn") as HTMLButtonElement;
+        undoBtn.style.display = "inline";
+        let redoBtn = document.getElementById("redoBtn") as HTMLButtonElement;
+        redoBtn.style.display = "inline";
+    }
+
     handleMode = (e: any) => {
         switch (e.target.value) {
             case "cursor": {
+                this.hideUndoRedoBtns();
                 this.setState({ draw: false, mode: "cursor", previousDot: null });
                 return;
             }
             case "pen": {
+                this.hideUndoRedoBtns();
                 this.setState({ draw: true, mode: "pen" });
                 return;
             }
             case "line": {
                 this.setState({ draw: true, mode: "line" });
+                this.makeVisibleUndoRedoBtns();
                 return;
 
             }
             case "multiline": {
                 this.setState({ draw: true, mode: "multiline" });
+                this.makeVisibleUndoRedoBtns();
                 return;
             }
             case "eraser": {
+                this.hideUndoRedoBtns();
                 this.setState({
                     draw: true,
                     mode: "eraser"
@@ -287,13 +309,16 @@ class CanvasComponent extends Component<Props, State>{
 
     clearCanvas = () => {
         const ctx = (document.getElementById("canvas") as any).getContext('2d');
+        //this.setState({isImageDrawn:false});
         ctx.clearRect(0, 0, this.state.width, this.state.height);
     }
 
     render() {
         if (this.props.images.length !== 0 && !this.state.isImageDrawn) {
+            //&& !this.state.isImageDrawn
             //console.log(" IZ RENDERA   " + this.props.images);
             //console.log(this.state.imageId);
+            //this.clearCanvas();
             this.drawImage(this.props.images[this.state.imageId]);
         }
         else {
@@ -327,12 +352,10 @@ class CanvasComponent extends Component<Props, State>{
                             </div>
                             <div>
                                 <label>Pick brush size: </label>
-                                <input onChange={this.changeSize} type="number" name="quantity" min="1" max="10" />
+                                <input onChange={this.changeSize} type="number" name="quantity" min="1" max="20" />
                             </div>
-                            <div>
                                 <button id="undoBtn" onClick={this.handleUndo}>Undo</button>
-                                <button onClick={this.handleRedo}>Redo</button>
-                            </div>
+                                <button id="redoBtn" onClick={this.handleRedo}>Redo</button>
                             <div>
                                 <a className="saveButton" onClick={this.saveImage}> Save Image</a>
                             </div>
