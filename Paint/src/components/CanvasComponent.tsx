@@ -1,4 +1,4 @@
-import { Component, Dispatch } from "react";
+import { Component, Dispatch, FormEvent } from "react";
 import React from 'react';
 import "../style/CanvasComponent.css";
 import { connect } from "react-redux";
@@ -15,13 +15,13 @@ import multiline from "../assets/linem.png";
 import { Stack } from "../models/Stack";
 import { Line } from "../models/Line";
 import { transformX, transformY, returnMaxCoordinates } from "../functions/transformation-functions";
-import { enableButton, disableButton, hideButton, makeButtonVisible } from "../functions/html-element-functions";
+import { enableButton, disableButton, makeButtonVisible } from "../functions/html-element-functions";
 import { Circle } from "../models/Circle";
 import { CurveLine } from "../models/CurveLine";
 
-const stack: Stack = new Stack();
-const redoStack = new Stack();
-let curve=null;
+const undoStack: Stack<CurveLine> = new Stack<CurveLine>();
+const redoStack: Stack<CurveLine> = new Stack<CurveLine>();
+let curve = null;
 
 interface Props {
     handleSelectImage: Function;
@@ -66,29 +66,47 @@ class CanvasComponent extends Component<Props, State>{
         }
     }
 
-    saveImage = (e: any) => {
-        let canvas: any = document.getElementById("canvas");
-        e.target.href = canvas.toDataURL();
-        e.target.download = "myPainting.jpg";
+    saveImage = (e: FormEvent) => {
+        let canvas: HTMLElement = document.getElementById("canvas");
+        (e.target as HTMLAnchorElement).href = (canvas as HTMLCanvasElement).toDataURL();
+        (e.target as HTMLAnchorElement).download = "myPainting.jpg";
     }
 
 
     setCanvasSize = () => {
-        let c: any = document.getElementById("canvas");
-        c.width = this.state.width;
-        c.height = this.state.height;
+        let canvas: HTMLElement = document.getElementById("canvas");
+        (canvas as HTMLCanvasElement).width = this.state.width;
+        (canvas as HTMLCanvasElement).height = this.state.height;
+    }
+
+    refreshUndoState=()=>{
+        if(undoStack.isEmpty()){
+            disableButton(document.getElementById("undoBtn") as HTMLButtonElement);
+        }
+        else{
+            enableButton(document.getElementById("undoBtn") as HTMLButtonElement);
+        }
+    }
+
+    refreshRedoState=()=>{
+        if(redoStack.isEmpty()){
+            disableButton(document.getElementById("redoBtn") as HTMLButtonElement);
+        }
+        else{
+            enableButton(document.getElementById("redoBtn") as HTMLButtonElement);
+        }
     }
 
     componentDidUpdate = () => {
         this.handleCanvasLoad();
+        this.refreshRedoState();
+        this.refreshUndoState();
         document.getElementById("brushSize").innerHTML = (document.getElementById("slider") as HTMLInputElement).value;
 
     }
 
     componentDidMount = () => {
         this.props.fetchImages();
-        disableButton(document.getElementById("undoBtn") as HTMLButtonElement);
-        disableButton(document.getElementById("redoBtn") as HTMLButtonElement);
         this.setCanvasSize();
     }
 
@@ -107,33 +125,37 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     drawImage = (img: any) => {
-        //color: "black"
         this.setState({ isImageDrawn: true, paintMode: "connect" });
         let maxCoordinates = returnMaxCoordinates(img.dotArray);
         this.drawDots(img.dotArray, maxCoordinates);
     }
 
-    redrawImage(img: any, tempStack: Stack) {
+    redrawImage(img: any, stack: Stack<CurveLine>) {
+        this.clearCanvas();
         if (this.state.paintMode === "connect") {
-            this.clearCanvas();
             this.drawImage(img);
         }
-        tempStack.arrayOfLines.forEach(line => {
-            if (line) {
-                this.drawLine(line);
+        stack.arrayOfLines.forEach(curveLine => {
+            if (curveLine) {
+                this.drawCurveLine(curveLine);
             }
-
         });
     }
 
-    addLineToUndoStack = (line: Line) => {
-        stack.push(line);
+    addLineToUndoStack = (line: CurveLine) => {
+        undoStack.push(line);
     }
 
-    addLineToRedoStack = (line: Line) => {
+    addLineToRedoStack = (line: CurveLine) => {
         redoStack.push(line);
     }
-
+    
+    drawCurveLine = (curveLine: CurveLine) => {
+        curveLine.lines.forEach(line => {
+            this.drawLine(line);
+        });
+    }
+    
     drawLine = (line: Line) => {
         let ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext("2d");
         ctx.beginPath();
@@ -150,13 +172,16 @@ class CanvasComponent extends Component<Props, State>{
         ctx.closePath();
     }
 
+    
+
     handleDotConnection = (event: any) => {
         if (this.state.mode === "multiline" || this.state.mode === "line") {
             if (this.state.previousDot) {
+                let curveLine = new CurveLine();
                 let line = new Line(this.state.previousDot, new Dot(event.clientX, event.clientY), this.state.brushSize, this.state.color);
-                this.drawLine(line);
-                this.addLineToUndoStack(line);
-                enableButton(document.getElementById("undoBtn") as HTMLButtonElement);
+                curveLine.addLine(line);
+                this.drawCurveLine(curveLine);
+                this.addLineToUndoStack(curveLine);
                 if (this.state.mode === "multiline") {
                     this.setState({ previousDot: new Dot(event.clientX, event.clientY) });
                 }
@@ -176,68 +201,56 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     changeSize = (e: any) => {
-
         this.setState({ brushSize: e.target.value, previousDot: null });
     }
 
     handleUndo = () => {
-        let line: Line = stack.pop();
-        if (!line) {
-            disableButton(document.getElementById("undoBtn") as HTMLButtonElement);
+        let curveLine: CurveLine = undoStack.pop();
+        if (!curveLine) {
             return;
         }
-        this.addLineToRedoStack(line);
-        enableButton(document.getElementById("redoBtn") as HTMLButtonElement);
-        this.redrawImage(this.props.images[this.state.imageId], stack);
+        this.addLineToRedoStack(curveLine);
+        this.redrawImage(this.props.images[this.state.imageId], undoStack);
     }
 
     handleRedo = () => {
-        let line: Line = redoStack.pop();
-        if (!line) {
-            disableButton(document.getElementById("redoBtn") as HTMLButtonElement);
+        let curveLine: CurveLine = redoStack.pop();
+        if (!curveLine) {
             return;
         }
-        this.drawLine(line);
-        this.addLineToUndoStack(line);
+        this.drawCurveLine(curveLine);
+        this.addLineToUndoStack(curveLine);
+        this.redrawImage(this.props.images[this.state.imageId], undoStack);
     }
 
-    handleImageChange = (e: any) => {
+    handleImageChange = (e: FormEvent) => {
         this.clearCanvas();
-        this.setState({ imageId: e.target.value });
+        let id=parseInt((e.target as HTMLSelectElement).value);
+        this.setState({ imageId: id });
         this.setState({ paintMode: "connect" });
-        this.drawImage(this.props.images[e.target.value]);
+        this.drawImage(this.props.images[id]);
     }
 
-    handleMode = (e: any) => {
-        switch (e.target.value) {
+    handleMode = (e: FormEvent) => {
+        switch ((e.target as HTMLInputElement).value) {
             case "cursor": {
-                hideButton(document.getElementById("undoBtn") as HTMLButtonElement);
-                hideButton(document.getElementById("redoBtn") as HTMLButtonElement);
                 this.setState({ draw: false, mode: "cursor", previousDot: null });
                 return;
             }
             case "pen": {
-                hideButton(document.getElementById("undoBtn") as HTMLButtonElement);
-                hideButton(document.getElementById("redoBtn") as HTMLButtonElement);
                 this.setState({ draw: true, mode: "pen", previousDot: null });
                 return;
             }
             case "line": {
                 this.setState({ draw: true, mode: "line", previousDot: null });
-                makeButtonVisible(document.getElementById("undoBtn") as HTMLButtonElement);
-                makeButtonVisible(document.getElementById("redoBtn") as HTMLButtonElement);
                 return;
 
             }
             case "multiline": {
                 this.setState({ draw: true, mode: "multiline", previousDot: null });
-                makeButtonVisible(document.getElementById("undoBtn") as HTMLButtonElement);
-                makeButtonVisible(document.getElementById("redoBtn") as HTMLButtonElement);
                 return;
             }
             case "eraser": {
-                hideButton(document.getElementById("undoBtn") as HTMLButtonElement);
-                hideButton(document.getElementById("redoBtn") as HTMLButtonElement);
                 this.setState({
                     draw: true,
                     mode: "eraser",
@@ -250,19 +263,21 @@ class CanvasComponent extends Component<Props, State>{
         }
     }
 
-    setMouseDownEvent = (e: any) => {
-        curve=new CurveLine();
+    setMouseDownEvent = () => {
+        curve = new CurveLine();
         this.setState({
             mouseDownOrUp: true
         });
     }
 
-    setMouseUpEvent = (e: any) => {
+    setMouseUpEvent = () => {
+        undoStack.push(curve);
+        redoStack.emptyStack();
         this.setState({
             mouseDownOrUp: false,
             lastPoint: null
         });
-        curve=null;
+        curve = null;
     }
 
     isNotLineMode = () => {
@@ -294,6 +309,8 @@ class CanvasComponent extends Component<Props, State>{
         ctx.closePath();
 
         if (this.state.lastPoint) {
+            let line = new Line(this.state.lastPoint.center, circle.center, circle.brushSize, circle.color);
+            curve.addLine(line);
             this.connectCircles(this.state.lastPoint, circle);
         }
         this.setState({ lastPoint: circle });
@@ -307,7 +324,7 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     handleClearCanvas = () => {
-        stack.emptyStack();
+        undoStack.emptyStack();
         redoStack.emptyStack();
         this.clearCanvas();
     }

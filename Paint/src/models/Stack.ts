@@ -1,7 +1,5 @@
-import { Line } from "./Line";
-
-export class Stack {
-    public arrayOfLines: Line[];
+export class Stack<T> {
+    public arrayOfLines: T[];
     public pointer: number;
 
     constructor() {
@@ -26,7 +24,7 @@ export class Stack {
         return tmp;
     }
 
-    push = (line: Line) => {
+    push = (line: T) => {
         this.pointer++;
         this.arrayOfLines[this.pointer] = line;
     }
@@ -39,9 +37,6 @@ export class Stack {
     }
 
     isEmpty = () => {
-        if (this.pointer === -1) {
-            return true;
-        }
-        return false;
+        return (this.pointer === -1);
     }
 }
