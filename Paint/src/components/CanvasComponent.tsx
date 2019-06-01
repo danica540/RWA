@@ -15,8 +15,7 @@ import multiline from "../assets/linem.png";
 import { Stack } from "../models/Stack";
 import { Line } from "../models/Line";
 import { transformX, transformY, returnMaxCoordinates } from "../functions/transformation-functions";
-import { enableButton, disableButton, makeButtonVisible } from "../functions/html-element-functions";
-import { Circle } from "../models/Circle";
+import { enableButton, disableButton } from "../functions/html-element-functions";
 import { CurveLine } from "../models/CurveLine";
 
 const undoStack: Stack<CurveLine> = new Stack<CurveLine>();
@@ -39,7 +38,7 @@ interface State {
     imageId: number;
     draw: boolean;
     lineCap: CanvasLineCap;
-    lastPoint: Circle;
+    lastPoint: Dot;
     isImageDrawn: boolean;
     mode: string; // line, pen, cursor, eraser
     mouseDownOrUp: boolean; // false je up, a down je true
@@ -118,13 +117,14 @@ class CanvasComponent extends Component<Props, State>{
             let y = transformY(coordinate.y, this.state.height, maxCoordinates.y);
             ctx.font = "10px Arial";
             ctx.fillStyle = "black";
-            ctx.fillText(index + 1, x + 3, y - 3); // pomeraj za brojeve
-            ctx.fillRect(x, y, 4, 4); //velicina tacke 4x4
+            ctx.fillText(index + 1, x + 3, y - 3);
+            ctx.fillRect(x, y, 4, 4);
         })
         ctx.closePath();
     }
 
     drawImage = (img: any) => {
+        this.clearCanvas();
         this.setState({ isImageDrawn: true, paintMode: "connect" });
         let maxCoordinates = returnMaxCoordinates(img.dotArray);
         this.drawDots(img.dotArray, maxCoordinates);
@@ -224,7 +224,6 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     handleImageChange = (e: FormEvent) => {
-        this.clearCanvas();
         let id=parseInt((e.target as HTMLSelectElement).value);
         this.setState({ imageId: id });
         this.setState({ paintMode: "connect" });
@@ -288,38 +287,15 @@ class CanvasComponent extends Component<Props, State>{
         return (this.state.draw && this.state.mouseDownOrUp && this.isNotLineMode())
     }
 
-    connectCircles = (previousCircle, currentCircle) => {
-        let line = new Line(previousCircle.center, currentCircle.center, currentCircle.brushSize, currentCircle.color);
-        this.drawLine(line);
-    }
-
-    drawCircle = (circle: Circle) => {
-        let ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext("2d");
-        ctx.beginPath();
-        ctx.arc(circle.center.x, circle.center.y, circle.brushSize / 15, 0, 2 * Math.PI);
-        ctx.fillStyle = circle.color;
-        ctx.strokeStyle = circle.color;
-        if (this.state.mode === "eraser") {
-            ctx.fillStyle = "white";
-            ctx.strokeStyle = "white";
-        }
-        ctx.lineWidth = circle.brushSize;
-        ctx.fill();
-        ctx.stroke();
-        ctx.closePath();
-
-        if (this.state.lastPoint) {
-            let line = new Line(this.state.lastPoint.center, circle.center, circle.brushSize, circle.color);
-            curve.addLine(line);
-            this.connectCircles(this.state.lastPoint, circle);
-        }
-        this.setState({ lastPoint: circle });
-    }
-
     handleDrawing = (event: any) => {
         if (this.drawingIsEnabled()) {
-            let circle = new Circle(new Dot(event.clientX, event.clientY), this.state.brushSize, this.state.color);
-            this.drawCircle(circle);
+            let dot=new Dot(event.clientX, event.clientY);
+            if (this.state.lastPoint) {
+                let line = new Line(this.state.lastPoint, dot,this.state.brushSize,this.state.color);
+                curve.addLine(line);
+                this.drawLine(line);
+            }
+            this.setState({ lastPoint: dot });
         }
     }
 
@@ -330,7 +306,7 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     clearCanvas = () => {
-        const ctx = (document.getElementById("canvas") as any).getContext('2d');
+        const ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext('2d');
         this.setState({ paintMode: "clear" });
         ctx.clearRect(0, 0, this.state.width, this.state.height);
     }

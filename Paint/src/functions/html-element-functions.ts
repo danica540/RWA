@@ -7,12 +7,3 @@ export function disableButton(btn: HTMLButtonElement) {
     btn.disabled = true;
     btn.style.background = "#dddddd";
 }
-
-
-export function hideButton (btn: HTMLButtonElement) {
-    btn.style.display = "none";
-}
-
-export function makeButtonVisible (btn: HTMLButtonElement) {
-    btn.style.display = "inline";
-}
