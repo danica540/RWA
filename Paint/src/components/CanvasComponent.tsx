@@ -17,9 +17,11 @@ import { Line } from "../models/Line";
 import { transformX, transformY, returnMaxCoordinates } from "../functions/transformation-functions";
 import { enableButton, disableButton, hideButton, makeButtonVisible } from "../functions/html-element-functions";
 import { Circle } from "../models/Circle";
+import { CurveLine } from "../models/CurveLine";
 
 const stack: Stack = new Stack();
 const redoStack = new Stack();
+let curve=null;
 
 interface Props {
     handleSelectImage: Function;
@@ -79,6 +81,8 @@ class CanvasComponent extends Component<Props, State>{
 
     componentDidUpdate = () => {
         this.handleCanvasLoad();
+        document.getElementById("brushSize").innerHTML = (document.getElementById("slider") as HTMLInputElement).value;
+
     }
 
     componentDidMount = () => {
@@ -139,6 +143,9 @@ class CanvasComponent extends Component<Props, State>{
         ctx.strokeStyle = line.color;
         ctx.lineCap = this.state.lineCap;
         ctx.lineWidth = line.brushSize;
+        if (this.state.mode === "eraser") {
+            ctx.strokeStyle = "white";
+        }
         ctx.stroke();
         ctx.closePath();
     }
@@ -169,6 +176,7 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     changeSize = (e: any) => {
+
         this.setState({ brushSize: e.target.value, previousDot: null });
     }
 
@@ -243,6 +251,7 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     setMouseDownEvent = (e: any) => {
+        curve=new CurveLine();
         this.setState({
             mouseDownOrUp: true
         });
@@ -253,6 +262,7 @@ class CanvasComponent extends Component<Props, State>{
             mouseDownOrUp: false,
             lastPoint: null
         });
+        curve=null;
     }
 
     isNotLineMode = () => {
@@ -271,7 +281,7 @@ class CanvasComponent extends Component<Props, State>{
     drawCircle = (circle: Circle) => {
         let ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext("2d");
         ctx.beginPath();
-        ctx.arc(circle.center.x, circle.center.y, circle.brushSize / 10, 0, 2 * Math.PI);
+        ctx.arc(circle.center.x, circle.center.y, circle.brushSize / 15, 0, 2 * Math.PI);
         ctx.fillStyle = circle.color;
         ctx.strokeStyle = circle.color;
         if (this.state.mode === "eraser") {
@@ -343,10 +353,14 @@ class CanvasComponent extends Component<Props, State>{
                             </div>
                             <div>
                                 <label>Pick brush size: </label>
-                                <input onChange={this.changeSize} type="number" name="quantity" min="1" max="20" />
+                                <input onChange={this.changeSize} id="slider" type="range" min="1" max="50" />
                             </div>
-                            <button id="undoBtn" onClick={this.handleUndo}>Undo</button>
-                            <button id="redoBtn" onClick={this.handleRedo}>Redo</button>
+                            <label id="brushSize"></label>
+                            <div>
+                                <button id="undoBtn" onClick={this.handleUndo}>Undo</button>
+                                <button id="redoBtn" onClick={this.handleRedo}>Redo</button>
+                            </div>
+
                             <div>
                                 <a className="saveButton" onClick={this.saveImage}> Save Image</a>
                             </div>
