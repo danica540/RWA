@@ -78,20 +78,20 @@ class CanvasComponent extends Component<Props, State>{
         (canvas as HTMLCanvasElement).height = this.state.height;
     }
 
-    refreshUndoState=()=>{
-        if(undoStack.isEmpty()){
+    refreshUndoState = () => {
+        if (undoStack.isEmpty()) {
             disableButton(document.getElementById("undoBtn") as HTMLButtonElement);
         }
-        else{
+        else {
             enableButton(document.getElementById("undoBtn") as HTMLButtonElement);
         }
     }
 
-    refreshRedoState=()=>{
-        if(redoStack.isEmpty()){
+    refreshRedoState = () => {
+        if (redoStack.isEmpty()) {
             disableButton(document.getElementById("redoBtn") as HTMLButtonElement);
         }
-        else{
+        else {
             enableButton(document.getElementById("redoBtn") as HTMLButtonElement);
         }
     }
@@ -100,8 +100,11 @@ class CanvasComponent extends Component<Props, State>{
         this.handleCanvasLoad();
         this.refreshRedoState();
         this.refreshUndoState();
+        if (this.state.mode !== "eraser" && (document.getElementById("colorInput"))) {
+            let colorValue = (document.getElementById("colorInput") as HTMLInputElement).value;
+            this.setState({ color: colorValue });
+        }
         document.getElementById("brushSize").innerHTML = (document.getElementById("slider") as HTMLInputElement).value;
-
     }
 
     componentDidMount = () => {
@@ -149,13 +152,13 @@ class CanvasComponent extends Component<Props, State>{
     addLineToRedoStack = (line: CurveLine) => {
         redoStack.push(line);
     }
-    
+
     drawCurveLine = (curveLine: CurveLine) => {
         curveLine.lines.forEach(line => {
             this.drawLine(line);
         });
     }
-    
+
     drawLine = (line: Line) => {
         let ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext("2d");
         ctx.beginPath();
@@ -165,14 +168,11 @@ class CanvasComponent extends Component<Props, State>{
         ctx.strokeStyle = line.color;
         ctx.lineCap = this.state.lineCap;
         ctx.lineWidth = line.brushSize;
-        if (this.state.mode === "eraser") {
-            ctx.strokeStyle = "white";
-        }
         ctx.stroke();
         ctx.closePath();
     }
 
-    
+
 
     handleDotConnection = (event: any) => {
         if (this.state.mode === "multiline" || this.state.mode === "line") {
@@ -224,7 +224,7 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     handleImageChange = (e: FormEvent) => {
-        let id=parseInt((e.target as HTMLSelectElement).value);
+        let id = parseInt((e.target as HTMLSelectElement).value);
         this.setState({ imageId: id });
         this.setState({ paintMode: "connect" });
         this.drawImage(this.props.images[id]);
@@ -237,7 +237,10 @@ class CanvasComponent extends Component<Props, State>{
                 return;
             }
             case "pen": {
-                this.setState({ draw: true, mode: "pen", previousDot: null });
+                let colorInput: HTMLElement = document.getElementById("colorInput");
+                let colorValue;
+                (colorInput) ? (colorValue = (colorInput as HTMLInputElement).value) : (colorValue = "black");
+                this.setState({ draw: true, mode: "pen", previousDot: null, color: colorValue });
                 return;
             }
             case "line": {
@@ -253,7 +256,8 @@ class CanvasComponent extends Component<Props, State>{
                 this.setState({
                     draw: true,
                     mode: "eraser",
-                    previousDot: null
+                    previousDot: null,
+                    color: "white"
                 });
                 return;
             }
@@ -289,9 +293,9 @@ class CanvasComponent extends Component<Props, State>{
 
     handleDrawing = (event: any) => {
         if (this.drawingIsEnabled()) {
-            let dot=new Dot(event.clientX, event.clientY);
+            let dot = new Dot(event.clientX, event.clientY);
             if (this.state.lastPoint) {
-                let line = new Line(this.state.lastPoint, dot,this.state.brushSize,this.state.color);
+                let line = new Line(this.state.lastPoint, dot, this.state.brushSize, this.state.color);
                 curve.addLine(line);
                 this.drawLine(line);
             }
