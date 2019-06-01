@@ -20,8 +20,10 @@ export class Stack {
         if (this.pointer === -1) {
             return null;
         }
+        let tmp = this.arrayOfLines[this.pointer];
+        this.arrayOfLines[this.pointer] = null;
         this.pointer--;
-        return this.arrayOfLines[this.pointer + 1];
+        return tmp;
     }
 
     push = (line: Line) => {
