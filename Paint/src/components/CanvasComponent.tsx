@@ -1,4 +1,4 @@
-import { Component, FormEvent, Dispatch } from "react";
+import { Component, Dispatch } from "react";
 import React from 'react';
 import "../style/CanvasComponent.css";
 import { connect } from "react-redux";
@@ -11,12 +11,12 @@ import pen from "../assets/pen.png";
 import cursor from "../assets/cursor.png";
 import eraser from "../assets/er.png";
 import line from "../assets/line.png";
-import batman from "../assets/batman.png";
 import multiline from "../assets/linem.png";
 import { Stack } from "../models/Stack";
 import { Line } from "../models/Line";
 import { transformX, transformY, returnMaxCoordinates } from "../functions/transformation-functions";
 import { enableButton, disableButton, hideButton, makeButtonVisible } from "../functions/html-element-functions";
+import { Circle } from "../models/Circle";
 
 const stack: Stack = new Stack();
 const redoStack = new Stack();
@@ -37,6 +37,7 @@ interface State {
     imageId: number;
     draw: boolean;
     lineCap: CanvasLineCap;
+    lastPoint: Circle;
     isImageDrawn: boolean;
     mode: string; // line, pen, cursor, eraser
     mouseDownOrUp: boolean; // false je up, a down je true
@@ -47,6 +48,7 @@ class CanvasComponent extends Component<Props, State>{
     constructor(props: Props) {
         super(props);
         this.state = {
+            lastPoint: null,
             paintMode: "connect",
             lineCap: "round",
             isImageDrawn: false,
@@ -93,6 +95,7 @@ class CanvasComponent extends Component<Props, State>{
             let x = transformX(coordinate.x, this.state.width, maxCoordinates.x);
             let y = transformY(coordinate.y, this.state.height, maxCoordinates.y);
             ctx.font = "10px Arial";
+            ctx.fillStyle = "black";
             ctx.fillText(index + 1, x + 3, y - 3); // pomeraj za brojeve
             ctx.fillRect(x, y, 4, 4); //velicina tacke 4x4
         })
@@ -100,7 +103,8 @@ class CanvasComponent extends Component<Props, State>{
     }
 
     drawImage = (img: any) => {
-        this.setState({ isImageDrawn: true, color: "black", paintMode: "connect" });
+        //color: "black"
+        this.setState({ isImageDrawn: true, paintMode: "connect" });
         let maxCoordinates = returnMaxCoordinates(img.dotArray);
         this.drawDots(img.dotArray, maxCoordinates);
     }
@@ -246,7 +250,8 @@ class CanvasComponent extends Component<Props, State>{
 
     setMouseUpEvent = (e: any) => {
         this.setState({
-            mouseDownOrUp: false
+            mouseDownOrUp: false,
+            lastPoint: null
         });
     }
 
@@ -258,25 +263,36 @@ class CanvasComponent extends Component<Props, State>{
         return (this.state.draw && this.state.mouseDownOrUp && this.isNotLineMode())
     }
 
-    drawFreestyleLines = (x: number, y: number) => {
+    connectCircles = (previousCircle, currentCircle) => {
+        let line = new Line(previousCircle.center, currentCircle.center, currentCircle.brushSize, currentCircle.color);
+        this.drawLine(line);
+    }
+
+    drawCircle = (circle: Circle) => {
         let ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext("2d");
         ctx.beginPath();
-        ctx.arc(x, y, this.state.brushSize, 0, 2 * Math.PI);
-        ctx.fillStyle = this.state.color;
-        ctx.strokeStyle = this.state.color;
+        ctx.arc(circle.center.x, circle.center.y, circle.brushSize / 10, 0, 2 * Math.PI);
+        ctx.fillStyle = circle.color;
+        ctx.strokeStyle = circle.color;
         if (this.state.mode === "eraser") {
             ctx.fillStyle = "white";
             ctx.strokeStyle = "white";
         }
-        ctx.lineWidth = this.state.brushSize;
+        ctx.lineWidth = circle.brushSize;
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
+
+        if (this.state.lastPoint) {
+            this.connectCircles(this.state.lastPoint, circle);
+        }
+        this.setState({ lastPoint: circle });
     }
 
     handleDrawing = (event: any) => {
         if (this.drawingIsEnabled()) {
-            this.drawFreestyleLines(event.clientX, event.clientY)
+            let circle = new Circle(new Dot(event.clientX, event.clientY), this.state.brushSize, this.state.color);
+            this.drawCircle(circle);
         }
     }
 
@@ -355,5 +371,3 @@ function mapStateToProps(state: AppState) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CanvasComponent);
-
-
