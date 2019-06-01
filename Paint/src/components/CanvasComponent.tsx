@@ -72,7 +72,7 @@ class CanvasComponent extends Component<Props, State>{
     saveImage = (e: FormEvent) => {
         let canvas: HTMLElement = document.getElementById("canvas");
         (e.target as HTMLAnchorElement).href = (canvas as HTMLCanvasElement).toDataURL();
-        (e.target as HTMLAnchorElement).download = "myPainting.jpg";
+        (e.target as HTMLAnchorElement).download = 'myPainting.jpg';
     }
 
 
@@ -364,7 +364,7 @@ class CanvasComponent extends Component<Props, State>{
                             <button id="redoBtn" onClick={this.handleRedo}><img src={redo}></img></button>
                         </div>
                         <button className="btn" onClick={this.handleClearCanvas}><img src={clear}></img></button>
-                        <button className="btn"><a onClick={this.saveImage}><img src={save}></img></a></button>
+                        <a onClick={this.saveImage}><button className="btn"><img src={save}></img></button></a>
                     </div>
                 </div>
             </div>
