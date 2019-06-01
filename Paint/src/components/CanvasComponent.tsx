@@ -14,6 +14,10 @@ import line from "../assets/line.png";
 import multiline from "../assets/linem.png";
 import { Stack } from "../models/Stack";
 import { Line } from "../models/Line";
+import undo from "../assets/undo.png";
+import redo from "../assets/redo.png";
+import clear from "../assets/garbage.png";
+import save from "../assets/download.png";
 import { transformX, transformY, returnMaxCoordinates } from "../functions/transformation-functions";
 import { enableButton, disableButton } from "../functions/html-element-functions";
 import { CurveLine } from "../models/CurveLine";
@@ -110,6 +114,7 @@ class CanvasComponent extends Component<Props, State>{
     componentDidMount = () => {
         this.props.fetchImages();
         this.setCanvasSize();
+        (document.getElementById("slider") as HTMLInputElement).value = this.state.brushSize.toString();
     }
 
     drawDots = (coordinatesArray, maxCoordinates) => {
@@ -324,18 +329,17 @@ class CanvasComponent extends Component<Props, State>{
     render() {
         return (
             <div className="canvas-div">
-                <div className="right">
+                <div className="left">
                     <canvas onMouseDown={this.setMouseDownEvent} onMouseUp={this.setMouseUpEvent} onMouseMove={this.handleDrawing} onClick={this.handleDotConnection} id="canvas"></canvas>
-                    <span>
-                        <div className="left">
-                            <div>
-                                <h4>Pick an image: </h4>
-                                <select onClick={this.handleImageChange}>
-                                    <option value="0">Batman Logo</option>
-                                    <option value="1">Fish</option>
-                                </select>
-                                <button onClick={this.handleClearCanvas}>Clear Canvas</button>
-                            </div>
+                    <div className="right">
+                        <div>
+                            <label>Pick an image:</label>
+                            <select onClick={this.handleImageChange}>
+                                <option value="0">Batman Logo</option>
+                                <option value="1">Fish</option>
+                            </select>
+                        </div>
+                        <div>
                             <label>Tools: </label>
                             <div>
                                 <input onClick={this.handleMode} className="img" value="cursor" type="image" src={cursor} />
@@ -344,25 +348,24 @@ class CanvasComponent extends Component<Props, State>{
                                 <input onClick={this.handleMode} className="img" value="multiline" type="image" src={multiline} />
                                 <input onClick={this.handleMode} className="img" value="eraser" type="image" src={eraser} />
                             </div>
-                            <div>
-                                <label>Pick a color: </label>
-                                <input onChange={this.changeColor} className="colorInput" type="color" />
-                            </div>
-                            <div>
-                                <label>Pick brush size: </label>
-                                <input onChange={this.changeSize} id="slider" type="range" min="1" max="50" />
-                            </div>
-                            <label id="brushSize"></label>
-                            <div>
-                                <button id="undoBtn" onClick={this.handleUndo}>Undo</button>
-                                <button id="redoBtn" onClick={this.handleRedo}>Redo</button>
-                            </div>
-
-                            <div>
-                                <a className="saveButton" onClick={this.saveImage}> Save Image</a>
-                            </div>
                         </div>
-                    </span>
+                        <div>
+                            <label>Pick a color: </label>
+                            <input onChange={this.changeColor} className="colorInput" type="color" />
+                        </div>
+                        <div>
+                            <label>Pick brush size: </label>
+                            <br />
+                            <input onChange={this.changeSize} id="slider" type="range" min="1" max="50" />
+                        </div>
+                        <label id="brushSize"></label>
+                        <div>
+                            <button id="undoBtn" onClick={this.handleUndo}><img src={undo}></img></button>
+                            <button id="redoBtn" onClick={this.handleRedo}><img src={redo}></img></button>
+                        </div>
+                        <button className="btn" onClick={this.handleClearCanvas}><img src={clear}></img></button>
+                        <button className="btn"><a onClick={this.saveImage}><img src={save}></img></a></button>
+                    </div>
                 </div>
             </div>
         )
