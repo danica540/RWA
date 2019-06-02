@@ -17,7 +17,6 @@ import { Line } from "../models/Line";
 import undo from "../assets/undo.png";
 import redo from "../assets/redo.png";
 import clear from "../assets/garbage.png";
-import save from "../assets/download.png";
 import { transformX, transformY, returnMaxCoordinates } from "../functions/transformation-functions";
 import { enableButton, disableButton } from "../functions/html-element-functions";
 import { CurveLine } from "../models/CurveLine";
@@ -42,7 +41,7 @@ interface State {
     imageId: number;
     draw: boolean;
     lineCap: CanvasLineCap;
-    lastPoint: Dot;
+    lastPointForCurveLine: Dot;
     isImageDrawn: boolean;
     mode: string; // line, pen, cursor, eraser
     mouseDownOrUp: boolean; // false je up, a down je true
@@ -53,7 +52,7 @@ class CanvasComponent extends Component<Props, State>{
     constructor(props: Props) {
         super(props);
         this.state = {
-            lastPoint: null,
+            lastPointForCurveLine: null,
             paintMode: "connect",
             lineCap: "round",
             isImageDrawn: false,
@@ -69,20 +68,38 @@ class CanvasComponent extends Component<Props, State>{
         }
     }
 
-    saveImage = (e: FormEvent) => {
+    saveImage = (e: FormEvent): void => {
         let canvas: HTMLElement = document.getElementById("canvas");
-        (e.target as HTMLAnchorElement).href = (canvas as HTMLCanvasElement).toDataURL();
-        (e.target as HTMLAnchorElement).download = 'myPainting.jpg';
+        (e.target as HTMLAnchorElement).href = (canvas as HTMLCanvasElement).toDataURL('image/png',2.0);
+        (e.target as HTMLAnchorElement).download = 'myPainting.png';
     }
 
+    componentDidUpdate = () => {
+        this.handleCanvasLoad();
+        this.refreshRedoState();
+        this.refreshUndoState();
+        if (this.state.mode !== "eraser" && this.isColorNull()) {
+            let colorValue = (document.getElementById("colorInput") as HTMLInputElement).value;
+            this.setState({ color: colorValue });
+        }
+        this.setBrushSizeLabel();
+    }
 
-    setCanvasSize = () => {
+    isColorNull(): HTMLElement {
+        return (document.getElementById("colorInput"));
+    }
+
+    setBrushSizeLabel = (): void => {
+        document.getElementById("brushSize").innerHTML = (document.getElementById("slider") as HTMLInputElement).value;
+    }
+
+    setCanvasSize = (): void => {
         let canvas: HTMLElement = document.getElementById("canvas");
         (canvas as HTMLCanvasElement).width = this.state.width;
         (canvas as HTMLCanvasElement).height = this.state.height;
     }
 
-    refreshUndoState = () => {
+    refreshUndoState = (): void => {
         if (undoStack.isEmpty()) {
             disableButton(document.getElementById("undoBtn") as HTMLButtonElement);
         }
@@ -91,7 +108,7 @@ class CanvasComponent extends Component<Props, State>{
         }
     }
 
-    refreshRedoState = () => {
+    refreshRedoState = (): void => {
         if (redoStack.isEmpty()) {
             disableButton(document.getElementById("redoBtn") as HTMLButtonElement);
         }
@@ -100,24 +117,26 @@ class CanvasComponent extends Component<Props, State>{
         }
     }
 
-    componentDidUpdate = () => {
-        this.handleCanvasLoad();
-        this.refreshRedoState();
-        this.refreshUndoState();
-        if (this.state.mode !== "eraser" && (document.getElementById("colorInput"))) {
-            let colorValue = (document.getElementById("colorInput") as HTMLInputElement).value;
-            this.setState({ color: colorValue });
+    handleCanvasLoad = (): void => {
+        if (this.props.images.length !== 0 && !this.state.isImageDrawn && this.state.paintMode === "connect") {
+            this.drawImage(this.props.images[this.state.imageId]);
         }
-        document.getElementById("brushSize").innerHTML = (document.getElementById("slider") as HTMLInputElement).value;
     }
 
-    componentDidMount = () => {
-        this.props.fetchImages();
-        this.setCanvasSize();
-        (document.getElementById("slider") as HTMLInputElement).value = this.state.brushSize.toString();
+    drawImage = (img: Image): void => {
+        this.clearCanvas();
+        this.setState({ isImageDrawn: true, paintMode: "connect" });
+        let maxCoordinates = returnMaxCoordinates(img.dotArray);
+        this.drawDots(img.dotArray, maxCoordinates);
     }
 
-    drawDots = (coordinatesArray, maxCoordinates) => {
+    clearCanvas = (): void => {
+        const ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext('2d');
+        this.setState({ paintMode: "clear" });
+        ctx.clearRect(0, 0, this.state.width, this.state.height);
+    }
+
+    drawDots = (coordinatesArray, maxCoordinates): void => {
         let ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext("2d");
         ctx.beginPath();
         coordinatesArray.forEach((coordinate, index) => {
@@ -131,14 +150,94 @@ class CanvasComponent extends Component<Props, State>{
         ctx.closePath();
     }
 
-    drawImage = (img: any) => {
-        this.clearCanvas();
-        this.setState({ isImageDrawn: true, paintMode: "connect" });
-        let maxCoordinates = returnMaxCoordinates(img.dotArray);
-        this.drawDots(img.dotArray, maxCoordinates);
+    componentDidMount = () => {
+        this.props.fetchImages();  // IZBRISATI
+        this.setCanvasSize();
+        this.setBrushSizeInput();
     }
 
-    redrawImage(img: any, stack: Stack<CurveLine>) {
+    setBrushSizeInput = (): void => {
+        (document.getElementById("slider") as HTMLInputElement).value = this.state.brushSize.toString();
+    }
+
+    handleMode = (e: FormEvent): void => {
+        switch ((e.target as HTMLInputElement).value) {
+            case "cursor": {
+                this.setState({ draw: false, mode: "cursor", previousDot: null });
+                return;
+            }
+            case "pen": {
+                this.setState({ draw: true, mode: "pen", previousDot: null, color: this.returnColorInput() });
+                return;
+            }
+            case "line": {
+                this.setState({ draw: true, mode: "line", previousDot: null });
+                return;
+
+            }
+            case "multiline": {
+                this.setState({ draw: true, mode: "multiline", previousDot: null });
+                return;
+            }
+            case "eraser": {
+                this.setState({ draw: true, mode: "eraser", previousDot: null, color: "white" });
+                return;
+            }
+            default:
+                return;
+        }
+    }
+
+    returnColorInput = (): string => {
+        let colorInput: HTMLElement = document.getElementById("colorInput");
+        let colorValue;
+        (colorInput) ? (colorValue = (colorInput as HTMLInputElement).value) : (colorValue = "black");
+        return colorValue;
+    }
+
+    handleImageChange = (e: FormEvent): void => {
+        let id = parseInt((e.target as HTMLSelectElement).value);
+        this.setState({ imageId: id });
+        this.setState({ paintMode: "connect" });
+        this.drawImage(this.props.images[id]);
+    }
+
+    changeColor = (e: FormEvent): void => {
+        this.setState({ color: (e.target as HTMLInputElement).value, previousDot: null });
+    }
+
+    changeSize = (e: FormEvent): void => {
+        this.setState({ brushSize: parseInt((e.target as HTMLInputElement).value), previousDot: null });
+    }
+
+    handleUndo = () => {
+        let curveLine: CurveLine = undoStack.pop();
+        if (!curveLine) {
+            return;
+        }
+        this.addLineToRedoStack(curveLine);
+        this.redrawImage(this.props.images[this.state.imageId], undoStack);
+    }
+
+    handleRedo = () => {
+        let curveLine: CurveLine = redoStack.pop();
+        if (!curveLine) {
+            return;
+        }
+        this.drawCurveLine(curveLine);
+        this.addLineToUndoStack(curveLine);
+        this.redrawImage(this.props.images[this.state.imageId], undoStack);
+    }
+
+    addLineToUndoStack = (line: CurveLine): void => {
+        undoStack.push(line);
+    }
+
+    addLineToRedoStack = (line: CurveLine): void => {
+        redoStack.push(line);
+    }
+
+    redrawImage = (img: Image, stack: Stack<CurveLine>): void => {
         this.clearCanvas();
         if (this.state.paintMode === "connect") {
             this.drawImage(img);
@@ -150,21 +249,13 @@ class CanvasComponent extends Component<Props, State>{
         });
     }
 
-    addLineToUndoStack = (line: CurveLine) => {
-        undoStack.push(line);
-    }
-
-    addLineToRedoStack = (line: CurveLine) => {
-        redoStack.push(line);
-    }
-
-    drawCurveLine = (curveLine: CurveLine) => {
+    drawCurveLine = (curveLine: CurveLine): void => {
         curveLine.lines.forEach(line => {
             this.drawLine(line);
         });
     }
 
-    drawLine = (line: Line) => {
+    drawLine = (line: Line): void => {
         let ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext("2d");
         ctx.beginPath();
         ctx.moveTo(line.firstDot.x, line.firstDot.y);
@@ -176,8 +267,6 @@ class CanvasComponent extends Component<Props, State>{
         ctx.stroke();
         ctx.closePath();
     }
-
-
 
     handleDotConnection = (event: any) => {
         if (this.state.mode === "multiline" || this.state.mode === "line") {
@@ -201,129 +290,42 @@ class CanvasComponent extends Component<Props, State>{
         }
     }
 
-    changeColor = (e: any) => {
-        this.setState({ color: e.target.value, previousDot: null });
-    }
-
-    changeSize = (e: any) => {
-        this.setState({ brushSize: e.target.value, previousDot: null });
-    }
-
-    handleUndo = () => {
-        let curveLine: CurveLine = undoStack.pop();
-        if (!curveLine) {
-            return;
-        }
-        this.addLineToRedoStack(curveLine);
-        this.redrawImage(this.props.images[this.state.imageId], undoStack);
-    }
-
-    handleRedo = () => {
-        let curveLine: CurveLine = redoStack.pop();
-        if (!curveLine) {
-            return;
-        }
-        this.drawCurveLine(curveLine);
-        this.addLineToUndoStack(curveLine);
-        this.redrawImage(this.props.images[this.state.imageId], undoStack);
-    }
-
-    handleImageChange = (e: FormEvent) => {
-        let id = parseInt((e.target as HTMLSelectElement).value);
-        this.setState({ imageId: id });
-        this.setState({ paintMode: "connect" });
-        this.drawImage(this.props.images[id]);
-    }
-
-    handleMode = (e: FormEvent) => {
-        switch ((e.target as HTMLInputElement).value) {
-            case "cursor": {
-                this.setState({ draw: false, mode: "cursor", previousDot: null });
-                return;
-            }
-            case "pen": {
-                let colorInput: HTMLElement = document.getElementById("colorInput");
-                let colorValue;
-                (colorInput) ? (colorValue = (colorInput as HTMLInputElement).value) : (colorValue = "black");
-                this.setState({ draw: true, mode: "pen", previousDot: null, color: colorValue });
-                return;
-            }
-            case "line": {
-                this.setState({ draw: true, mode: "line", previousDot: null });
-                return;
-
-            }
-            case "multiline": {
-                this.setState({ draw: true, mode: "multiline", previousDot: null });
-                return;
-            }
-            case "eraser": {
-                this.setState({
-                    draw: true,
-                    mode: "eraser",
-                    previousDot: null,
-                    color: "white"
-                });
-                return;
-            }
-            default:
-                return;
-        }
-    }
-
-    setMouseDownEvent = () => {
+    setMouseDownEvent = (): void => {
         curve = new CurveLine();
-        this.setState({
-            mouseDownOrUp: true
-        });
+        this.setState({ mouseDownOrUp: true });
     }
 
-    setMouseUpEvent = () => {
+    setMouseUpEvent = (): void => {
         undoStack.push(curve);
         redoStack.emptyStack();
-        this.setState({
-            mouseDownOrUp: false,
-            lastPoint: null
-        });
+        this.setState({ mouseDownOrUp: false, lastPointForCurveLine: null });
         curve = null;
     }
 
-    isNotLineMode = () => {
-        return (this.state.mode !== "line" && this.state.mode !== "multiline");
-    }
-
-    drawingIsEnabled = () => {
-        return (this.state.draw && this.state.mouseDownOrUp && this.isNotLineMode())
-    }
-
-    handleDrawing = (event: any) => {
+    handleDrawing = (event: any): void => {
         if (this.drawingIsEnabled()) {
             let dot = new Dot(event.clientX, event.clientY);
-            if (this.state.lastPoint) {
-                let line = new Line(this.state.lastPoint, dot, this.state.brushSize, this.state.color);
+            if (this.state.lastPointForCurveLine) {
+                let line = new Line(this.state.lastPointForCurveLine, dot, this.state.brushSize, this.state.color);
                 curve.addLine(line);
                 this.drawLine(line);
             }
-            this.setState({ lastPoint: dot });
+            this.setState({ lastPointForCurveLine: dot });
         }
+    }
+
+    drawingIsEnabled = (): boolean => {
+        return (this.state.draw && this.state.mouseDownOrUp && this.isNotLineMode())
+    }
+
+    isNotLineMode = (): boolean => {
+        return (this.state.mode !== "line" && this.state.mode !== "multiline");
     }
 
     handleClearCanvas = () => {
         undoStack.emptyStack();
         redoStack.emptyStack();
         this.clearCanvas();
-    }
-
-    clearCanvas = () => {
-        const ctx = (document.getElementById("canvas") as HTMLCanvasElement).getContext('2d');
-        this.setState({ paintMode: "clear" });
-        ctx.clearRect(0, 0, this.state.width, this.state.height);
-    }
-
-    handleCanvasLoad = () => {
-        if (this.props.images.length !== 0 && !this.state.isImageDrawn && this.state.paintMode === "connect") {
-            this.drawImage(this.props.images[this.state.imageId]);
-        }
     }
 
     render() {
@@ -364,7 +366,7 @@ class CanvasComponent extends Component<Props, State>{
                             <button id="redoBtn" onClick={this.handleRedo}><img src={redo}></img></button>
                         </div>
                         <button className="btn" onClick={this.handleClearCanvas}><img src={clear}></img></button>
-                        <a onClick={this.saveImage}><button className="btn"><img src={save}></img></button></a>
+                        <a className="link" onClick={this.saveImage}>Save Image</a>
                     </div>
                 </div>
             </div>
@@ -378,6 +380,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>) {
         fetchImages: () => dispatch(getImages())
     }
 }
+
 function mapStateToProps(state: AppState) {
     return {
         images: state.images

@@ -53,3 +53,14 @@
     background: transparent;
     border: 1px solid #dddddd;
 }
+
+.link{
+    margin-top:20px;
+    margin-left:16px;
+    text-decoration: none;
+    color:black;
+}
+
+.link:active{
+    color:rgb(73, 30, 73);
+}
