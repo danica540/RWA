@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
-import { reducer } from "./reducers/reducer";
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga';
-import { all, fork, takeEvery } from "@redux-saga/core/effects";
+import { all, takeEvery } from "@redux-saga/core/effects";
 import { Image } from "../models/Image";
-import { GET_IMAGES, GET_IMAGE } from "./actions/actions";
-import { fetchImages } from "./saga";
+import { fetchImages } from "./image-ARS/saga";
+import { reducer } from "./image-ARS/reducer";
+import { GET_IMAGES } from "./image-ARS/actions";
 
 export interface AppState {
   images: Image[]

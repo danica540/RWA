@@ -59,6 +59,7 @@
     margin-left:16px;
     text-decoration: none;
     color:black;
+    cursor: pointer;
 }
 
 .link:active{

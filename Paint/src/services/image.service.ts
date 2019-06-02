@@ -1,7 +1,6 @@
-
-const url = 'http://localhost:3002/images';
+import { urlConst } from "../constants/constants";
 
 export function getAllImages() {
-    return fetch(url)
+    return fetch(urlConst.URL)
         .then(response => response.json());
 }
