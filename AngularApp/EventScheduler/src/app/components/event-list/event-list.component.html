@@ -1,0 +1,6 @@
+<div class="main">
+  <label class="header">Event List</label>
+  <div *ngFor="let event of eventList">
+    <app-event (click)="onEventClick(event)" class="single-event" [event]="event"></app-event>
+  </div>
+</div>

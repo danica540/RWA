@@ -1,0 +1,120 @@
+.glavni{
+    display: flex;
+    flex-direction: column;
+}
+
+.main{
+    display: flex;
+    margin-bottom: 4%;
+}
+
+.left{
+    flex-grow: 0.5;
+    max-width: 350px;
+    margin-right: 2%;
+    margin-left: 1%;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.mapa{
+    width:100%;
+    height: auto;
+    margin:1%;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+}
+
+img{
+    width:60%;
+    height: auto;
+    margin: auto;
+    margin-top:2%;
+}
+
+.right{
+    flex-grow: 0.6;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.top{
+    display: flex;
+}
+
+.bottom{
+    display: flex;
+    flex-direction: column;
+}
+
+.top-left{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-right{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 250px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+
+label{
+    margin-top:1%;
+    margin-bottom: 1%;
+    color:rgb(77, 77, 77);
+    /* color:#464866; */
+    opacity: 0.8;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+select{
+    width:20%;
+}
+
+.is-comming-div{
+    display: flex;
+    flex-direction: column;
+    margin-top:4%;
+}
+
+#prioritet{
+    margin: auto;
+}
+
+.is-comming-div img{
+    width:24px;
+    height: auto;
+}
+
+label span{
+    color:#25274d;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+p{
+    color:#15547e;
+}
+
+
+.prioritet-broj{
+    color:rgb(153, 2, 2); 
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+.slike{
+    flex:1 1;
+}
+

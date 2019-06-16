@@ -1,0 +1,19 @@
+<ul id="navbar-div">
+  <li class="logo"><a (click)="onHomeClick()" routerLink="home">Home</a></li>
+  <li routerLinkActive="active">
+    <a *ngIf="isLoggedIn" routerLink="addEvent">Add Event</a>
+  </li>
+
+  <li class="search">
+    <input type="text" id="search-input" placeholder="Search..."><span><a class="slika" (click)="onSearchClick()"><img
+          src="../../../assets/img/search.png"></a></span>
+  </li>
+  <li class="separator"></li>
+
+  <li *ngIf="isLoggedIn" routerLinkActive="active"><a routerLink="home" (click)="onLogOut()">Log Out</a></li>
+
+  <li *ngIf="!isLoggedIn" routerLinkActive="active"><a routerLink="signIn">Sign In</a></li>
+
+  <li *ngIf="!isLoggedIn" routerLinkActive="active">
+    <a routerLink="signUp">Sign Up</a></li>
+</ul>

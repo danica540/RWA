@@ -1,0 +1,31 @@
+<div class="main">
+  <div class="form">
+    <label class="header">Sign Up</label>
+    <label id="error" class="error-label"></label>
+    <h3>
+      Username
+    </h3>
+    <div class="info">
+      <input id="username-signUp" type="text" placeholder="Enter your username"><span
+        *ngIf="!ifUsernameIsCorrect"><img src="../../../assets/img/error (1).png"></span>
+    </div>
+
+    <h3>
+      Email
+    </h3>
+    <div class="info">
+      <input id="email-signUp" type="text" placeholder="Enter your username"><span
+        *ngIf="!ifEmailIsCorrect"><img src="../../../assets/img/error (1).png"></span>
+    </div>
+
+
+    <h3>
+      Password
+    </h3>
+    <div class="info">
+      <input id="password-signUp" type="password" placeholder="Enter password">
+
+    </div>
+    <button (click)="onSignUp()">Sign In</button>
+  </div>
+</div>

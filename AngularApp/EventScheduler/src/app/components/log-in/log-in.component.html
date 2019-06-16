@@ -1,0 +1,23 @@
+<div class="main">
+  <div class="form">
+    <label class="header">Sign In</label>
+    <label id="error" class="error-label"></label>
+    <h3>
+      Username
+    </h3>
+    <div class="info">
+      <input id="username-signIn" type="text" placeholder="Enter your username"><span
+        *ngIf="!ifUsernameIsCorrect"><img src="../../../assets/img/error (1).png"></span>
+    </div>
+
+    <h3>
+      Password
+    </h3>
+    <div class="info">
+      <input id="password-signIn" type="password" placeholder="Enter password"><span
+        *ngIf="!ifPasswordIsCorrect"><img src="../../../assets/img/error (1).png"></span>
+
+    </div>
+    <button (click)="onSignIn()">Sign In</button>
+  </div>
+</div>

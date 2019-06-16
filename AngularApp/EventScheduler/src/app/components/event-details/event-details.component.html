@@ -1,0 +1,56 @@
+<div class="glavni">
+    <div class="main">
+      <div class="left">
+        <app-map *ngIf="longitude && latitude" class="mapa" [longitude]="longitude" [latitude]="latitude"></app-map>
+      </div>
+      <div class="right">
+        <div class="top">
+          <div *ngIf="event" class="top-left">
+            <label>Id: <span>{{event.id}}</span></label>
+            <label>Date: <span>{{event.date}}</span></label>
+            <label>HeadLine: <span>{{event.headline}}</span></label>
+            <label>Description: </label>
+            <p>{{event.description}}</p>
+          </div>
+          <div *ngIf="event" class="top-right">
+            <label>Address: <span>{{event.address}}</span></label>
+            <label>City: <span>{{event.city}}</span></label>
+            <!-- <label>Tip: <span>{{konkretanProblem.tip}}</span></label> -->
+  
+  
+            <!-- <div *ngIf="korisnikovLajk" class="lajk-problem">
+              <img *ngIf="(isLogovan && (korisnikovLajk.pozitivanLajk===null || korisnikovLajk.pozitivanLajk===false))"
+                (click)="registrujUpLajk()" src="../../../assets/img/up-empty.png">
+              <img *ngIf="(isLogovan && korisnikovLajk.pozitivanLajk===true)" (click)="odregistrujUpLajk()"
+                src="../../../assets/img/up-full.png">
+              <label class="labela-prioritet" *ngIf="!isLogovan">Priotitet problema:</label>
+              <label class="prioritet-broj" id="prioritet">{{konkretanProblem.prioritet}}</label>
+              <img *ngIf="(isLogovan && (korisnikovLajk.pozitivanLajk===null || korisnikovLajk.pozitivanLajk===true))"
+                (click)="registrujDownLajk()" src="../../../assets/img/down-empty.png">
+              <img *ngIf="(isLogovan && korisnikovLajk.pozitivanLajk===false)" (click)="odregistrujDownLajk()"
+                src="../../../assets/img/down-full.png">
+            </div> -->
+
+            <div *ngIf="userIsComming" class="is-comming-div">
+                <img *ngIf="(isLogovan && (korisnikovLajk.pozitivanLajk===null || korisnikovLajk.pozitivanLajk===false))"
+                  (click)="registrujUpLajk()" src="../../../assets/img/up-empty.png">
+                <img *ngIf="(isLogovan && korisnikovLajk.pozitivanLajk===true)" (click)="odregistrujUpLajk()"
+                  src="../../../assets/img/up-full.png">
+                <label class="labela-prioritet" *ngIf="!isLogovan">Priotitet problema:</label>
+                <label class="prioritet-broj" id="prioritet">{{konkretanProblem.prioritet}}</label>
+                <img *ngIf="(isLogovan && (korisnikovLajk.pozitivanLajk===null || korisnikovLajk.pozitivanLajk===true))"
+                  (click)="registrujDownLajk()" src="../../../assets/img/down-empty.png">
+                <img *ngIf="(isLogovan && korisnikovLajk.pozitivanLajk===false)" (click)="odregistrujDownLajk()"
+                  src="../../../assets/img/down-full.png">
+              </div>
+  
+  
+          </div>
+        </div>
+        <div *ngIf="event" class="bottom">
+            <img [src]="event.img">
+          <!-- <app-lista-komentara></app-lista-komentara> -->
+        </div>
+      </div>
+    </div>
+  </div>

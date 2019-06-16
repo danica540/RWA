@@ -1,0 +1,671 @@
+{
+  "citys": [
+    {
+      "name": " Subotica"
+    },
+    {
+      "name": "Bačka Topola"
+    },
+    {
+      "name": "Mali Iđoš"
+    },
+    {
+      "name": " Zrenjanin"
+    },
+    {
+      "name": "Novi Bečej"
+    },
+    {
+      "name": "Nova Crnja"
+    },
+    {
+      "name": "Žitište"
+    },
+    {
+      "name": "Sečanj"
+    },
+    {
+      "name": "Kanjiža"
+    },
+    {
+      "name": "Senta"
+    },
+    {
+      "name": "Ada"
+    },
+    {
+      "name": "Čoka"
+    },
+    {
+      "name": "Novi Kneževac"
+    },
+    {
+      "name": " Kikinda"
+    },
+    {
+      "name": " Pančevo"
+    },
+    {
+      "name": "Plandište"
+    },
+    {
+      "name": "Opovo"
+    },
+    {
+      "name": "Kovačica"
+    },
+    {
+      "name": "Alibunar"
+    },
+    {
+      "name": " Vršac"
+    },
+    {
+      "name": "Bela Crkva"
+    },
+    {
+      "name": "Kovin"
+    },
+    {
+      "name": " Sombor"
+    },
+    {
+      "name": "Apatin"
+    },
+    {
+      "name": "Odžaci"
+    },
+    {
+      "name": "Kula"
+    },
+    {
+      "name": "Bač"
+    },
+    {
+      "name": "Bačka Palanka"
+    },
+    {
+      "name": "Bački Petrovac"
+    },
+    {
+      "name": "Beočin"
+    },
+    {
+      "name": "Bečej"
+    },
+    {
+      "name": "Vrbas"
+    },
+    {
+      "name": "Žabalj"
+    },
+    {
+      "name": " Novi Sad"
+    },
+    {
+      "name": "Srbobran"
+    },
+    {
+      "name": "Temerin"
+    },
+    {
+      "name": "Titel"
+    },
+    {
+      "name": "Sremski Karlovci"
+    },
+    {
+      "name": " Sremska Mitrovica"
+    },
+    {
+      "name": "Sremska Mitrovica"
+    },
+    {
+      "name": "Šid"
+    },
+    {
+      "name": "Inđija"
+    },
+    {
+      "name": "Irig"
+    },
+    {
+      "name": "Ruma"
+    },
+    {
+      "name": "Stara Pazova"
+    },
+    {
+      "name": "Pećinci"
+    },
+    {
+      "name": " Šabac"
+    },
+    {
+      "name": " Loznica"
+    },
+    {
+      "name": "Bogatić"
+    },
+    {
+      "name": "Vladimirci"
+    },
+    {
+      "name": "Koceljeva"
+    },
+    {
+      "name": "Mali Zvornik"
+    },
+    {
+      "name": "Krupanj"
+    },
+    {
+      "name": "Ljubovija"
+    },
+    {
+      "name": " Valjevo"
+    },
+    {
+      "name": "Osečina"
+    },
+    {
+      "name": "Ub"
+    },
+    {
+      "name": "Lajkovac"
+    },
+    {
+      "name": "Mionica"
+    },
+    {
+      "name": "Ljig"
+    },
+    {
+      "name": " Smederevo"
+    },
+    {
+      "name": "Smederevska Palanka"
+    },
+    {
+      "name": "Velika Plana"
+    },
+    {
+      "name": " Požarevac"
+    },
+    {
+      "name": "Veliko Gradište"
+    },
+    {
+      "name": "Golubac"
+    },
+    {
+      "name": "Malo Crniće"
+    },
+    {
+      "name": "Žabari"
+    },
+    {
+      "name": "Petrovac na Mlavi"
+    },
+    {
+      "name": "Kučevo"
+    },
+    {
+      "name": "Žagubica"
+    },
+    {
+      "name": " Kragujevac"
+    },
+    {
+      "name": "Aranđelovac"
+    },
+    {
+      "name": "Topola"
+    },
+    {
+      "name": "Rača"
+    },
+    {
+      "name": "Batočina"
+    },
+    {
+      "name": "Knić"
+    },
+    {
+      "name": "Lapovo"
+    },
+    {
+      "name": " Jagodina"
+    },
+    {
+      "name": "Ćuprija"
+    },
+    {
+      "name": "Paraćin"
+    },
+    {
+      "name": "Svilajnac"
+    },
+    {
+      "name": "Despotovac"
+    },
+    {
+      "name": "Rekovac"
+    },
+    {
+      "name": " Beograd"
+    },
+    {
+      "name": "Bor"
+    },
+    {
+      "name": "Kladovo"
+    },
+    {
+      "name": "Majdanpek"
+    },
+    {
+      "name": "Negotin"
+    },
+    {
+      "name": " Zaječar"
+    },
+    {
+      "name": "Boljevac"
+    },
+    {
+      "name": "Knjaževac"
+    },
+    {
+      "name": "Sokobanja"
+    },
+    {
+      "name": " Užice"
+    },
+    {
+      "name": "Bajina Bašta"
+    },
+    {
+      "name": "Kosjerić"
+    },
+    {
+      "name": "Požega"
+    },
+    {
+      "name": "Čajetina"
+    },
+    {
+      "name": "Arilje"
+    },
+    {
+      "name": "Priboj"
+    },
+    {
+      "name": "Nova Varoš"
+    },
+    {
+      "name": "Prijepolje"
+    },
+    {
+      "name": "Sjenica"
+    },
+    {
+      "name": " Čačak"
+    },
+    {
+      "name": "Gornji Milanovac"
+    },
+    {
+      "name": "Lučani"
+    },
+    {
+      "name": "Ivanjica"
+    },
+    {
+      "name": " Kraljevo"
+    },
+    {
+      "name": " Novi Pazar"
+    },
+    {
+      "name": "Vrnjačka Banja"
+    },
+    {
+      "name": "Raška"
+    },
+    {
+      "name": "Tutin"
+    },
+    {
+      "name": " Kruševac"
+    },
+    {
+      "name": "Varvarin"
+    },
+    {
+      "name": "Trstenik"
+    },
+    {
+      "name": "Ćićevac"
+    },
+    {
+      "name": "Aleksandrovac"
+    },
+    {
+      "name": "Brus"
+    },
+    {
+      "name": " Niš"
+    },
+    {
+      "name": "Aleksinac"
+    },
+    {
+      "name": "Svrljig"
+    },
+    {
+      "name": "Merošina"
+    },
+    {
+      "name": "Ražanj"
+    },
+    {
+      "name": "Doljevac"
+    },
+    {
+      "name": "Gadžin Han"
+    },
+    {
+      "name": "Prokuplje"
+    },
+    {
+      "name": "Blace"
+    },
+    {
+      "name": "Kuršumlija"
+    },
+    {
+      "name": "Žitorađa"
+    },
+    {
+      "name": " Pirot"
+    },
+    {
+      "name": "Bela Palanka"
+    },
+    {
+      "name": "Babušnica"
+    },
+    {
+      "name": "Dimitrovgrad"
+    },
+    {
+      "name": " Leskovac"
+    },
+    {
+      "name": "Bojnik"
+    },
+    {
+      "name": "Lebane"
+    },
+    {
+      "name": "Medveđa"
+    },
+    {
+      "name": "Vlasotince"
+    },
+    {
+      "name": "Crna Trava"
+    },
+    {
+      "name": " Vranje"
+    },
+    {
+      "name": "Vladičin Han"
+    },
+    {
+      "name": "Surdulica"
+    },
+    {
+      "name": "Bosilegrad"
+    },
+    {
+      "name": "Trgovište"
+    },
+    {
+      "name": "Bujanovac"
+    },
+    {
+      "name": "Preševo"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "danoi",
+      "password": "danoi123",
+      "email": "danoi@gmail.com"
+    },
+    {
+      "id": 2,
+      "username": "milenica",
+      "password": "milea123",
+      "email": "milena@mail.com"
+    },
+    {
+      "id": 3,
+      "username": "mimi",
+      "password": "mi123",
+      "email": "mimi@mail.com"
+    },
+    {
+      "id": 4,
+      "username": "tikica",
+      "password": "tiki123",
+      "email": "tika@mail.com"
+    },
+    {
+      "id": 5,
+      "username": "kate",
+      "password": "kate123",
+      "email": "kate@mail.com"
+    },
+    {
+      "id": 6,
+      "username": "nata",
+      "password": "nata123",
+      "email": "nata@mail.com"
+    },
+    {
+      "id": 7,
+      "username": "filip",
+      "password": "filip123",
+      "email": "filip@mail.com"
+    },
+    {
+      "username": "danoi123",
+      "password": "test123",
+      "email": "test@mail.com",
+      "id": 35.038129086995966
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "headline": "Garbage collecting",
+      "description": "Event for all the good people.",
+      "date": "Monday, June 3, 2019 5:00 PM",
+      "address": "Somborska",
+      "city": "Niš",
+      "img": "../assets/img/event2.jpg",
+      "maxCapacity": 150,
+      "numberOfPeopleComing": 10
+    },
+    {
+      "id": 2,
+      "headline": "Garbage collecting",
+      "description": "Event for all the good people.",
+      "date": "Monday, June 3, 2019 5:00 PM",
+      "address": "Somborska",
+      "city": "Niš",
+      "img": "../assets/img/event1.jpg",
+      "maxCapacity": 150,
+      "numberOfPeopleComing": 10
+    },
+    {
+      "id": 3,
+      "headline": "Garbage collecting",
+      "description": "Event for all the good people.",
+      "date": "Monday, June 3, 2019 5:00 PM",
+      "address": "Somborska",
+      "city": "Niš",
+      "img": "../assets/img/event3.jpg",
+      "maxCapacity": 150,
+      "numberOfPeopleComing": 10
+    },
+    {
+      "id": 4,
+      "headline": "Garbage collecting",
+      "description": "Event for all the good people.",
+      "date": "Monday, June 3, 2019 5:00 PM",
+      "address": "Vozdova 5",
+      "city": "Niš",
+      "img": "../assets/img/event4.jpg",
+      "maxCapacity": 150,
+      "numberOfPeopleComing": 10
+    },
+    {
+      "id": 5,
+      "headline": "Garbage collecting",
+      "description": "Event for all the good people.",
+      "date": "Monday, June 3, 2019 5:00 PM",
+      "address": "Zelengorska 23",
+      "city": "Niš",
+      "img": "../assets/img/event5.jpg",
+      "maxCapacity": 150,
+      "numberOfPeopleComing": 10
+    },
+    {
+      "id": 6,
+      "headline": "Garbage collecting",
+      "description": "Event for all the good people.",
+      "date": "Monday, June 3, 2019 5:00 PM",
+      "address": "Bulevar Nemanjica",
+      "city": "Niš",
+      "img": "../assets/img/event6.jpeg",
+      "maxCapacity": 150,
+      "numberOfPeopleComing": 10
+    },
+    {
+      "id": 7,
+      "headline": "Garbage collecting",
+      "description": "Event for all the good people.",
+      "date": "Monday, June 3, 2019 5:00 PM",
+      "address": "Cirila i Metodija 5",
+      "city": "Niš",
+      "img": "../assets/img/event7.jpg",
+      "maxCapacity": 150,
+      "numberOfPeopleComing": 10
+    }
+  ],
+  "lajkovi": [
+    {
+      "id": 2,
+      "datum": "Monday, June 3, 2019 10:51 AM",
+      "problemId": 1,
+      "korisnikId": 2,
+      "pozitivanLajk": true
+    },
+    {
+      "id": 3,
+      "datum": "Monday, June 3, 2019 10:51 AM",
+      "problemId": 2,
+      "korisnikId": 1,
+      "pozitivanLajk": true
+    },
+    {
+      "id": 4,
+      "datum": "Monday, June 3, 2019 10:51 AM",
+      "problemId": 3,
+      "korisnikId": 1,
+      "pozitivanLajk": false
+    },
+    {
+      "datum": "Monday, June 3, 2019 5:35 PM",
+      "problemId": 1,
+      "korisnikId": 1,
+      "pozitivanLajk": true,
+      "id": 13.483004740459513
+    }
+  ],
+  "lajkoviKomentari": [
+    {
+      "id": 2,
+      "datum": "Monday, June 3, 2019 10:51 AM",
+      "komentarId": 1,
+      "korisnikId": 2,
+      "pozitivanLajk": true
+    },
+    {
+      "id": 3,
+      "datum": "Monday, June 3, 2019 10:51 AM",
+      "komentarId": 2,
+      "korisnikId": 1,
+      "pozitivanLajk": true
+    },
+    {
+      "id": 4,
+      "datum": "Monday, June 3, 2019 10:51 AM",
+      "komentarId": 3,
+      "korisnikId": 1,
+      "pozitivanLajk": false
+    }
+  ],
+  "komentari": [
+    {
+      "id": 3,
+      "datum": "Thursday, May 30, 2019 11:26 PM",
+      "problemId": 2,
+      "korisnikId": 1,
+      "opis": "2021 samo da rezervisem",
+      "anoniman": false,
+      "prioritet": -1
+    },
+    {
+      "opis": "2020 samo da rezervisem",
+      "datum": "Monday, June 3, 2019 6:37 PM",
+      "problemId": 1,
+      "korisnikId": 2,
+      "id": 1,
+      "anoniman": true,
+      "prioritet": 3
+    },
+    {
+      "opis": "yguhbjkn",
+      "korisnikId": 3,
+      "datum": "Saturday, June 1, 2019 6:10 PM",
+      "problemId": "86.5974253577236",
+      "id": 2,
+      "anoniman": true,
+      "prioritet": 1
+    },
+    {
+      "opis": "fghioj",
+      "datum": "Saturday, June 1, 2019 8:23 PM",
+      "problemId": 3,
+      "korisnikId": 1,
+      "id": 4,
+      "anoniman": false,
+      "prioritet": 0
+    },
+    {
+      "opis": "Ma milina",
+      "datum": "Monday, June 3, 2019 9:31 AM",
+      "problemId": 2,
+      "korisnikId": 2,
+      "id": 75.8179483528404,
+      "anoniman": true,
+      "prioritet": 0
+    }
+  ]
+}

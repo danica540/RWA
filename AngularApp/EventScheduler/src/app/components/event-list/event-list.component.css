@@ -1,0 +1,31 @@
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    text-align: center;
+    font-size: 42px;
+    margin:1%;
+    margin-bottom: 2%;
+    color:#25274d;
+    font-weight: 900;
+    text-shadow: 
+        -1px 0 #25274d, 0 1px #25274d, 1px 0 #25274d, 0 -1px #25274d, 
+        -1px -1px #25274d, 1px 1px #25274d, -1px 1px #25274d, 1px -1px #25274d;
+}
+
+.single-event{
+    width:70%;
+    display: flex;
+    flex:1 1;
+    margin:auto;
+    margin-bottom: 2%;
+    /* margin-top:2%; */
+    padding: 5px;
+    background: white;
+}
+
+.single-event:hover{
+    background-color: #dfdfdf;
+}

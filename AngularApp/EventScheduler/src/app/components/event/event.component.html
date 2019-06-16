@@ -1,0 +1,11 @@
+<div class="left">
+  <img [src]="event.img" alt="">
+</div>
+
+<div class="right">
+    <h2>{{event.headline}}</h2>
+    <label>People coming: <span class="span">{{event.numberOfPeopleComing}}</span></label>
+    <label>Address: <span class="span">{{returnFormatedAddress()}}</span></label>
+    <label>Date: <span class="span">{{event.date}}</span></label>
+    <!-- <label>Description: <span class="span">{{event.description}}</span></label> -->
+</div>
