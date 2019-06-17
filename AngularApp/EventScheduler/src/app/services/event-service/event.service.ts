@@ -34,4 +34,12 @@ export class EventService {
     return this.http.post(`${API_URL}/events`, newEvent)
   }
 
+  getEventsBySearchValue(searchValue: string): Observable<EventModel> {
+    return this.http.get<EventModel>(`${API_URL}/events?q=${searchValue}`);
+  }
+
+  updateEvent(newEvent: EventModel) {
+    return this.http.put(`${API_URL}/events/${newEvent.id}`, newEvent);
+  }
+
 }

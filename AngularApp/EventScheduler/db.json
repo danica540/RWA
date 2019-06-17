@@ -576,7 +576,7 @@
     },
     {
       "maxCapacity": 152,
-      "numberOfPeopleComing": 0,
+      "numberOfPeopleComing": 1,
       "id": 37,
       "headline": "New Event In Town",
       "description": "This will be the greatest event you will EVER visit in your lifetime. There will be great music and loads of fun! We are expecting you!!!!",
@@ -589,7 +589,7 @@
     {
       "maxCapacity": 200,
       "numberOfPeopleComing": 0,
-      "id": 82.2331587821796,
+      "id": 82,
       "headline": "FUN FUN FUN",
       "description": "You will have a lot of fun at out event!",
       "address": "Zelengorska",
@@ -603,6 +603,18 @@
     {
       "id": 1,
       "eventId": 1,
+      "userId": 6,
+      "isComming": true
+    },
+    {
+      "id": 11.067280593440126,
+      "eventId": 82,
+      "userId": 6,
+      "isComming": true
+    },
+    {
+      "id": 1.0957094500245048,
+      "eventId": 37,
       "userId": 6,
       "isComming": true
     }

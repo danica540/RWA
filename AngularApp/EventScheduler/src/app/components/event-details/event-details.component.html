@@ -1,55 +1,38 @@
 <div class="glavni">
-    <div class="main">
-      <div class="left">
-        <app-map *ngIf="longitude && latitude" class="mapa" [longitude]="longitude" [latitude]="latitude"></app-map>
-      </div>
-      <div class="right">
-        <div class="top">
-          <div *ngIf="event" class="top-left">
-            <label>Id: <span>{{event.id}}</span></label>
-            <label>Date: <span>{{event.date}}</span></label>
-            <label>Time: <span>{{event.time}} h</span></label>
-            <label>HeadLine: <span>{{event.headline}}</span></label>
-            <label>Description: </label>
-            <p>{{event.description}}</p>
-          </div>
-          <div *ngIf="event" class="top-right">
-            <label>Address: <span>{{event.address}}</span></label>
-            <label>City: <span>{{event.city}}</span></label>
-            <label>Number of people comming: <span>{{event.numberOfPeopleComing}}</span></label>
-  
-  
-            <!-- <div *ngIf="korisnikovLajk" class="lajk-problem">
-              <img *ngIf="(isLogovan && (korisnikovLajk.pozitivanLajk===null || korisnikovLajk.pozitivanLajk===false))"
-                (click)="registrujUpLajk()" src="../../../assets/img/up-empty.png">
-              <img *ngIf="(isLogovan && korisnikovLajk.pozitivanLajk===true)" (click)="odregistrujUpLajk()"
-                src="../../../assets/img/up-full.png">
-              <label class="labela-prioritet" *ngIf="!isLogovan">Priotitet problema:</label>
-              <label class="prioritet-broj" id="prioritet">{{konkretanProblem.prioritet}}</label>
-              <img *ngIf="(isLogovan && (korisnikovLajk.pozitivanLajk===null || korisnikovLajk.pozitivanLajk===true))"
-                (click)="registrujDownLajk()" src="../../../assets/img/down-empty.png">
-              <img *ngIf="(isLogovan && korisnikovLajk.pozitivanLajk===false)" (click)="odregistrujDownLajk()"
-                src="../../../assets/img/down-full.png">
-            </div> -->
+  <div class="main">
+    <div class="left">
+      <app-map *ngIf="longitude && latitude" class="mapa" [longitude]="longitude" [latitude]="latitude"></app-map>
+    </div>
+    <div class="right">
+      <div class="top">
+        <div *ngIf="event" class="top-left">
+          <label>Id: <span>{{event.id}}</span></label>
+          <label>Date: <span>{{event.date}}</span></label>
+          <label>Time: <span>{{event.time}} h</span></label>
+          <label>HeadLine: <span>{{event.headline}}</span></label>
+          <label>Description: </label>
+          <p>{{event.description}}</p>
+        </div>
+        <div *ngIf="event" class="top-right">
+          <label>Address: <span>{{event.address}}</span></label>
+          <label>City: <span>{{event.city}}</span></label>
+          <label>Number of people comming: <span>{{event.numberOfPeopleComing}}</span></label>
 
-            <div class="is-comming-div">
-              <h3>Interessted in comming?</h3>
-              <div class="answer">
-                  <img *ngIf="isLoggedIn"
-                  (click)="registrujUpLajk()" src="../../../assets/img/check-mark-3-64 (1).png">
-                  <img *ngIf="isLoggedIn" (click)="odregistrujDownLajk()"
-                  src="../../../assets/img/check-mark-3-64.png">
-              </div>
-                
-              </div>
-  
-  
+          <div *ngIf="isLoggedIn" class="is-comming-div">
+            <h3>Interessted in comming?</h3>
+            <div class="answer">
+              <img *ngIf="(isLoggedIn && !userResponse)" (click)="registerCommingEvent()"
+                src="../../../assets/img/check-mark-3-64.png"><span *ngIf="(isLoggedIn && !userResponse)">No</span>
+              <img *ngIf="(isLoggedIn && userResponse)" (click)="unregisterCommingEvent()"
+                src="../../../assets/img/check-mark-3-64 (1).png"><span *ngIf="(isLoggedIn && userResponse)">Yes</span>
+            </div>
           </div>
+
         </div>
-        <div *ngIf="event" class="bottom">
-            <img [src]="event.img">
-          <!-- <app-lista-komentara></app-lista-komentara> -->
-        </div>
+      </div>
+      <div *ngIf="event" class="bottom">
+        <img [src]="event.img">
       </div>
     </div>
   </div>
+</div>

@@ -28,12 +28,20 @@ export class UserService {
     return this.http.post(`${API_URL}/users`, newUser);
   }
 
-  getUserByUsername(username:string):Observable<UserModel>{
+  getUserByUsername(username: string): Observable<UserModel> {
     return this.http.get<UserModel>(`${API_URL}/users?username=${username}`);
   }
 
-  getEventsThatUserIsInteresstedIn(userId:number):Observable<UserHasEvent>{
-    return this.http.get<UserHasEvent>(`${API_URL}/eventsInteresstedIn?userId=${userId}`)
+  getEventsThatUserIsInteresstedIn(userId: number, eventId: number): Observable<UserHasEvent> {
+    return this.http.get<UserHasEvent>(`${API_URL}/eventsInteresstedIn?userId=${userId}&eventId=${eventId}`)
+  }
+
+  addEventThatUserIsInteresstedIn(newUserResponse: UserHasEvent) {
+    return this.http.post(`${API_URL}/eventsInteresstedIn`, newUserResponse);
+  }
+
+  deleteEventThatUserIsInteresstedIn(responseId: number) {
+    return this.http.delete(`${API_URL}/eventsInteresstedIn/${responseId}`);
   }
 
 }
