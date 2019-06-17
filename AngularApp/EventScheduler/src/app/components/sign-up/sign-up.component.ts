@@ -76,13 +76,14 @@ export class SignUpComponent implements OnInit {
     else if (this.ifEmailIsCorrect && this.ifUsernameIsCorrect) {
       let newUser = new UserModel();
       newUser.setAttributes(usernameValue, passwordValue, emailValue);
-      this.userService.registerUser(newUser).subscribe(er=>{
-        if(er){
-          localStorage.setItem("username",usernameValue);
-          localStorage.setItem("isLoggedIn","true");
+      this.userService.registerUser(newUser).subscribe(er => {
+        if (er) {
+          localStorage.setItem("username", usernameValue);
+          localStorage.setItem("userId", (newUser.id).toString());
+          localStorage.setItem("isLoggedIn", "true");
           location.replace('home');
         }
-        else{
+        else {
           setErrorLabel(errorConstants.UNKNOWN_ERROR);
         }
       });

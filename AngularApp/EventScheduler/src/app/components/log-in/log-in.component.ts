@@ -37,6 +37,7 @@ export class LogInComponent implements OnInit {
           if (response[0].password === passwordValue) {
             this.ifPasswordIsCorrect = true;
             localStorage.setItem("username", usernameValue);
+            localStorage.setItem("userId", (response[0].id).toString());
             localStorage.setItem("isLoggedIn", "true");
             location.replace('home');
           }

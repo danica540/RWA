@@ -1,3 +1,55 @@
-<p>
-  add-event works!
-</p>
+<h1>Add a new event</h1>
+
+<div class="veliki">
+  <div class="main">
+    <label id="error" class="error-label">All boxes must be filled</label>
+    <div class="top">
+      <div class="left">
+        <h3>Enter event headline</h3>
+        <input id="headline" name="headline" />
+        <h3>Enter event description</h3>
+        <textarea id="description" name="description" cols="40" rows="8"></textarea>
+        <h3>Enter event time</h3>
+        <input id="event-time" type="time" name="time">
+      </div>
+      <div class="right">
+        <h3>Enter event address</h3>
+
+        <div class="info">
+          <input id="event-address" name="address" type="text">
+          <span *ngIf="!ifAddressIsFilled"><img src="../../../assets/img/error (1).png"></span>
+        </div>
+        <h3>Enter city</h3>
+        <div class="info">
+          <select name="city" id="city">
+            <option></option>
+            <option *ngFor="let city of cities | async">
+              {{city.name}}
+            </option>
+          </select>
+          <span *ngIf="!ifCityIsFilled"><img src="../../../assets/img/error (1).png"></span>
+        </div>
+
+        <h3>Event date</h3>
+
+        <div class="info">
+          <input id="event-date" type="date" name="date">
+          <span *ngIf="!ifDateIsFilled"><img src="../../../assets/img/error (1).png"></span>
+        </div>
+
+        <h3>Event capacity</h3>
+
+        <div class="info">
+            
+            <input id="event-capacity" type="text" name="capacity">
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <!-- <h3>Choose event image</h3> -->
+      <h3 for="file">Choose event image</h3>
+      <input type="file" id="file" accept="image/*" (change)="handleFileInput($event.target.files)">
+    </div>
+    <button (click)="onAddEvent()" id="add-event">Add Event</button>
+  </div>
+</div>

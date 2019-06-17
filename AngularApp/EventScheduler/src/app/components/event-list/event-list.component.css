@@ -21,11 +21,11 @@
     flex:1 1;
     margin:auto;
     margin-bottom: 2%;
-    /* margin-top:2%; */
     padding: 5px;
     background: white;
 }
 
 .single-event:hover{
     background-color: #dfdfdf;
+    cursor:pointer;
 }

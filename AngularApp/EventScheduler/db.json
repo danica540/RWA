@@ -1,5 +1,5 @@
 {
-  "citys": [
+  "cities": [
     {
       "name": " Subotica"
     },
@@ -494,178 +494,117 @@
       "id": 1,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
-      "date": "Monday, June 3, 2019 5:00 PM",
+      "date": "2019-06-20",
       "address": "Somborska",
       "city": "Niš",
       "img": "../assets/img/event2.jpg",
       "maxCapacity": 150,
+      "time": "22:20",
       "numberOfPeopleComing": 10
     },
     {
       "id": 2,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
-      "date": "Monday, June 3, 2019 5:00 PM",
+      "date": "2019-06-20",
       "address": "Somborska",
       "city": "Niš",
       "img": "../assets/img/event1.jpg",
       "maxCapacity": 150,
+      "time": "22:20",
       "numberOfPeopleComing": 10
     },
     {
       "id": 3,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
-      "date": "Monday, June 3, 2019 5:00 PM",
+      "date": "2019-06-20",
       "address": "Somborska",
       "city": "Niš",
       "img": "../assets/img/event3.jpg",
       "maxCapacity": 150,
+      "time": "22:20",
       "numberOfPeopleComing": 10
     },
     {
       "id": 4,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
-      "date": "Monday, June 3, 2019 5:00 PM",
+      "date": "2019-06-20",
       "address": "Vozdova 5",
       "city": "Niš",
       "img": "../assets/img/event4.jpg",
       "maxCapacity": 150,
+      "time": "22:20",
       "numberOfPeopleComing": 10
     },
     {
       "id": 5,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
-      "date": "Monday, June 3, 2019 5:00 PM",
+      "date": "2019-06-20",
       "address": "Zelengorska 23",
       "city": "Niš",
       "img": "../assets/img/event5.jpg",
       "maxCapacity": 150,
+      "time": "22:20",
       "numberOfPeopleComing": 10
     },
     {
       "id": 6,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
-      "date": "Monday, June 3, 2019 5:00 PM",
+      "date": "2019-06-20",
       "address": "Bulevar Nemanjica",
       "city": "Niš",
       "img": "../assets/img/event6.jpeg",
       "maxCapacity": 150,
+      "time": "22:20",
       "numberOfPeopleComing": 10
     },
     {
       "id": 7,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
-      "date": "Monday, June 3, 2019 5:00 PM",
+      "date": "2019-06-20",
       "address": "Cirila i Metodija 5",
       "city": "Niš",
       "img": "../assets/img/event7.jpg",
       "maxCapacity": 150,
+      "time": "22:20",
       "numberOfPeopleComing": 10
+    },
+    {
+      "maxCapacity": 152,
+      "numberOfPeopleComing": 0,
+      "id": 37,
+      "headline": "New Event In Town",
+      "description": "This will be the greatest event you will EVER visit in your lifetime. There will be great music and loads of fun! We are expecting you!!!!",
+      "address": "Somborska",
+      "date": "2019-06-20",
+      "city": "Niš",
+      "time": "22:20",
+      "img": "../assets/img/events.jpg"
+    },
+    {
+      "maxCapacity": 200,
+      "numberOfPeopleComing": 0,
+      "id": 82.2331587821796,
+      "headline": "FUN FUN FUN",
+      "description": "You will have a lot of fun at out event!",
+      "address": "Zelengorska",
+      "date": "2019-06-29",
+      "city": "Niš",
+      "time": "16:00",
+      "img": "../assets/img/event12.jpg"
     }
   ],
-  "lajkovi": [
+  "eventsInteresstedIn": [
     {
-      "id": 2,
-      "datum": "Monday, June 3, 2019 10:51 AM",
-      "problemId": 1,
-      "korisnikId": 2,
-      "pozitivanLajk": true
-    },
-    {
-      "id": 3,
-      "datum": "Monday, June 3, 2019 10:51 AM",
-      "problemId": 2,
-      "korisnikId": 1,
-      "pozitivanLajk": true
-    },
-    {
-      "id": 4,
-      "datum": "Monday, June 3, 2019 10:51 AM",
-      "problemId": 3,
-      "korisnikId": 1,
-      "pozitivanLajk": false
-    },
-    {
-      "datum": "Monday, June 3, 2019 5:35 PM",
-      "problemId": 1,
-      "korisnikId": 1,
-      "pozitivanLajk": true,
-      "id": 13.483004740459513
-    }
-  ],
-  "lajkoviKomentari": [
-    {
-      "id": 2,
-      "datum": "Monday, June 3, 2019 10:51 AM",
-      "komentarId": 1,
-      "korisnikId": 2,
-      "pozitivanLajk": true
-    },
-    {
-      "id": 3,
-      "datum": "Monday, June 3, 2019 10:51 AM",
-      "komentarId": 2,
-      "korisnikId": 1,
-      "pozitivanLajk": true
-    },
-    {
-      "id": 4,
-      "datum": "Monday, June 3, 2019 10:51 AM",
-      "komentarId": 3,
-      "korisnikId": 1,
-      "pozitivanLajk": false
-    }
-  ],
-  "komentari": [
-    {
-      "id": 3,
-      "datum": "Thursday, May 30, 2019 11:26 PM",
-      "problemId": 2,
-      "korisnikId": 1,
-      "opis": "2021 samo da rezervisem",
-      "anoniman": false,
-      "prioritet": -1
-    },
-    {
-      "opis": "2020 samo da rezervisem",
-      "datum": "Monday, June 3, 2019 6:37 PM",
-      "problemId": 1,
-      "korisnikId": 2,
       "id": 1,
-      "anoniman": true,
-      "prioritet": 3
-    },
-    {
-      "opis": "yguhbjkn",
-      "korisnikId": 3,
-      "datum": "Saturday, June 1, 2019 6:10 PM",
-      "problemId": "86.5974253577236",
-      "id": 2,
-      "anoniman": true,
-      "prioritet": 1
-    },
-    {
-      "opis": "fghioj",
-      "datum": "Saturday, June 1, 2019 8:23 PM",
-      "problemId": 3,
-      "korisnikId": 1,
-      "id": 4,
-      "anoniman": false,
-      "prioritet": 0
-    },
-    {
-      "opis": "Ma milina",
-      "datum": "Monday, June 3, 2019 9:31 AM",
-      "problemId": 2,
-      "korisnikId": 2,
-      "id": 75.8179483528404,
-      "anoniman": true,
-      "prioritet": 0
+      "eventId": 1,
+      "userId": 6,
+      "isComming": true
     }
   ]
 }

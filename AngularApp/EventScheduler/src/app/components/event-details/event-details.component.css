@@ -28,7 +28,7 @@ ul{
     display: flex;
 }
 
-img{
+.bottom img{
     width:60%;
     height: auto;
     margin: auto;
@@ -88,8 +88,8 @@ select{
     margin-top:4%;
 }
 
-#prioritet{
-    margin: auto;
+.answer{
+    display: flex;
 }
 
 .is-comming-div img{
@@ -108,13 +108,17 @@ p{
 }
 
 
-.prioritet-broj{
-    color:rgb(153, 2, 2); 
-    font-size: 22px;
-    font-weight: bolder;
-}
-
 .slike{
     flex:1 1;
 }
 
+h3{
+    margin-top:0;
+}
+
+.answer img{
+    width: 32px;
+    height: auto;
+    margin:auto;
+    margin-left: 0;
+}

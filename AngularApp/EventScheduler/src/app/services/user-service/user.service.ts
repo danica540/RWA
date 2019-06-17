@@ -3,6 +3,7 @@ import { environmentVariables } from 'src/app/constants/url-constant';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserModel } from 'src/app/models/UserModel';
+import { UserHasEvent } from 'src/app/models/UserHasEvent';
 
 
 const API_URL = environmentVariables.JSON_API_URL;
@@ -29,6 +30,10 @@ export class UserService {
 
   getUserByUsername(username:string):Observable<UserModel>{
     return this.http.get<UserModel>(`${API_URL}/users?username=${username}`);
+  }
+
+  getEventsThatUserIsInteresstedIn(userId:number):Observable<UserHasEvent>{
+    return this.http.get<UserHasEvent>(`${API_URL}/eventsInteresstedIn?userId=${userId}`)
   }
 
 }

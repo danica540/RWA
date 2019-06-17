@@ -15,10 +15,16 @@ export class EventDetailsComponent implements OnInit {
   event: EventModel;
   latitude: number;
   longitude: number;
+  isLoggedIn:boolean;
+  userId:number;
 
   constructor(private router: Router, private route: ActivatedRoute, private mapService: MapServiceService, private eventService: EventService) { }
 
   ngOnInit() {
+    if (localStorage.getItem("isLoggedIn") === "true") {
+      this.isLoggedIn = true;
+      this.userId=parseInt(localStorage.getItem("userId"));
+    }
     this.eventId = parseInt(this.route.snapshot.paramMap.get("eventId"));
     this.eventService.getEventById(this.eventId).subscribe(event => {
       this.event = event;

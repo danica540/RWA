@@ -15,34 +15,22 @@ namespace DanoiProject.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private static readonly IList<User> RegisteredUsers = new List<User>();
-        
-        [HttpGet]
-        public ActionResult<IList<User>> Get()
-        {
-            return Ok(RegisteredUsers);
-        }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Post([FromForm] UserRegistrationRequest request)
+        [HttpPost]
+        public async Task<IActionResult> Post([FromForm] PhotoUpload request)
         {
-            var filePath = Path.GetTempFileName().Replace(".tmp", ".jpg"); //TODO: extract from Avatar.FileName
-            
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            //var filePath = Path.GetTempFileName().Replace(".tmp", ".jpg"); //TODO: extract from Avatar.FileName
+
+            string filepath =
+                "C:\\Users\\korisnik\\Documents\\GitHub\\RWA\\AngularApp\\EventScheduler\\src\\assets\\img\\" +
+                request.Photo.FileName;
+
+            using (var stream = new FileStream(filepath, FileMode.Create))
             {
-                await request.Avatar.CopyToAsync(stream);
+                await request.Photo.CopyToAsync(stream);
             }
-            
-            var newUser = new User
-            {
-                Email = request.Email,
-                Password = request.Password,
-                AvatarPath = filePath,
-            };
 
-            RegisteredUsers.Add(newUser);
-            
-            return Ok(newUser);
+            return Ok();
         }
     }
 }
