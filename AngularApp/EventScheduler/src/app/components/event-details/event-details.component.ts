@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { EventModel } from 'src/app/models/EventModel';
 import { EventService } from 'src/app/services/event-service/event.service';
 import { MapServiceService } from 'src/app/services/map-service/map-service.service';
@@ -24,8 +24,12 @@ export class EventDetailsComponent implements OnInit {
   constructor(private userService: UserService, private route: ActivatedRoute, private mapService: MapServiceService, private eventService: EventService) { }
 
   ngOnInit() {
-    this.eventId = parseInt(this.route.snapshot.paramMap.get("eventId"));
-    this.getEvent(this.eventId);
+    this.route.params.subscribe((params: Params) => {
+      this.eventId = params["eventId"];
+      this.getEvent(this.eventId);
+    })
+    // this.eventId = parseInt(this.route.snapshot.paramMap.get("eventId"));
+    // this.getEvent(this.eventId);
 
     if (localStorage.getItem("isLoggedIn") === "true") {
       this.isLoggedIn = true;
@@ -64,8 +68,10 @@ export class EventDetailsComponent implements OnInit {
   }
 
   registerCommingEvent() {
-    this.userResponse = new UserHasEvent();
-    this.userResponse.setAttributes(this.eventId, this.userId, true);
+    this.userResponse.eventId=this.eventId;
+    this.userResponse.userId=this.userId;
+    this.userResponse.isComming=true;
+    this.userResponse.id=parseInt((Math.random()*7*13*17).toString());
     this.userService.addEventThatUserIsInteresstedIn(this.userResponse).subscribe(res => console.log(res));
 
     this.incrementNumberOfPeopleComming();

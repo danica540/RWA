@@ -5,12 +5,13 @@ export class UserModel {
     email: string;
 
     constructor() {
+
     }
 
-    setAttributes(username: string, password: string, email: string) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.id = (Math.random() * 13 * 7) % 123;
+    setAttributes(usernameValue: string, passwordValue: string, emailValue: string) {
+        this.id = parseInt((Math.random() * 7 * 13 * 17).toString());
+        this.password = passwordValue;
+        this.username = usernameValue;
+        this.email = emailValue;
     }
 }

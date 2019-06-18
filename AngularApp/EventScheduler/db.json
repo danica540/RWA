@@ -439,58 +439,58 @@
       "name": "Preševo"
     }
   ],
-  "users": [
-    {
+  "users": {
+    "1": {
       "id": 1,
       "username": "danoi",
       "password": "danoi123",
       "email": "danoi@gmail.com"
     },
-    {
+    "2": {
       "id": 2,
       "username": "milenica",
       "password": "milea123",
       "email": "milena@mail.com"
     },
-    {
+    "3": {
       "id": 3,
       "username": "mimi",
       "password": "mi123",
       "email": "mimi@mail.com"
     },
-    {
+    "4": {
       "id": 4,
       "username": "tikica",
       "password": "tiki123",
       "email": "tika@mail.com"
     },
-    {
+    "5": {
       "id": 5,
       "username": "kate",
       "password": "kate123",
       "email": "kate@mail.com"
     },
-    {
+    "6": {
       "id": 6,
       "username": "nata",
       "password": "nata123",
       "email": "nata@mail.com"
     },
-    {
+    "7": {
       "id": 7,
       "username": "filip",
       "password": "filip123",
       "email": "filip@mail.com"
     },
-    {
+    "35": {
       "username": "danoi123",
       "password": "test123",
       "email": "test@mail.com",
-      "id": 35.038129086995966
+      "id": 35
     }
-  ],
-  "events": [
-    {
+  },
+  "events": {
+    "1": {
       "id": 1,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
@@ -502,7 +502,7 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    {
+    "2": {
       "id": 2,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
@@ -514,7 +514,7 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    {
+    "3": {
       "id": 3,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
@@ -526,7 +526,7 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    {
+    "4": {
       "id": 4,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
@@ -538,7 +538,7 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    {
+    "5": {
       "id": 5,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
@@ -550,7 +550,7 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    {
+    "6": {
       "id": 6,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
@@ -562,7 +562,7 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    {
+    "7": {
       "id": 7,
       "headline": "Garbage collecting",
       "description": "Event for all the good people.",
@@ -574,7 +574,7 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    {
+    "152": {
       "maxCapacity": 152,
       "numberOfPeopleComing": 1,
       "id": 37,
@@ -586,7 +586,7 @@
       "time": "22:20",
       "img": "../assets/img/events.jpg"
     },
-    {
+    "200": {
       "maxCapacity": 200,
       "numberOfPeopleComing": 0,
       "id": 82,
@@ -598,25 +598,25 @@
       "time": "16:00",
       "img": "../assets/img/event12.jpg"
     }
-  ],
-  "eventsInteresstedIn": [
-    {
+  },
+  "eventsInteresstedIn": {
+    "1": {
       "id": 1,
       "eventId": 1,
       "userId": 6,
       "isComming": true
     },
-    {
-      "id": 11.067280593440126,
-      "eventId": 82,
-      "userId": 6,
-      "isComming": true
-    },
-    {
-      "id": 1.0957094500245048,
+    "2": {
+      "id": 2,
       "eventId": 37,
       "userId": 6,
       "isComming": true
+    },
+    "11": {
+      "id": 11,
+      "eventId": 82,
+      "userId": 6,
+      "isComming": true
     }
-  ]
+  }
 }

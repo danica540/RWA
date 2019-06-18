@@ -36,8 +36,16 @@ export class AddEventComponent implements OnInit {
 
     let imgPath = `../assets/img/${this.fileToUpload.name}`;
 
-    let newEvent = new EventModel();
-    newEvent.setAttributes(headlineValue, descriptionValue, addressValue, dateValue, cityValue, parseInt(capacityValue), imgPath, timeValue);
+    let newEvent:EventModel;
+    newEvent.id=parseInt((Math.random()*7*13*17).toString());
+    newEvent.headline=headlineValue;
+    newEvent.description=descriptionValue;
+    newEvent.address=addressValue;
+    newEvent.date=dateValue;
+    newEvent.city=cityValue;
+    newEvent.maxCapacity=parseInt(capacityValue);
+    newEvent.img=imgPath;
+    newEvent.time=timeValue;
     console.log(newEvent);
     this.eventService.addEventPhoto(formData).subscribe(er => console.log(er));
     this.eventService.addEvent(newEvent).subscribe(er => console.log(er));
