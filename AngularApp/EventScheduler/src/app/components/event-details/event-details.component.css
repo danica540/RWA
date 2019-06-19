@@ -1,6 +1,5 @@
-.glavni{
-    display: flex;
-    flex-direction: column;
+h1{
+    text-align: center;
 }
 
 .main{
@@ -10,48 +9,37 @@
 
 .left{
     flex-grow: 0.5;
-    max-width: 350px;
+    max-width: 450px;
     margin-right: 2%;
     margin-left: 1%;
     flex-shrink: 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .mapa{
     width:100%;
     height: auto;
-    margin:1%;
-}
-
-ul{
-    list-style: none;
-    display: flex;
-}
-
-.bottom img{
-    width:60%;
-    height: auto;
-    margin: auto;
-    margin-top:2%;
+    margin:auto;
+    margin-top:0;
 }
 
 .right{
     flex-grow: 0.6;
     flex-shrink: 1;
     display: flex;
-    flex-direction: column;
 }
 
-.top{
-    display: flex;
+.left img{
+    width:100%;
+    height: auto;
+    margin: auto;
+    margin-top:2%;
+    margin-bottom: 2%;
 }
 
-.bottom{
-    display: flex;
-    flex-direction: column;
-}
-
-.top-left{
+.right-left{
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 250px;
@@ -59,27 +47,26 @@ ul{
     flex-direction: column;
 }
 
-.top-right{
+.right-right{
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 250px;
     display: flex;
     flex-direction: column;
     margin-left: 2%;
+    margin-right: 2%;
 }
 
 label{
-    margin-top:1%;
+    margin-top:2%;
     margin-bottom: 1%;
     color:rgb(77, 77, 77);
-    /* color:#464866; */
     opacity: 0.8;
     font-weight: bold;
     font-size: 14px;
-}
-
-select{
-    width:20%;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .is-comming-div{
@@ -105,26 +92,38 @@ label span{
 
 p{
     color:#15547e;
-}
-
-
-.slike{
-    flex:1 1;
+    text-align: center;
 }
 
 h3{
     margin-top:0;
 }
 
-.answer img{
-    width: 32px;
-    height: auto;
-    margin:auto;
-    margin-left: 0;
-    margin-right: 1%;
-}
-
 .is-comming-div span{
     margin-top:3%;
     margin-left: 1%;
+}
+
+button{
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+    width:45%;
+    text-align: center;
+    padding:5px;
+}
+
+button img{
+    width: 40px;
+    height: auto;
+    float: left;
+    margin: auto;
+    margin-left: 10%;
+}
+
+.btnLabel{
+    background: transparent;
+    color:black;
+    font-weight: normal;
+    font-size: 20px;
 }

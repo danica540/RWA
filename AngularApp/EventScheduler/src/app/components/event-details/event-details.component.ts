@@ -19,7 +19,7 @@ export class EventDetailsComponent implements OnInit {
   longitude: number;
   isLoggedIn: boolean;
   userId: number;
-  userResponse: UserHasEvent = null;
+  userResponse: UserHasEvent;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private mapService: MapServiceService, private eventService: EventService) { }
 
@@ -28,9 +28,6 @@ export class EventDetailsComponent implements OnInit {
       this.eventId = params["eventId"];
       this.getEvent(this.eventId);
     })
-    // this.eventId = parseInt(this.route.snapshot.paramMap.get("eventId"));
-    // this.getEvent(this.eventId);
-
     if (localStorage.getItem("isLoggedIn") === "true") {
       this.isLoggedIn = true;
       this.userId = parseInt(localStorage.getItem("userId"));
@@ -68,11 +65,13 @@ export class EventDetailsComponent implements OnInit {
   }
 
   registerCommingEvent() {
-    this.userResponse.eventId=this.eventId;
-    this.userResponse.userId=this.userId;
-    this.userResponse.isComming=true;
-    this.userResponse.id=parseInt((Math.random()*7*13*17).toString());
-    this.userService.addEventThatUserIsInteresstedIn(this.userResponse).subscribe(res => console.log(res));
+    let newResponse= new UserHasEvent();
+    newResponse.eventId=this.eventId;
+    newResponse.userId=this.userId;
+    newResponse.isComming=true;
+    newResponse.id=parseInt((Math.random()*7*13*17).toString());
+    this.userResponse=newResponse;
+    this.userService.addEventThatUserIsInteresstedIn(newResponse).subscribe(res => console.log(res));
 
     this.incrementNumberOfPeopleComming();
     this.updateEvent();
@@ -95,7 +94,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   decrementNumberOfPeopleComming(){
-    this.event.numberOfPeopleComing += 1;
+    this.event.numberOfPeopleComing -= 1;
   }
 
 }

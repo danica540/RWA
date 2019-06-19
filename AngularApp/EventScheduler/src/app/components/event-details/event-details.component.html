@@ -1,38 +1,49 @@
-<div class="glavni">
-  <div class="main">
-    <div class="left">
-      <app-map *ngIf="longitude && latitude" class="mapa" [longitude]="longitude" [latitude]="latitude"></app-map>
+<h1 *ngIf="event">{{event.headline}}</h1>
+<div class="main">
+
+  <div *ngIf="event" class="left">
+    <img [src]="event.img">
+
+    <app-map *ngIf="longitude && latitude" class="mapa" [longitude]="longitude" [latitude]="latitude"></app-map>
+  </div>
+  <div class="right">
+
+
+
+    <div *ngIf="event" class="right-left">
+      <label>Date: <span>{{event.date}}</span></label>
+      <label>Time: <span>{{event.time}} h</span></label>
+      <label>Address: <span>{{event.address}}</span></label>
+      <label>City: <span>{{event.city}}</span></label>
+      <label>Number of people comming: <span>{{event.numberOfPeopleComing}}</span></label>
+
+
+      <div *ngIf="isLoggedIn" class="is-comming-div">
+        <h3>Interessted in comming?</h3>
+        <div class="answer">
+          <button *ngIf="(isLoggedIn && !userResponse)" (click)="registerCommingEvent()"><img 
+              src="../../../assets/img/x-mark-64.png"> <label class="btnLabel">No</label> </button>
+
+          <button *ngIf="(isLoggedIn && userResponse)" (click)="unregisterCommingEvent()"> <img  
+              src="../../../assets/img/check-mark-3-64 (1).png"> <label class="btnLabel">Yes</label> </button>
+          <!-- <img *ngIf="(isLoggedIn && !userResponse)" (click)="registerCommingEvent()"
+            src="../../../assets/img/x-mark-64.png"><span *ngIf="(isLoggedIn && !userResponse)">No</span> -->
+          <!-- <img *ngIf="(isLoggedIn && userResponse)" (click)="unregisterCommingEvent()"
+            src="../../../assets/img/check-mark-3-64 (1).png"><span *ngIf="(isLoggedIn && userResponse)">Yes</span> -->
+        </div>
+      </div>
+
+
     </div>
-    <div class="right">
-      <div class="top">
-        <div *ngIf="event" class="top-left">
-          <label>Id: <span>{{event.id}}</span></label>
-          <label>Date: <span>{{event.date}}</span></label>
-          <label>Time: <span>{{event.time}} h</span></label>
-          <label>HeadLine: <span>{{event.headline}}</span></label>
-          <label>Description: </label>
+
+    <div *ngIf="event" class="right-right">
+      <p>{{event.description}}</p>
+
+    </div>
+
+    <!-- <div *ngIf="event" class="bottom">
+          <h1>{{event.headline}}</h1>
           <p>{{event.description}}</p>
-        </div>
-        <div *ngIf="event" class="top-right">
-          <label>Address: <span>{{event.address}}</span></label>
-          <label>City: <span>{{event.city}}</span></label>
-          <label>Number of people comming: <span>{{event.numberOfPeopleComing}}</span></label>
-
-          <div *ngIf="isLoggedIn" class="is-comming-div">
-            <h3>Interessted in comming?</h3>
-            <div class="answer">
-              <img *ngIf="(isLoggedIn && !userResponse)" (click)="registerCommingEvent()"
-                src="../../../assets/img/check-mark-3-64.png"><span *ngIf="(isLoggedIn && !userResponse)">No</span>
-              <img *ngIf="(isLoggedIn && userResponse)" (click)="unregisterCommingEvent()"
-                src="../../../assets/img/check-mark-3-64 (1).png"><span *ngIf="(isLoggedIn && userResponse)">Yes</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div *ngIf="event" class="bottom">
-        <img [src]="event.img">
-      </div>
-    </div>
+      </div> -->
   </div>
 </div>

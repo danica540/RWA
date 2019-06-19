@@ -9,8 +9,12 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
+    path:"",
+    component:EventListComponent
+  },
+  {
     path:"home",
-    component:HomeComponent
+    component:EventListComponent
   },
   {
     path:"events",

@@ -439,85 +439,85 @@
       "name": "Preševo"
     }
   ],
-  "users": {
-    "1": {
+  "users": [
+    {
       "id": 1,
       "username": "danoi",
       "password": "danoi123",
       "email": "danoi@gmail.com"
     },
-    "2": {
+    {
       "id": 2,
       "username": "milenica",
       "password": "milea123",
       "email": "milena@mail.com"
     },
-    "3": {
+    {
       "id": 3,
       "username": "mimi",
       "password": "mi123",
       "email": "mimi@mail.com"
     },
-    "4": {
+    {
       "id": 4,
       "username": "tikica",
       "password": "tiki123",
       "email": "tika@mail.com"
     },
-    "5": {
+    {
       "id": 5,
       "username": "kate",
       "password": "kate123",
       "email": "kate@mail.com"
     },
-    "6": {
+    {
       "id": 6,
       "username": "nata",
       "password": "nata123",
       "email": "nata@mail.com"
     },
-    "7": {
+    {
       "id": 7,
       "username": "filip",
       "password": "filip123",
       "email": "filip@mail.com"
     },
-    "35": {
+    {
       "username": "danoi123",
       "password": "test123",
       "email": "test@mail.com",
       "id": 35
     }
-  },
-  "events": {
-    "1": {
+  ],
+  "events": [
+    {
       "id": 1,
       "headline": "Garbage collecting",
-      "description": "Event for all the good people.",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "date": "2019-06-20",
       "address": "Somborska",
       "city": "Niš",
       "img": "../assets/img/event2.jpg",
       "maxCapacity": 150,
       "time": "22:20",
-      "numberOfPeopleComing": 10
+      "numberOfPeopleComing": 13
     },
-    "2": {
+    {
       "id": 2,
       "headline": "Garbage collecting",
-      "description": "Event for all the good people.",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "date": "2019-06-20",
       "address": "Somborska",
       "city": "Niš",
       "img": "../assets/img/event1.jpg",
       "maxCapacity": 150,
       "time": "22:20",
-      "numberOfPeopleComing": 10
+      "numberOfPeopleComing": 9
     },
-    "3": {
+    {
       "id": 3,
       "headline": "Garbage collecting",
-      "description": "Event for all the good people.",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "date": "2019-06-20",
       "address": "Somborska",
       "city": "Niš",
@@ -526,10 +526,10 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    "4": {
+    {
       "id": 4,
       "headline": "Garbage collecting",
-      "description": "Event for all the good people.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "date": "2019-06-20",
       "address": "Vozdova 5",
       "city": "Niš",
@@ -538,10 +538,10 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    "5": {
+    {
       "id": 5,
       "headline": "Garbage collecting",
-      "description": "Event for all the good people.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "date": "2019-06-20",
       "address": "Zelengorska 23",
       "city": "Niš",
@@ -550,10 +550,10 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    "6": {
+    {
       "id": 6,
       "headline": "Garbage collecting",
-      "description": "Event for all the good people.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "date": "2019-06-20",
       "address": "Bulevar Nemanjica",
       "city": "Niš",
@@ -562,10 +562,10 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    "7": {
+    {
       "id": 7,
       "headline": "Garbage collecting",
-      "description": "Event for all the good people.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "date": "2019-06-20",
       "address": "Cirila i Metodija 5",
       "city": "Niš",
@@ -574,7 +574,7 @@
       "time": "22:20",
       "numberOfPeopleComing": 10
     },
-    "152": {
+    {
       "maxCapacity": 152,
       "numberOfPeopleComing": 1,
       "id": 37,
@@ -586,9 +586,9 @@
       "time": "22:20",
       "img": "../assets/img/events.jpg"
     },
-    "200": {
+    {
       "maxCapacity": 200,
-      "numberOfPeopleComing": 0,
+      "numberOfPeopleComing": 1,
       "id": 82,
       "headline": "FUN FUN FUN",
       "description": "You will have a lot of fun at out event!",
@@ -597,26 +597,25 @@
       "city": "Niš",
       "time": "16:00",
       "img": "../assets/img/event12.jpg"
-    }
-  },
-  "eventsInteresstedIn": {
-    "1": {
-      "id": 1,
-      "eventId": 1,
-      "userId": 6,
-      "isComming": true
     },
-    "2": {
+    {
+      "id": 568,
+      "headline": "PozitivNI",
+      "description": "Ako vam neko govori o najposećenijoj manifestaciji u južnoj Srbiji, o jedinom street art festivalu koji spaja sve oblasti umetnosti, znajte da vam priča o festivalu PozitivNI! U toj priči o nama, možete čuti i da je ovaj festival nastao kako bi probudio duh urbanog Niša koji je devedestih godina prošlog veka ostao zakopan negde u Dušanovoj, u ulici koja pamti najbolje svirke u gradu. PozitivNI su tu da taj duh vrate gradu, u njegovu slavu, i na njegovoj slavi! Zapravo, termin održavanja festivala određen je tako da se poklapa sa datumom gradske slave-dana Svetog cara Konstantina i carice Jelene.\n\nOve godine, festival će po prvi put trajati 4 dana. Spajaćemo klasicizam i alternativu, preplitati sport i muziku, pozorište i izlete, kroz interakciju ćemo učiti o svetu umetnosti, a onda pravu umetnost i slušati! A sadržaji, pitate se, kome su namenjeni? PozitivNI su tu za svakog, od 1 do 101! Ovo je mesto gde će svaka osoba naći nešto njoj zanimljivo, lepo i vredno divljenja. Dobrodošli!",
+      "address": "Park Cair",
+      "date": "2019-06-24",
+      "city": "Niš",
+      "maxCapacity": 500,
+      "img": "../assets/img/20190501_160027.jpg",
+      "time": "16:00"
+    }
+  ],
+  "eventsInteresstedIn": [
+    {
       "id": 2,
       "eventId": 37,
       "userId": 6,
       "isComming": true
-    },
-    "11": {
-      "id": 11,
-      "eventId": 82,
-      "userId": 6,
-      "isComming": true
     }
-  }
+  ]
 }

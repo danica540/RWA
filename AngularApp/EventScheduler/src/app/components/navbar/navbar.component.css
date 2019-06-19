@@ -4,7 +4,7 @@ ul {
     padding: 0;
     display: flex;
     list-style-type: none;
-    background-color:#25274d;
+    background-color:#451466;
     width:100%;
 }
 
@@ -41,11 +41,11 @@ li a{
 }
   
 li a:hover {
-    background-color: #464866;
+    background-color: #581983;
 }
 
 li input:hover {
-    background-color: #464866;
+    background-color: #581983;
 }
 .separator{
       flex: 1 1;

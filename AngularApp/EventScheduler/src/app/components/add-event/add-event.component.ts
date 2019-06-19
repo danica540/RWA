@@ -10,8 +10,6 @@ import { EventModel } from 'src/app/models/EventModel';
 })
 export class AddEventComponent implements OnInit {
 
-  ifAddressIsFilled: boolean = false;
-  ifCityIsFilled: boolean = false;
   cities: Observable<any>;
   fileToUpload: File;
 
@@ -30,13 +28,11 @@ export class AddEventComponent implements OnInit {
     let capacityValue = (document.getElementById("event-capacity") as HTMLInputElement).value;
     let dateValue = (document.getElementById("event-date") as HTMLInputElement).value;
 
+    let imgPath = `../assets/img/${this.fileToUpload.name}`;
     let formData = new FormData();
     formData.append('photo', this.fileToUpload, this.fileToUpload.name);
 
-
-    let imgPath = `../assets/img/${this.fileToUpload.name}`;
-
-    let newEvent:EventModel;
+    let newEvent=new EventModel();
     newEvent.id=parseInt((Math.random()*7*13*17).toString());
     newEvent.headline=headlineValue;
     newEvent.description=descriptionValue;
@@ -47,8 +43,11 @@ export class AddEventComponent implements OnInit {
     newEvent.img=imgPath;
     newEvent.time=timeValue;
     console.log(newEvent);
-    this.eventService.addEventPhoto(formData).subscribe(er => console.log(er));
+    
     this.eventService.addEvent(newEvent).subscribe(er => console.log(er));
+    this.eventService.addEventPhoto(formData).subscribe(er => {
+      console.log(er);
+    });
 
   }
 

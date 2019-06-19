@@ -19,8 +19,7 @@ namespace DanoiProject.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] PhotoUpload request)
         {
-            //var filePath = Path.GetTempFileName().Replace(".tmp", ".jpg"); //TODO: extract from Avatar.FileName
-
+           
             string filepath =
                 "C:\\Users\\korisnik\\Documents\\GitHub\\RWA\\AngularApp\\EventScheduler\\src\\assets\\img\\" +
                 request.Photo.FileName;

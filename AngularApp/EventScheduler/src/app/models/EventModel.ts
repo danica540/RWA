@@ -1,4 +1,4 @@
-export interface EventModel{
+export class EventModel{
     id:number;
     headline:string;
     description:string;
@@ -9,5 +9,9 @@ export interface EventModel{
     maxCapacity:number;
     numberOfPeopleComing:number;
     time:string;
+
+    constructor(){
+        
+    }
 }
 
