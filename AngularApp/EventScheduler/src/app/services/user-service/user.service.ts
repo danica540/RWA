@@ -44,4 +44,8 @@ export class UserService {
     return this.http.delete(`${API_URL}/eventsInteresstedIn/${responseId}`);
   }
 
+  getResponses(): Observable<UserHasEvent[]> {
+    return this.http.get<UserHasEvent[]>(`${API_URL}/eventsInteresstedIn`);
+  }
+
 }

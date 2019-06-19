@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {StoreModule} from '@ngrx/store';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from "@ngrx/effects";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,8 +17,10 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
-import { rootReducer } from './store';
 import { MyEventsComponent } from './components/my-events/my-events.component';
+import { rootReducer } from './store/reducers/root.reducer';
+import { UserEventResponseEffects } from './store/effects/user-event-response.effects';
+import { EventEffects } from './store/effects/event.effects';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { MyEventsComponent } from './components/my-events/my-events.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    EffectsModule.forRoot([UserEventResponseEffects, EventEffects]),
     StoreModule.forRoot(rootReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 20

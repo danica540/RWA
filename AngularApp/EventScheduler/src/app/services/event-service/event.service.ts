@@ -39,7 +39,7 @@ export class EventService {
   }
 
   updateEvent(newEvent: EventModel) {
-    return this.http.put(`${API_URL}/events/${newEvent.id}`, newEvent);
+    return this.http.put<EventModel>(`${API_URL}/events/${newEvent.id}`, newEvent);
   }
 
 }

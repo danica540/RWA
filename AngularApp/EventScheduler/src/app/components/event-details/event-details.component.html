@@ -20,7 +20,7 @@
 
       <div *ngIf="isLoggedIn" class="is-comming-div">
         <h3>Interessted in comming?</h3>
-        <div *ngIf="((isNumberOfPeopleMax && userResponse) || (!isNumberOfPeopleMax && !userResponse) )" class="answer">
+        <div *ngIf="(((isNumberOfPeopleMax || !isNumberOfPeopleMax) && userResponse) || (!isNumberOfPeopleMax && !userResponse) )" class="answer">
           <button *ngIf="(!userResponse)" (click)="registerCommingEvent()"><img 
               src="../../../assets/img/x-mark-64.png"> <label class="btnLabel">No</label> </button>
 
