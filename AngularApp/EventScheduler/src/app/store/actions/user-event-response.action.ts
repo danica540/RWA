@@ -6,6 +6,8 @@ import { UserHasEvent } from 'src/app/models/UserHasEvent';
 export enum UserEventResponseActionTypes {
     ADD_RESPONSE = "[Add Response]",
     ADD_RESPONSE_SUCCESS = "[Add Response Success]",
+    DELETE_RESPONSE = "[Delete Response]",
+    DELETE_RESPONSE_SUCCESS = "[Delete Response Success]",
     LOAD_RESPONSES = "[Load Responses]",
     LOAD_RESPONSES_SUCCESS = "[Load Responses Success]"
 }
@@ -18,6 +20,17 @@ export class AddResponse implements Action {
 export class AddResponseSuccess implements Action {
     readonly type = UserEventResponseActionTypes.ADD_RESPONSE_SUCCESS;
     constructor(public response: UserHasEvent) { }
+}
+
+export class DeleteResponse implements Action {
+    readonly type = UserEventResponseActionTypes.DELETE_RESPONSE;
+    constructor(public id: number) { }
+}
+
+export class DeleteResponseSuccess implements Action {
+    readonly type = UserEventResponseActionTypes.DELETE_RESPONSE_SUCCESS;
+    constructor(public id: number) { }
+    // OVDE U KONSTRUKTORU
 }
 
 
@@ -36,3 +49,5 @@ export type UserEventResponseActions
     | AddResponseSuccess
     | LoadResponse
     | LoadResponseSuccess
+    | DeleteResponse
+    | DeleteResponseSuccess

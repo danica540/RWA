@@ -612,28 +612,28 @@
   ],
   "eventsInteresstedIn": [
     {
-      "id": 2,
+      "id": "37+6",
       "eventId": 37,
       "userId": 6,
       "isComming": true
     },
     {
-      "eventId": "82",
+      "eventId": 82,
       "userId": 6,
       "isComming": true,
-      "id": 218
+      "id": "82+6"
     },
     {
-      "eventId": "4",
+      "eventId": 4,
       "userId": 6,
       "isComming": true,
-      "id": 422
+      "id": "4+6"
     },
     {
-      "eventId": "6",
+      "eventId": 6,
       "userId": 6,
       "isComming": true,
-      "id": 519
+      "id": "6+6"
     }
   ]
 }

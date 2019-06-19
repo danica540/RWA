@@ -12,7 +12,7 @@ export class MapServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getAddressLatLong(address) {
+  getAddressLatLong(address:string) {
     return this.http.get(`${API_URL}/search?q=${address}&format=json`);
   }
 }

@@ -21,6 +21,7 @@ import { MyEventsComponent } from './components/my-events/my-events.component';
 import { rootReducer } from './store/reducers/root.reducer';
 import { UserEventResponseEffects } from './store/effects/user-event-response.effects';
 import { EventEffects } from './store/effects/event.effects';
+import { MapEffects } from './store/effects/map.effects';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { EventEffects } from './store/effects/event.effects';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    EffectsModule.forRoot([UserEventResponseEffects, EventEffects]),
+    EffectsModule.forRoot([UserEventResponseEffects, EventEffects, MapEffects]),
     StoreModule.forRoot(rootReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 20

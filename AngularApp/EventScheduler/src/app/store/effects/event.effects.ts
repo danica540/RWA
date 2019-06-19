@@ -19,15 +19,6 @@ export class EventEffects {
         )
     )
 
-    // getSearchedEvents = createEffect(() =>
-    //     this.action$.pipe(
-    //         ofType(EventsActionTypes.LOAD_SEARCHED_EVENTS),
-    //         mergeMap(() => this.eventService.getEventsBySearchValue().pipe(
-    //             map(events => ({ type: EventsActionTypes.LOAD_SEARCHED_EVENTS_SUCCESS, events: events }))
-    //         ))
-    //     )
-    // )
-
     addEvent = createEffect(() =>
         this.action$.pipe(
             ofType<AddEvent>(EventsActionTypes.ADD_EVENT),

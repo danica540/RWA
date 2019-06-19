@@ -1,4 +1,4 @@
 <h1 class="header">FIND AN EVENT FOR YOU!</h1>
 <div class="main">
-    <app-event *ngFor="let event of eventList | async" (click)="onEventClick(event)" [event]="event"></app-event>
+    <app-event *ngFor="let event of eventList" (click)="onEventClick(event)" [event]="event"></app-event>
 </div>

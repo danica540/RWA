@@ -1,5 +1,5 @@
 export class UserHasEvent {
-    id: number;
+    id: string;
     eventId: number;
     userId: number;
     isComming: boolean;

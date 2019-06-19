@@ -31,6 +31,9 @@ export function responseReducer(state:ResponseState=initialState,action:UserEven
             console.log("Responses are loaded");
             return responseAdapter.addAll(action.responses,state)
         }
+        case UserEventResponseActionTypes.DELETE_RESPONSE_SUCCESS:{
+            return responseAdapter.removeOne(action.id,state)
+        }
         default:
             return state;
     }

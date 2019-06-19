@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventsState, selectAllEvents, selectTotalEvents } from 'src/app/store/reducers/event.reducer';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { flatMap, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event-list',
@@ -13,41 +14,35 @@ import { Observable } from 'rxjs';
 })
 export class EventListComponent implements OnInit {
 
-  eventList: Observable<EventModel[]>;
+  eventList: EventModel[] = [];
   private searchValue: string;
 
-  constructor(private activeRoute: ActivatedRoute, private store:Store<EventsState>, private router: Router) { }
+  constructor(private activeRoute: ActivatedRoute, private store: Store<EventsState>, private router: Router) { }
 
   ngOnInit() {
-    // this.getEvents();
-    this.eventList=this.store.select(selectAllEvents)
-    
-    // this.store.select(selectTotalEvents).subscribe(list=>console.log(list));
+    this.getEvents();
   }
 
   onEventClick(event: EventModel) {
     this.router.navigate(["/events", event.id]);
   }
 
-  // getEvents() {
-  //   this.activeRoute.params.subscribe(routeParams => {
-  //     this.searchValue = routeParams.search_value;
-  //     if (!this.searchValue) {
-  //       this.eventService.getEvents().subscribe(data => {
-  //           this.eventList = data;
-  //         });
-  //     }
-  //     else {
-  //       this.eventService.getEventsBySearchValue(this.searchValue).subscribe(data => {
-  //           if (!data[0]) {
-  //             this.eventList = null;
-  //           }
-  //           else {
-  //             this.eventList = data;
-  //           }
-  //         });
-  //     }
-  //   });
-  // }
+  getEvents() {
+    this.activeRoute.params.subscribe(routeParams => {
+      this.searchValue = routeParams.search_value;
+      if (!this.searchValue) {
+        this.store.select(selectAllEvents).subscribe(list => this.eventList = list);
+      }
+      else {
+        this.store.select(selectAllEvents).pipe(
+          flatMap(event => event),
+          filter((event: EventModel) => (event.description.includes(this.searchValue)
+            || event.headline.includes(this.searchValue)
+            || event.city.includes(this.searchValue)
+            || event.address.includes(this.searchValue)))
+        ).subscribe((event:EventModel)=>this.eventList.push(event));
+      }
+    });
+  }
 
 }

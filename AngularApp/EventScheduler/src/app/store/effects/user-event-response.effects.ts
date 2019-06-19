@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { mergeMap, map } from 'rxjs/operators';
-import { EventService } from 'src/app/services/event-service/event.service';
 import { UserService } from 'src/app/services/user-service/user.service';
-import { UserEventResponseActionTypes, AddResponse } from '../actions/user-event-response.action';
+import { UserEventResponseActionTypes, AddResponse, DeleteResponse } from '../actions/user-event-response.action';
 
 @Injectable()
 export class UserEventResponseEffects {
 
-    constructor(private action$: Actions, private eventService: EventService, private userService: UserService) { }
+    constructor(private action$: Actions, private userService: UserService) { }
 
 
     getResponses = createEffect(() =>
@@ -31,12 +30,12 @@ export class UserEventResponseEffects {
     )
 
     // TO DO
-    // deleteEvent = createEffect(() =>
+    // deleteResponse = createEffect(() =>
     //     this.action$.pipe(
-    //         ofType<UpdateEvent>(UserEventResponseActionTypes.UPDATE_EVENT),
-    //         map(action => action.event),
-    //         mergeMap((updatedEvent) => this.eventService.updateEvent(updatedEvent).pipe(
-    //             map(event => ({ type: UserEventResponseActionTypes.UPDATE_EVENT_SUCCESS, event: event, id: event.id }))
+    //         ofType<DeleteResponse>(UserEventResponseActionTypes.DELETE_RESPONSE),
+    //         map(action=>action.id),
+    //         mergeMap((id) => this.userService.deleteEventThatUserIsInteresstedIn(id).pipe(
+    //             map(object => ({ type: UserEventResponseActionTypes.DELETE_RESPONSE_SUCCESS, obj: object }))
     //         ))
     //     )
     // )

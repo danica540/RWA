@@ -8,9 +8,7 @@ export enum EventsActionTypes {
     UPDATE_EVENT = "[Update Event]",
     UPDATE_EVENT_SUCCESS = "[Update Event Success]",
     LOAD_ALL_EVENTS = "[Load All Events]",
-    LOAD_ALL_EVENTS_SUCCESS = "[Load All Events Success]",
-    LOAD_SEARCHED_EVENTS = "[Load Searched Events]",
-    LOAD_SEARCHED_EVENTS_SUCCESS = "[Load Searched Events Success]"
+    LOAD_ALL_EVENTS_SUCCESS = "[Load All Events Success]"
 }
 
 export class AddEvent implements Action {
@@ -43,16 +41,6 @@ export class LoadEventsSuccess implements Action {
     constructor(public events: EventModel[]) { }
 }
 
-// export class LoadSearchedEvents implements Action {
-//     readonly type = EventsActionTypes.LOAD_SEARCHED_EVENTS;
-//     constructor(public text:string) { }
-// }
-
-// export class LoadSearchedEventsSuccess implements Action {
-//     readonly type = EventsActionTypes.LOAD_SEARCHED_EVENTS_SUCCESS;
-//     constructor(public events: EventModel[]) { }
-// }
-
 export type EventsActions
     = AddEvent
     | AddEventSuccess
@@ -60,5 +48,3 @@ export type EventsActions
     | UpdateEventSuccess
     | LoadEvents
     | LoadEventsSuccess
-    // | LoadSearchedEvents
-    // | LoadSearchedEventsSuccess

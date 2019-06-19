@@ -6,6 +6,12 @@ import { MapServiceService } from 'src/app/services/map-service/map-service.serv
 import { UserService } from 'src/app/services/user-service/user.service';
 import { UserHasEvent } from 'src/app/models/UserHasEvent';
 import { returnFormatedDate } from 'src/app/functions/formatingFunctions';
+import { Store } from '@ngrx/store';
+import { EventsState } from 'src/app/store/reducers/event.reducer';
+import { State } from 'src/app/store/reducers/root.reducer';
+import { UpdateEvent } from 'src/app/store/actions/event.action';
+import { AddResponse } from 'src/app/store/actions/user-event-response.action';
+import { LoadMap } from 'src/app/store/actions/map.action';
 
 @Component({
   selector: 'app-event-details',
@@ -21,9 +27,9 @@ export class EventDetailsComponent implements OnInit {
   isLoggedIn: boolean;
   userId: number;
   userResponse: UserHasEvent;
-  isNumberOfPeopleMax:boolean=false;
+  isNumberOfPeopleMax: boolean = false;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private mapService: MapServiceService, private eventService: EventService) { }
+  constructor(private userService: UserService, private store: Store<State>, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -38,34 +44,40 @@ export class EventDetailsComponent implements OnInit {
   }
 
   getEvent(id: number) {
-    this.eventService.getEventById(id).subscribe(event => {
-      this.event = event;
-      this.checkIfMaximumCapacityIsReached();
-      this.getCoordinates(this.event.address, this.event.city);
-    });
+    this.store.select(store => store.events.entities ? store.events.entities[id] : null).subscribe(event => {
+      console.log(event);
+      if (event) {
+        this.event = event;
+        this.checkIfMaximumCapacityIsReached();
+        let fullAddress = this.returnFullAddress(this.event.address, this.event.city);
+        this.store.dispatch(new LoadMap(fullAddress));
+        this.getCoordinates();
+      }
+    })
   }
 
-  checkIfMaximumCapacityIsReached(){
-    if(this.event.maxCapacity===this.event.numberOfPeopleComing){
-      this.isNumberOfPeopleMax=true;
+  checkIfMaximumCapacityIsReached() {
+    if (this.event.maxCapacity === this.event.numberOfPeopleComing) {
+      this.isNumberOfPeopleMax = true;
     }
-    else{
-      this.isNumberOfPeopleMax=false;
+    else {
+      this.isNumberOfPeopleMax = false;
     }
   }
 
   getUserResponse(userId: number, eventId: number) {
-    this.userService.getEventsThatUserIsInteresstedIn(userId, eventId).subscribe(response => {
-      this.userResponse = response[0];
+    this.store.select(store => store.responses.entities ? store.responses.entities[`${eventId}+${userId}`] : null).subscribe(res => {
+      this.userResponse = res;
     })
   }
 
-  getCoordinates(address: string, city: string) {
-    let fullAddress = this.returnFullAddress(address, city);
-    this.mapService.getAddressLatLong(fullAddress).subscribe(rez => {
-      this.latitude = (rez[0] as any).lat;
-      this.longitude = (rez[0] as any).lon;
-    });
+  getCoordinates() {
+    this.store.select(store => store.map.entities ? store.map.entities : null).subscribe(res => {
+      if(res['undefined']){
+        this.latitude = (res['undefined'] as any).lat;
+        this.longitude = (res['undefined'] as any).lon;
+      }
+    })
   }
 
   returnFullAddress(address: string, city: string): string {
@@ -75,28 +87,29 @@ export class EventDetailsComponent implements OnInit {
   }
 
   registerCommingEvent() {
-    this.userResponse=this.returnNewResponse();
-    this.userService.addEventThatUserIsInteresstedIn(this.userResponse).subscribe(res => console.log(res));
+    this.userResponse = this.returnNewResponse();
+    this.store.dispatch(new AddResponse(this.userResponse));
+    // this.userService.addEventThatUserIsInteresstedIn(this.userResponse).subscribe(res => console.log(res));
     this.incrementNumberOfPeopleComming();
     this.updateEvent();
   }
 
-  returnNewResponse(){
-    let newResponse= new UserHasEvent();
-    newResponse.eventId=this.eventId;
-    newResponse.userId=this.userId;
-    newResponse.isComming=true;
-    newResponse.id=parseInt((Math.random()*7*13*17).toString());
+  returnNewResponse() {
+    let newResponse = new UserHasEvent();
+    newResponse.eventId = this.eventId;
+    newResponse.userId = this.userId;
+    newResponse.isComming = true;
+    newResponse.id = `${this.eventId}+${this.userId}`
     return newResponse;
   }
 
-  incrementNumberOfPeopleComming(){
+  incrementNumberOfPeopleComming() {
     this.event.numberOfPeopleComing += 1;
   }
 
-  updateEvent(){
+  updateEvent() {
     this.checkIfMaximumCapacityIsReached();
-    this.eventService.updateEvent(this.event).subscribe(res => console.log(res));
+    this.store.dispatch(new UpdateEvent(this.event));
   }
 
   unregisterCommingEvent() {
@@ -107,11 +120,11 @@ export class EventDetailsComponent implements OnInit {
     this.updateEvent();
   }
 
-  decrementNumberOfPeopleComming(){
+  decrementNumberOfPeopleComming() {
     this.event.numberOfPeopleComing -= 1;
   }
 
-  returnFormatedDate(){
+  returnFormatedDate() {
     return returnFormatedDate(this.event.date);
   }
 
