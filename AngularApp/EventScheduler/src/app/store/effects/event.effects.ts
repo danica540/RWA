@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Actions, Effect, createEffect, ofType } from '@ngrx/effects'
 import { mergeMap, map } from 'rxjs/operators';
 import { EventService } from 'src/app/services/event-service/event.service';
-import { EventsActionTypes, AddEvent, UpdateEvent } from '../actions/event.action';
+import { EventsActionTypes, AddEvent, UpdateEvent, AddPhoto } from '../actions/event.action';
 
 @Injectable()
 export class EventEffects {
@@ -25,6 +25,16 @@ export class EventEffects {
             map(action => action.event),
             mergeMap(() => this.eventService.getEvents().pipe(
                 map(newEvent => ({ type: EventsActionTypes.ADD_EVENT_SUCCESS, event: newEvent }))
+            ))
+        )
+    )
+
+    addPhoto = createEffect(() =>
+        this.action$.pipe(
+            ofType<AddPhoto>(EventsActionTypes.ADD_PHOTO),
+            map(action => action.formData),
+            mergeMap((formData) => this.eventService.addEventPhoto(formData).pipe(
+                map(newEvent => ({ type: EventsActionTypes.ADD_PHOTO_SUCCESS, formData: newEvent }))
             ))
         )
     )

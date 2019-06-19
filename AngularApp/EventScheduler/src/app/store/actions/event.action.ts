@@ -5,10 +5,12 @@ import { EventModel } from 'src/app/models/EventModel';
 export enum EventsActionTypes {
     ADD_EVENT = "[Add Event]",
     ADD_EVENT_SUCCESS = "[Add Event Success]",
-    UPDATE_EVENT = "[Update Event]",
-    UPDATE_EVENT_SUCCESS = "[Update Event Success]",
     LOAD_ALL_EVENTS = "[Load All Events]",
-    LOAD_ALL_EVENTS_SUCCESS = "[Load All Events Success]"
+    LOAD_ALL_EVENTS_SUCCESS = "[Load All Events Success]",
+    ADD_PHOTO = "[Add Photo]",
+    ADD_PHOTO_SUCCESS = "[Add Photo Success]",
+    UPDATE_EVENT = "[Update Event]",
+    UPDATE_EVENT_SUCCESS = "[Update Event Success]"
 }
 
 export class AddEvent implements Action {
@@ -28,7 +30,7 @@ export class UpdateEvent implements Action {
 
 export class UpdateEventSuccess implements Action {
     readonly type = EventsActionTypes.UPDATE_EVENT_SUCCESS;
-    constructor(public id:number,public updatedEvent: Partial<EventModel>) { }
+    constructor(public id: number, public updatedEvent: Partial<EventModel>) { }
 }
 
 export class LoadEvents implements Action {
@@ -41,9 +43,21 @@ export class LoadEventsSuccess implements Action {
     constructor(public events: EventModel[]) { }
 }
 
+export class AddPhoto implements Action {
+    readonly type = EventsActionTypes.ADD_PHOTO;
+    constructor(public formData:FormData) { }
+}
+
+export class AddPhotoSuccess implements Action {
+    readonly type = EventsActionTypes.ADD_PHOTO_SUCCESS;
+    constructor() { }
+}
+
 export type EventsActions
     = AddEvent
     | AddEventSuccess
+    | AddPhoto
+    | AddPhotoSuccess
     | UpdateEvent
     | UpdateEventSuccess
     | LoadEvents

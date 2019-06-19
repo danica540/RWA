@@ -3,6 +3,11 @@ import { EventService } from 'src/app/services/event-service/event.service';
 import { Observable } from 'rxjs';
 import { EventModel } from 'src/app/models/EventModel';
 import { returnFormatedDate } from 'src/app/functions/formatingFunctions';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/store/reducers/root.reducer';
+import { AddEvent, AddPhoto } from 'src/app/store/actions/event.action';
+import { selectAllEvents } from 'src/app/store/reducers/event.reducer';
+import { selectAllLocations } from 'src/app/store/reducers/location.reducer';
 
 @Component({
   selector: 'app-add-event',
@@ -14,10 +19,10 @@ export class AddEventComponent implements OnInit {
   cities: Observable<any>;
   fileToUpload: File;
 
-  constructor(private eventService: EventService) { }
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.cities = this.eventService.getEventLocations();
+    this.cities=this.store.select(selectAllLocations);
   }
 
   onAddEvent() {
@@ -33,12 +38,14 @@ export class AddEventComponent implements OnInit {
     let formData = new FormData();
     formData.append('photo', this.fileToUpload, this.fileToUpload.name);
 
-    let newEvent:EventModel=this.returnNewEvent(headlineValue, descriptionValue, addressValue, dateValue, cityValue, capacityValue, imgPath, timeValue);
+    let newEvent: EventModel = this.returnNewEvent(headlineValue, descriptionValue, addressValue, dateValue, cityValue, capacityValue, imgPath, timeValue);
 
-    this.eventService.addEvent(newEvent).subscribe(er => console.log(er));
-    this.eventService.addEventPhoto(formData).subscribe(er => {
-      console.log(er);
-    });
+    this.store.dispatch(new AddEvent(newEvent));
+    this.store.dispatch(new AddPhoto(formData));
+    // this.eventService.addEvent(newEvent).subscribe(er => console.log(er));
+    // this.eventService.addEventPhoto(formData).subscribe(er => {
+    //   console.log(er);
+    // });
 
   }
 

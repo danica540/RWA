@@ -2,7 +2,7 @@
 import {createEntityAdapter} from '@ngrx/entity';
 import {createFeatureSelector} from '@ngrx/store';
 import { EventModel } from 'src/app/models/EventModel';
-import { EventsActionTypes, EventsActions } from '../actions/event.action';
+import { EventsActions, EventsActionTypes } from '../actions/event.action';
 
 
 export const eventsAdapter = createEntityAdapter<EventModel>({
@@ -28,11 +28,16 @@ export function eventsReducer(state:EventsState=initialState,action:EventsAction
 
     switch(action.type){
         case EventsActionTypes.ADD_EVENT_SUCCESS:{
+            console.log("ADD_EVENT_SUCCESS");
             return eventsAdapter.addOne(action.event, state)
         }
         case EventsActionTypes.LOAD_ALL_EVENTS_SUCCESS:{
             console.log("LOAD_All_EVENTS_SUCCESS");
             return eventsAdapter.addAll(action.events, state)
+        }
+        case EventsActionTypes.ADD_PHOTO_SUCCESS:{
+            console.log("UPLOADED PHOTO");
+            return state;
         }
         case EventsActionTypes.UPDATE_EVENT_SUCCESS:{
             console.log("UPDATE_EVENT_SUCCESS");

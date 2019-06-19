@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { State } from './store/reducers/root.reducer';
 import { LoadEvents } from './store/actions/event.action';
 import { LoadResponse } from './store/actions/user-event-response.action';
+import { LoadLocations } from './store/actions/location.action';
 
 @Component({
   selector: 'app-root',
@@ -19,5 +20,6 @@ export class AppComponent {
   ngOnInit(){
     this.store.dispatch(new LoadEvents());
     this.store.dispatch(new LoadResponse());
+    this.store.dispatch(new LoadLocations());
   }
 }
