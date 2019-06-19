@@ -10,7 +10,7 @@ import { Store } from '@ngrx/store';
 import { EventsState } from 'src/app/store/reducers/event.reducer';
 import { State } from 'src/app/store/reducers/root.reducer';
 import { UpdateEvent, LoadEvents } from 'src/app/store/actions/event.action';
-import { AddResponse } from 'src/app/store/actions/user-event-response.action';
+import { AddResponse, DeleteResponse } from 'src/app/store/actions/user-event-response.action';
 import { LoadMap } from 'src/app/store/actions/map.action';
 
 @Component({
@@ -29,7 +29,7 @@ export class EventDetailsComponent implements OnInit {
   userResponse: UserHasEvent;
   isNumberOfPeopleMax: boolean = false;
 
-  constructor(private userService: UserService, private store: Store<State>, private route: ActivatedRoute) { }
+  constructor(private store: Store<State>, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -45,7 +45,6 @@ export class EventDetailsComponent implements OnInit {
 
   getEvent(id: number) {
     this.store.select(store => store.events.entities ? store.events.entities[`${id}`] : null).subscribe(event => {
-      console.log(event);
       if (event) {
         this.event = event;
         this.checkIfMaximumCapacityIsReached();
@@ -88,9 +87,7 @@ export class EventDetailsComponent implements OnInit {
 
   registerCommingEvent() {
     this.userResponse = this.returnNewResponse();
-    console.log(this.userResponse);
     this.store.dispatch(new AddResponse(this.userResponse));
-    // this.userService.addEventThatUserIsInteresstedIn(this.userResponse).subscribe(res => console.log(res));
     this.incrementNumberOfPeopleComming();
     this.updateEvent();
   }
@@ -114,10 +111,8 @@ export class EventDetailsComponent implements OnInit {
   }
 
   unregisterCommingEvent() {
-    console.log("Iz unregister "+this.userResponse);
-    this.userService.deleteEventThatUserIsInteresstedIn(this.userResponse.id).subscribe(res => console.log(res));
+    this.store.dispatch(new DeleteResponse(this.userResponse.id.toString()));
     this.userResponse = null;
-
     this.decrementNumberOfPeopleComming();
     this.updateEvent();
   }

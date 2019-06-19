@@ -24,12 +24,12 @@ export class AddResponseSuccess implements Action {
 
 export class DeleteResponse implements Action {
     readonly type = UserEventResponseActionTypes.DELETE_RESPONSE;
-    constructor(public id: number) { }
+    constructor(public id: string) { }
 }
 
 export class DeleteResponseSuccess implements Action {
     readonly type = UserEventResponseActionTypes.DELETE_RESPONSE_SUCCESS;
-    constructor(public id: number) { }
+    constructor(public id: string) { }
     // OVDE U KONSTRUKTORU
 }
 

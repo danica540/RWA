@@ -31,11 +31,10 @@ export class UserEventResponseEffects {
         )
     )
 
-    // TO DO
     deleteResponse = createEffect(() =>
         this.action$.pipe(
             ofType<DeleteResponse>(UserEventResponseActionTypes.DELETE_RESPONSE),
-            map(action=>(action as any).id),
+            map(action=>action.id),
             mergeMap((id) => this.userService.deleteEventThatUserIsInteresstedIn(id).pipe(
                 map(object => ({ type: UserEventResponseActionTypes.DELETE_RESPONSE_SUCCESS, obj: object }))
             ))

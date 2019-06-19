@@ -1,0 +1,785 @@
+{
+  "cities": [
+    {
+      "id": 1,
+      "name": " Subotica"
+    },
+    {
+      "id": 2,
+      "name": "Bačka Topola"
+    },
+    {
+      "id": 3,
+      "name": "Mali Iđoš"
+    },
+    {
+      "id": 4,
+      "name": " Zrenjanin"
+    },
+    {
+      "id": 5,
+      "name": "Novi Bečej"
+    },
+    {
+      "id": 6,
+      "name": "Nova Crnja"
+    },
+    {
+      "id": 7,
+      "name": "Žitište"
+    },
+    {
+      "id": 8,
+      "name": "Sečanj"
+    },
+    {
+      "id": 9,
+      "name": "Kanjiža"
+    },
+    {
+      "id": 10,
+      "name": "Senta"
+    },
+    {
+      "id": 11,
+      "name": "Ada"
+    },
+    {
+      "id": 12,
+      "name": "Čoka"
+    },
+    {
+      "id": 13,
+      "name": "Novi Kneževac"
+    },
+    {
+      "id": 14,
+      "name": " Kikinda"
+    },
+    {
+      "id": 15,
+      "name": " Pančevo"
+    },
+    {
+      "id": 16,
+      "name": "Plandište"
+    },
+    {
+      "id": 17,
+      "name": "Opovo"
+    },
+    {
+      "id": 18,
+      "name": "Kovačica"
+    },
+    {
+      "id": 19,
+      "name": "Alibunar"
+    },
+    {
+      "id": 20,
+      "name": " Vršac"
+    },
+    {
+      "id": 21,
+      "name": "Bela Crkva"
+    },
+    {
+      "id": 22,
+      "name": "Kovin"
+    },
+    {
+      "id": 23,
+      "name": " Sombor"
+    },
+    {
+      "id": 24,
+      "name": "Apatin"
+    },
+    {
+      "id": 25,
+      "name": "Odžaci"
+    },
+    {
+      "id": 26,
+      "name": "Kula"
+    },
+    {
+      "id": 27,
+      "name": "Bač"
+    },
+    {
+      "id": 28,
+      "name": "Bačka Palanka"
+    },
+    {
+      "id": 29,
+      "name": "Bački Petrovac"
+    },
+    {
+      "id": 30,
+      "name": "Beočin"
+    },
+    {
+      "id": 31,
+      "name": "Bečej"
+    },
+    {
+      "id": 33,
+      "name": "Vrbas"
+    },
+    {
+      "id": 32,
+      "name": "Žabalj"
+    },
+    {
+      "id": 34,
+      "name": " Novi Sad"
+    },
+    {
+      "id": 35,
+      "name": "Srbobran"
+    },
+    {
+      "id": 36,
+      "name": "Temerin"
+    },
+    {
+      "id": 37,
+      "name": "Titel"
+    },
+    {
+      "id": 38,
+      "name": "Sremski Karlovci"
+    },
+    {
+      "id": 39,
+      "name": " Sremska Mitrovica"
+    },
+    {
+      "id": 40,
+      "name": "Sremska Mitrovica"
+    },
+    {
+      "id": 41,
+      "name": "Šid"
+    },
+    {
+      "id": 42,
+      "name": "Inđija"
+    },
+    {
+      "id": 43,
+      "name": "Irig"
+    },
+    {
+      "id": 44,
+      "name": "Ruma"
+    },
+    {
+      "id": 45,
+      "name": "Stara Pazova"
+    },
+    {
+      "id": 46,
+      "name": "Pećinci"
+    },
+    {
+      "id": 47,
+      "name": " Šabac"
+    },
+    {
+      "id": 48,
+      "name": " Loznica"
+    },
+    {
+      "id": 49,
+      "name": "Bogatić"
+    },
+    {
+      "id": 50,
+      "name": "Vladimirci"
+    },
+    {
+      "id": 51,
+      "name": "Koceljeva"
+    },
+    {
+      "id": 52,
+      "name": "Mali Zvornik"
+    },
+    {
+      "id": 53,
+      "name": "Krupanj"
+    },
+    {
+      "id": 54,
+      "name": "Ljubovija"
+    },
+    {
+      "id": 55,
+      "name": " Valjevo"
+    },
+    {
+      "id": 56,
+      "name": "Osečina"
+    },
+    {
+      "id": 57,
+      "name": "Ub"
+    },
+    {
+      "id": 58,
+      "name": "Lajkovac"
+    },
+    {
+      "id": 59,
+      "name": "Mionica"
+    },
+    {
+      "id": 60,
+      "name": "Ljig"
+    },
+    {
+      "id": 61,
+      "name": " Smederevo"
+    },
+    {
+      "id": 62,
+      "name": "Smederevska Palanka"
+    },
+    {
+      "id": 63,
+      "name": "Velika Plana"
+    },
+    {
+      "id": 64,
+      "name": " Požarevac"
+    },
+    {
+      "id": 65,
+      "name": "Veliko Gradište"
+    },
+    {
+      "id": 66,
+      "name": "Golubac"
+    },
+    {
+      "id": 67,
+      "name": "Malo Crniće"
+    },
+    {
+      "id": 68,
+      "name": "Žabari"
+    },
+    {
+      "id": 69,
+      "name": "Petrovac na Mlavi"
+    },
+    {
+      "id": 70,
+      "name": "Kučevo"
+    },
+    {
+      "id": 71,
+      "name": "Žagubica"
+    },
+    {
+      "id": 72,
+      "name": " Kragujevac"
+    },
+    {
+      "id": 73,
+      "name": "Aranđelovac"
+    },
+    {
+      "id": 74,
+      "name": "Topola"
+    },
+    {
+      "id": 75,
+      "name": "Rača"
+    },
+    {
+      "id": 76,
+      "name": "Batočina"
+    },
+    {
+      "id": 77,
+      "name": "Knić"
+    },
+    {
+      "id": 78,
+      "name": "Lapovo"
+    },
+    {
+      "id": 79,
+      "name": " Jagodina"
+    },
+    {
+      "id": 80,
+      "name": "Ćuprija"
+    },
+    {
+      "id": 81,
+      "name": "Paraćin"
+    },
+    {
+      "id": 82,
+      "name": "Svilajnac"
+    },
+    {
+      "id": 83,
+      "name": "Despotovac"
+    },
+    {
+      "id": 84,
+      "name": "Rekovac"
+    },
+    {
+      "id": 85,
+      "name": " Beograd"
+    },
+    {
+      "id": 86,
+      "name": "Bor"
+    },
+    {
+      "id": 87,
+      "name": "Kladovo"
+    },
+    {
+      "id": 88,
+      "name": "Majdanpek"
+    },
+    {
+      "id": 89,
+      "name": "Negotin"
+    },
+    {
+      "id": 90,
+      "name": " Zaječar"
+    },
+    {
+      "id": 91,
+      "name": "Boljevac"
+    },
+    {
+      "id": 92,
+      "name": "Knjaževac"
+    },
+    {
+      "id": 93,
+      "name": "Sokobanja"
+    },
+    {
+      "id": 94,
+      "name": " Užice"
+    },
+    {
+      "id": 95,
+      "name": "Bajina Bašta"
+    },
+    {
+      "id": 96,
+      "name": "Kosjerić"
+    },
+    {
+      "id": 97,
+      "name": "Požega"
+    },
+    {
+      "id": 98,
+      "name": "Čajetina"
+    },
+    {
+      "id": 99,
+      "name": "Arilje"
+    },
+    {
+      "id": 100,
+      "name": "Priboj"
+    },
+    {
+      "id": 101,
+      "name": "Nova Varoš"
+    },
+    {
+      "id": 102,
+      "name": "Prijepolje"
+    },
+    {
+      "id": 103,
+      "name": "Sjenica"
+    },
+    {
+      "id": 104,
+      "name": " Čačak"
+    },
+    {
+      "id": 105,
+      "name": "Gornji Milanovac"
+    },
+    {
+      "id": 106,
+      "name": "Lučani"
+    },
+    {
+      "id": 107,
+      "name": "Ivanjica"
+    },
+    {
+      "id": 108,
+      "name": " Kraljevo"
+    },
+    {
+      "id": 109,
+      "name": " Novi Pazar"
+    },
+    {
+      "id": 110,
+      "name": "Vrnjačka Banja"
+    },
+    {
+      "id": 111,
+      "name": "Raška"
+    },
+    {
+      "id": 112,
+      "name": "Tutin"
+    },
+    {
+      "id": 113,
+      "name": " Kruševac"
+    },
+    {
+      "id": 114,
+      "name": "Varvarin"
+    },
+    {
+      "id": 115,
+      "name": "Trstenik"
+    },
+    {
+      "id": 116,
+      "name": "Ćićevac"
+    },
+    {
+      "id": 117,
+      "name": "Aleksandrovac"
+    },
+    {
+      "id": 118,
+      "name": "Brus"
+    },
+    {
+      "id": 119,
+      "name": " Niš"
+    },
+    {
+      "id": 120,
+      "name": "Aleksinac"
+    },
+    {
+      "id": 121,
+      "name": "Svrljig"
+    },
+    {
+      "id": 122,
+      "name": "Merošina"
+    },
+    {
+      "id": 123,
+      "name": "Ražanj"
+    },
+    {
+      "id": 124,
+      "name": "Doljevac"
+    },
+    {
+      "id": 125,
+      "name": "Gadžin Han"
+    },
+    {
+      "id": 126,
+      "name": "Prokuplje"
+    },
+    {
+      "id": 127,
+      "name": "Blace"
+    },
+    {
+      "id": 128,
+      "name": "Kuršumlija"
+    },
+    {
+      "id": 129,
+      "name": "Žitorađa"
+    },
+    {
+      "id": 130,
+      "name": " Pirot"
+    },
+    {
+      "id": 131,
+      "name": "Bela Palanka"
+    },
+    {
+      "id": 132,
+      "name": "Babušnica"
+    },
+    {
+      "id": 133,
+      "name": "Dimitrovgrad"
+    },
+    {
+      "id": 134,
+      "name": " Leskovac"
+    },
+    {
+      "id": 135,
+      "name": "Bojnik"
+    },
+    {
+      "id": 136,
+      "name": "Lebane"
+    },
+    {
+      "id": 137,
+      "name": "Medveđa"
+    },
+    {
+      "id": 138,
+      "name": "Vlasotince"
+    },
+    {
+      "id": 139,
+      "name": "Crna Trava"
+    },
+    {
+      "id": 140,
+      "name": " Vranje"
+    },
+    {
+      "id": 141,
+      "name": "Vladičin Han"
+    },
+    {
+      "id": 142,
+      "name": "Surdulica"
+    },
+    {
+      "id": 143,
+      "name": "Bosilegrad"
+    },
+    {
+      "id": 144,
+      "name": "Trgovište"
+    },
+    {
+      "id": 145,
+      "name": "Bujanovac"
+    },
+    {
+      "id": 146,
+      "name": "Preševo"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "danoi",
+      "password": "danoi123",
+      "email": "danoi@gmail.com"
+    },
+    {
+      "id": 2,
+      "username": "milenica",
+      "password": "milea123",
+      "email": "milena@mail.com"
+    },
+    {
+      "id": 3,
+      "username": "mimi",
+      "password": "mi123",
+      "email": "mimi@mail.com"
+    },
+    {
+      "id": 4,
+      "username": "tikica",
+      "password": "tiki123",
+      "email": "tika@mail.com"
+    },
+    {
+      "id": 5,
+      "username": "kate",
+      "password": "kate123",
+      "email": "kate@mail.com"
+    },
+    {
+      "id": 6,
+      "username": "nata",
+      "password": "nata123",
+      "email": "nata@mail.com"
+    },
+    {
+      "id": 7,
+      "username": "filip",
+      "password": "filip123",
+      "email": "filip@mail.com"
+    },
+    {
+      "username": "danoi123",
+      "password": "test123",
+      "email": "test@mail.com",
+      "id": 35
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "headline": "Garbage collecting",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "date": "2019-08-20",
+      "address": "Somborska",
+      "city": "Niš",
+      "img": "../assets/img/event2.jpg",
+      "maxCapacity": 150,
+      "time": "22:20",
+      "numberOfPeopleComing": 13
+    },
+    {
+      "id": 2,
+      "headline": "Garbage collecting",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "date": "2019-10-03",
+      "address": "Somborska",
+      "city": "Niš",
+      "img": "../assets/img/event1.jpg",
+      "maxCapacity": 150,
+      "time": "22:20",
+      "numberOfPeopleComing": 9
+    },
+    {
+      "id": 3,
+      "headline": "Garbage collecting",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "date": "2019-06-27",
+      "address": "Somborska",
+      "city": "Niš",
+      "img": "../assets/img/event3.jpg",
+      "maxCapacity": 150,
+      "time": "22:20",
+      "numberOfPeopleComing": 10
+    },
+    {
+      "id": 4,
+      "headline": "Garbage collecting",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "date": "2019-06-20",
+      "address": "Vozdova 5",
+      "city": "Niš",
+      "img": "../assets/img/event4.jpg",
+      "maxCapacity": 10,
+      "time": "22:20",
+      "numberOfPeopleComing": 10
+    },
+    {
+      "id": 5,
+      "headline": "Garbage collecting",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "date": "2019-12-05",
+      "address": "Zelengorska 23",
+      "city": "Niš",
+      "img": "../assets/img/event5.jpg",
+      "maxCapacity": 150,
+      "time": "22:20",
+      "numberOfPeopleComing": 10
+    },
+    {
+      "id": 6,
+      "headline": "Garbage collecting",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "date": "2019-06-20",
+      "address": "Bulevar Nemanjica",
+      "city": "Niš",
+      "img": "../assets/img/event6.jpeg",
+      "maxCapacity": 150,
+      "time": "22:20",
+      "numberOfPeopleComing": 23
+    },
+    {
+      "id": 7,
+      "headline": "Garbage collecting",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "date": "2019-06-20",
+      "address": "Cirila i Metodija 5",
+      "city": "Niš",
+      "img": "../assets/img/event7.jpg",
+      "maxCapacity": 150,
+      "time": "22:20",
+      "numberOfPeopleComing": 10
+    },
+    {
+      "maxCapacity": 152,
+      "numberOfPeopleComing": 1,
+      "id": 37,
+      "headline": "New Event In Town",
+      "description": "This will be the greatest event you will EVER visit in your lifetime. There will be great music and loads of fun! We are expecting you!!!!",
+      "address": "Somborska",
+      "date": "2019-06-20",
+      "city": "Niš",
+      "time": "22:20",
+      "img": "../assets/img/events.jpg"
+    },
+    {
+      "maxCapacity": 200,
+      "numberOfPeopleComing": 1,
+      "id": 82,
+      "headline": "FUN FUN FUN",
+      "description": "You will have a lot of fun at out event!",
+      "address": "Zelengorska",
+      "date": "2019-06-29",
+      "city": "Niš",
+      "time": "16:00",
+      "img": "../assets/img/event12.jpg"
+    },
+    {
+      "id": 568,
+      "headline": "PozitivNI",
+      "description": "Ako vam neko govori o najposećenijoj manifestaciji u južnoj Srbiji, o jedinom street art festivalu koji spaja sve oblasti umetnosti, znajte da vam priča o festivalu PozitivNI! U toj priči o nama, možete čuti i da je ovaj festival nastao kako bi probudio duh urbanog Niša koji je devedestih godina prošlog veka ostao zakopan negde u Dušanovoj, u ulici koja pamti najbolje svirke u gradu. PozitivNI su tu da taj duh vrate gradu, u njegovu slavu, i na njegovoj slavi! Zapravo, termin održavanja festivala određen je tako da se poklapa sa datumom gradske slave-dana Svetog cara Konstantina i carice Jelene.\n\nOve godine, festival će po prvi put trajati 4 dana. Spajaćemo klasicizam i alternativu, preplitati sport i muziku, pozorište i izlete, kroz interakciju ćemo učiti o svetu umetnosti, a onda pravu umetnost i slušati! A sadržaji, pitate se, kome su namenjeni? PozitivNI su tu za svakog, od 1 do 101! Ovo je mesto gde će svaka osoba naći nešto njoj zanimljivo, lepo i vredno divljenja. Dobrodošli!",
+      "address": "Park Cair",
+      "date": "2019-06-24",
+      "city": "Niš",
+      "maxCapacity": 500,
+      "img": "../assets/img/20190501_160027.jpg",
+      "time": "16:00"
+    }
+  ],
+  "eventsInteresstedIn": [
+    {
+      "id": "37+6",
+      "eventId": 37,
+      "userId": 6,
+      "isComming": true
+    },
+    {
+      "eventId": 82,
+      "userId": 6,
+      "isComming": true,
+      "id": "82+6"
+    },
+    {
+      "eventId": 4,
+      "userId": 6,
+      "isComming": true,
+      "id": "4+6"
+    },
+    {
+      "eventId": "6",
+      "userId": 6,
+      "isComming": true,
+      "id": "6+6"
+    }
+  ]
+}
