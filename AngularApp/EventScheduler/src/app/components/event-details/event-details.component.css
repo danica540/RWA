@@ -23,6 +23,7 @@ h1{
     height: auto;
     margin:auto;
     margin-top:0;
+    border:1px gray solid;
 }
 
 .right{

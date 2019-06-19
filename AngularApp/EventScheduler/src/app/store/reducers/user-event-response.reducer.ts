@@ -25,6 +25,7 @@ export function responseReducer(state:ResponseState=initialState,action:UserEven
 
     switch(action.type){
         case UserEventResponseActionTypes.ADD_RESPONSE_SUCCESS:{
+            console.log("Response is added");
             return responseAdapter.addOne(action.response, state)
         }
         case UserEventResponseActionTypes.LOAD_RESPONSES_SUCCESS:{

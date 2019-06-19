@@ -9,7 +9,7 @@ import { returnFormatedDate } from 'src/app/functions/formatingFunctions';
 import { Store } from '@ngrx/store';
 import { EventsState } from 'src/app/store/reducers/event.reducer';
 import { State } from 'src/app/store/reducers/root.reducer';
-import { UpdateEvent } from 'src/app/store/actions/event.action';
+import { UpdateEvent, LoadEvents } from 'src/app/store/actions/event.action';
 import { AddResponse } from 'src/app/store/actions/user-event-response.action';
 import { LoadMap } from 'src/app/store/actions/map.action';
 
@@ -44,7 +44,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   getEvent(id: number) {
-    this.store.select(store => store.events.entities ? store.events.entities[id] : null).subscribe(event => {
+    this.store.select(store => store.events.entities ? store.events.entities[`${id}`] : null).subscribe(event => {
       console.log(event);
       if (event) {
         this.event = event;
@@ -88,6 +88,7 @@ export class EventDetailsComponent implements OnInit {
 
   registerCommingEvent() {
     this.userResponse = this.returnNewResponse();
+    console.log(this.userResponse);
     this.store.dispatch(new AddResponse(this.userResponse));
     // this.userService.addEventThatUserIsInteresstedIn(this.userResponse).subscribe(res => console.log(res));
     this.incrementNumberOfPeopleComming();
@@ -113,6 +114,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   unregisterCommingEvent() {
+    console.log("Iz unregister "+this.userResponse);
     this.userService.deleteEventThatUserIsInteresstedIn(this.userResponse.id).subscribe(res => console.log(res));
     this.userResponse = null;
 
