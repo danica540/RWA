@@ -15,7 +15,7 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   getEvents(): Observable<EventModel[]> {
-    return this.http.get<EventModel[]>(`${API_URL}/events`);
+    return this.http.get<EventModel[]>(`${API_URL}/events?_sort=date&_order=asc`);
   }
 
   getEventById(id: number): Observable<EventModel> {
@@ -34,8 +34,8 @@ export class EventService {
     return this.http.post(`${API_URL}/events`, newEvent)
   }
 
-  getEventsBySearchValue(searchValue: string): Observable<EventModel> {
-    return this.http.get<EventModel>(`${API_URL}/events?q=${searchValue}`);
+  getEventsBySearchValue(searchValue: string): Observable<EventModel[]> {
+    return this.http.get<EventModel[]>(`${API_URL}/events?_sort=date&_order=asc&q=${searchValue}`);
   }
 
   updateEvent(newEvent: EventModel) {

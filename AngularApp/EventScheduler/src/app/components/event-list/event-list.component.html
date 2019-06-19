@@ -1,6 +1,4 @@
+<h1 class="header">FIND AN EVENT FOR YOU!</h1>
 <div class="main">
-  <label class="header">Event List</label>
-  <div *ngFor="let event of eventList">
-    <app-event (click)="onEventClick(event)" class="single-event" [event]="event"></app-event>
-  </div>
+    <app-event *ngFor="let event of eventList" (click)="onEventClick(event)" [event]="event"></app-event>
 </div>

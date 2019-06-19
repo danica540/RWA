@@ -127,3 +127,11 @@ button img{
     font-weight: normal;
     font-size: 20px;
 }
+
+.max{
+    margin-top: 4%;
+    color:rgb(126, 13, 13);
+    font-weight: 700;
+    font-size: 16px;
+    background-color: transparent;
+}

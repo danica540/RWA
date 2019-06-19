@@ -11,7 +11,7 @@
 
 
     <div *ngIf="event" class="right-left">
-      <label>Date: <span>{{event.date}}</span></label>
+      <label>Date: <span>{{returnFormatedDate()}}</span></label>
       <label>Time: <span>{{event.time}} h</span></label>
       <label>Address: <span>{{event.address}}</span></label>
       <label>City: <span>{{event.city}}</span></label>
@@ -20,17 +20,15 @@
 
       <div *ngIf="isLoggedIn" class="is-comming-div">
         <h3>Interessted in comming?</h3>
-        <div class="answer">
-          <button *ngIf="(isLoggedIn && !userResponse)" (click)="registerCommingEvent()"><img 
+        <div *ngIf="((isNumberOfPeopleMax && userResponse) || (!isNumberOfPeopleMax && !userResponse) )" class="answer">
+          <button *ngIf="(!userResponse)" (click)="registerCommingEvent()"><img 
               src="../../../assets/img/x-mark-64.png"> <label class="btnLabel">No</label> </button>
 
-          <button *ngIf="(isLoggedIn && userResponse)" (click)="unregisterCommingEvent()"> <img  
+          <button *ngIf="(userResponse)" (click)="unregisterCommingEvent()"> <img  
               src="../../../assets/img/check-mark-3-64 (1).png"> <label class="btnLabel">Yes</label> </button>
-          <!-- <img *ngIf="(isLoggedIn && !userResponse)" (click)="registerCommingEvent()"
-            src="../../../assets/img/x-mark-64.png"><span *ngIf="(isLoggedIn && !userResponse)">No</span> -->
-          <!-- <img *ngIf="(isLoggedIn && userResponse)" (click)="unregisterCommingEvent()"
-            src="../../../assets/img/check-mark-3-64 (1).png"><span *ngIf="(isLoggedIn && userResponse)">Yes</span> -->
         </div>
+
+        <label class="max" *ngIf="isNumberOfPeopleMax">Maximum capacity has been filled.</label>
       </div>
 
 

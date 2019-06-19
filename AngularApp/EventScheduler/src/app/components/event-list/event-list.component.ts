@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/services/event-service/event.service';
 import { EventModel } from 'src/app/models/EventModel';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-list',
@@ -11,15 +11,37 @@ import { Router } from '@angular/router';
 export class EventListComponent implements OnInit {
 
   eventList: EventModel[] = [];
+  private searchValue: string;
 
-  constructor(private eventService: EventService, private router: Router) { }
+  constructor(private activeRoute: ActivatedRoute, private eventService: EventService, private router: Router) { }
 
   ngOnInit() {
-    this.eventService.getEvents().subscribe(list => this.eventList = list);
+    this.getEvents();
   }
 
   onEventClick(event: EventModel) {
     this.router.navigate(["/events", event.id]);
+  }
+
+  getEvents() {
+    this.activeRoute.params.subscribe(routeParams => {
+      this.searchValue = routeParams.search_value;
+      if (!this.searchValue) {
+        this.eventService.getEvents().subscribe(data => {
+            this.eventList = data;
+          });
+      }
+      else {
+        this.eventService.getEventsBySearchValue(this.searchValue).subscribe(data => {
+            if (!data[0]) {
+              this.eventList = null;
+            }
+            else {
+              this.eventList = data;
+            }
+          });
+      }
+    });
   }
 
 }

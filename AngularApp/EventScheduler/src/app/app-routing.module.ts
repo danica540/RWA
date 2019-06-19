@@ -5,20 +5,23 @@ import { AddEventComponent } from './components/add-event/add-event.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
-import { HomeComponent } from './components/home/home.component';
+import { MyEventsComponent } from './components/my-events/my-events.component';
 
 const routes: Routes = [
   {
-    path:"",
-    component:EventListComponent
+    path: '', redirectTo:'/events', pathMatch: 'full'
   },
   {
-    path:"home",
-    component:EventListComponent
+    path:"myEvents",
+    component:MyEventsComponent
   },
   {
     path:"events",
     component:EventListComponent
+  },
+  {
+    path:'events/search/:search_value',
+    component: EventListComponent
   },
   {
     path:"addEvent",

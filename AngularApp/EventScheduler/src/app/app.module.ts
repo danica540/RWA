@@ -15,8 +15,8 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
-import { HomeComponent } from './components/home/home.component';
 import { rootReducer } from './store';
+import { MyEventsComponent } from './components/my-events/my-events.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { rootReducer } from './store';
     AddEventComponent,
     EventListComponent,
     EventDetailsComponent,
-    HomeComponent
+    MyEventsComponent
   ],
   imports: [
     BrowserModule,

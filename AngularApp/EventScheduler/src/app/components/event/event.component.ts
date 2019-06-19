@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EventModel } from 'src/app/models/EventModel';
+import { returnFormatedDate } from 'src/app/functions/formatingFunctions';
 
 @Component({
   selector: 'app-event',
@@ -17,6 +18,10 @@ export class EventComponent implements OnInit {
 
   returnFormatedAddress(){
     return this.event.address.concat(`, ${this.event.city}`);
+  }
+
+  returnFormatedDate(){
+    return returnFormatedDate(this.event.date);
   }
 
 }

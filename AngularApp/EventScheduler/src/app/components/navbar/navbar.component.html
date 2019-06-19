@@ -1,5 +1,5 @@
 <ul id="navbar-div">
-  <li class="logo"><a (click)="onHomeClick()" routerLink="home">Home</a></li>
+  <li class="logo"><a (click)="onHomeClick()" routerLink="events">Home</a></li>
   <li routerLinkActive="active">
     <a *ngIf="isLoggedIn" routerLink="addEvent">Add Event</a>
   </li>
@@ -9,6 +9,10 @@
           src="../../../assets/img/search.png"></a></span>
   </li>
   <li class="separator"></li>
+
+  <li routerLinkActive="active">
+    <a *ngIf="isLoggedIn" routerLink="myEvents">My Events</a>
+  </li>
 
   <li *ngIf="isLoggedIn" routerLinkActive="active"><a routerLink="home" (click)="onLogOut()">Log Out</a></li>
 

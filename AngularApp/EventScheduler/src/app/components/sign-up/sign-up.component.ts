@@ -81,7 +81,7 @@ export class SignUpComponent implements OnInit {
           localStorage.setItem("username", usernameValue);
           localStorage.setItem("userId", (newUser.id).toString());
           localStorage.setItem("isLoggedIn", "true");
-          location.replace('home');
+          location.replace('events');
         }
         else {
           setErrorLabel(errorConstants.UNKNOWN_ERROR);

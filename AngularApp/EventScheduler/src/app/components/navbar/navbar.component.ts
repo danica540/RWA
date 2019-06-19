@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onHomeClick() {
-    if (this.router.url === '/home') {
+    if (this.router.url === '/events') {
       location.reload();
     }
   }
@@ -27,7 +27,14 @@ export class NavbarComponent implements OnInit {
   onLogOut() {
     localStorage.removeItem("username");
     localStorage.removeItem("isLoggedIn");
-    location.replace("home");
+    location.reload();
+  }
+
+  onSearchClick(e: Event) {
+    let searchValue = (document.getElementById("search-input") as HTMLInputElement).value;
+    if (searchValue) {
+      this.router.navigate(["/events/search/", searchValue]);
+    }
   }
 
 }

@@ -1,6 +1,6 @@
 img{
     width:250px;
-    height: auto;
+    height: 190px;
     margin:auto;
 }
 
@@ -10,21 +10,25 @@ h2{
     color:#25274d;
 }
 
-.left{
-    margin:0;
-}
-
-.right{
-    margin:0;
-    margin-left: 1%;
+.event-div{
+    width:100%;
+    margin: 1%;
     display: flex;
     flex-direction: column;
+    padding: 5px;
+    background: white;
 }
 
-.right label{
+.event-div label{
     margin-top: 3%;
     color:#51536e;
     font-size: 14px;
+}
+
+
+.event-div:hover{
+    background-color: #dfdfdf;
+    cursor:pointer;
 }
 
 .span{
