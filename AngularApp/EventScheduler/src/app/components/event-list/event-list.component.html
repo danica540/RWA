@@ -1,4 +1,8 @@
-<h1 class="header">FIND AN EVENT FOR YOU!</h1>
-<div class="main">
+<h1 id="header" class="header">FIND AN EVENT FOR YOU!</h1>
+<div  *ngIf="eventList.length!==0" class="main">
     <app-event *ngFor="let event of eventList" (click)="onEventClick(event)" [event]="event"></app-event>
+</div>
+
+<div  *ngIf="eventList.length===0">
+    <h2 class="information"> There are no search resuld for <span>'{{searchValue}}'</span></h2>
 </div>

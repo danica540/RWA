@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("username");
     localStorage.removeItem("isLoggedIn");
     location.reload();
+    location.replace("events");
   }
 
   onSearchClick(e: Event) {

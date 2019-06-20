@@ -706,7 +706,7 @@
       "img": "../assets/img/event6.jpeg",
       "maxCapacity": 150,
       "time": "22:20",
-      "numberOfPeopleComing": 22
+      "numberOfPeopleComing": 24
     },
     {
       "id": 7,
@@ -718,7 +718,7 @@
       "img": "../assets/img/event7.jpg",
       "maxCapacity": 150,
       "time": "22:20",
-      "numberOfPeopleComing": 10
+      "numberOfPeopleComing": 11
     },
     {
       "maxCapacity": 152,
@@ -776,10 +776,22 @@
       "id": "4+6"
     },
     {
-      "eventId": "6",
+      "eventId": 6,
       "userId": 6,
       "isComming": true,
       "id": "6+6"
+    },
+    {
+      "eventId": 6,
+      "userId": 3,
+      "isComming": true,
+      "id": "6+3"
+    },
+    {
+      "eventId": 7,
+      "userId": 3,
+      "isComming": true,
+      "id": "7+3"
     }
   ]
 }

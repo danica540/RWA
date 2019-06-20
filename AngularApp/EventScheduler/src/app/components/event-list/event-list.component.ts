@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EventService } from 'src/app/services/event-service/event.service';
 import { EventModel } from 'src/app/models/EventModel';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -14,13 +14,22 @@ import { flatMap, filter } from 'rxjs/operators';
 })
 export class EventListComponent implements OnInit {
 
+  @Input() inputEvents:EventModel[];
+
   eventList: EventModel[] = [];
   private searchValue: string;
 
   constructor(private activeRoute: ActivatedRoute, private store: Store<EventsState>, private router: Router) { }
 
   ngOnInit() {
-    this.getEvents();
+    if(!this.inputEvents){
+      this.getEvents();
+    }
+    else{
+      (document.getElementById('header') as HTMLHeadingElement).innerHTML="YOUR EVENTS";
+      this.eventList=this.inputEvents;
+    }
+    
   }
 
   onEventClick(event: EventModel) {
@@ -34,12 +43,13 @@ export class EventListComponent implements OnInit {
         this.store.select(selectAllEvents).subscribe(list => this.eventList = list);
       }
       else {
+        this.eventList=[];
         this.store.select(selectAllEvents).pipe(
           flatMap(event => event),
-          filter((event: EventModel) => (event.description.includes(this.searchValue)
-            || event.headline.includes(this.searchValue)
-            || event.city.includes(this.searchValue)
-            || event.address.includes(this.searchValue)))
+          filter((event: EventModel) => (event.description.toLocaleLowerCase().includes(this.searchValue.toLocaleLowerCase())
+            || event.headline.toLocaleLowerCase().includes(this.searchValue.toLocaleLowerCase())
+            || event.city.toLocaleLowerCase().includes(this.searchValue.toLocaleLowerCase())
+            || event.address.toLocaleLowerCase().includes(this.searchValue.toLocaleLowerCase())))
         ).subscribe((event:EventModel)=>this.eventList.push(event));
       }
     });

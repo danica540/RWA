@@ -48,4 +48,11 @@ export class UserService {
     return this.http.get<UserHasEvent[]>(`${API_URL}/eventsInteresstedIn`);
   }
 
+  //http://localhost:3002/eventsInteresstedIn?_expand=event
+  //http://localhost:3002/eventsInteresstedIn?userId=6&_expand=event
+  
+  getEventsUserIsGoingTo(userId:number):Observable<UserHasEvent[]>{
+    return this.http.get<UserHasEvent[]>(`${API_URL}/eventsInteresstedIn?userId=${userId}&_expand=event`);
+  }
+
 }

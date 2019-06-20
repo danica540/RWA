@@ -16,3 +16,13 @@
 app-event{
     margin:15px;
 }
+
+.information{
+    text-align: center;
+    font-weight: 200;
+    color:rgb(128, 1, 1);
+}
+
+.information span{
+    font-weight: 700;
+}

@@ -3,17 +3,20 @@ import { ResponseState, responseReducer } from './user-event-response.reducer';
 import { EventsState, eventsReducer } from './event.reducer';
 import { mapReducer, MapState } from './map.reducer';
 import { locationReducer, LocationState } from './location.reducer';
+import { UserEventsState, userEventsReducer } from './user-events.reducer';
 
 export interface State {
     responses: ResponseState,
     events: EventsState,
     map: MapState,
-    locations: LocationState
+    locations: LocationState,
+    userEvents:UserEventsState
 }
 
 export const rootReducer: ActionReducerMap<State> = {
     responses: responseReducer,
     events: eventsReducer,
     map: mapReducer,
-    locations: locationReducer
+    locations: locationReducer,
+    userEvents:userEventsReducer
 };

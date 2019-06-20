@@ -33,7 +33,7 @@ export class EventDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.eventId = params["eventId"];
+      this.eventId = parseInt(params["eventId"]);
       this.getEvent(this.eventId);
     })
     if (localStorage.getItem("isLoggedIn") === "true") {

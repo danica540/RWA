@@ -5,6 +5,10 @@ import { errorConstants } from 'src/app/constants/error-constants';
 import { fromEvent } from 'rxjs';
 import { map } from "rxjs/operators";
 import { setErrorLabel } from 'src/app/functions/errorLabelFunction';
+import { store } from '@angular/core/src/render3';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/store/reducers/root.reducer';
+import { LoadUserEvents } from 'src/app/store/actions/user-events.action';
 
 
 @Component({
@@ -17,7 +21,7 @@ export class SignUpComponent implements OnInit {
   ifUsernameIsCorrect: boolean = true;
   ifEmailIsCorrect: boolean = true;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,private store: Store<State>) { }
 
   ngOnInit() {
     let usernameInput = document.getElementById("username-signUp") as HTMLInputElement;
@@ -81,6 +85,7 @@ export class SignUpComponent implements OnInit {
           localStorage.setItem("username", usernameValue);
           localStorage.setItem("userId", (newUser.id).toString());
           localStorage.setItem("isLoggedIn", "true");
+          // this.store.dispatch(new LoadUserEvents(newUser.id));
           location.replace('events');
         }
         else {

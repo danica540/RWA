@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { errorConstants } from 'src/app/constants/error-constants';
 import { setErrorLabel } from 'src/app/functions/errorLabelFunction';
 import { UserService } from 'src/app/services/user-service/user.service';
+import { LoadUserEvents } from 'src/app/store/actions/user-events.action';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/store/reducers/root.reducer';
 
 @Component({
   selector: 'app-log-in',
@@ -13,7 +16,7 @@ export class LogInComponent implements OnInit {
   ifPasswordIsCorrect: boolean = true;
   ifUsernameIsCorrect: boolean = true;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private store: Store<State>) { }
 
   ngOnInit() {
   }
