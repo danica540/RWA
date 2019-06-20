@@ -24,6 +24,7 @@ import { EventEffects } from './store/effects/event.effects';
 import { MapEffects } from './store/effects/map.effects';
 import { LocationEffects } from './store/effects/location.effects';
 import { UserEventsEffects } from './store/effects/user-events.effects';
+import { UserEffects } from './store/effects/user.effects';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { UserEventsEffects } from './store/effects/user-events.effects';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    EffectsModule.forRoot([UserEventResponseEffects, EventEffects, MapEffects,LocationEffects,UserEventsEffects]),
+    EffectsModule.forRoot([UserEventResponseEffects,UserEffects, EventEffects, MapEffects,LocationEffects,UserEventsEffects]),
     StoreModule.forRoot(rootReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 20

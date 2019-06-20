@@ -4,6 +4,7 @@ import { State } from './store/reducers/root.reducer';
 import { LoadEvents } from './store/actions/event.action';
 import { LoadResponse } from './store/actions/user-event-response.action';
 import { LoadLocations } from './store/actions/location.action';
+import { LoadUsers } from './store/actions/user.action';
 
 @Component({
   selector: 'app-root',
@@ -21,5 +22,6 @@ export class AppComponent {
     this.store.dispatch(new LoadEvents());
     this.store.dispatch(new LoadResponse());
     this.store.dispatch(new LoadLocations());
+    this.store.dispatch(new LoadUsers());
   }
 }

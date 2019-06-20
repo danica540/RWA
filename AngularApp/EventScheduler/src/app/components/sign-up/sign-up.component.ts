@@ -5,10 +5,10 @@ import { errorConstants } from 'src/app/constants/error-constants';
 import { fromEvent } from 'rxjs';
 import { map } from "rxjs/operators";
 import { setErrorLabel } from 'src/app/functions/errorLabelFunction';
-import { store } from '@angular/core/src/render3';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
-import { LoadUserEvents } from 'src/app/store/actions/user-events.action';
+import { AddUser } from 'src/app/store/actions/user.action';
+import { selectAllUsers } from 'src/app/store/reducers/user.reducer';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
   ifUsernameIsCorrect: boolean = true;
   ifEmailIsCorrect: boolean = true;
 
-  constructor(private userService: UserService,private store: Store<State>) { }
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
     let usernameInput = document.getElementById("username-signUp") as HTMLInputElement;
@@ -34,7 +34,14 @@ export class SignUpComponent implements OnInit {
   makeEmailInputEvent(emailInput) {
     fromEvent(emailInput, "input").pipe(
       map(ev => ev['target'].value)
-    ).subscribe(mail => {
+    ).subscribe(mail=>{
+      this.store.select(selectAllUsers).subscribe(allUsersList=>{
+        console.log(allUsersList);
+      })
+    })
+
+
+    /*(mail => {
       this.userService.checkIfEmailIsAvailable(mail).subscribe(response => {
         if ((response as any).length === 0) {
           this.ifEmailIsCorrect = true;
@@ -47,25 +54,25 @@ export class SignUpComponent implements OnInit {
           setErrorLabel(errorConstants.EMAIL_TAKEN);
         }
       })
-    })
+    })*/
   }
 
   makeUsernameInputEvent(usernameInput) {
     fromEvent(usernameInput, "input").pipe(
       map(ev => ev['target'].value)
     ).subscribe(username => {
-      this.userService.checkIfUsernameIsAvailable(username).subscribe(response => {
-        if ((response as any).length === 0) {
-          this.ifUsernameIsCorrect = true;
-          if (this.ifEmailIsCorrect) {
-            setErrorLabel(errorConstants.NO_ERROR);
-          }
-        }
-        else {
-          this.ifUsernameIsCorrect = false;
-          setErrorLabel(errorConstants.USERNAME_TAKEN);
-        }
-      })
+      // this.userService.checkIfUsernameIsAvailable(username).subscribe(response => {
+      //   if ((response as any).length === 0) {
+      //     this.ifUsernameIsCorrect = true;
+      //     if (this.ifEmailIsCorrect) {
+      //       setErrorLabel(errorConstants.NO_ERROR);
+      //     }
+      //   }
+      //   else {
+      //     this.ifUsernameIsCorrect = false;
+      //     setErrorLabel(errorConstants.USERNAME_TAKEN);
+      //   }
+      // })
     })
   }
 
@@ -80,37 +87,30 @@ export class SignUpComponent implements OnInit {
     else if (this.ifEmailIsCorrect && this.ifUsernameIsCorrect) {
       let newUser = new UserModel();
       newUser.setAttributes(usernameValue, passwordValue, emailValue);
-      this.userService.registerUser(newUser).subscribe(er => {
-        if (er) {
-          localStorage.setItem("username", usernameValue);
-          localStorage.setItem("userId", (newUser.id).toString());
-          localStorage.setItem("isLoggedIn", "true");
-          // this.store.dispatch(new LoadUserEvents(newUser.id));
-          location.replace('events');
-        }
-        else {
-          setErrorLabel(errorConstants.UNKNOWN_ERROR);
-        }
-      });
+      // this.store.dispatch(new AddUser(newUser));
+      localStorage.setItem("username", usernameValue);
+      localStorage.setItem("userId", (newUser.id).toString());
+      localStorage.setItem("isLoggedIn", "true");
+      location.replace('events');
     }
 
   }
 
   checkUsername(usernameValue: string) {
-    this.userService.checkIfUsernameIsAvailable(usernameValue).subscribe(rez => {
-      console.log(rez);
-      if ((rez as any).lenght === 0) {
-        this.ifUsernameIsCorrect = false;
-      }
-    })
+    // this.userService.checkIfUsernameIsAvailable(usernameValue).subscribe(rez => {
+    //   console.log(rez);
+    //   if ((rez as any).lenght === 0) {
+    //     this.ifUsernameIsCorrect = false;
+    //   }
+    // })
   }
 
   checkEmail(emailValue: string) {
-    this.userService.checkIfEmailIsAvailable(emailValue).subscribe(rez => {
-      if ((rez as any).lenght === 0) {
-        this.ifEmailIsCorrect = false;
-      }
-    })
+    // this.userService.checkIfEmailIsAvailable(emailValue).subscribe(rez => {
+    //   if ((rez as any).lenght === 0) {
+    //     this.ifEmailIsCorrect = false;
+    //   }
+    // })
   }
 
   checkEmptyBoxes(passwordValue: string, usernameValue: string, emailValue: string): boolean {
@@ -118,7 +118,6 @@ export class SignUpComponent implements OnInit {
       return false;
     }
     return true;
-
   }
 
 }

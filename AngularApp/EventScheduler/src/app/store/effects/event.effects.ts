@@ -23,7 +23,7 @@ export class EventEffects {
         this.action$.pipe(
             ofType<AddEvent>(EventsActionTypes.ADD_EVENT),
             map(action => action.event),
-            mergeMap(() => this.eventService.getEvents().pipe(
+            mergeMap((event) => this.eventService.addEvent(event).pipe(
                 map(newEvent => ({ type: EventsActionTypes.ADD_EVENT_SUCCESS, event: newEvent }))
             ))
         )
