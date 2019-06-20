@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { errorConstants } from 'src/app/constants/error-constants';
 import { setErrorLabel } from 'src/app/functions/errorLabelFunction';
-import { UserService } from 'src/app/services/user-service/user.service';
-import { LoadUserEvents } from 'src/app/store/actions/user-events.action';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
+import { selectAllUsers } from 'src/app/store/reducers/user.reducer';
+import { flatMap, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-log-in',
@@ -16,7 +16,7 @@ export class LogInComponent implements OnInit {
   ifPasswordIsCorrect: boolean = true;
   ifUsernameIsCorrect: boolean = true;
 
-  constructor(private userService: UserService, private store: Store<State>) { }
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
   }
@@ -29,25 +29,26 @@ export class LogInComponent implements OnInit {
       setErrorLabel(errorConstants.EMPTY_BOXES);
     }
     else {
-      this.userService.getUserByUsername(usernameValue).subscribe(response => {
-        if ((response as any).length === 0) {
-          this.ifUsernameIsCorrect = false;
-          this.ifPasswordIsCorrect=true;
-          setErrorLabel(errorConstants.WRONG_USERNAME);
+      this.ifPasswordIsCorrect = true;
+      setErrorLabel(errorConstants.NO_ERROR);
+      this.ifUsernameIsCorrect = false;
+      setErrorLabel(errorConstants.WRONG_USERNAME);
+      this.store.select(selectAllUsers).pipe(
+        flatMap(user => user),
+        filter(user => user.username === usernameValue)
+      ).subscribe(user => {
+        setErrorLabel(errorConstants.NO_ERROR);
+        this.ifUsernameIsCorrect = true;
+        console.log(user);
+        if (user.password === passwordValue) {
+          localStorage.setItem("username", user.username);
+          localStorage.setItem("userId", user.id.toString());
+          localStorage.setItem("isLoggedIn", "true");
+          location.replace('events');
         }
         else {
-          this.ifUsernameIsCorrect = true;
-          if (response[0].password === passwordValue) {
-            this.ifPasswordIsCorrect = true;
-            localStorage.setItem("username", usernameValue);
-            localStorage.setItem("userId", (response[0].id).toString());
-            localStorage.setItem("isLoggedIn", "true");
-            location.replace('events');
-          }
-          else {
-            this.ifPasswordIsCorrect=false;
-            setErrorLabel(errorConstants.WRONG_PASSWORD);
-          }
+          this.ifPasswordIsCorrect = false;
+          setErrorLabel(errorConstants.WRONG_PASSWORD);
         }
       })
     }

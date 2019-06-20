@@ -22,6 +22,7 @@ export class EventListComponent implements OnInit {
   constructor(private activeRoute: ActivatedRoute, private store: Store<EventsState>, private router: Router) { }
 
   ngOnInit() {
+    console.log(this.inputEvents);
     if(!this.inputEvents){
       this.getEvents();
     }

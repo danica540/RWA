@@ -94,10 +94,8 @@ export class EventDetailsComponent implements OnInit {
 
   returnNewResponse() {
     let newResponse = new UserHasEvent();
-    newResponse.eventId = this.eventId;
-    newResponse.userId = this.userId;
-    newResponse.isComming = true;
-    newResponse.id = `${this.eventId}+${this.userId}`
+    let newID:string=`${this.eventId}+${this.userId}`;
+    newResponse.setAttributes(newID,this.eventId,this.userId,true);
     return newResponse;
   }
 

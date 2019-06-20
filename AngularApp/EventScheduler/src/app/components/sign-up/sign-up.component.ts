@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user-service/user.service';
 import { UserModel } from 'src/app/models/UserModel';
 import { errorConstants } from 'src/app/constants/error-constants';
 import { fromEvent } from 'rxjs';
-import { map } from "rxjs/operators";
+import { map, flatMap, filter } from "rxjs/operators";
 import { setErrorLabel } from 'src/app/functions/errorLabelFunction';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
@@ -31,48 +30,35 @@ export class SignUpComponent implements OnInit {
     this.makeUsernameInputEvent(usernameInput);
   }
 
-  makeEmailInputEvent(emailInput) {
+  makeEmailInputEvent(emailInput:HTMLInputElement) {
     fromEvent(emailInput, "input").pipe(
-      map(ev => ev['target'].value)
-    ).subscribe(mail=>{
-      this.store.select(selectAllUsers).subscribe(allUsersList=>{
-        console.log(allUsersList);
-      })
+      map(ev => (ev.target as any).value)
+    ).subscribe(mail => {
+      this.ifEmailIsCorrect = true;
+      setErrorLabel(errorConstants.NO_ERROR);
+      this.store.select(selectAllUsers).pipe(
+        flatMap(user => user),
+        filter((user: UserModel) => user.email === mail)
+      ).subscribe(res => {
+        this.ifEmailIsCorrect = false;
+        setErrorLabel(errorConstants.EMAIL_TAKEN);
+      });
     })
-
-
-    /*(mail => {
-      this.userService.checkIfEmailIsAvailable(mail).subscribe(response => {
-        if ((response as any).length === 0) {
-          this.ifEmailIsCorrect = true;
-          if (this.ifUsernameIsCorrect) {
-            setErrorLabel(errorConstants.NO_ERROR);
-          }
-        }
-        else {
-          this.ifEmailIsCorrect = false;
-          setErrorLabel(errorConstants.EMAIL_TAKEN);
-        }
-      })
-    })*/
   }
 
-  makeUsernameInputEvent(usernameInput) {
+  makeUsernameInputEvent(usernameInput:HTMLInputElement) {
     fromEvent(usernameInput, "input").pipe(
-      map(ev => ev['target'].value)
+      map(ev => (ev.target as any).value)
     ).subscribe(username => {
-      // this.userService.checkIfUsernameIsAvailable(username).subscribe(response => {
-      //   if ((response as any).length === 0) {
-      //     this.ifUsernameIsCorrect = true;
-      //     if (this.ifEmailIsCorrect) {
-      //       setErrorLabel(errorConstants.NO_ERROR);
-      //     }
-      //   }
-      //   else {
-      //     this.ifUsernameIsCorrect = false;
-      //     setErrorLabel(errorConstants.USERNAME_TAKEN);
-      //   }
-      // })
+      this.ifUsernameIsCorrect = true;
+      setErrorLabel(errorConstants.NO_ERROR);
+      this.store.select(selectAllUsers).pipe(
+        flatMap(user => user),
+        filter((user: UserModel) => user.username === username)
+      ).subscribe(res => {
+        this.ifUsernameIsCorrect = false;
+        setErrorLabel(errorConstants.USERNAME_TAKEN);
+      });
     })
   }
 
@@ -87,30 +73,13 @@ export class SignUpComponent implements OnInit {
     else if (this.ifEmailIsCorrect && this.ifUsernameIsCorrect) {
       let newUser = new UserModel();
       newUser.setAttributes(usernameValue, passwordValue, emailValue);
-      // this.store.dispatch(new AddUser(newUser));
-      localStorage.setItem("username", usernameValue);
+      this.store.dispatch(new AddUser(newUser));
+      localStorage.setItem("username", newUser.username);
       localStorage.setItem("userId", (newUser.id).toString());
       localStorage.setItem("isLoggedIn", "true");
       location.replace('events');
     }
 
-  }
-
-  checkUsername(usernameValue: string) {
-    // this.userService.checkIfUsernameIsAvailable(usernameValue).subscribe(rez => {
-    //   console.log(rez);
-    //   if ((rez as any).lenght === 0) {
-    //     this.ifUsernameIsCorrect = false;
-    //   }
-    // })
-  }
-
-  checkEmail(emailValue: string) {
-    // this.userService.checkIfEmailIsAvailable(emailValue).subscribe(rez => {
-    //   if ((rez as any).lenght === 0) {
-    //     this.ifEmailIsCorrect = false;
-    //   }
-    // })
   }
 
   checkEmptyBoxes(passwordValue: string, usernameValue: string, emailValue: string): boolean {

@@ -20,6 +20,7 @@ export class MyEventsComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new LoadUserEvents(parseInt(localStorage.getItem("userId"))));
     this.store.select(store => store.userEvents.entities).subscribe(list => {
+      console.log(list);
       for (var key in list) {
         this.eventList.push(list[key].event);
       }
