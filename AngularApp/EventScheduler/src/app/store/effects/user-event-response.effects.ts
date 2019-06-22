@@ -26,7 +26,7 @@ export class UserEventResponseEffects {
             ofType<AddResponse>(UserEventResponseActionTypes.ADD_RESPONSE),
             map(action => action.response),
             mergeMap((response) => this.userService.addEventThatUserIsInteresstedIn(response).pipe(
-                map(newResponse => ({ type: UserEventResponseActionTypes.ADD_RESPONSE_SUCCESS, responses: newResponse }))
+                map(res => ({ type: UserEventResponseActionTypes.ADD_RESPONSE_SUCCESS, response: res }))
             ))
         )
     )
@@ -36,7 +36,7 @@ export class UserEventResponseEffects {
             ofType<DeleteResponse>(UserEventResponseActionTypes.DELETE_RESPONSE),
             map(action=>action.id),
             mergeMap((id) => this.userService.deleteEventThatUserIsInteresstedIn(id).pipe(
-                map(object => ({ type: UserEventResponseActionTypes.DELETE_RESPONSE_SUCCESS, obj: object }))
+                map(object => ({ type: UserEventResponseActionTypes.DELETE_RESPONSE_SUCCESS, id: id }))
             ))
         )
     )

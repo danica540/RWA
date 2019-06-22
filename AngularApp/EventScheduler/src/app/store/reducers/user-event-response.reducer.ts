@@ -20,14 +20,13 @@ export function responseReducer(state:ResponseState=initialState,action:UserEven
 
     switch(action.type){
         case UserEventResponseActionTypes.ADD_RESPONSE_SUCCESS:{
-            console.log(action);
             return responseAdapter.addOne(action.response, state)
         }
         case UserEventResponseActionTypes.LOAD_RESPONSES_SUCCESS:{
             return responseAdapter.addAll(action.responses,state)
         }
         case UserEventResponseActionTypes.DELETE_RESPONSE_SUCCESS:{
-            return responseAdapter.removeOne(action.id,state)
+            return responseAdapter.removeOne(action.id,state);
         }
         default:
             return state;

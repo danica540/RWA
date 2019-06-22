@@ -27,8 +27,8 @@ export class NavbarComponent implements OnInit {
 
   onLogOut() {
     cleearLocalStorage();
+    location.reload();
     this.router.navigate(["/events"]);
-    // BILO JE LOCATION
   }
 
   onSearchClick(e: Event) {
@@ -37,5 +37,4 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(["/events/search/", searchValue]);
     }
   }
-
 }

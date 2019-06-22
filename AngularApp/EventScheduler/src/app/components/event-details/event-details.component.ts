@@ -6,8 +6,11 @@ import { returnFormatedDate } from 'src/app/functions/formatingFunctions';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
 import { UpdateEvent } from 'src/app/store/actions/event.action';
-import { AddResponse, DeleteResponse } from 'src/app/store/actions/user-event-response.action';
+import { AddResponse, DeleteResponse, LoadResponse } from 'src/app/store/actions/user-event-response.action';
 import { LoadMap } from 'src/app/store/actions/map.action';
+import { selectAllResponses } from 'src/app/store/reducers/user-event-response.reducer';
+import { flatMap, filter } from 'rxjs/operators';
+import { LoadUserEvents } from 'src/app/store/actions/user-events.action';
 
 @Component({
   selector: 'app-event-details',
@@ -61,14 +64,17 @@ export class EventDetailsComponent implements OnInit {
   }
 
   getUserResponse(userId: number, eventId: number) {
-    this.store.select(store => store.responses.entities ? store.responses.entities[`${eventId}+${userId}`] : null).subscribe(res => {
+    this.store.select(selectAllResponses).pipe(
+      flatMap(response => response),
+      filter(response => response.userId === this.userId && response.eventId===this.eventId)
+    ).subscribe(res => {
       this.userResponse = res;
-    })
+    });
   }
 
   getCoordinates() {
     this.store.select(store => store.map.entities ? store.map.entities : null).subscribe(res => {
-      if(res['undefined']){
+      if (res['undefined']) {
         this.latitude = (res['undefined'] as any).lat;
         this.longitude = (res['undefined'] as any).lon;
       }
@@ -90,8 +96,7 @@ export class EventDetailsComponent implements OnInit {
 
   returnNewResponse() {
     let newResponse = new UserHasEvent();
-    let newID:string=`${this.eventId}+${this.userId}`;
-    newResponse.setAttributes(newID,this.eventId,this.userId,true);
+    newResponse.setAttributes(this.eventId, this.userId, true);
     return newResponse;
   }
 
@@ -99,13 +104,13 @@ export class EventDetailsComponent implements OnInit {
     this.event.numberOfPeopleComing += 1;
   }
 
-  updateEvent(event:EventModel) {
+  updateEvent(event: EventModel) {
     this.checkIfMaximumCapacityIsReached();
     this.store.dispatch(new UpdateEvent(event));
   }
 
   unregisterCommingEvent() {
-    this.store.dispatch(new DeleteResponse(this.userResponse.id.toString()));
+    this.store.dispatch(new DeleteResponse(this.userResponse.id));
     this.userResponse = null;
     this.decrementNumberOfPeopleComming();
     this.updateEvent(this.event);

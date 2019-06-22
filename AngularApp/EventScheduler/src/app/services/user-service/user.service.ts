@@ -28,7 +28,7 @@ export class UserService {
     return this.http.post(`${API_URL}/eventsInteresstedIn`, newUserResponse);
   }
 
-  deleteEventThatUserIsInteresstedIn(responseId: string): Observable<Object> {
+  deleteEventThatUserIsInteresstedIn(responseId: number): Observable<Object> {
     return this.http.delete(`${API_URL}/eventsInteresstedIn/${responseId}`);
   }
 

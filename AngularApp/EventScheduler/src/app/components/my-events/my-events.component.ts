@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { EventModel } from 'src/app/models/EventModel';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
-import { LoadUserEvents } from 'src/app/store/actions/user-events.action';
+import { LoadUserEvents, RemoveAllUserEvents } from 'src/app/store/actions/user-events.action';
+import { selectAllUserEvents } from 'src/app/store/reducers/user-events.reducer';
+import { Observable } from 'rxjs';
+import { UserHasEvent } from 'src/app/models/UserHasEvent';
 
 @Component({
   selector: 'app-my-events',
@@ -11,22 +14,22 @@ import { LoadUserEvents } from 'src/app/store/actions/user-events.action';
 })
 export class MyEventsComponent implements OnInit {
 
-  eventList: EventModel[] = [];
+  eventList: EventModel[]=null;
+  finished:boolean=false;
 
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
+    this.eventList=null;
     let userId = parseInt(localStorage.getItem("userId"));
-    this.getEventList(userId);
+    this.store.dispatch(new LoadUserEvents(userId));
+    this.getEventList();
   }
 
-  getEventList(userId: number) {
-    this.store.dispatch(new LoadUserEvents(userId));
-    this.store.select(store => store.userEvents.entities).subscribe(list => {
-      this.eventList = [];
-      for (var key in list) {
-        this.eventList.push(list[key].event);
-      }
+  getEventList() {
+    this.store.select(selectAllUserEvents).subscribe(list=>{
+      this.eventList=[];
+      list.forEach((element:UserHasEvent)=>this.eventList.push(element.event));
     });
   }
 }

@@ -34,7 +34,7 @@ export function eventsReducer(state:EventsState=initialState,action:EventsAction
         }
         case EventsActionTypes.UPDATE_EVENT_SUCCESS:{
             return eventsAdapter.updateOne({
-                id:action.id,
+                id:action.updatedEvent.id,
                 changes:action.updatedEvent
             },state)
         }

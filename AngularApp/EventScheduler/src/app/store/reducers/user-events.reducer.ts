@@ -1,6 +1,6 @@
 
-import {createEntityAdapter} from '@ngrx/entity';
-import {createFeatureSelector} from '@ngrx/store';
+import { createEntityAdapter } from '@ngrx/entity';
+import { createFeatureSelector } from '@ngrx/store';
 import { UserEventsActions, UserEventsActionTypes } from '../actions/user-events.action';
 import { UserHasEvent } from 'src/app/models/UserHasEvent';
 
@@ -9,29 +9,33 @@ export const userEventsAdapter = createEntityAdapter<UserHasEvent>({
 });
 
 export interface UserEventsState {
-    ids:string[],
-    entities:{[key:string]:UserHasEvent}
+    ids: number[],
+    entities: { [key: number]: UserHasEvent }
 };
 
-export const initialState:UserEventsState={
-    ids:[],
-    entities:{}
+export const initialState: UserEventsState = {
+    ids: [],
+    entities: {}
 }
 
 
 
-export function userEventsReducer(state:UserEventsState=initialState,action:UserEventsActions) {
+export function userEventsReducer(state: UserEventsState = initialState, action: UserEventsActions) {
 
-    switch(action.type){
-        case UserEventsActionTypes.LOAD_USER_EVENTS_SUCCESS:{
+    switch (action.type) {
+        case UserEventsActionTypes.LOAD_USER_EVENTS_SUCCESS: {
+            userEventsAdapter.removeAll(state);
             return userEventsAdapter.addAll(action.userEvents, state)
+        }
+        case UserEventsActionTypes.REMOVE_ALL_USER_EVENTS: {
+            userEventsAdapter.removeAll(state);
         }
         default:
             return state;
     }
 }
 
-export const getUserEventState= createFeatureSelector<UserEventsState>('user-events');
+export const getUserEventState = createFeatureSelector<UserEventsState>('userEvents');
 
 const {
     selectIds,
@@ -40,5 +44,5 @@ const {
     selectTotal
 } = userEventsAdapter.getSelectors(getUserEventState);
 
-export const selectAllUserEvents=selectAll;
-export const selectTotalUserEvents=selectTotal;
+export const selectAllUserEvents = selectAll;
+export const selectTotalUserEvents = selectTotal;

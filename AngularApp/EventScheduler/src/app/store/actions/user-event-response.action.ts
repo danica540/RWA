@@ -22,12 +22,12 @@ export class AddResponseSuccess implements Action {
 
 export class DeleteResponse implements Action {
     readonly type = UserEventResponseActionTypes.DELETE_RESPONSE;
-    constructor(public id: string) { }
+    constructor(public id: number) { }
 }
 
 export class DeleteResponseSuccess implements Action {
     readonly type = UserEventResponseActionTypes.DELETE_RESPONSE_SUCCESS;
-    constructor(public id: string) { }
+    constructor(public id: number) { }
 }
 
 

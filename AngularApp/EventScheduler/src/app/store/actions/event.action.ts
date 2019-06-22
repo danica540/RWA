@@ -30,7 +30,7 @@ export class UpdateEvent implements Action {
 
 export class UpdateEventSuccess implements Action {
     readonly type = EventsActionTypes.UPDATE_EVENT_SUCCESS;
-    constructor(public id: number, public updatedEvent: EventModel) { }
+    constructor(public updatedEvent: EventModel) { }
 }
 
 export class LoadEvents implements Action {

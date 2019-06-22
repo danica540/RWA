@@ -1,5 +1,5 @@
 export class EventModel{
-    id:number;
+    id?:number;
     headline:string;
     description:string;
     date:string;
@@ -11,7 +11,7 @@ export class EventModel{
     time:string;
 
     constructor(){
-        
+        this.numberOfPeopleComing=0;
     }
 }
 

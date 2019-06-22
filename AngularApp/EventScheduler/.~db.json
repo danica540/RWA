@@ -646,7 +646,7 @@
       "img": "../assets/img/event2.jpg",
       "maxCapacity": 150,
       "time": "22:20",
-      "numberOfPeopleComing": 13
+      "numberOfPeopleComing": 16
     },
     {
       "id": 2,
@@ -706,7 +706,7 @@
       "img": "../assets/img/event6.jpeg",
       "maxCapacity": 150,
       "time": "22:20",
-      "numberOfPeopleComing": 26
+      "numberOfPeopleComing": 24
     },
     {
       "id": 7,
@@ -718,12 +718,12 @@
       "img": "../assets/img/event7.jpg",
       "maxCapacity": 150,
       "time": "22:20",
-      "numberOfPeopleComing": 14
+      "numberOfPeopleComing": 16
     },
     {
       "maxCapacity": 152,
-      "numberOfPeopleComing": 1,
-      "id": 37,
+      "numberOfPeopleComing": 14,
+      "id": 8,
       "headline": "New Event In Town",
       "description": "This will be the greatest event you will EVER visit in your lifetime. There will be great music and loads of fun! We are expecting you!!!!",
       "address": "Somborska",
@@ -735,7 +735,7 @@
     {
       "maxCapacity": 200,
       "numberOfPeopleComing": 22,
-      "id": 82,
+      "id": 9,
       "headline": "FUN FUN FUN",
       "description": "You will have a lot of fun at out event!",
       "address": "Zelengorska",
@@ -745,7 +745,7 @@
       "img": "../assets/img/event12.jpg"
     },
     {
-      "id": 568,
+      "id": 10,
       "headline": "PozitivNI",
       "description": "Ako vam neko govori o najposećenijoj manifestaciji u južnoj Srbiji, o jedinom street art festivalu koji spaja sve oblasti umetnosti, znajte da vam priča o festivalu PozitivNI! U toj priči o nama, možete čuti i da je ovaj festival nastao kako bi probudio duh urbanog Niša koji je devedestih godina prošlog veka ostao zakopan negde u Dušanovoj, u ulici koja pamti najbolje svirke u gradu. PozitivNI su tu da taj duh vrate gradu, u njegovu slavu, i na njegovoj slavi! Zapravo, termin održavanja festivala određen je tako da se poklapa sa datumom gradske slave-dana Svetog cara Konstantina i carice Jelene.\n\nOve godine, festival će po prvi put trajati 4 dana. Spajaćemo klasicizam i alternativu, preplitati sport i muziku, pozorište i izlete, kroz interakciju ćemo učiti o svetu umetnosti, a onda pravu umetnost i slušati! A sadržaji, pitate se, kome su namenjeni? PozitivNI su tu za svakog, od 1 do 101! Ovo je mesto gde će svaka osoba naći nešto njoj zanimljivo, lepo i vredno divljenja. Dobrodošli!",
       "address": "Park Cair",
@@ -755,32 +755,26 @@
       "img": "../assets/img/20190501_160027.jpg",
       "time": "16:00",
       "numberOfPeopleComing": 21
+    },
+    {
+      "id": 11,
+      "headline": "Test",
+      "description": "jhadfjdfno;sj",
+      "address": "Somborska",
+      "date": "2019-07-19",
+      "city": "Niš",
+      "maxCapacity": 500,
+      "img": "../assets/img/1280x0_800x600-river2015.jpg",
+      "time": "15:00",
+      "numberOfPeopleComing": 18
     }
   ],
   "eventsInteresstedIn": [
     {
       "userId": 6,
-      "id": "568+6",
-      "eventId": 568,
-      "isComming": true
-    },
-    {
-      "userId": 6,
-      "id": "6+6",
-      "eventId": 6,
-      "isComming": true
-    },
-    {
-      "userId": 6,
-      "id": "37+6",
-      "eventId": 37,
-      "isComming": true
-    },
-    {
-      "userId": 6,
-      "id": "7+6",
       "eventId": 7,
-      "isComming": true
+      "isComming": true,
+      "id": 2
     }
   ]
 }
