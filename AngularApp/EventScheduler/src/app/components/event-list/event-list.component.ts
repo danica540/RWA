@@ -1,10 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EventService } from 'src/app/services/event-service/event.service';
 import { EventModel } from 'src/app/models/EventModel';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EventsState, selectAllEvents, selectTotalEvents } from 'src/app/store/reducers/event.reducer';
+import { EventsState, selectAllEvents } from 'src/app/store/reducers/event.reducer';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { flatMap, filter } from 'rxjs/operators';
 
 @Component({
@@ -22,7 +20,6 @@ export class EventListComponent implements OnInit {
   constructor(private activeRoute: ActivatedRoute, private store: Store<EventsState>, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.inputEvents);
     if(!this.inputEvents){
       this.getEvents();
     }

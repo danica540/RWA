@@ -9,49 +9,39 @@ import { MyEventsComponent } from './components/my-events/my-events.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo:'/events', pathMatch: 'full'
+    path: '', redirectTo: '/events', pathMatch: 'full'
   },
   {
-    path:"myEvents",
-    component:MyEventsComponent
+    path: "myEvents",
+    component: MyEventsComponent
   },
   {
-    path:"events",
-    component:EventListComponent
+    path: 'events/search/:search_value',
+    component: EventListComponent,
+    pathMatch: 'full'
   },
   {
-    path:'events/search/:search_value',
-    component: EventListComponent
+    path: "events",
+    component: EventListComponent,
+    pathMatch: 'full'
   },
   {
-    path:"addEvent",
-    component:AddEventComponent
+    path: "events/:eventId",
+    component: EventDetailsComponent,
+    pathMatch: 'full'
   },
   {
-    path:"signUp",
-    component:SignUpComponent
+    path: "addEvent",
+    component: AddEventComponent
   },
   {
-    path:"signIn",
-    component:LogInComponent
+    path: "signUp",
+    component: SignUpComponent
   },
   {
-    path:"events/:eventId",
-    component:EventDetailsComponent
+    path: "signIn",
+    component: LogInComponent
   }
-  // ,
-  // {
-  //   path:"home",
-  //   component:EventListComponent
-  // },
-  // {
-  //   path:"home",
-  //   component:EventListComponent
-  // },
-  // {
-  //   path:"home",
-  //   component:EventListComponent
-  // }
 ];
 
 @NgModule({

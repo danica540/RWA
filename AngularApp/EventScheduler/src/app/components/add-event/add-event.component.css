@@ -45,8 +45,6 @@ h3,h5{
     margin:auto;
     margin-top:4%;
     border:none;
-    /* background-color: #c5c6c7; */
-    /* background-color: #5f3a6e; */
     background-color:white;
     color:black;
     padding:13px;
@@ -55,7 +53,6 @@ h3,h5{
 
 #add-event:hover{
     background-color: #f3f3f3;
-    /* background-color: #b9b9b9; */
 }
 
 #file{

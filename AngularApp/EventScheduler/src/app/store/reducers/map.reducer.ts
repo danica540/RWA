@@ -5,11 +5,8 @@ import { MapActions, MapActionTypes } from '../actions/map.action';
 
 
 export const mapAdapter = createEntityAdapter<any>({
-//    sortComparer:sortByDate
+
 });
-// function sortByDate(e1: myComment, e2: myComment) {
-//     return Number(e2.dateOfPublish) - Number(e1.dateOfPublish)
-// }
 
 export interface MapState {
     ids:number[],
@@ -27,7 +24,6 @@ export function mapReducer(state:MapState=initialState,action:MapActions) {
 
     switch(action.type){
         case MapActionTypes.LOAD_MAP_SUCCESS:{
-            console.log("LOAD_MAP_SUCCESS");
             return mapAdapter.addAll(action.obj, state)
         }
         default:
@@ -42,7 +38,7 @@ const {
     selectEntities,
     selectAll,
     selectTotal
-} = mapAdapter.getSelectors(getMapState);  //u zagradi je bilo getCommentState
+} = mapAdapter.getSelectors(getMapState);
 
 export const selectAllMaps=selectAll;
 export const selectTotalMaps=selectTotal;

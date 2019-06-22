@@ -18,10 +18,6 @@ export class EventService {
     return this.http.get<EventModel[]>(`${API_URL}/events?_sort=date&_order=asc`);
   }
 
-  getEventById(id: number): Observable<EventModel> {
-    return this.http.get<EventModel>(`${API_URL}/events/${id}`);
-  }
-
   getEventLocations(): Observable<any> {
     return this.http.get<any>(`${API_URL}/cities?_sort=name&_order=asc`);
   }
@@ -32,10 +28,6 @@ export class EventService {
 
   addEvent(newEvent: EventModel) {
     return this.http.post(`${API_URL}/events`, newEvent)
-  }
-
-  getEventsBySearchValue(searchValue: string): Observable<EventModel[]> {
-    return this.http.get<EventModel[]>(`${API_URL}/events?_sort=date&_order=asc&q=${searchValue}`);
   }
 
   updateEvent(newEvent: EventModel) {

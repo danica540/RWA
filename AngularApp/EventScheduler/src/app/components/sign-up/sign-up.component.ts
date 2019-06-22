@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
 import { AddUser } from 'src/app/store/actions/user.action';
 import { selectAllUsers } from 'src/app/store/reducers/user.reducer';
+import { setLocalStorage } from 'src/app/functions/localStorageFunctions';
 
 
 @Component({
@@ -74,9 +75,7 @@ export class SignUpComponent implements OnInit {
       let newUser = new UserModel();
       newUser.setAttributes(usernameValue, passwordValue, emailValue);
       this.store.dispatch(new AddUser(newUser));
-      localStorage.setItem("username", newUser.username);
-      localStorage.setItem("userId", (newUser.id).toString());
-      localStorage.setItem("isLoggedIn", "true");
+      setLocalStorage(newUser.username,newUser.id.toString());
       location.replace('events');
     }
 

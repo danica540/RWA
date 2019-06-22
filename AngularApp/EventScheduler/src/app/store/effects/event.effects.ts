@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Actions, Effect, createEffect, ofType } from '@ngrx/effects'
+import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { mergeMap, map } from 'rxjs/operators';
 import { EventService } from 'src/app/services/event-service/event.service';
 import { EventsActionTypes, AddEvent, UpdateEvent, AddPhoto } from '../actions/event.action';
@@ -43,8 +43,8 @@ export class EventEffects {
         this.action$.pipe(
             ofType<UpdateEvent>(EventsActionTypes.UPDATE_EVENT),
             map(action => action.event),
-            mergeMap((updatedEvent) => this.eventService.updateEvent(updatedEvent).pipe(
-                map(event => ({ type: EventsActionTypes.UPDATE_EVENT_SUCCESS, event: event, id: event.id }))
+            mergeMap((event) => this.eventService.updateEvent(event).pipe(
+                map(event => ({ type: EventsActionTypes.UPDATE_EVENT_SUCCESS, id: event.id, updatedEvent: event }))
             ))
         )
     )

@@ -5,11 +5,7 @@ import { LocationActions, LocationsActionTypes } from '../actions/location.actio
 
 
 export const locationAdapter = createEntityAdapter<any>({
-//    sortComparer:sortByDate
 });
-// function sortByDate(e1: myComment, e2: myComment) {
-//     return Number(e2.dateOfPublish) - Number(e1.dateOfPublish)
-// }
 
 export interface LocationState {
     ids:number[],
@@ -25,7 +21,6 @@ export function locationReducer(state:LocationState=initialState,action:Location
 
     switch(action.type){
         case LocationsActionTypes.LOAD_ALL_LOCATIONS_SUCCESS:{
-            console.log("LOAD_LOCATIONS_SUCCESS");
             return locationAdapter.addAll(action.locations, state)
         }
         default:
@@ -40,7 +35,7 @@ const {
     selectEntities,
     selectAll,
     selectTotal
-} = locationAdapter.getSelectors(getLocationState);  //u zagradi je bilo getCommentState
+} = locationAdapter.getSelectors(getLocationState);
 
 export const selectAllLocations=selectAll;
 export const selectTotalLocations=selectTotal;

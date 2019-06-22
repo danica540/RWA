@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { cleearLocalStorage } from 'src/app/functions/localStorageFunctions';
 
 @Component({
   selector: 'app-navbar',
@@ -25,10 +26,9 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogOut() {
-    localStorage.removeItem("username");
-    localStorage.removeItem("isLoggedIn");
-    location.reload();
-    location.replace("events");
+    cleearLocalStorage();
+    this.router.navigate(["/events"]);
+    // BILO JE LOCATION
   }
 
   onSearchClick(e: Event) {

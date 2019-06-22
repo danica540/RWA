@@ -1,8 +1,6 @@
 import { Action } from '@ngrx/store';
 import { UserHasEvent } from 'src/app/models/UserHasEvent';
 
-// DELETE
-
 export enum UserEventResponseActionTypes {
     ADD_RESPONSE = "[Add Response]",
     ADD_RESPONSE_SUCCESS = "[Add Response Success]",
@@ -30,7 +28,6 @@ export class DeleteResponse implements Action {
 export class DeleteResponseSuccess implements Action {
     readonly type = UserEventResponseActionTypes.DELETE_RESPONSE_SUCCESS;
     constructor(public id: string) { }
-    // OVDE U KONSTRUKTORU
 }
 
 

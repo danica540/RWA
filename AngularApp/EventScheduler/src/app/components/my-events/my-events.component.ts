@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventModel } from 'src/app/models/EventModel';
-import { selectAllUserEvents } from 'src/app/store/reducers/user-events.reducer';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
-import { UserHasEvent } from 'src/app/models/UserHasEvent';
 import { LoadUserEvents } from 'src/app/store/actions/user-events.action';
 
 @Component({
@@ -18,13 +16,17 @@ export class MyEventsComponent implements OnInit {
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.store.dispatch(new LoadUserEvents(parseInt(localStorage.getItem("userId"))));
+    let userId = parseInt(localStorage.getItem("userId"));
+    this.getEventList(userId);
+  }
+
+  getEventList(userId: number) {
+    this.store.dispatch(new LoadUserEvents(userId));
     this.store.select(store => store.userEvents.entities).subscribe(list => {
-      console.log(list);
+      this.eventList = [];
       for (var key in list) {
         this.eventList.push(list[key].event);
       }
     });
   }
-
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Actions, Effect, createEffect, ofType } from '@ngrx/effects'
+import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { mergeMap, map } from 'rxjs/operators';
 import { MapActionTypes, LoadMap } from '../actions/map.action';
 import { MapServiceService } from 'src/app/services/map-service/map-service.service';

@@ -6,11 +6,7 @@ import { UserHasEvent } from 'src/app/models/UserHasEvent';
 
 
 export const userEventsAdapter = createEntityAdapter<UserHasEvent>({
-//    sortComparer:sortByDate
 });
-// function sortByDate(e1: myComment, e2: myComment) {
-//     return Number(e2.dateOfPublish) - Number(e1.dateOfPublish)
-// }
 
 export interface UserEventsState {
     ids:string[],
@@ -28,7 +24,6 @@ export function userEventsReducer(state:UserEventsState=initialState,action:User
 
     switch(action.type){
         case UserEventsActionTypes.LOAD_USER_EVENTS_SUCCESS:{
-            console.log("LOAD_USERS_EVENTS_SUCCESS");
             return userEventsAdapter.addAll(action.userEvents, state)
         }
         default:
@@ -43,7 +38,7 @@ const {
     selectEntities,
     selectAll,
     selectTotal
-} = userEventsAdapter.getSelectors(getUserEventState);  //u zagradi je bilo getCommentState
+} = userEventsAdapter.getSelectors(getUserEventState);
 
 export const selectAllUserEvents=selectAll;
 export const selectTotalUserEvents=selectTotal;

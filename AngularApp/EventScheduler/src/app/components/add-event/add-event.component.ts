@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from 'src/app/services/event-service/event.service';
 import { Observable } from 'rxjs';
 import { EventModel } from 'src/app/models/EventModel';
-import { returnFormatedDate } from 'src/app/functions/formatingFunctions';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
 import { AddEvent, AddPhoto } from 'src/app/store/actions/event.action';
-import { selectAllEvents } from 'src/app/store/reducers/event.reducer';
 import { selectAllLocations } from 'src/app/store/reducers/location.reducer';
 
 @Component({
@@ -42,10 +39,6 @@ export class AddEventComponent implements OnInit {
 
     this.store.dispatch(new AddEvent(newEvent));
     this.store.dispatch(new AddPhoto(formData));
-    // this.eventService.addEvent(newEvent).subscribe(er => console.log(er));
-    // this.eventService.addEventPhoto(formData).subscribe(er => {
-    //   console.log(er);
-    // });
 
   }
 

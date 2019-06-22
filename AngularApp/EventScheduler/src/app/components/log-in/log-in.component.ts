@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
 import { selectAllUsers } from 'src/app/store/reducers/user.reducer';
 import { flatMap, filter } from 'rxjs/operators';
+import { setLocalStorage } from 'src/app/functions/localStorageFunctions';
 
 @Component({
   selector: 'app-log-in',
@@ -29,29 +30,46 @@ export class LogInComponent implements OnInit {
       setErrorLabel(errorConstants.EMPTY_BOXES);
     }
     else {
-      this.ifPasswordIsCorrect = true;
-      setErrorLabel(errorConstants.NO_ERROR);
-      this.ifUsernameIsCorrect = false;
-      setErrorLabel(errorConstants.WRONG_USERNAME);
-      this.store.select(selectAllUsers).pipe(
-        flatMap(user => user),
-        filter(user => user.username === usernameValue)
-      ).subscribe(user => {
-        setErrorLabel(errorConstants.NO_ERROR);
-        this.ifUsernameIsCorrect = true;
-        console.log(user);
-        if (user.password === passwordValue) {
-          localStorage.setItem("username", user.username);
-          localStorage.setItem("userId", user.id.toString());
-          localStorage.setItem("isLoggedIn", "true");
-          location.replace('events');
-        }
-        else {
-          this.ifPasswordIsCorrect = false;
-          setErrorLabel(errorConstants.WRONG_PASSWORD);
-        }
-      })
+      this.signInUser(usernameValue, passwordValue);
     }
+  }
+
+  signInUser(usernameValue: string, passwordValue: string) {
+    this.passwordIsCorrect();
+    this.usernameIsWrong();
+    this.store.select(selectAllUsers).pipe(
+      flatMap(user => user),
+      filter(user => user.username === usernameValue)
+    ).subscribe(user => {
+      this.usernameIsCorrect();
+      if (user.password === passwordValue) {
+        setLocalStorage(user.username, user.id.toString());
+        location.replace('events');
+      }
+      else {
+        this.passwordIsWrong();
+      }
+    })
+  }
+
+  usernameIsCorrect() {
+    setErrorLabel(errorConstants.NO_ERROR);
+    this.ifUsernameIsCorrect = true;
+  }
+
+  usernameIsWrong() {
+    setErrorLabel(errorConstants.WRONG_USERNAME);
+    this.ifUsernameIsCorrect = false;
+  }
+
+  passwordIsCorrect() {
+    setErrorLabel(errorConstants.NO_ERROR);
+    this.ifPasswordIsCorrect = true;
+  }
+
+  passwordIsWrong() {
+    setErrorLabel(errorConstants.WRONG_PASSWORD);
+    this.ifPasswordIsCorrect = false;
   }
 
   checkEmptyBoxes(passwordValue: string, usernameValue: string) {

@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { EventModel } from 'src/app/models/EventModel';
-import { EventService } from 'src/app/services/event-service/event.service';
-import { MapServiceService } from 'src/app/services/map-service/map-service.service';
-import { UserService } from 'src/app/services/user-service/user.service';
 import { UserHasEvent } from 'src/app/models/UserHasEvent';
 import { returnFormatedDate } from 'src/app/functions/formatingFunctions';
 import { Store } from '@ngrx/store';
-import { EventsState } from 'src/app/store/reducers/event.reducer';
 import { State } from 'src/app/store/reducers/root.reducer';
-import { UpdateEvent, LoadEvents } from 'src/app/store/actions/event.action';
+import { UpdateEvent } from 'src/app/store/actions/event.action';
 import { AddResponse, DeleteResponse } from 'src/app/store/actions/user-event-response.action';
 import { LoadMap } from 'src/app/store/actions/map.action';
 
@@ -89,7 +85,7 @@ export class EventDetailsComponent implements OnInit {
     this.userResponse = this.returnNewResponse();
     this.store.dispatch(new AddResponse(this.userResponse));
     this.incrementNumberOfPeopleComming();
-    this.updateEvent();
+    this.updateEvent(this.event);
   }
 
   returnNewResponse() {
@@ -103,16 +99,16 @@ export class EventDetailsComponent implements OnInit {
     this.event.numberOfPeopleComing += 1;
   }
 
-  updateEvent() {
+  updateEvent(event:EventModel) {
     this.checkIfMaximumCapacityIsReached();
-    this.store.dispatch(new UpdateEvent(this.event));
+    this.store.dispatch(new UpdateEvent(event));
   }
 
   unregisterCommingEvent() {
     this.store.dispatch(new DeleteResponse(this.userResponse.id.toString()));
     this.userResponse = null;
     this.decrementNumberOfPeopleComming();
-    this.updateEvent();
+    this.updateEvent(this.event);
   }
 
   decrementNumberOfPeopleComming() {
