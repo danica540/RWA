@@ -670,7 +670,7 @@
       "img": "../assets/img/event3.jpg",
       "maxCapacity": 150,
       "time": "22:20",
-      "numberOfPeopleComing": 11
+      "numberOfPeopleComing": 12
     },
     {
       "id": 4,
@@ -781,6 +781,12 @@
       "eventId": 6,
       "isComming": true,
       "id": 3
+    },
+    {
+      "userId": 6,
+      "eventId": 3,
+      "isComming": true,
+      "id": 4
     }
   ]
 }
