@@ -1,7 +1,7 @@
 
 import {createEntityAdapter} from '@ngrx/entity';
 import {createFeatureSelector} from '@ngrx/store';
-import { MapActions, MapActionTypes } from '../actions/map.action';
+import { MapActions, MapActionTypes } from './map.action';
 
 
 export const mapAdapter = createEntityAdapter<any>({

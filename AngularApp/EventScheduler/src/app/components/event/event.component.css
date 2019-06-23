@@ -7,7 +7,7 @@ img{
 h2{
     margin: 0;
     margin-bottom: 1%;
-    color:#25274d;
+    color:#290741;
 }
 
 .event-div{
@@ -34,9 +34,5 @@ h2{
 .span{
     font-weight: bolder;
     font-size: 16px;
-    color:#451466;
-}
-
-h2{
-    color:#451466;
+    color:#290741;
 }

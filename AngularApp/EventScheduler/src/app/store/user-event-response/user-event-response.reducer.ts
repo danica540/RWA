@@ -1,7 +1,7 @@
 import {createEntityAdapter} from '@ngrx/entity';
 import {createFeatureSelector} from '@ngrx/store';
 import { UserHasEvent } from 'src/app/models/UserHasEvent';
-import { UserEventResponseActions, UserEventResponseActionTypes } from '../actions/user-event-response.action';
+import { UserEventResponseActions, UserEventResponseActionTypes } from './user-event-response.action';
 
 export const responseAdapter = createEntityAdapter<UserHasEvent>({
 });

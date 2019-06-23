@@ -2,7 +2,7 @@
 import {createEntityAdapter} from '@ngrx/entity';
 import {createFeatureSelector} from '@ngrx/store';
 import { UserModel } from 'src/app/models/UserModel';
-import { UsersActions, UsersActionTypes } from '../actions/user.action';
+import { UsersActions, UsersActionTypes } from './user.action';
 
 
 export const userAdapter = createEntityAdapter<UserModel>({

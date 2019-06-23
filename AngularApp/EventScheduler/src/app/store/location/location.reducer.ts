@@ -1,7 +1,7 @@
 
 import {createEntityAdapter} from '@ngrx/entity';
 import {createFeatureSelector} from '@ngrx/store';
-import { LocationActions, LocationsActionTypes } from '../actions/location.action';
+import { LocationActions, LocationsActionTypes } from './location.action';
 
 
 export const locationAdapter = createEntityAdapter<any>({

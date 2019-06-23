@@ -19,12 +19,12 @@ import { EventListComponent } from './components/event-list/event-list.component
 import { EventDetailsComponent } from './components/event-details/event-details.component';
 import { MyEventsComponent } from './components/my-events/my-events.component';
 import { rootReducer } from './store/reducers/root.reducer';
-import { UserEventResponseEffects } from './store/effects/user-event-response.effects';
-import { EventEffects } from './store/effects/event.effects';
-import { MapEffects } from './store/effects/map.effects';
-import { LocationEffects } from './store/effects/location.effects';
-import { UserEventsEffects } from './store/effects/user-events.effects';
-import { UserEffects } from './store/effects/user.effects';
+import { UserEventResponseEffects } from './store/user-event-response/user-event-response.effects';
+import { EventEffects } from './store/events/event.effects';
+import { MapEffects } from './store/map/map.effects';
+import { LocationEffects } from './store/location/location.effects';
+import { UserEventsEffects } from './store/user-events/user-events.effects';
+import { UserEffects } from './store/user/user.effects';
 
 @NgModule({
   declarations: [

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from './store/reducers/root.reducer';
-import { LoadEvents } from './store/actions/event.action';
-import { LoadLocations } from './store/actions/location.action';
-import { LoadUsers } from './store/actions/user.action';
-import { LoadResponse } from './store/actions/user-event-response.action';
-import { LoadUserEvents } from './store/actions/user-events.action';
+import { LoadEvents } from './store/events/event.action';
+import { LoadLocations } from './store/location/location.action';
+import { LoadUsers } from './store/user/user.action';
+import { LoadResponse } from './store/user-event-response/user-event-response.action';
+import { LoadUserEvents } from './store/user-events/user-events.action';
 
 @Component({
   selector: 'app-root',

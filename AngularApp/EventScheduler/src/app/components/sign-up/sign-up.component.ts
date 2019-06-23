@@ -6,8 +6,8 @@ import { map, flatMap, filter } from "rxjs/operators";
 import { setErrorLabel } from 'src/app/functions/errorLabelFunction';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
-import { AddUser } from 'src/app/store/actions/user.action';
-import { selectAllUsers } from 'src/app/store/reducers/user.reducer';
+import { AddUser } from 'src/app/store/user/user.action';
+import { selectAllUsers } from 'src/app/store/user/user.reducer';
 import { setLocalStorage } from 'src/app/functions/localStorageFunctions';
 
 

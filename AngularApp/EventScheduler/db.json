@@ -775,6 +775,12 @@
       "eventId": 7,
       "isComming": true,
       "id": 2
+    },
+    {
+      "userId": 6,
+      "eventId": 6,
+      "isComming": true,
+      "id": 3
     }
   ]
 }

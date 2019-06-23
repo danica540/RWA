@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { mergeMap, map } from 'rxjs/operators';
 import { EventService } from 'src/app/services/event-service/event.service';
-import { EventsActionTypes, AddEvent, UpdateEvent, AddPhoto } from '../actions/event.action';
+import { EventsActionTypes, AddEvent, UpdateEvent, AddPhoto } from './event.action';
 
 @Injectable()
 export class EventEffects {

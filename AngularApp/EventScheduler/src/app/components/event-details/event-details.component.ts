@@ -5,12 +5,12 @@ import { UserHasEvent } from 'src/app/models/UserHasEvent';
 import { returnFormatedDate } from 'src/app/functions/formatingFunctions';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
-import { UpdateEvent } from 'src/app/store/actions/event.action';
-import { AddResponse, DeleteResponse, LoadResponse } from 'src/app/store/actions/user-event-response.action';
-import { LoadMap } from 'src/app/store/actions/map.action';
-import { selectAllResponses } from 'src/app/store/reducers/user-event-response.reducer';
+import { UpdateEvent } from 'src/app/store/events/event.action';
+import { AddResponse, DeleteResponse, LoadResponse } from 'src/app/store/user-event-response/user-event-response.action';
+import { LoadMap } from 'src/app/store/map/map.action';
+import { selectAllResponses } from 'src/app/store/user-event-response/user-event-response.reducer';
 import { flatMap, filter } from 'rxjs/operators';
-import { LoadUserEvents } from 'src/app/store/actions/user-events.action';
+import { LoadUserEvents } from 'src/app/store/user-events/user-events.action';
 
 @Component({
   selector: 'app-event-details',

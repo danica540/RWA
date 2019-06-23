@@ -2,7 +2,7 @@
 import {createEntityAdapter} from '@ngrx/entity';
 import {createFeatureSelector} from '@ngrx/store';
 import { EventModel } from 'src/app/models/EventModel';
-import { EventsActions, EventsActionTypes } from '../actions/event.action';
+import { EventsActions, EventsActionTypes } from './event.action';
 
 
 export const eventsAdapter = createEntityAdapter<EventModel>({

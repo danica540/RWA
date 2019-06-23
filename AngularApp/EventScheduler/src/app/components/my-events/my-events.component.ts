@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EventModel } from 'src/app/models/EventModel';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
-import { LoadUserEvents, RemoveAllUserEvents } from 'src/app/store/actions/user-events.action';
-import { selectAllUserEvents } from 'src/app/store/reducers/user-events.reducer';
+import { LoadUserEvents, RemoveAllUserEvents } from 'src/app/store/user-events/user-events.action';
+import { selectAllUserEvents } from 'src/app/store/user-events/user-events.reducer';
 import { Observable } from 'rxjs';
 import { UserHasEvent } from 'src/app/models/UserHasEvent';
 

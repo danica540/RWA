@@ -1,7 +1,7 @@
 
 import { createEntityAdapter } from '@ngrx/entity';
 import { createFeatureSelector } from '@ngrx/store';
-import { UserEventsActions, UserEventsActionTypes } from '../actions/user-events.action';
+import { UserEventsActions, UserEventsActionTypes } from './user-events.action';
 import { UserHasEvent } from 'src/app/models/UserHasEvent';
 
 

@@ -3,7 +3,7 @@ import { errorConstants } from 'src/app/constants/error-constants';
 import { setErrorLabel } from 'src/app/functions/errorLabelFunction';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
-import { selectAllUsers } from 'src/app/store/reducers/user.reducer';
+import { selectAllUsers } from 'src/app/store/user/user.reducer';
 import { flatMap, filter } from 'rxjs/operators';
 import { setLocalStorage } from 'src/app/functions/localStorageFunctions';
 

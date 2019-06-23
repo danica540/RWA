@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { mergeMap, map } from 'rxjs/operators';
 import { EventService } from 'src/app/services/event-service/event.service';
-import { LocationsActionTypes } from '../actions/location.action';
+import { LocationsActionTypes } from './location.action';
 
 @Injectable()
 export class LocationEffects {

@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { EventModel } from 'src/app/models/EventModel';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/root.reducer';
-import { AddEvent, AddPhoto } from 'src/app/store/actions/event.action';
-import { selectAllLocations } from 'src/app/store/reducers/location.reducer';
+import { AddEvent, AddPhoto } from 'src/app/store/events/event.action';
+import { selectAllLocations } from 'src/app/store/location/location.reducer';
 
 @Component({
   selector: 'app-add-event',
